@@ -465,7 +465,7 @@ mongoose
         );
 
         console.log(
-          "🌐 Production URL: http://localhost:5000"
+          "🌐 Production URL: https://tirupati-matka.onrender.com/"
         );
 
         console.log(

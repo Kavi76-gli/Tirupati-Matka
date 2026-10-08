@@ -12,7 +12,7 @@ import {
 // CONFIG
 // ======================================================
 
-const API_URL = "http://localhost:5000/api/auth";
+const API_URL = "https://tirupati-matka.onrender.com/api/auth";
 
 const auth = getAuth(app);
 

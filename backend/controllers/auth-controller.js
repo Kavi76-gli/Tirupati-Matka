@@ -2270,7 +2270,7 @@ exports.getProfile = async (req, res) => {
 
         const BASE_URL =
             process.env.BASE_URL ||
-            "http://localhost:5000";
+            "https://tirupati-matka.onrender.com/";
 
 
         return res.json({
@@ -2614,7 +2614,7 @@ exports.uploadUserAvatar = async (req, res) => {
         const avatarUrl =
             `${
                 process.env.BASE_URL ||
-                "http://localhost:5000"
+                "https://tirupati-matka.onrender.com/"
             }/uploads/avatars/${
                 req.file.filename
             }`;

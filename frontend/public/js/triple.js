@@ -113,7 +113,7 @@ function goPage(page) {
   window.location.href = page;
 }
 
-const API = "https://kalyanmaster.onrender.com/api/auth";
+const API = "https://tirupati-matka.onrender.com/api/auth";
 const token = localStorage.getItem("token");
 
 async function loadBalance() {

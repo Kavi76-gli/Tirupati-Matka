@@ -40,7 +40,7 @@ document.querySelector(".splash").addEventListener("click", () => {
   }, 800);
 });
 
-const API = "https://kalyanmaster.onrender.com/api/auth";
+const API = "https://tirupati-matka.onrender.com/api/auth";
 
 async function checkLogin() {
   const token = localStorage.getItem("token");

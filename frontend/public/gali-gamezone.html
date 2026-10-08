@@ -274,7 +274,7 @@ body::after{
 
 <script>
 const token = localStorage.getItem("token");
-const API = "http://localhost:5000/api/gali/zone";
+const API = "https://tirupati-matka.onrender.com/api/gali/zone";
 
 
 
@@ -287,7 +287,7 @@ async function loadWallet() {
 
   try {
     const res = await fetch(
-      "http://localhost:5000/api/auth/balance",
+      "https://tirupati-matka.onrender.com/api/auth/balance",
       {
         headers: { Authorization: "Bearer " + token }
       }

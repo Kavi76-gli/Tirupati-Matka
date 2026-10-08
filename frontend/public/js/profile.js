@@ -1,7 +1,7 @@
 // ======================
 // CONFIG
 // ======================
-const API = "http://localhost:5000/api/auth";
+const API = "https://tirupati-matka.onrender.com/api/auth";
 const token = localStorage.getItem("token");
 
 if (!token) {

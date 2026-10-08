@@ -2,7 +2,7 @@
 // Admin JS
 // ==============================
 
-const API = "http://localhost:5000/api"; // Backend base URL
+const API = "https://tirupati-matka.onrender.com/api"; // Backend base URL
 const token = localStorage.getItem("token"); // Make sure admin is logged in
 
 // ------------------------------
@@ -343,7 +343,7 @@ async function deleteSelectedGame() {
 
   try {
     const res = await fetch(
-      `https://kalyanmaster.onrender.com/api/match/admin/match/${matchId}`, // ✅ FIXED URL
+      `https://tirupati-matka.onrender.com/api/match/admin/match/${matchId}`, // ✅ FIXED URL
       {
         method: "DELETE",
         headers: {

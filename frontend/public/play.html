@@ -654,7 +654,7 @@ function isAfterOpenTime(openTime) {
   return now >= open;
 }
 
-const API = "http://localhost:5000/api/auth";
+const API = "https://tirupati-matka.onrender.com/api/auth";
 
 (async () => {
 
@@ -689,7 +689,7 @@ const API = "http://localhost:5000/api/auth";
   // Get Latest Game Data
   // ==============================
   try {
-    const res = await fetch(`https://kalyanmaster.onrender.com/api/match/gamezone/${gameId}`, {
+    const res = await fetch(`https://tirupati-matka.onrender.com/api/match/gamezone/${gameId}`, {
       headers: {
         Authorization: "Bearer " + token
       }

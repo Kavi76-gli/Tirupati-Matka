@@ -828,7 +828,7 @@ onclick="toggleMenu()">
 
 
 <script>
-const API = "http://localhost:5000/api/auth";
+const API = "https://tirupati-matka.onrender.com/api/auth";
 const token = localStorage.getItem("token");
 
 /* DOM */
@@ -893,7 +893,7 @@ async function loadProfile() {
         userid.innerText = u.id || "-";
 
         if (u.avatar) {
-            avatar.src = `http://localhost:5000/uploads/avatars/${u.avatar}`;
+            avatar.src = `https://tirupati-matka.onrender.com/uploads/avatars/${u.avatar}`;
         } else if (u.avatarUrl) {
             avatar.src = u.avatarUrl;
         } else {

@@ -45,7 +45,7 @@ const auth = getAuth(app);
 // ============================================================
 
 // LOCAL DEVELOPMENT
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://tirupati-matka.onrender.com/api";
 
 // If using Render, change to:
 // const API_BASE = "https://kalyanmaster.onrender.com/api";

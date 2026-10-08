@@ -166,7 +166,7 @@ function formatTime12(time) {
 
   try {
     const res = await fetch(
-      `https://kalyanmaster.onrender.com/api/match/gamezone/${gameId}`,
+      `https://tirupati-matka.onrender.com/api/match/gamezone/${gameId}`,
       { headers: { Authorization: "Bearer " + token } }
     );
     const data = await res.json();
@@ -243,7 +243,7 @@ function goPage(page) {
 /* ==============================
    LOAD BALANCE
 ============================== */
-const API = "https://kalyanmaster.onrender.com/api/auth";
+const API = "https://tirupati-matka.onrender.com/api/auth";
 const balance = document.getElementById("balance");
 
 async function loadBalance() {

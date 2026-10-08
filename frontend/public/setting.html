@@ -50,7 +50,7 @@ const token = localStorage.getItem("token");
 async function changePassword() {
   const oldPassword = document.getElementById("oldPassword").value;
   const newPassword = document.getElementById("newPassword").value;
-  const res = await fetch("https://kalyanmaster.onrender.com/api/auth/settings/change-password", {
+  const res = await fetch("https://tirupati-matka.onrender.com/api/auth/settings/change-password", {
     method: "POST",
     headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
     body: JSON.stringify({ oldPassword, newPassword })
@@ -63,7 +63,7 @@ async function updateContact() {
   const name = document.getElementById("name").value;
   const phone = document.getElementById("phone").value;
   const email = document.getElementById("email").value;
-  const res = await fetch("https://kalyanmaster.onrender.com/api/auth/settings/update-contact", {
+  const res = await fetch("https://tirupati-matka.onrender.com/api/auth/settings/update-contact", {
     method: "POST",
     headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
     body: JSON.stringify({ name, phone, email })
@@ -73,7 +73,7 @@ async function updateContact() {
 }
 
 async function getHelp() {
-  const res = await fetch("https://kalyanmaster.onrender.com/api/auth/settings/help", {
+  const res = await fetch("https://tirupati-matka.onrender.com/api/auth/settings/help", {
     headers: { Authorization: "Bearer " + token }
   });
   const data = await res.json();
@@ -85,7 +85,7 @@ async function getHelp() {
 }
 
 async function logout() {
-  const res = await fetch("https://kalyanmaster.onrender.com/api/auth/settings/logout", {
+  const res = await fetch("https://tirupati-matka.onrender.com/api/auth/settings/logout", {
     method: "POST",
     headers: { Authorization: "Bearer " + token }
   });

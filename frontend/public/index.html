@@ -1,155 +1,359 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Kalyan Master</title>
+    <meta charset="UTF-8">
 
-  <style>
-    /* ===============================
-       BASE
-    =============================== */
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: linear-gradient(160deg, #071526, #0b2a4a);
-      font-family: "Segoe UI", Arial, sans-serif;
-      overflow: hidden;
-    }
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+    <title>Tirupati Matka</title>
 
-    /* ===============================
-       SPLASH CONTAINER
-    =============================== */
-    .splash {
-      text-align: center;
-      animation: fadeIn 1s ease forwards;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* ===============================
-       APP NAME
-    =============================== */
-    .title {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: clamp(30px, 7vw, 56px);
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      color: #00eaff;
-    }
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
 
-    .title span {
-      display: inline-block;
-      min-width: 1ch;
-      opacity: 0;
-      transform: translateY(12px) scale(0.9);
-      animation: reveal 0.45s ease forwards;
-    }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-    .title span.space {
-      width: 0.6em;
-    }
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff 0%,
+                    #eef7ff 50%,
+                    #e8f2ff 100%
+                );
 
-    /* ===============================
-       ANIMATIONS
-    =============================== */
-    @keyframes reveal {
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
+            overflow: hidden;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0 }
-      to { opacity: 1 }
-    }
-  </style>
+        /* ================================
+           BACKGROUND GLOW
+        ================================= */
+
+        .bg1,
+        .bg2 {
+            position: absolute;
+
+            border-radius: 50%;
+
+            filter: blur(100px);
+
+            pointer-events: none;
+        }
+
+        .bg1 {
+            width: 300px;
+            height: 300px;
+
+            background: #00c3ff;
+
+            opacity: 0.15;
+
+            top: 15%;
+            left: 15%;
+        }
+
+        .bg2 {
+            width: 300px;
+            height: 300px;
+
+            background: #0066ff;
+
+            opacity: 0.15;
+
+            bottom: 15%;
+            right: 15%;
+        }
+
+        /* ================================
+           SPLASH
+        ================================= */
+
+        .splash {
+            position: relative;
+
+            z-index: 10;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ================================
+           LOGO CONTAINER
+        ================================= */
+
+        .logo-wrapper {
+            width: 220px;
+            height: 220px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 40px;
+
+            background: rgba(255, 255, 255, 0.65);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+            animation: zoomIn 0.8s ease;
+        }
+
+        /* ================================
+           LOGO
+        ================================= */
+
+        .logo {
+            width: 180px;
+            height: 180px;
+
+            object-fit: contain;
+
+            user-select: none;
+
+            -webkit-user-drag: none;
+        }
+
+        /* ================================
+           ANIMATION
+        ================================= */
+
+        @keyframes zoomIn {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    scale(0.7);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    scale(1);
+            }
+        }
+    </style>
 </head>
+
+
 <body>
 
-  <div class="splash">
-    <div class="title" id="title">
-      <span>K</span>
-      <span>A</span>
-      <span>L</span>
-      <span>Y</span>
-      <span>A</span>
-      <span>N</span>
+    <!-- Background Glow -->
+    <div class="bg1"></div>
+    <div class="bg2"></div>
 
-      <span class="space"></span>
 
-      <span>M</span>
-      <span>A</span>
-      <span>S</span>
-      <span>T</span>
-      <span>E</span>
-      <span>R</span>
+    <!-- Splash -->
+    <div class="splash">
+
+        <div class="logo-wrapper">
+
+            <img
+                src="Tirupati.png"
+                class="logo"
+                alt="Tirupati Matka"
+            >
+
+        </div>
+
     </div>
-  </div>
 
-<script>
-/* ===============================
-   LETTER SEQUENCE
-=============================== */
-const letters = document.querySelectorAll("#title span:not(.space)");
 
-letters.forEach((el, i) => {
-  el.style.animationDelay = `${i * 0.08}s`;
-});
+    <script>
 
-/* ===============================
-   LOGIN CHECK
-=============================== */
-const API = "https://kalyanmaster.onrender.com/api/auth";
+        /*
+        ======================================================
+        TIRUPATI MATKA SPLASH ROUTING
+        ======================================================
 
-setTimeout(checkLogin, 1800);
+        EXISTING USER
+        ----------------
+        token / ki_token
+        +
+        valid saved user
+        ↓
+        mpin.html
 
-async function checkLogin() {
-  const token = localStorage.getItem("token");
 
-  if (!token) {
-    redirect("auth.html");
-    return;
-  }
+        NEW USER
+        ----------------
+        no valid login
+        ↓
+        auth.html
 
-  try {
-    const res = await fetch(API + "/me", {
-      headers: { Authorization: "Bearer " + token }
-    });
 
-    if (!res.ok) throw new Error("Invalid");
+        ======================================================
+        */
 
-    const data = await res.json();
 
-    if (data.success) {
-      redirect("gamezone.html");
-    } else {
-      localStorage.clear();
-      redirect("auth.html");
-    }
-  } catch {
-    localStorage.clear();
-    redirect("auth.html");
-  }
-}
+        function clearLoginData() {
 
-/* ===============================
-   SMOOTH REDIRECT
-=============================== */
-function redirect(page) {
-  document.body.style.transition = "opacity 0.6s";
-  document.body.style.opacity = "0";
-  setTimeout(() => location.replace(page), 600);
-}
-</script>
+            localStorage.removeItem("token");
+
+            localStorage.removeItem("ki_token");
+
+            localStorage.removeItem("user");
+
+        }
+
+
+        function getSavedToken() {
+
+            return (
+                localStorage.getItem("token") ||
+                localStorage.getItem("ki_token")
+            );
+
+        }
+
+
+        function isValidUser(user) {
+
+            if (!user || typeof user !== "object") {
+                return false;
+            }
+
+
+            /*
+            Support different user data
+            structures used by the app.
+            */
+
+            const phone =
+                user.phone ||
+                user.mobile ||
+                user.number;
+
+
+            return Boolean(phone);
+
+        }
+
+
+        function checkUserAndRedirect() {
+
+            const token = getSavedToken();
+
+            const savedUser =
+                localStorage.getItem("user");
+
+
+            /*
+            ==================================================
+            EXISTING USER
+            ==================================================
+            */
+
+            if (token && savedUser) {
+
+                try {
+
+                    const user =
+                        JSON.parse(savedUser);
+
+
+                    if (isValidUser(user)) {
+
+                        console.log(
+                            "Existing user detected."
+                        );
+
+                        console.log(
+                            "Opening M-PIN login..."
+                        );
+
+
+                        window.location.replace(
+                            "m-pin.html"
+                        );
+
+
+                        return;
+
+                    }
+
+                } catch (error) {
+
+                    console.error(
+                        "Invalid saved user data:",
+                        error
+                    );
+
+                }
+
+            }
+
+
+            /*
+            ==================================================
+            INVALID / CORRUPTED LOGIN DATA
+            ==================================================
+            */
+
+            clearLoginData();
+
+
+            /*
+            ==================================================
+            NEW USER
+            ==================================================
+            */
+
+            console.log(
+                "No valid existing user found."
+            );
+
+            console.log(
+                "Opening registration..."
+            );
+
+
+            window.location.replace(
+                "auth.html"
+            );
+
+        }
+
+
+        /*
+        ======================================================
+        SPLASH DELAY
+        ======================================================
+
+        1 second splash screen.
+        */
+
+        setTimeout(
+            checkUserAndRedirect,
+            1000
+        );
+
+    </script>
 
 </body>
+
 </html>
+
