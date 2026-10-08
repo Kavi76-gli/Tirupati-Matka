@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Success</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="stylesheet" href="global.css">
+<style>
+/* =====================
+   RESET & BASE
+===================== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body{
+  background: radial-gradient(circle at top, #0a1a2f, #020b18);
+  color: #00eaff;
+  padding-bottom: 90px;
+}
+
+/* =====================
+   HEADER
+===================== */
+.header{
+  background: linear-gradient(90deg, #021126, #041f3d);
+  color:#00eaff;
+  padding:14px 16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #00eaff55;
+  box-shadow: 0 0 15px #00eaff22;
+  font-weight:bold;
+  font-size:18px;
+}
+
+/* =====================
+   CARD
+===================== */
+.card{
+  background:#001a3d;
+  margin:20px 15px;
+  padding:20px;
+  border-radius:16px;
+  border:1px solid #00eaff55;
+  box-shadow:0 0 15px #00eaff22;
+  text-align:center;
+}
+
+.card h2{
+  color:#00eaff;
+  text-shadow:0 0 10px #00eaff55;
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#7fefff;
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+.card .success-icon{
+  font-size:60px;
+  color:#00eaff;
+  text-shadow:0 0 20px #00eaff88, 0 0 40px #00eaff55;
+  margin-bottom:15px;
+}
+
+/* =====================
+   BUTTONS
+===================== */
+.btn-box{
+  display:flex;
+  gap:15px;
+  justify-content:center;
+  margin:20px 15px;
+}
+
+.btn{
+  flex:1;
+  max-width:180px;
+  padding:14px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+  box-shadow:0 0 15px #00eaff22;
+  text-transform:uppercase;
+}
+
+.btn-primary{
+  background: linear-gradient(135deg,#00eaff,#0099ff);
+  color:#001a3d;
+  box-shadow:0 0 20px #00eaff88;
+}
+
+.btn-primary:hover{
+  box-shadow:0 0 30px #00eaff;
+  transform:scale(1.05);
+}
+
+.btn-secondary{
+  background:#001a3d;
+  color:#00eaff;
+  border:1px solid #00eaff55;
+}
+
+.btn-secondary:hover{
+  box-shadow:0 0 25px #00eaff55;
+  transform:scale(1.05);
+}
+
+/* =====================
+   BOTTOM NAV
+===================== */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#001a3d;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  box-shadow:0 -5px 15px #00eaff22;
+}
+
+.bottom-nav div{
+  text-align:center;
+  font-size:12px;
+  color:#00eaffaa;
+  cursor:pointer;
+}
+
+.bottom-nav div i{
+  font-size:18px;
+  display:block;
+  margin-bottom:4px;
+}
+
+.bottom-nav .active{
+  color:#001a3d;
+  background:#00eaff;
+  padding:8px 14px;
+  border-radius:12px;
+  box-shadow:0 0 15px #00eaff88;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">Bet Placed Successfully!</div>
+
+<!-- SUCCESS CARD -->
+<div class="card">
+  <div class="success-icon">
+    <i class="fa-solid fa-check-circle"></i>
+  </div>
+  <h2>🎉 Success!</h2>
+  <p>Your bet has been placed successfully.</p>
+  <p>Good luck for the draw!</p>
+</div>
+
+<!-- BUTTONS -->
+<div class="btn-box">
+  <button class="btn btn-primary" onclick="goHome()">Home</button>
+  <button class="btn btn-secondary" onclick="placeAnother()">Place Another Bet</button>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <div>
+    <i class="fa-solid fa-user"></i>
+    Refer
+  </div>
+  <div>
+    <i class="fa-solid fa-clock"></i>
+    History
+  </div>
+  <div class="active">
+    <i class="fa-solid fa-house"></i>
+    Home
+  </div>
+  <div>
+    <i class="fa-solid fa-gavel"></i>
+    Bid
+  </div>
+  <div>
+    <i class="fa-solid fa-wallet"></i>
+    Wallet
+  </div>
+</div>
+
+<script>
+function goHome(){
+  window.location.href = "gamezone.html";
+}
+
+function placeAnother(){
+  localStorage.removeItem("pendingBet");
+  window.location.href = "play.html";
+}
+</script>
+<script src="nav.js"></script>
+</body>
+</html>

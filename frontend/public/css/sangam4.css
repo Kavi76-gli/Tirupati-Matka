@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f4f4f4;
+}
+
+/* HEADER */
+.header {
+  background: #d71920;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.wallet {
+  background: white;
+  color: #d71920;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+/* MARKET */
+.market-card {
+  background: white;
+  margin: 12px;
+  padding: 14px;
+  border-radius: 12px;
+}
+
+.market-left {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 45px;
+  height: 45px;
+  background: #d71920;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  margin-right: 10px;
+}
+
+/* FORM */
+.form-card {
+  background: white;
+  margin: 12px;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.field {
+  display: flex;
+  align-items: flex-start;
+}
+
+.field-icon {
+  width: 45px;
+  height: 45px;
+  background: #d71920;
+  border-radius: 8px;
+  margin-right: 12px;
+}
+
+.field-content h4 {
+  margin: 0;
+}
+
+.field-content p {
+  margin: 4px 0 8px;
+  font-size: 13px;
+  color: #777;
+}
+
+.field-content input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+/* SUBMIT */
+.submit-box {
+  padding: 15px;
+}
+
+.submit-box button {
+  width: 100%;
+  padding: 14px;
+  background: #d71920;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+}

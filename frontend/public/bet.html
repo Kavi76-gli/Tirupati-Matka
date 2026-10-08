@@ -1,0 +1,3826 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Kalyan Master Bet</title>
+
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+>
+
+<style>
+
+/* =====================================================
+   GOOGLE FONT
+===================================================== */
+
+@import url(
+    'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap'
+);
+
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:#f4f5f7;
+
+    padding-top:80px;
+    padding-bottom:110px;
+
+    color:#222;
+
+    overflow-x:hidden;
+
+    position:relative;
+
+    animation:pageOpen .6s ease;
+}
+
+
+/* =====================================================
+   PAGE ANIMATION
+===================================================== */
+
+@keyframes pageOpen{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* =====================================================
+   BACKGROUND EFFECT
+===================================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    width:220px;
+    height:220px;
+
+    background:rgba(0,168,107,.10);
+
+    border-radius:50%;
+
+    top:-80px;
+    left:-80px;
+
+    filter:blur(60px);
+
+    z-index:-1;
+
+    animation:bubble1 8s infinite ease-in-out;
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    width:250px;
+    height:250px;
+
+    background:rgba(0,216,125,.10);
+
+    border-radius:50%;
+
+    right:-100px;
+    bottom:-100px;
+
+    filter:blur(70px);
+
+    z-index:-1;
+
+    animation:bubble2 10s infinite ease-in-out;
+}
+
+@keyframes bubble1{
+
+    50%{
+        transform:translateY(40px);
+    }
+}
+
+@keyframes bubble2{
+
+    50%{
+        transform:translateY(-40px);
+    }
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.top-header{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:75px;
+
+    padding:0 15px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    background:
+        linear-gradient(
+            135deg,
+            #006c4e,
+            #00b96b
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,168,107,.35);
+
+    z-index:9999;
+}
+
+
+.back-btn,
+.header-icon{
+
+    width:42px;
+    height:42px;
+
+    border-radius:14px;
+
+    background:
+        rgba(255,255,255,.18);
+
+    backdrop-filter:blur(20px);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    color:#fff;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.back-btn:hover,
+.header-icon:hover{
+
+    background:
+        rgba(255,255,255,.28);
+
+    transform:translateY(-2px);
+}
+
+
+.header-center{
+
+    flex:1;
+
+    padding:0 12px;
+
+    min-width:0;
+}
+
+
+.market-name-header{
+
+    color:#fff;
+
+    font-size:22px;
+
+    font-weight:800;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+.market-subtitle{
+
+    color:
+        rgba(255,255,255,.85);
+
+    font-size:11px;
+}
+
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+
+.header-balance{
+
+    color:#fff;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.market-card,
+.game-type,
+.countdown-box,
+.toggle-box,
+.bet-form,
+.bid-table{
+
+    animation:cardUp .6s ease;
+}
+
+@keyframes cardUp{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* =====================================================
+   MARKET CARD
+===================================================== */
+
+.market-card{
+
+    margin:15px;
+
+    padding:18px;
+
+    background:
+        rgba(255,255,255,.95);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:25px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.08);
+
+    transition:.3s;
+}
+
+.market-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0,0,0,.10);
+}
+
+
+.market-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+}
+
+
+.market-icon{
+
+    width:60px;
+    height:60px;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00a86b,
+            #00d67b
+        );
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    flex-shrink:0;
+}
+
+
+.market-info h3{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#111;
+}
+
+
+.market-info span{
+
+    color:#777;
+
+    font-size:13px;
+}
+
+
+#marketPhase{
+
+    color:#00a86b;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    text-align:right;
+
+    white-space:nowrap;
+}
+
+
+/* =====================================================
+   GAME TYPE
+===================================================== */
+
+.game-type{
+
+    width:160px;
+    height:140px;
+
+    margin:20px auto;
+
+    border-radius:25px;
+
+    background:#fff;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.08);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transition:.3s;
+}
+
+.game-type:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 15px 30px
+        rgba(0,0,0,.12);
+}
+
+
+.game-icon-big{
+
+    width:65px;
+    height:65px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00a86b,
+            #00d67b
+        );
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:28px;
+
+    margin-bottom:12px;
+}
+
+
+#gameType{
+
+    font-size:18px;
+
+    font-weight:700;
+}
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+.countdown-box{
+
+    margin:15px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:#fff;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.08);
+
+    font-size:16px;
+}
+
+
+#countdown{
+
+    color:#000;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    animation:pulse 1s infinite;
+}
+
+
+@keyframes pulse{
+
+    50%{
+        transform:scale(1.04);
+    }
+}
+
+
+/* =====================================================
+   OPEN / CLOSE TOGGLE
+===================================================== */
+
+.toggle-box{
+
+    margin:15px;
+
+    padding:10px;
+
+    background:#fff;
+
+    border-radius:22px;
+
+    display:flex;
+
+    gap:12px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.08);
+
+    border:
+        1px solid
+        rgba(0,168,107,.15);
+}
+
+
+.toggle-btn{
+
+    flex:1;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#f8fafc;
+
+    color:#00a86b;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+.toggle-btn:hover{
+
+    transform:translateY(-2px);
+
+    background:#f0fdf8;
+}
+
+
+.toggle-btn.active{
+
+    background:
+        linear-gradient(
+            135deg,
+            #00a86b,
+            #00d97c
+        );
+
+    color:#fff;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,168,107,.35);
+}
+
+
+.toggle-btn:active{
+
+    transform:scale(.96);
+}
+
+
+.toggle-btn.locked{
+
+    opacity:.45;
+
+    cursor:not-allowed;
+
+    pointer-events:none;
+
+    filter:grayscale(1);
+}
+
+
+/* =====================================================
+   BET FORM
+===================================================== */
+
+.bet-form{
+
+    padding:15px;
+}
+
+
+.bet-input{
+
+    width:100%;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#fff;
+
+    padding:0 18px;
+
+    margin-bottom:15px;
+
+    font-size:16px;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0,0,0,.08);
+
+    transition:.3s;
+}
+
+
+.bet-input:focus{
+
+    outline:none;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,168,107,.15);
+}
+
+
+.bet-input:disabled{
+
+    background:#eeeeee;
+
+    cursor:not-allowed;
+}
+
+
+/* =====================================================
+   ADD BUTTON
+===================================================== */
+
+.add-btn{
+
+    width:220px;
+
+    height:58px;
+
+    display:block;
+
+    margin:20px auto;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#d9a93b;
+
+    color:#fff;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    box-shadow:
+        0 10px 20px
+        rgba(217,169,59,.3);
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+
+.add-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 13px 25px
+        rgba(217,169,59,.4);
+}
+
+
+.add-btn:active{
+
+    transform:scale(.95);
+}
+
+
+/* =====================================================
+   BID TABLE
+===================================================== */
+
+.bid-table{
+
+    padding:20px;
+}
+
+
+.bid-head{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr 1fr 50px;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+}
+
+
+.bid-row{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr 1fr 50px;
+
+    padding:15px 0;
+
+    align-items:center;
+
+    font-size:18px;
+
+    border-bottom:
+        1px solid #eeeeee;
+
+    animation:cardUp .3s ease;
+}
+
+
+.delete-btn{
+
+    color:#3b82f6;
+
+    font-size:22px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+
+.delete-btn:hover{
+
+    color:#ef4444;
+
+    transform:scale(1.1);
+}
+
+
+/* =====================================================
+   SUBMIT
+===================================================== */
+
+.submit-container{
+
+    position:fixed;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    padding:15px;
+
+    background:
+        rgba(244,245,247,.95);
+
+    backdrop-filter:blur(12px);
+
+    z-index:500;
+}
+
+
+.submit-btn{
+
+    width:100%;
+
+    height:65px;
+
+    border:none;
+
+    border-radius:20px;
+
+    background:#d9a93b;
+
+    color:#5b35ff;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 10px 20px
+        rgba(0,0,0,.15);
+
+    transition:.25s;
+}
+
+
+.submit-btn:hover{
+
+    transform:translateY(-2px);
+}
+
+
+.submit-btn:active{
+
+    transform:scale(.97);
+}
+
+
+.submit-btn:disabled{
+
+    opacity:.5;
+
+    cursor:not-allowed;
+
+    transform:none;
+}
+
+
+/* =====================================================
+   LOADER
+===================================================== */
+
+.loader{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+        rgba(255,255,255,.75);
+
+    backdrop-filter:blur(5px);
+
+    z-index:20000;
+}
+
+
+.loader.active{
+
+    display:flex;
+}
+
+
+.loader-circle{
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    border:
+        4px solid #e5e7eb;
+
+    border-top-color:#00a86b;
+
+    animation:spin .8s linear infinite;
+}
+
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:480px){
+
+    body{
+        padding-top:75px;
+    }
+
+    .market-name-header{
+        font-size:18px;
+    }
+
+    .header-balance{
+        font-size:20px;
+    }
+
+    .market-card{
+        margin:12px;
+        padding:15px;
+    }
+
+    .market-icon{
+        width:52px;
+        height:52px;
+        font-size:23px;
+    }
+
+    .market-info h3{
+        font-size:15px;
+    }
+
+    .market-info span{
+        font-size:11px;
+    }
+
+    #marketPhase{
+        font-size:14px;
+    }
+
+    .game-type{
+        width:150px;
+        height:130px;
+    }
+
+    #countdown{
+        font-size:18px;
+    }
+
+    .countdown-box{
+        padding:18px;
+        font-size:14px;
+    }
+
+    .toggle-box{
+        gap:10px;
+        padding:8px;
+    }
+
+    .toggle-btn{
+        height:50px;
+        font-size:15px;
+    }
+
+    .bid-head,
+    .bid-row{
+        font-size:14px;
+    }
+
+    .submit-btn{
+        height:60px;
+        font-size:24px;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media(max-width:360px){
+
+    .market-card{
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:12px;
+    }
+
+    #marketPhase{
+        align-self:flex-end;
+    }
+
+    .header-icon{
+        display:none;
+    }
+
+    .header-balance{
+        font-size:18px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<div class="top-header">
+
+    <div
+        class="back-btn"
+        id="backBtn"
+        title="Back"
+    >
+        <i class="fa-solid fa-arrow-left"></i>
+    </div>
+
+
+    <div class="header-center">
+
+        <div
+            class="market-name-header"
+            id="marketName"
+        >
+            MARKET
+        </div>
+
+        <div class="market-subtitle">
+            Premium Market
+        </div>
+
+    </div>
+
+
+    <div class="header-right">
+
+        <div class="header-icon">
+            <i class="fa-solid fa-bell"></i>
+        </div>
+
+        <div
+            class="header-balance"
+            id="walletBalance"
+        >
+            ₹0
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MARKET CARD
+===================================================== -->
+
+<div class="market-card">
+
+    <div class="market-left">
+
+        <div
+            class="market-icon"
+            id="marketIcon"
+        >
+            K
+        </div>
+
+
+        <div class="market-info">
+
+            <h3 id="marketTitle">
+                MAIN BAZAR
+            </h3>
+
+            <span id="marketTime">
+                --:-- --:--
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <strong id="marketPhase">
+        ***-**-***
+    </strong>
+
+</div>
+
+
+
+<!-- =====================================================
+     GAME TYPE
+===================================================== -->
+
+<div class="game-type">
+
+    <div
+        class="game-icon-big"
+        id="gameIcon"
+    >
+        S
+    </div>
+
+    <strong id="gameType">
+        SINGLE
+    </strong>
+
+</div>
+
+
+
+<!-- =====================================================
+     COUNTDOWN
+===================================================== -->
+
+<div class="countdown-box">
+
+    <span>
+        Bids Close In :
+    </span>
+
+    <span id="countdown">
+        --:--:--
+    </span>
+
+</div>
+
+
+
+<!-- =====================================================
+     OPEN / CLOSE
+===================================================== -->
+
+<div
+    class="toggle-box"
+    id="toggleBox"
+>
+
+    <button
+        type="button"
+        class="toggle-btn active"
+        id="openBtn"
+    >
+        Open
+    </button>
+
+
+    <button
+        type="button"
+        class="toggle-btn"
+        id="closeBtn"
+    >
+        Close
+    </button>
+
+</div>
+
+
+
+<!-- =====================================================
+     BET FORM
+===================================================== -->
+
+<div class="bet-form">
+
+
+    <!-- NORMAL DIGIT -->
+
+    <input
+        type="text"
+        id="digit"
+        class="bet-input"
+        placeholder="Enter Number"
+        autocomplete="off"
+    >
+
+
+    <!-- HALF SANGAM -->
+
+    <input
+        type="text"
+        id="singleDigit"
+        class="bet-input"
+        placeholder="Enter Single Digit"
+        maxlength="1"
+        autocomplete="off"
+        style="display:none;"
+    >
+
+
+    <input
+        type="text"
+        id="halfPanna"
+        class="bet-input"
+        placeholder="Enter Panna (3 Digits)"
+        maxlength="3"
+        autocomplete="off"
+        style="display:none;"
+    >
+
+
+    <!-- FULL SANGAM -->
+
+    <input
+        type="text"
+        id="openPanna"
+        class="bet-input"
+        placeholder="Open Panna (3 Digits)"
+        maxlength="3"
+        autocomplete="off"
+        style="display:none;"
+    >
+
+
+    <input
+        type="text"
+        id="closePanna"
+        class="bet-input"
+        placeholder="Close Panna (3 Digits)"
+        maxlength="3"
+        autocomplete="off"
+        style="display:none;"
+    >
+
+
+    <!-- AMOUNT -->
+
+    <input
+        type="number"
+        id="amount"
+        class="bet-input"
+        placeholder="Enter Amount"
+        min="10"
+        inputmode="numeric"
+    >
+
+
+    <!-- ADD BID -->
+
+    <button
+        type="button"
+        class="add-btn"
+        id="addBidBtn"
+    >
+        Add Bid
+    </button>
+
+</div>
+
+
+
+<!-- =====================================================
+     BID TABLE
+===================================================== -->
+
+<div class="bid-table">
+
+    <div class="bid-head">
+
+        <span>Digit</span>
+
+        <span>Amount</span>
+
+        <span>Type</span>
+
+        <span>Del</span>
+
+    </div>
+
+
+    <div id="bidList"></div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SUBMIT
+===================================================== -->
+
+<div class="submit-container">
+
+    <button
+        type="button"
+        id="submitBtn"
+        class="submit-btn"
+    >
+        Submit
+    </button>
+
+</div>
+
+
+
+<!-- LOADER -->
+
+<div
+    class="loader"
+    id="loader"
+>
+
+    <div class="loader-circle"></div>
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   API
+===================================================== */
+
+const API = "http://localhost:5000/api";
+
+
+/* =====================================================
+   TOKEN
+===================================================== */
+
+function getToken(){
+
+    return (
+        localStorage.getItem("token") ||
+        localStorage.getItem("ki_token") ||
+        ""
+    );
+
+}
+
+let token = getToken();
+
+
+
+/* =====================================================
+   GLOBALS
+===================================================== */
+
+let bid = null;
+
+let bidListData = [];
+
+let countdownInterval = null;
+
+let gameRefreshInterval = null;
+
+
+
+/* =====================================================
+   DOM
+===================================================== */
+
+const openBtn =
+    document.getElementById("openBtn");
+
+const closeBtn =
+    document.getElementById("closeBtn");
+
+const toggleBox =
+    document.getElementById("toggleBox");
+
+const digit =
+    document.getElementById("digit");
+
+const singleDigit =
+    document.getElementById("singleDigit");
+
+const halfPanna =
+    document.getElementById("halfPanna");
+
+const openPanna =
+    document.getElementById("openPanna");
+
+const closePanna =
+    document.getElementById("closePanna");
+
+const amount =
+    document.getElementById("amount");
+
+const bidList =
+    document.getElementById("bidList");
+
+const loader =
+    document.getElementById("loader");
+
+
+
+/* =====================================================
+   LOADER
+===================================================== */
+
+function showLoader(){
+
+    if(loader){
+        loader.classList.add("active");
+    }
+
+}
+
+
+function hideLoader(){
+
+    if(loader){
+        loader.classList.remove("active");
+    }
+
+}
+
+
+
+/* =====================================================
+   LOAD BALANCE
+===================================================== */
+
+async function loadBalance(){
+
+    const currentToken = getToken();
+
+    if(!currentToken){
+
+        console.log("No token found");
+
+        return;
+    }
+
+    try{
+
+        const response =
+            await fetch(
+                API + "/auth/balance",
+                {
+                    headers:{
+                        Authorization:
+                            "Bearer " +
+                            currentToken
+                    }
+                }
+            );
+
+
+        if(!response.ok){
+
+            console.log(
+                "Balance HTTP Error:",
+                response.status
+            );
+
+            return;
+        }
+
+
+        const data =
+            await response.json();
+
+
+        if(data.success){
+
+            const balanceBox =
+                document.getElementById(
+                    "walletBalance"
+                );
+
+
+            if(balanceBox){
+
+                balanceBox.innerText =
+                    "₹" +
+                    Math.floor(
+                        Number(data.balance) || 0
+                    );
+
+            }
+
+        }
+
+    }
+    catch(error){
+
+        console.error(
+            "Balance Error:",
+            error
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   LOAD BET INFO
+===================================================== */
+
+function loadBetInfo(){
+
+    try{
+
+        const stored =
+            localStorage.getItem(
+                "betInfo"
+            );
+
+        if(!stored){
+
+            alert(
+                "No game selected."
+            );
+
+            window.location.href =
+                "gamezone.html";
+
+            return false;
+        }
+
+
+        bid =
+            JSON.parse(stored);
+
+
+        if(
+            !bid ||
+            !bid.gameId
+        ){
+
+            alert(
+                "Invalid game information."
+            );
+
+            window.location.href =
+                "gamezone.html";
+
+            return false;
+        }
+
+
+        console.log(
+            "BET INFO:",
+            bid
+        );
+
+
+        return true;
+
+    }
+    catch(error){
+
+        console.error(
+            "Bet Info Error:",
+            error
+        );
+
+        alert(
+            "Unable to load game."
+        );
+
+        window.location.href =
+            "gamezone.html";
+
+        return false;
+    }
+
+}
+
+
+
+/* =====================================================
+   TIME FORMAT
+===================================================== */
+
+function formatTime12(time){
+
+    if(!time){
+
+        return "--:--";
+    }
+
+
+    try{
+
+        let date;
+
+
+        if(
+            typeof time === "string" &&
+            time.includes("T")
+        ){
+
+            date =
+                new Date(time);
+
+        }
+        else if(
+            typeof time === "string" &&
+            /AM|PM/i.test(time)
+        ){
+
+            date =
+                new Date(
+                    new Date().toDateString()
+                    + " "
+                    + time
+                );
+
+        }
+        else{
+
+            const parts =
+                String(time)
+                .split(":")
+                .map(Number);
+
+
+            date = new Date();
+
+            date.setHours(
+                parts[0] || 0,
+                parts[1] || 0,
+                0,
+                0
+            );
+
+        }
+
+
+        let hours =
+            date.getHours();
+
+        const minutes =
+            date.getMinutes();
+
+
+        const ampm =
+            hours >= 12
+                ? "PM"
+                : "AM";
+
+
+        hours =
+            hours % 12 || 12;
+
+
+        return (
+            String(hours).padStart(2,"0")
+            +
+            ":"
+            +
+            String(minutes).padStart(2,"0")
+            +
+            " "
+            +
+            ampm
+        );
+
+    }
+    catch{
+
+        return "--:--";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   SETUP UI
+===================================================== */
+
+function setupUI(){
+
+    if(!bid) return;
+
+
+    const marketName =
+        document.getElementById(
+            "marketName"
+        );
+
+    const marketTitle =
+        document.getElementById(
+            "marketTitle"
+        );
+
+    const marketIcon =
+        document.getElementById(
+            "marketIcon"
+        );
+
+    const gameIcon =
+        document.getElementById(
+            "gameIcon"
+        );
+
+    const gameType =
+        document.getElementById(
+            "gameType"
+        );
+
+    const marketTime =
+        document.getElementById(
+            "marketTime"
+        );
+
+
+    const gameName =
+        bid.gameName ||
+        "MARKET";
+
+
+    const betType =
+        String(
+            bid.betType || "single"
+        )
+        .toLowerCase();
+
+
+    if(marketName){
+
+        marketName.innerText =
+            gameName;
+
+    }
+
+
+    if(marketTitle){
+
+        marketTitle.innerText =
+            gameName +
+            " (" +
+            betType.toUpperCase() +
+            ")";
+
+    }
+
+
+    if(marketIcon){
+
+        marketIcon.innerText =
+            gameName
+            .charAt(0)
+            .toUpperCase();
+
+    }
+
+
+    if(gameIcon){
+
+        gameIcon.innerText =
+            betType
+            .charAt(0)
+            .toUpperCase();
+
+    }
+
+
+    if(gameType){
+
+        gameType.innerText =
+            betType.toUpperCase();
+
+    }
+
+
+    if(marketTime){
+
+        marketTime.innerText =
+            formatTime12(
+                bid.openTime
+            )
+            +
+            " - "
+            +
+            formatTime12(
+                bid.closeTime
+            );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   HIDE ALL INPUTS
+===================================================== */
+
+function hideAllInputs(){
+
+    digit.style.display = "none";
+
+    singleDigit.style.display = "none";
+
+    halfPanna.style.display = "none";
+
+    openPanna.style.display = "none";
+
+    closePanna.style.display = "none";
+
+}
+
+
+
+/* =====================================================
+   SETUP BET TYPE
+===================================================== */
+
+function setupBetType(){
+
+    if(!bid) return;
+
+
+    hideAllInputs();
+
+
+    const type =
+        String(
+            bid.betType || "single"
+        )
+        .toLowerCase();
+
+
+    if(
+        type === "single"
+    ){
+
+        digit.style.display =
+            "block";
+
+        digit.placeholder =
+            "Enter Single Digit";
+
+        digit.maxLength = 1;
+
+        toggleBox.style.display =
+            "flex";
+
+    }
+
+
+    else if(
+        type === "jodi"
+    ){
+
+        digit.style.display =
+            "block";
+
+        digit.placeholder =
+            "Enter Jodi";
+
+        digit.maxLength = 2;
+
+        toggleBox.style.display =
+            "none";
+
+    }
+
+
+    else if(
+        type === "singlepanna"
+    ){
+
+        digit.style.display =
+            "block";
+
+        digit.placeholder =
+            "Enter Single Panna";
+
+        digit.maxLength = 3;
+
+        toggleBox.style.display =
+            "flex";
+
+    }
+
+
+    else if(
+        type === "doublepanna"
+    ){
+
+        digit.style.display =
+            "block";
+
+        digit.placeholder =
+            "Enter Double Panna";
+
+        digit.maxLength = 3;
+
+        toggleBox.style.display =
+            "flex";
+
+    }
+
+
+    else if(
+        type === "triplepanna"
+    ){
+
+        digit.style.display =
+            "block";
+
+        digit.placeholder =
+            "Enter Triple Panna";
+
+        digit.maxLength = 3;
+
+        toggleBox.style.display =
+            "flex";
+
+    }
+
+
+    else if(
+        type === "halfsangam" ||
+        type === "half-sangam"
+    ){
+
+        singleDigit.style.display =
+            "block";
+
+        halfPanna.style.display =
+            "block";
+
+        toggleBox.style.display =
+            "flex";
+
+    }
+
+
+    else if(
+        type === "fullsangam" ||
+        type === "full-sangam"
+    ){
+
+        openPanna.style.display =
+            "block";
+
+        closePanna.style.display =
+            "block";
+
+        toggleBox.style.display =
+            "none";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   CREATE TIME TODAY
+===================================================== */
+
+function getTodayTime(time){
+
+    const date =
+        new Date();
+
+
+    if(!time){
+
+        return date;
+    }
+
+
+    if(
+        String(time).includes("T")
+    ){
+
+        return new Date(time);
+    }
+
+
+    const parts =
+        String(time)
+        .split(":")
+        .map(Number);
+
+
+    date.setHours(
+        parts[0] || 0,
+        parts[1] || 0,
+        0,
+        0
+    );
+
+
+    return date;
+
+}
+
+
+
+/* =====================================================
+   GET GAME TIME RANGE
+===================================================== */
+
+function getGameTimes(game){
+
+    const now =
+        new Date();
+
+
+    let openTime =
+        getTodayTime(
+            game.openTime
+        );
+
+
+    let closeTime =
+        getTodayTime(
+            game.closeTime
+        );
+
+
+    /*
+       If close is earlier than open,
+       close is next day.
+    */
+
+    if(
+        closeTime <= openTime
+    ){
+
+        closeTime.setDate(
+            closeTime.getDate() + 1
+        );
+
+    }
+
+
+    /*
+       If both times are already
+       completely in the past,
+       use tomorrow.
+    */
+
+    if(
+        closeTime < now
+    ){
+
+        openTime.setDate(
+            openTime.getDate() + 1
+        );
+
+        closeTime.setDate(
+            closeTime.getDate() + 1
+        );
+
+    }
+
+
+    return {
+        openTime,
+        closeTime
+    };
+
+}
+
+
+
+/* =====================================================
+   SELECT OPEN
+===================================================== */
+
+function selectOpen(){
+
+    if(
+        !bid ||
+        openBtn.disabled
+    ){
+
+        return;
+    }
+
+
+    bid.betFor =
+        "open";
+
+
+    openBtn.classList.add(
+        "active"
+    );
+
+
+    closeBtn.classList.remove(
+        "active"
+    );
+
+
+    localStorage.setItem(
+        "betInfo",
+        JSON.stringify(bid)
+    );
+
+
+    console.log(
+        "Bet mode changed to OPEN"
+    );
+
+}
+
+
+
+/* =====================================================
+   SELECT CLOSE
+===================================================== */
+
+function selectClose(){
+
+    if(
+        !bid ||
+        closeBtn.disabled
+    ){
+
+        return;
+    }
+
+
+    bid.betFor =
+        "close";
+
+
+    closeBtn.classList.add(
+        "active"
+    );
+
+
+    openBtn.classList.remove(
+        "active"
+    );
+
+
+    localStorage.setItem(
+        "betInfo",
+        JSON.stringify(bid)
+    );
+
+
+    console.log(
+        "Bet mode changed to CLOSE"
+    );
+
+}
+
+
+
+/* =====================================================
+   BUTTON EVENTS
+===================================================== */
+
+openBtn.addEventListener(
+    "click",
+    selectOpen
+);
+
+
+closeBtn.addEventListener(
+    "click",
+    selectClose
+);
+
+
+
+/* =====================================================
+   APPLY OPEN / CLOSE LOCKS
+===================================================== */
+
+function applyLocks(game){
+
+    if(
+        !openBtn ||
+        !closeBtn ||
+        !game
+    ){
+
+        return;
+    }
+
+
+    /*
+       Reset first
+    */
+
+    openBtn.disabled = false;
+
+    closeBtn.disabled = false;
+
+    openBtn.classList.remove(
+        "locked"
+    );
+
+    closeBtn.classList.remove(
+        "locked"
+    );
+
+
+    const now =
+        new Date();
+
+
+    const {
+        openTime,
+        closeTime
+    } =
+        getGameTimes(game);
+
+
+    console.log(
+        "Game times:",
+        {
+            now,
+            openTime,
+            closeTime
+        }
+    );
+
+
+    /*
+       Open is unavailable after
+       open time.
+    */
+
+    if(
+        now >= openTime
+    ){
+
+        openBtn.disabled = true;
+
+        openBtn.classList.add(
+            "locked"
+        );
+
+
+        /*
+           If open has closed,
+           automatically select close.
+        */
+
+        if(
+            now < closeTime
+        ){
+
+            selectClose();
+
+        }
+
+    }
+
+
+    /*
+       Close is unavailable after
+       close time.
+    */
+
+    if(
+        now >= closeTime
+    ){
+
+        closeBtn.disabled = true;
+
+        closeBtn.classList.add(
+            "locked"
+        );
+
+    }
+
+
+    /*
+       Restore selected bet mode
+       if still available.
+    */
+
+    if(
+        bid.betFor === "close" &&
+        !closeBtn.disabled
+    ){
+
+        closeBtn.classList.add(
+            "active"
+        );
+
+        openBtn.classList.remove(
+            "active"
+        );
+
+    }
+    else if(
+        bid.betFor !== "close" &&
+        !openBtn.disabled
+    ){
+
+        openBtn.classList.add(
+            "active"
+        );
+
+        closeBtn.classList.remove(
+            "active"
+        );
+
+    }
+
+
+    localStorage.setItem(
+        "betInfo",
+        JSON.stringify(bid)
+    );
+
+}
+
+
+
+/* =====================================================
+   FETCH CURRENT GAME
+===================================================== */
+
+async function fetchGame(){
+
+    if(
+        !bid ||
+        !bid.gameId
+    ){
+
+        return;
+    }
+
+
+    const currentToken =
+        getToken();
+
+
+    if(!currentToken){
+
+        console.log(
+            "No login token."
+        );
+
+        return;
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                API +
+                "/match/gamezone/" +
+                bid.gameId,
+                {
+                    headers:{
+                        Authorization:
+                            "Bearer " +
+                            currentToken
+                    }
+                }
+            );
+
+
+        if(!response.ok){
+
+            console.log(
+                "Game API error:",
+                response.status
+            );
+
+            return;
+        }
+
+
+        const data =
+            await response.json();
+
+
+        console.log(
+            "Current Game:",
+            data
+        );
+
+
+        if(
+            !data.success ||
+            !data.game
+        ){
+
+            return;
+        }
+
+
+        /*
+           Update game data
+        */
+
+        bid.gameName =
+            data.game.gameName ||
+            bid.gameName;
+
+
+        bid.openTime =
+            data.game.openTime ||
+            bid.openTime;
+
+
+        bid.closeTime =
+            data.game.closeTime ||
+            bid.closeTime;
+
+
+        bid.openResult =
+            data.game.openResult;
+
+
+        bid.closeResult =
+            data.game.closeResult;
+
+
+        localStorage.setItem(
+            "betInfo",
+            JSON.stringify(bid)
+        );
+
+
+        /*
+           Update market UI
+        */
+
+        const marketName =
+            document.getElementById(
+                "marketName"
+            );
+
+
+        const marketTitle =
+            document.getElementById(
+                "marketTitle"
+            );
+
+
+        const marketTime =
+            document.getElementById(
+                "marketTime"
+            );
+
+
+        if(marketName){
+
+            marketName.innerText =
+                bid.gameName;
+
+        }
+
+
+        if(marketTitle){
+
+            marketTitle.innerText =
+                bid.gameName +
+                " (" +
+                String(
+                    bid.betType
+                ).toUpperCase() +
+                ")";
+
+        }
+
+
+        if(marketTime){
+
+            marketTime.innerText =
+                formatTime12(
+                    bid.openTime
+                )
+                +
+                " - "
+                +
+                formatTime12(
+                    bid.closeTime
+                );
+
+        }
+
+
+        showResult(
+            bid.openResult,
+            bid.closeResult
+        );
+
+
+        applyLocks(
+            data.game
+        );
+
+
+        startCountdown(
+            data.game.closeTime
+        );
+
+    }
+    catch(error){
+
+        console.error(
+            "Fetch Game Error:",
+            error
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   SHOW RESULT
+===================================================== */
+
+function showResult(
+    openResult,
+    closeResult
+){
+
+    let openPanel =
+        "***";
+
+
+    let closePanel =
+        "***";
+
+
+    let jodi =
+        "**";
+
+
+    if(
+        openResult &&
+        openResult.panel
+    ){
+
+        openPanel =
+            openResult.panel;
+
+
+        if(
+            openResult.single !== null &&
+            openResult.single !== undefined
+        ){
+
+            jodi =
+                openResult.single +
+                "*";
+
+        }
+
+    }
+
+
+    if(
+        openResult &&
+        openResult.panel &&
+        closeResult &&
+        closeResult.panel
+    ){
+
+        closePanel =
+            closeResult.panel;
+
+
+        if(
+            openResult.single !== null &&
+            openResult.single !== undefined &&
+            closeResult.single !== null &&
+            closeResult.single !== undefined
+        ){
+
+            jodi =
+                String(
+                    openResult.single
+                )
+                +
+                String(
+                    closeResult.single
+                );
+
+        }
+
+    }
+
+
+    const phase =
+        document.getElementById(
+            "marketPhase"
+        );
+
+
+    if(phase){
+
+        phase.innerText =
+            openPanel +
+            "-" +
+            jodi +
+            "-" +
+            closePanel;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+function startCountdown(closeTime){
+
+    clearInterval(
+        countdownInterval
+    );
+
+
+    const countdown =
+        document.getElementById(
+            "countdown"
+        );
+
+
+    if(!countdown){
+
+        return;
+    }
+
+
+    if(!closeTime){
+
+        countdown.innerText =
+            "--:--:--";
+
+        return;
+    }
+
+
+    let closeDate;
+
+
+    /*
+       ISO
+    */
+
+    if(
+        String(closeTime).includes("T")
+    ){
+
+        closeDate =
+            new Date(closeTime);
+
+    }
+
+
+    /*
+       AM / PM
+    */
+
+    else if(
+        /AM|PM/i.test(
+            String(closeTime)
+        )
+    ){
+
+        closeDate =
+            new Date(
+                new Date().toDateString()
+                +
+                " "
+                +
+                closeTime
+            );
+
+    }
+
+
+    /*
+       HH:MM
+    */
+
+    else{
+
+        closeDate =
+            getTodayTime(
+                closeTime
+            );
+
+    }
+
+
+    const now =
+        new Date();
+
+
+    /*
+       If today's close time
+       has passed, use tomorrow.
+    */
+
+    if(
+        closeDate <= now
+    ){
+
+        closeDate.setDate(
+            closeDate.getDate() + 1
+        );
+
+    }
+
+
+    function update(){
+
+        const current =
+            new Date();
+
+
+        const diff =
+            closeDate -
+            current;
+
+
+        if(diff <= 0){
+
+            countdown.innerText =
+                "Game Closed";
+
+
+            clearInterval(
+                countdownInterval
+            );
+
+
+            return;
+        }
+
+
+        const hours =
+            Math.floor(
+                diff / 3600000
+            );
+
+
+        const minutes =
+            Math.floor(
+                (diff % 3600000)
+                / 60000
+            );
+
+
+        const seconds =
+            Math.floor(
+                (diff % 60000)
+                / 1000
+            );
+
+
+        countdown.innerText =
+            String(hours)
+                .padStart(2,"0")
+            +
+            ":"
+            +
+            String(minutes)
+                .padStart(2,"0")
+            +
+            ":"
+            +
+            String(seconds)
+                .padStart(2,"0");
+
+    }
+
+
+    update();
+
+
+    countdownInterval =
+        setInterval(
+            update,
+            1000
+        );
+
+}
+
+
+
+/* =====================================================
+   PANNA VALIDATION
+===================================================== */
+
+function isSinglePanna(num){
+
+    return (
+        /^\d{3}$/.test(num)
+        &&
+        num[0] !== num[1]
+        &&
+        num[1] !== num[2]
+        &&
+        num[0] !== num[2]
+    );
+
+}
+
+
+function isDoublePanna(num){
+
+    if(
+        !/^\d{3}$/.test(num)
+    ){
+
+        return false;
+    }
+
+
+    return (
+        (
+            num[0] === num[1] &&
+            num[1] !== num[2]
+        )
+        ||
+        (
+            num[0] === num[2] &&
+            num[0] !== num[1]
+        )
+        ||
+        (
+            num[1] === num[2] &&
+            num[0] !== num[1]
+        )
+    );
+
+}
+
+
+function isTriplePanna(num){
+
+    return (
+        /^\d{3}$/.test(num)
+        &&
+        num[0] === num[1]
+        &&
+        num[1] === num[2]
+    );
+
+}
+
+
+
+/* =====================================================
+   ADD BID
+===================================================== */
+
+function addBid(){
+
+    if(!bid){
+
+        alert(
+            "Game information missing."
+        );
+
+        return;
+    }
+
+
+    const amountValue =
+        Number(
+            amount.value
+        );
+
+
+    if(
+        !amountValue ||
+        amountValue < 10
+    ){
+
+        alert(
+            "Minimum amount is ₹10"
+        );
+
+        amount.focus();
+
+        return;
+    }
+
+
+    const type =
+        String(
+            bid.betType || "single"
+        )
+        .toLowerCase();
+
+
+    const newBid = {
+
+        amount:
+            amountValue,
+
+        betFor:
+            bid.betFor ||
+            "open"
+
+    };
+
+
+    /* =========================
+       SINGLE
+    ========================= */
+
+    if(type === "single"){
+
+        if(
+            !/^\d$/.test(
+                digit.value
+            )
+        ){
+
+            alert(
+                "Enter only one digit."
+            );
+
+            digit.focus();
+
+            return;
+        }
+
+
+        newBid.number =
+            digit.value;
+
+    }
+
+
+    /* =========================
+       JODI
+    ========================= */
+
+    else if(type === "jodi"){
+
+        if(
+            !/^\d{2}$/.test(
+                digit.value
+            )
+        ){
+
+            alert(
+                "Enter two digits."
+            );
+
+            digit.focus();
+
+            return;
+        }
+
+
+        newBid.number =
+            digit.value;
+
+    }
+
+
+    /* =========================
+       SINGLE PANNA
+    ========================= */
+
+    else if(
+        type === "singlepanna"
+    ){
+
+        if(
+            !isSinglePanna(
+                digit.value
+            )
+        ){
+
+            alert(
+                "Single Panna must contain 3 different digits."
+            );
+
+            digit.focus();
+
+            return;
+        }
+
+
+        newBid.number =
+            digit.value;
+
+    }
+
+
+    /* =========================
+       DOUBLE PANNA
+    ========================= */
+
+    else if(
+        type === "doublepanna"
+    ){
+
+        if(
+            !isDoublePanna(
+                digit.value
+            )
+        ){
+
+            alert(
+                "Double Panna must contain exactly 2 same digits."
+            );
+
+            digit.focus();
+
+            return;
+        }
+
+
+        newBid.number =
+            digit.value;
+
+    }
+
+
+    /* =========================
+       TRIPLE PANNA
+    ========================= */
+
+    else if(
+        type === "triplepanna"
+    ){
+
+        if(
+            !isTriplePanna(
+                digit.value
+            )
+        ){
+
+            alert(
+                "Triple Panna must contain all 3 digits same."
+            );
+
+            digit.focus();
+
+            return;
+        }
+
+
+        newBid.number =
+            digit.value;
+
+    }
+
+
+    /* =========================
+       HALF SANGAM
+    ========================= */
+
+    else if(
+        type === "halfsangam" ||
+        type === "half-sangam"
+    ){
+
+        if(
+            !/^\d$/.test(
+                singleDigit.value
+            )
+        ){
+
+            alert(
+                "Enter Single Digit."
+            );
+
+            singleDigit.focus();
+
+            return;
+        }
+
+
+        if(
+            !/^\d{3}$/.test(
+                halfPanna.value
+            )
+        ){
+
+            alert(
+                "Enter 3 Digit Panna."
+            );
+
+            halfPanna.focus();
+
+            return;
+        }
+
+
+        newBid.singleDigit =
+            singleDigit.value;
+
+
+        newBid.panna =
+            halfPanna.value;
+
+
+        newBid.number =
+            singleDigit.value +
+            " - " +
+            halfPanna.value;
+
+    }
+
+
+    /* =========================
+       FULL SANGAM
+    ========================= */
+
+    else if(
+        type === "fullsangam" ||
+        type === "full-sangam"
+    ){
+
+        if(
+            !/^\d{3}$/.test(
+                openPanna.value
+            )
+        ){
+
+            alert(
+                "Enter Open Panna."
+            );
+
+            openPanna.focus();
+
+            return;
+        }
+
+
+        if(
+            !/^\d{3}$/.test(
+                closePanna.value
+            )
+        ){
+
+            alert(
+                "Enter Close Panna."
+            );
+
+            closePanna.focus();
+
+            return;
+        }
+
+
+        newBid.openPanna =
+            openPanna.value;
+
+
+        newBid.closePanna =
+            closePanna.value;
+
+
+        newBid.number =
+            openPanna.value +
+            " - " +
+            closePanna.value;
+
+    }
+
+
+    else{
+
+        alert(
+            "Unsupported bet type."
+        );
+
+        return;
+    }
+
+
+    bidListData.push(
+        newBid
+    );
+
+
+    clearInputs();
+
+
+    renderBidList();
+
+
+    console.log(
+        "Added Bid:",
+        newBid
+    );
+
+}
+
+
+
+/* =====================================================
+   CLEAR INPUTS
+===================================================== */
+
+function clearInputs(){
+
+    digit.value = "";
+
+    singleDigit.value = "";
+
+    halfPanna.value = "";
+
+    openPanna.value = "";
+
+    closePanna.value = "";
+
+    amount.value = "";
+
+}
+
+
+
+/* =====================================================
+   RENDER BID LIST
+===================================================== */
+
+function renderBidList(){
+
+    if(!bidList){
+
+        return;
+    }
+
+
+    bidList.innerHTML = "";
+
+
+    if(
+        bidListData.length === 0
+    ){
+
+        return;
+    }
+
+
+    bidListData.forEach(
+        (item,index) => {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+            row.className =
+                "bid-row";
+
+
+            row.innerHTML = `
+
+                <span>
+                    ${item.number || "-"}
+                </span>
+
+                <span>
+                    ₹${item.amount}
+                </span>
+
+                <span>
+                    ${item.betFor || "open"}
+                </span>
+
+                <span
+                    class="delete-btn"
+                    data-index="${index}"
+                    title="Delete"
+                >
+                    <i class="fa-solid fa-trash"></i>
+                </span>
+
+            `;
+
+
+            const deleteButton =
+                row.querySelector(
+                    ".delete-btn"
+                );
+
+
+            deleteButton.addEventListener(
+                "click",
+                () => {
+
+                    deleteBid(index);
+
+                }
+            );
+
+
+            bidList.appendChild(
+                row
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   DELETE BID
+===================================================== */
+
+function deleteBid(index){
+
+    if(
+        index < 0 ||
+        index >= bidListData.length
+    ){
+
+        return;
+    }
+
+
+    bidListData.splice(
+        index,
+        1
+    );
+
+
+    renderBidList();
+
+}
+
+
+
+/* =====================================================
+   BET TYPE MAP
+===================================================== */
+
+const betTypeMap = {
+
+    single:
+        "single",
+
+    jodi:
+        "jodi",
+
+    singlepanna:
+        "singlepanna",
+
+    doublepanna:
+        "doublepanna",
+
+    triplepanna:
+        "triplepanna",
+
+    halfsangam:
+        "halfSangam",
+
+    "half-sangam":
+        "halfSangam",
+
+    fullsangam:
+        "fullSangam",
+
+    "full-sangam":
+        "fullSangam"
+
+};
+
+
+
+/* =====================================================
+   SUBMIT BIDS
+===================================================== */
+
+async function submitBids(){
+
+    if(
+        bidListData.length === 0
+    ){
+
+        alert(
+            "Add at least one bid."
+        );
+
+        return;
+    }
+
+
+    const currentToken =
+        getToken();
+
+
+    if(!currentToken){
+
+        alert(
+            "Please login again."
+        );
+
+        window.location.href =
+            "auth.html";
+
+        return;
+    }
+
+
+    if(
+        !bid ||
+        !bid.gameId
+    ){
+
+        alert(
+            "Game information missing."
+        );
+
+        return;
+    }
+
+
+    const submitBtn =
+        document.getElementById(
+            "submitBtn"
+        );
+
+
+    try{
+
+        if(submitBtn){
+
+            submitBtn.disabled =
+                true;
+
+            submitBtn.innerText =
+                "Submitting...";
+        }
+
+
+        for(
+            const item
+            of bidListData
+        ){
+
+            const type =
+                String(
+                    bid.betType
+                )
+                .toLowerCase();
+
+
+            const payload = {
+
+                matchId:
+                    bid.gameId,
+
+                betType:
+                    betTypeMap[type],
+
+                betFor:
+                    item.betFor,
+
+                amount:
+                    item.amount
+
+            };
+
+
+            /*
+               Full Sangam
+            */
+
+            if(
+                type === "fullsangam" ||
+                type === "full-sangam"
+            ){
+
+                payload.number =
+                    item.openPanna +
+                    "-" +
+                    item.closePanna;
+
+
+                payload.openPanna =
+                    item.openPanna;
+
+
+                payload.closePanna =
+                    item.closePanna;
+
+            }
+
+
+            /*
+               Half Sangam
+            */
+
+            else if(
+                type === "halfsangam" ||
+                type === "half-sangam"
+            ){
+
+                payload.number =
+                    item.singleDigit +
+                    "-" +
+                    item.panna;
+
+
+                payload.singleDigit =
+                    item.singleDigit;
+
+
+                payload.panna =
+                    item.panna;
+
+            }
+
+
+            /*
+               Normal
+            */
+
+            else{
+
+                payload.number =
+                    item.number;
+
+            }
+
+
+            console.log(
+                "Submitting:",
+                payload
+            );
+
+
+            const response =
+                await fetch(
+                    API +
+                    "/admin/bet/place",
+                    {
+                        method:"POST",
+
+                        headers:{
+                            "Content-Type":
+                                "application/json",
+
+                            Authorization:
+                                "Bearer " +
+                                currentToken
+                        },
+
+                        body:
+                            JSON.stringify(
+                                payload
+                            )
+                    }
+                );
+
+
+            let data = {};
+
+
+            try{
+
+                data =
+                    await response.json();
+
+            }
+            catch{
+
+                data = {};
+
+            }
+
+
+            if(!response.ok){
+
+                alert(
+                    data.msg ||
+                    data.message ||
+                    "Bet failed."
+                );
+
+                return;
+            }
+
+        }
+
+
+        alert(
+            "🎉 Bet placed successfully!"
+        );
+
+
+        bidListData = [];
+
+
+        renderBidList();
+
+
+        clearInputs();
+
+
+        await loadBalance();
+
+    }
+    catch(error){
+
+        console.error(
+            "Submit Bet Error:",
+            error
+        );
+
+
+        alert(
+            "Server error. Please try again."
+        );
+
+    }
+    finally{
+
+        if(submitBtn){
+
+            submitBtn.disabled =
+                false;
+
+            submitBtn.innerText =
+                "Submit";
+
+        }
+
+    }
+
+}
+
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+document
+    .getElementById("backBtn")
+    .addEventListener(
+        "click",
+        () => {
+
+            window.location.href =
+                "gamezone.html";
+
+        }
+    );
+
+
+
+/* =====================================================
+   BUTTON EVENTS
+===================================================== */
+
+document
+    .getElementById("addBidBtn")
+    .addEventListener(
+        "click",
+        addBid
+    );
+
+
+document
+    .getElementById("submitBtn")
+    .addEventListener(
+        "click",
+        submitBids
+    );
+
+
+
+/* =====================================================
+   INITIALIZE BET
+===================================================== */
+
+async function initializePage(){
+
+    console.log(
+        "========== BET PAGE =========="
+    );
+
+
+    if(
+        !loadBetInfo()
+    ){
+
+        return;
+    }
+
+
+    setupUI();
+
+
+    setupBetType();
+
+
+    /*
+       Restore saved mode.
+    */
+
+    if(
+        bid.betFor === "close"
+    ){
+
+        closeBtn.classList.add(
+            "active"
+        );
+
+        openBtn.classList.remove(
+            "active"
+        );
+
+    }
+    else{
+
+        bid.betFor =
+            "open";
+
+
+        openBtn.classList.add(
+            "active"
+        );
+
+        closeBtn.classList.remove(
+            "active"
+        );
+
+    }
+
+
+    localStorage.setItem(
+        "betInfo",
+        JSON.stringify(bid)
+    );
+
+
+    await loadBalance();
+
+
+    await fetchGame();
+
+
+    /*
+       Refresh balance every 30 sec.
+    */
+
+    setInterval(
+        loadBalance,
+        30000
+    );
+
+
+    /*
+       Refresh game every 30 sec.
+    */
+
+    gameRefreshInterval =
+        setInterval(
+            fetchGame,
+            30000
+        );
+
+}
+
+
+initializePage();
+
+</script>
+
+</body>
+
+</html>

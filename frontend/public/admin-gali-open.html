@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Declare Gali Result</title>
+
+<link rel="stylesheet" href="global.css">
+
+<style>
+body{
+  background:#0a1a2f;
+  color:#00eaff;
+  font-family:"Segoe UI",Arial,sans-serif;
+  padding:20px;
+}
+h2{text-align:center;margin-bottom:20px}
+.row{display:flex;gap:10px}
+input{
+  flex:1;
+  padding:14px;
+  border-radius:14px;
+  border:1px solid #00eaff44;
+  background:#020f24;
+  color:#00eaff;
+  font-size:20px;
+  text-align:center;
+}
+button{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:30px;
+  font-weight:bold;
+  background:linear-gradient(135deg,#00eaff,#0099ff);
+  color:#001a3d;
+  font-size:18px;
+  margin-top:18px;
+  cursor:pointer;
+}
+button:disabled{opacity:.6;cursor:not-allowed}
+#msg{
+  margin-top:14px;
+  text-align:center;
+  font-weight:bold;
+  white-space:pre-line;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Declare Gali Result</h2>
+
+<div class="row">
+  <input id="left" maxlength="1" placeholder="Left (0-9)">
+  <input id="right" maxlength="1" placeholder="Right (0-9)">
+</div>
+
+<button id="btn">Declare Result</button>
+
+<div id="msg"></div>
+
+<script>
+const API = "http://localhost:5000/api/gali";
+const token = localStorage.getItem("token");
+const matchId = localStorage.getItem("galiAdminMatchId");
+
+const leftEl = document.getElementById("left");
+const rightEl = document.getElementById("right");
+const btn = document.getElementById("btn");
+const msg = document.getElementById("msg");
+
+btn.onclick = async () => {
+  const left = leftEl.value.trim();
+  const right = rightEl.value.trim();
+
+  if(
+    left === "" || right === "" ||
+    isNaN(left) || isNaN(right) ||
+    left < 0 || left > 9 ||
+    right < 0 || right > 9
+  ){
+    msg.innerText = "⚠️ Enter valid digits (0–9)";
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerText = "Processing...";
+
+  try{
+    const res = await fetch(`${API}/admin/result`,{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":"Bearer "+token
+      },
+      body: JSON.stringify({
+        matchId,
+        left,
+        right
+      })
+    });
+
+    const data = await res.json();
+
+    if(!res.ok){
+      msg.innerText = "❌ " + (data.msg || "Failed");
+      btn.disabled = false;
+      btn.innerText = "Declare Result";
+      return;
+    }
+
+    msg.innerText =
+`✅ RESULT DECLARED
+Jodi: ${data.jodi}
+
+🏆 Winners: ${data.winners}
+💰 Payout: ₹${data.totalWinAmount}`;
+
+    btn.innerText = "Result Declared";
+
+    setTimeout(()=>{
+      location.href="gali-admin.html";
+    },2000);
+
+  }catch(err){
+    console.error(err);
+    msg.innerText="❌ Server error";
+    btn.disabled=false;
+    btn.innerText="Declare Result";
+  }
+};
+</script>
+
+<script src="nav.js"></script>
+</body>
+</html>

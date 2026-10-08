@@ -1,0 +1,2604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Refer & Earn | Gali Disawar</title>
+
+
+<!-- =====================================================
+     GOOGLE FONT
+===================================================== -->
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+
+<!-- =====================================================
+     FONT AWESOME
+===================================================== -->
+
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+>
+
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(22,163,74,.11),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f8fbf9 55%,
+            #eef6f1 100%
+        );
+
+    color:#17231c;
+
+    padding-bottom:105px;
+
+    overflow-x:hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    height:68px;
+
+    padding:0 15px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    background:rgba(255,255,255,.96);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid #e3eee7;
+
+    box-shadow:
+        0 6px 25px rgba(20,80,40,.07);
+}
+
+
+.header-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+
+.logo{
+
+    width:40px;
+
+    height:40px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    border:1px solid #dceee2;
+
+    box-shadow:
+        0 7px 18px rgba(22,163,74,.12);
+}
+
+
+.header-title{
+
+    display:flex;
+
+    flex-direction:column;
+
+    line-height:1.2;
+}
+
+
+.header-title strong{
+
+    font-size:14px;
+
+    font-weight:800;
+
+    color:#17231c;
+}
+
+
+.header-title span{
+
+    font-size:9px;
+
+    color:#16a34a;
+
+    font-weight:700;
+
+    letter-spacing:.8px;
+}
+
+
+.header-balance{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    padding:9px 11px;
+
+    border-radius:14px;
+
+    background:#f0fdf4;
+
+    border:1px solid #d5eddb;
+
+    color:#15803d;
+
+    font-size:11px;
+
+    font-weight:800;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.page{
+
+    width:min(560px,100%);
+
+    margin:auto;
+
+    padding:18px 14px 25px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #15803d,
+            #22c55e
+        );
+
+    border-radius:26px;
+
+    padding:25px 20px;
+
+    color:#fff;
+
+    box-shadow:
+        0 18px 40px rgba(22,163,74,.20);
+
+    animation:
+        cardIn .55s ease both;
+}
+
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:190px;
+
+    height:190px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    top:-100px;
+
+    right:-55px;
+}
+
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:120px;
+
+    height:120px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.06);
+
+    bottom:-70px;
+
+    left:-35px;
+}
+
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+.hero-icon{
+
+    width:52px;
+
+    height:52px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.16);
+
+    border:1px solid rgba(255,255,255,.22);
+
+    margin-bottom:15px;
+
+    font-size:23px;
+}
+
+
+.hero h1{
+
+    font-size:23px;
+
+    line-height:1.25;
+
+    font-weight:800;
+
+    margin-bottom:7px;
+}
+
+
+.hero p{
+
+    max-width:380px;
+
+    font-size:11px;
+
+    line-height:1.7;
+
+    color:rgba(255,255,255,.86);
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:10px;
+
+    margin-top:15px;
+}
+
+
+.stat-card{
+
+    background:#fff;
+
+    border:1px solid #e1ece5;
+
+    border-radius:19px;
+
+    padding:15px;
+
+    box-shadow:
+        0 10px 28px rgba(20,80,40,.055);
+}
+
+
+.stat-icon{
+
+    width:34px;
+
+    height:34px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:11px;
+
+    background:#f0fdf4;
+
+    color:#16a34a;
+
+    font-size:14px;
+
+    margin-bottom:9px;
+}
+
+
+.stat-card strong{
+
+    display:block;
+
+    font-size:19px;
+
+    color:#17231c;
+
+    font-weight:800;
+}
+
+
+.stat-card span{
+
+    display:block;
+
+    margin-top:2px;
+
+    font-size:9px;
+
+    color:#8a968f;
+
+    font-weight:600;
+}
+
+
+/* =========================================================
+   REFERRAL CODE CARD
+========================================================= */
+
+.code-card{
+
+    margin-top:15px;
+
+    background:#fff;
+
+    border:1px solid #e1ece5;
+
+    border-radius:21px;
+
+    padding:17px;
+
+    box-shadow:
+        0 10px 28px rgba(20,80,40,.055);
+}
+
+
+.section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:12px;
+}
+
+
+.section-title-icon{
+
+    width:30px;
+
+    height:30px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:10px;
+
+    background:#f0fdf4;
+
+    color:#16a34a;
+
+    font-size:12px;
+}
+
+
+.section-title strong{
+
+    font-size:13px;
+
+    font-weight:800;
+
+    color:#26342c;
+}
+
+
+.code-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:6px;
+
+    border-radius:15px;
+
+    background:#f8faf8;
+
+    border:1px solid #e2ece5;
+}
+
+
+.code-value{
+
+    flex:1;
+
+    min-width:0;
+
+    padding:10px;
+
+    color:#15803d;
+
+    font-size:16px;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+
+    text-align:center;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+}
+
+
+.copy-btn{
+
+    width:45px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#16a34a;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 18px rgba(22,163,74,.18);
+
+    transition:.2s;
+}
+
+
+.copy-btn:active{
+
+    transform:scale(.92);
+}
+
+
+/* =========================================================
+   LINK BOX
+========================================================= */
+
+.link-box{
+
+    margin-top:10px;
+
+    padding:11px 12px;
+
+    border-radius:13px;
+
+    background:#f8faf8;
+
+    border:1px solid #e9f0eb;
+
+    color:#7d8982;
+
+    font-size:9px;
+
+    line-height:1.5;
+
+    word-break:break-all;
+}
+
+
+/* =========================================================
+   SHARE BUTTON
+========================================================= */
+
+.share-btn{
+
+    width:100%;
+
+    height:52px;
+
+    margin-top:11px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #15803d
+        );
+
+    color:#fff;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    box-shadow:
+        0 12px 25px rgba(22,163,74,.20);
+
+    transition:.2s;
+}
+
+
+.share-btn:active{
+
+    transform:scale(.97);
+}
+
+
+/* =========================================================
+   REFERRAL LIST
+========================================================= */
+
+.list-card{
+
+    margin-top:15px;
+
+    background:#fff;
+
+    border:1px solid #e1ece5;
+
+    border-radius:21px;
+
+    padding:17px;
+
+    box-shadow:
+        0 10px 28px rgba(20,80,40,.055);
+}
+
+
+.list-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:13px;
+}
+
+
+.list-header-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+
+.list-header-left strong{
+
+    font-size:13px;
+
+    font-weight:800;
+
+    color:#26342c;
+}
+
+
+.count-pill{
+
+    padding:5px 9px;
+
+    border-radius:999px;
+
+    background:#f0fdf4;
+
+    color:#15803d;
+
+    border:1px solid #d7eddd;
+
+    font-size:9px;
+
+    font-weight:800;
+}
+
+
+/* =========================================================
+   REFERRAL ITEM
+========================================================= */
+
+.referral-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+    padding:12px 0;
+
+    border-bottom:1px solid #edf2ee;
+
+    animation:
+        itemIn .35s ease both;
+}
+
+
+.referral-item:last-child{
+
+    border-bottom:none;
+
+    padding-bottom:2px;
+}
+
+
+.avatar{
+
+    width:42px;
+
+    height:42px;
+
+    flex-shrink:0;
+
+    border-radius:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dcfce7,
+            #f0fdf4
+        );
+
+    color:#15803d;
+
+    font-size:15px;
+
+    font-weight:800;
+}
+
+
+.referral-info{
+
+    flex:1;
+
+    min-width:0;
+}
+
+
+.referral-name{
+
+    color:#26342c;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+}
+
+
+.referral-phone{
+
+    color:#8a968f;
+
+    font-size:9px;
+
+    margin-top:3px;
+}
+
+
+.referral-date{
+
+    color:#a0aaa4;
+
+    font-size:8px;
+
+    margin-top:2px;
+}
+
+
+.joined-badge{
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:4px;
+
+    padding:6px 8px;
+
+    border-radius:999px;
+
+    background:#f0fdf4;
+
+    color:#15803d;
+
+    border:1px solid #d7eddd;
+
+    font-size:8px;
+
+    font-weight:700;
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty{
+
+    text-align:center;
+
+    padding:28px 12px;
+}
+
+
+.empty-icon{
+
+    width:62px;
+
+    height:62px;
+
+    margin:0 auto 12px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:20px;
+
+    background:#f0fdf4;
+
+    color:#16a34a;
+
+    font-size:25px;
+}
+
+
+.empty h3{
+
+    font-size:14px;
+
+    color:#26342c;
+
+    margin-bottom:5px;
+}
+
+
+.empty p{
+
+    max-width:270px;
+
+    margin:auto;
+
+    color:#89948e;
+
+    font-size:9px;
+
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading{
+
+    text-align:center;
+
+    padding:28px;
+}
+
+
+.spinner{
+
+    width:35px;
+
+    height:35px;
+
+    margin:0 auto 10px;
+
+    border-radius:50%;
+
+    border:3px solid #e3eee7;
+
+    border-top-color:#16a34a;
+
+    animation:
+        spin .8s linear infinite;
+}
+
+
+.loading span{
+
+    color:#89948e;
+
+    font-size:10px;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error{
+
+    text-align:center;
+
+    padding:25px 10px;
+}
+
+
+.error i{
+
+    color:#dc2626;
+
+    font-size:28px;
+
+    margin-bottom:10px;
+}
+
+
+.error strong{
+
+    display:block;
+
+    color:#26342c;
+
+    font-size:13px;
+}
+
+
+.error p{
+
+    color:#89948e;
+
+    font-size:9px;
+
+    margin:5px 0 13px;
+}
+
+
+.retry-btn{
+
+    border:none;
+
+    border-radius:11px;
+
+    padding:9px 16px;
+
+    background:#16a34a;
+
+    color:#fff;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
+
+.bottom-nav{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:10px;
+
+    transform:translateX(-50%);
+
+    width:min(500px,calc(100% - 20px));
+
+    height:70px;
+
+    padding:7px;
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    background:rgba(255,255,255,.96);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid #e0ebe4;
+
+    border-radius:23px;
+
+    box-shadow:
+        0 15px 40px rgba(20,80,40,.13);
+
+    z-index:1500;
+}
+
+
+.nav-item{
+
+    border:none;
+
+    background:transparent;
+
+    border-radius:17px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:4px;
+
+    color:#8a968f;
+
+    font-size:8px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+
+.nav-item i{
+
+    font-size:16px;
+}
+
+
+.nav-item.active{
+
+    background:#f0fdf4;
+
+    color:#15803d;
+}
+
+
+.nav-item:active{
+
+    transform:scale(.92);
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:94px;
+
+    transform:
+        translate(-50%,20px)
+        scale(.95);
+
+    max-width:calc(100% - 30px);
+
+    width:max-content;
+
+    padding:11px 15px;
+
+    border-radius:13px;
+
+    background:#17231c;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:600;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    z-index:4000;
+
+    transition:.3s;
+}
+
+
+.toast.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:
+        translate(-50%,0)
+        scale(1);
+}
+
+
+/* =========================================================
+   MAGNETIC
+========================================================= */
+
+.magnetic{
+
+    will-change:transform;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+@keyframes cardIn{
+
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+@keyframes itemIn{
+
+    from{
+        opacity:0;
+        transform:translateX(-8px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+
+}
+
+
+/* =========================================================
+   SMALL DEVICES
+========================================================= */
+
+@media(max-width:380px){
+
+    .header{
+        padding:0 10px;
+    }
+
+    .header-title strong{
+        font-size:12px;
+    }
+
+    .header-balance{
+        padding:8px 8px;
+        font-size:10px;
+    }
+
+    .page{
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+    .hero{
+        padding:22px 17px;
+    }
+
+    .hero h1{
+        font-size:21px;
+    }
+
+    .stats{
+        gap:8px;
+    }
+
+    .stat-card{
+        padding:13px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="header-left">
+
+        <img
+            src="kalyan.jpeg"
+            alt="Logo"
+            class="logo"
+        >
+
+        <div class="header-title">
+
+            <strong>
+                Refer & Earn
+            </strong>
+
+            <span>
+                INVITE COMMUNITY
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="header-balance">
+
+        <i class="fa-solid fa-wallet"></i>
+
+        <span id="balance">
+            ₹0
+        </span>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="page">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-icon">
+
+                <i class="fa-solid fa-users"></i>
+
+            </div>
+
+
+            <h1>
+                Refer Friends & Earn
+            </h1>
+
+
+            <p>
+                Invite your friends to join the community
+                using your referral code and track your
+                referrals from one place.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-user-group"></i>
+
+            </div>
+
+            <strong id="totalReferrals">
+                0
+            </strong>
+
+            <span>
+                TOTAL REFERRALS
+            </span>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+
+            </div>
+
+            <strong id="totalEarning">
+                ₹0
+            </strong>
+
+            <span>
+                REFERRAL EARNING
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- REFERRAL CODE -->
+
+    <section class="code-card">
+
+        <div class="section-title">
+
+            <div class="section-title-icon">
+
+                <i class="fa-solid fa-link"></i>
+
+            </div>
+
+            <strong>
+                Your Referral Code
+            </strong>
+
+        </div>
+
+
+        <div class="code-box">
+
+            <div
+                class="code-value"
+                id="referralCode"
+            >
+                Loading...
+            </div>
+
+
+            <button
+                class="copy-btn magnetic"
+                id="copyCodeBtn"
+                aria-label="Copy referral code"
+            >
+
+                <i class="fa-solid fa-copy"></i>
+
+            </button>
+
+        </div>
+
+
+        <div
+            class="link-box"
+            id="referralLink"
+        >
+            Loading referral link...
+        </div>
+
+
+        <button
+            class="share-btn magnetic"
+            id="shareBtn"
+        >
+
+            <i class="fa-solid fa-share-nodes"></i>
+
+            Share Referral Link
+
+        </button>
+
+    </section>
+
+
+    <!-- REFERRALS LIST -->
+
+    <section class="list-card">
+
+        <div class="list-header">
+
+            <div class="list-header-left">
+
+                <div class="section-title-icon">
+
+                    <i class="fa-solid fa-users"></i>
+
+                </div>
+
+                <strong>
+                    My Referrals
+                </strong>
+
+            </div>
+
+
+            <div
+                class="count-pill"
+                id="referralCount"
+            >
+                0 Members
+            </div>
+
+        </div>
+
+
+        <div id="referralList">
+
+            <div class="loading">
+
+                <div class="spinner"></div>
+
+                <span>
+                    Loading referrals...
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =====================================================
+     BOTTOM NAV
+===================================================== -->
+
+<nav class="bottom-nav">
+
+    <button
+        class="nav-item active"
+        data-page="reer.html"
+    >
+
+        <i class="fa-solid fa-users"></i>
+
+        <span>Refer</span>
+
+    </button>
+
+
+    <button
+        class="nav-item"
+        data-page="history.html"
+    >
+
+        <i class="fa-solid fa-clock-rotate-left"></i>
+
+        <span>History</span>
+
+    </button>
+
+
+    <button
+        class="nav-item"
+        data-page="gali-gamezone.html"
+    >
+
+        <i class="fa-solid fa-house"></i>
+
+        <span>Home</span>
+
+    </button>
+
+
+    <button
+        class="nav-item"
+        data-page="my-transition.html"
+    >
+
+        <i class="fa-solid fa-receipt"></i>
+
+        <span>Transaction</span>
+
+    </button>
+
+
+    <button
+        class="nav-item"
+        data-page="wallet.html"
+    >
+
+        <i class="fa-solid fa-wallet"></i>
+
+        <span>Wallet</span>
+
+    </button>
+
+</nav>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+<script>
+
+/* =========================================================
+   API
+========================================================= */
+
+const API_AUTH =
+    "https://kalyanmaster.onrender.com/api/auth";
+
+
+/*
+  IMPORTANT:
+  Change this only if your actual route is different.
+
+  Example route:
+  router.get("/my-referrals", auth, authController.getMyReferrals);
+*/
+
+const API_REFERRALS =
+    `${API_AUTH}/my-referrals`;
+
+
+/* =========================================================
+   TOKEN
+========================================================= */
+
+function getToken(){
+
+    return (
+        localStorage.getItem("token") ||
+        localStorage.getItem("ki_token") ||
+        ""
+    );
+
+}
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const balanceElement =
+    document.getElementById("balance");
+
+const totalReferralsElement =
+    document.getElementById("totalReferrals");
+
+const totalEarningElement =
+    document.getElementById("totalEarning");
+
+const referralCodeElement =
+    document.getElementById("referralCode");
+
+const referralLinkElement =
+    document.getElementById("referralLink");
+
+const referralListElement =
+    document.getElementById("referralList");
+
+const referralCountElement =
+    document.getElementById("referralCount");
+
+const toastElement =
+    document.getElementById("toast");
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+
+function showToast(message){
+
+    toastElement.innerText =
+        message;
+
+    toastElement.classList.add(
+        "show"
+    );
+
+    clearTimeout(
+        toastTimer
+    );
+
+    toastTimer =
+        setTimeout(
+            ()=>{
+                toastElement.classList.remove(
+                    "show"
+                );
+            },
+            2200
+        );
+
+}
+
+
+/* =========================================================
+   TOKEN SESSION
+========================================================= */
+
+function handleSessionExpired(){
+
+    localStorage.removeItem("token");
+
+    localStorage.removeItem("ki_token");
+
+    localStorage.removeItem("user");
+
+
+    showToast(
+        "Session expired. Please login again."
+    );
+
+
+    setTimeout(
+        ()=>{
+            window.location.href =
+                "auth.html";
+        },
+        900
+    );
+
+}
+
+
+/* =========================================================
+   LOAD BALANCE
+========================================================= */
+
+async function loadBalance(){
+
+    const token =
+        getToken();
+
+
+    if(!token){
+        return;
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                `${API_AUTH}/balance`,
+                {
+                    method:"GET",
+
+                    headers:{
+                        Authorization:
+                            `Bearer ${token}`
+                    },
+
+                    cache:"no-store"
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if(response.status === 401){
+
+            handleSessionExpired();
+
+            return;
+
+        }
+
+
+        if(
+            response.ok &&
+            data.success
+        ){
+
+            const balance =
+                Math.floor(
+                    Number(
+                        data.balance ??
+                        data.user?.balance ??
+                        data.user?.wallet ??
+                        0
+                    )
+                );
+
+
+            balanceElement.innerText =
+                `₹${balance.toLocaleString("en-IN")}`;
+
+        }
+
+    }
+    catch(error){
+
+        console.error(
+            "BALANCE ERROR:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   GET USER DATA
+========================================================= */
+
+function getStoredUser(){
+
+    try{
+
+        const raw =
+            localStorage.getItem("user");
+
+
+        if(!raw){
+            return null;
+        }
+
+
+        return JSON.parse(raw);
+
+    }
+    catch(error){
+
+        console.error(
+            "USER DATA ERROR:",
+            error
+        );
+
+        return null;
+
+    }
+
+}
+
+
+/* =========================================================
+   REFERRAL CODE
+========================================================= */
+
+function getReferralCodeFromUser(){
+
+    const user =
+        getStoredUser();
+
+
+    if(!user){
+        return "";
+    }
+
+
+    return String(
+        user.inviteCode ||
+        user.referralCode ||
+        user.invite ||
+        ""
+    ).trim();
+
+}
+
+
+/* =========================================================
+   BUILD REFERRAL LINK
+========================================================= */
+
+function buildReferralLink(code){
+
+    if(!code){
+        return "";
+    }
+
+
+    /*
+      Current frontend referral format.
+
+      Example:
+      auth.html?ref=ABC123
+    */
+
+    const baseUrl =
+        `${window.location.origin}/auth.html`;
+
+
+    return `${baseUrl}?ref=${encodeURIComponent(code)}`;
+
+}
+
+
+/* =========================================================
+   LOAD REFERRAL CODE
+========================================================= */
+
+function loadReferralCode(){
+
+    const code =
+        getReferralCodeFromUser();
+
+
+    if(code){
+
+        referralCodeElement.innerText =
+            code.toUpperCase();
+
+
+        referralLinkElement.innerText =
+            buildReferralLink(
+                code.toUpperCase()
+            );
+
+        return;
+
+    }
+
+
+    referralCodeElement.innerText =
+        "Not available";
+
+
+    referralLinkElement.innerText =
+        "Referral code not found in your account.";
+
+}
+
+
+/* =========================================================
+   COPY REFERRAL CODE
+========================================================= */
+
+document
+    .getElementById("copyCodeBtn")
+    .addEventListener(
+        "click",
+        async ()=>{
+
+            const code =
+                referralCodeElement.innerText;
+
+
+            if(
+                !code ||
+                code === "Loading..." ||
+                code === "Not available"
+            ){
+
+                showToast(
+                    "Referral code is not available"
+                );
+
+                return;
+
+            }
+
+
+            try{
+
+                await navigator.clipboard.writeText(
+                    code
+                );
+
+                showToast(
+                    "Referral code copied"
+                );
+
+            }
+            catch(error){
+
+                showToast(
+                    "Unable to copy code"
+                );
+
+            }
+
+        }
+    );
+
+
+/* =========================================================
+   SHARE REFERRAL
+========================================================= */
+
+document
+    .getElementById("shareBtn")
+    .addEventListener(
+        "click",
+        async ()=>{
+
+            const code =
+                referralCodeElement.innerText;
+
+
+            const link =
+                referralLinkElement.innerText;
+
+
+            if(
+                !link ||
+                link.startsWith("Referral code")
+            ){
+
+                showToast(
+                    "Referral link is not available"
+                );
+
+                return;
+
+            }
+
+
+            const shareText =
+                `Join our community using my referral link.\n\nReferral Code: ${code}\n\n${link}`;
+
+
+            try{
+
+                if(
+                    navigator.share
+                ){
+
+                    await navigator.share({
+
+                        title:
+                            "Join Our Community",
+
+                        text:
+                            shareText,
+
+                        url:
+                            link
+
+                    });
+
+                }
+                else{
+
+                    await navigator.clipboard.writeText(
+                        shareText
+                    );
+
+                    showToast(
+                        "Referral message copied"
+                    );
+
+                }
+
+            }
+            catch(error){
+
+                /*
+                  User may simply cancel native share.
+                */
+
+                console.log(
+                    "Share cancelled:",
+                    error
+                );
+
+            }
+
+        }
+    );
+
+
+/* =========================================================
+   FORMAT DATE
+========================================================= */
+
+function formatDate(dateString){
+
+    if(!dateString){
+        return "Date unavailable";
+    }
+
+
+    const date =
+        new Date(dateString);
+
+
+    if(
+        Number.isNaN(
+            date.getTime()
+        )
+    ){
+
+        return "Date unavailable";
+
+    }
+
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            day:"2-digit",
+            month:"short",
+            year:"numeric"
+        }
+    );
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHtml(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =========================================================
+   MASK PHONE
+========================================================= */
+
+function maskPhone(phone){
+
+    const value =
+        String(
+            phone || ""
+        );
+
+
+    if(value.length < 5){
+        return value;
+    }
+
+
+    return (
+        value.slice(0,3) +
+        "****" +
+        value.slice(-3)
+    );
+
+}
+
+
+/* =========================================================
+   GET INITIAL
+========================================================= */
+
+function getInitial(name){
+
+    const value =
+        String(
+            name || "U"
+        ).trim();
+
+
+    return (
+        value.charAt(0) ||
+        "U"
+    ).toUpperCase();
+
+}
+
+
+/* =========================================================
+   LOAD MY REFERRALS
+========================================================= */
+
+async function loadMyReferrals(){
+
+    const token =
+        getToken();
+
+
+    if(!token){
+
+        referralListElement.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                </div>
+
+
+                <h3>
+                    Login Required
+                </h3>
+
+
+                <p>
+                    Please login to view your referrals.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    referralListElement.innerHTML = `
+
+        <div class="loading">
+
+            <div class="spinner"></div>
+
+            <span>
+                Loading referrals...
+            </span>
+
+        </div>
+
+    `;
+
+
+    try{
+
+        const response =
+            await fetch(
+                API_REFERRALS,
+                {
+                    method:"GET",
+
+                    headers:{
+                        Authorization:
+                            `Bearer ${token}`,
+
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    cache:"no-store"
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        console.log(
+            "My referrals response:",
+            data
+        );
+
+
+        if(response.status === 401){
+
+            handleSessionExpired();
+
+            return;
+
+        }
+
+
+        if(
+            !response.ok ||
+            !data.success
+        ){
+
+            throw new Error(
+                data.message ||
+                data.msg ||
+                "Unable to load referrals"
+            );
+
+        }
+
+
+        const referrals =
+            Array.isArray(
+                data.referrals
+            )
+            ? data.referrals
+            : [];
+
+
+        /* -----------------------------------------------
+           STATS
+        ----------------------------------------------- */
+
+        const total =
+            Number(
+                data.totalReferrals
+            ) || referrals.length;
+
+
+        const earning =
+            Number(
+                data.totalEarning
+            ) || 0;
+
+
+        totalReferralsElement.innerText =
+            total;
+
+
+        totalEarningElement.innerText =
+            `₹${earning.toLocaleString("en-IN")}`;
+
+
+        referralCountElement.innerText =
+            `${total} ${total === 1 ? "Member" : "Members"}`;
+
+
+        /* -----------------------------------------------
+           EMPTY
+        ----------------------------------------------- */
+
+        if(!referrals.length){
+
+            referralListElement.innerHTML = `
+
+                <div class="empty">
+
+                    <div class="empty-icon">
+
+                        <i class="fa-solid fa-user-plus"></i>
+
+                    </div>
+
+
+                    <h3>
+                        No Referrals Yet
+                    </h3>
+
+
+                    <p>
+                        Share your referral link with
+                        friends and invite them to join
+                        the community.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        /* -----------------------------------------------
+           RENDER
+        ----------------------------------------------- */
+
+        referralListElement.innerHTML =
+            referrals
+            .map(
+                (
+                    referral,
+                    index
+                ) => {
+
+                    const name =
+                        escapeHtml(
+                            referral.name ||
+                            "New User"
+                        );
+
+
+                    const phone =
+                        escapeHtml(
+                            maskPhone(
+                                referral.phone
+                            )
+                        );
+
+
+                    const date =
+                        escapeHtml(
+                            formatDate(
+                                referral.createdAt
+                            )
+                        );
+
+
+                    return `
+
+                        <div
+                            class="referral-item"
+                            style="
+                                animation-delay:
+                                ${Math.min(index * 50,500)}ms
+                            "
+                        >
+
+                            <div class="avatar">
+
+                                ${escapeHtml(
+                                    getInitial(
+                                        referral.name
+                                    )
+                                )}
+
+                            </div>
+
+
+                            <div class="referral-info">
+
+                                <div class="referral-name">
+
+                                    ${name}
+
+                                </div>
+
+
+                                <div class="referral-phone">
+
+                                    ${phone || "Phone unavailable"}
+
+                                </div>
+
+
+                                <div class="referral-date">
+
+                                    Joined ${date}
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="joined-badge">
+
+                                <i
+                                    class="fa-solid fa-check"
+                                ></i>
+
+                                Joined
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }
+            )
+            .join("");
+
+    }
+    catch(error){
+
+        console.error(
+            "MY REFERRALS ERROR:",
+            error
+        );
+
+
+        referralListElement.innerHTML = `
+
+            <div class="error">
+
+                <i
+                    class="fa-solid fa-triangle-exclamation"
+                ></i>
+
+
+                <strong>
+                    Unable to load referrals
+                </strong>
+
+
+                <p>
+                    Please check your connection
+                    and try again.
+                </p>
+
+
+                <button
+                    class="retry-btn"
+                    id="retryBtn"
+                >
+                    Try Again
+                </button>
+
+            </div>
+
+        `;
+
+
+        document
+            .getElementById("retryBtn")
+            ?.addEventListener(
+                "click",
+                loadMyReferrals
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
+
+document
+    .querySelectorAll(
+        ".nav-item[data-page]"
+    )
+    .forEach(
+        item => {
+
+            item.addEventListener(
+                "click",
+                ()=>{
+
+                    const page =
+                        item.dataset.page;
+
+
+                    if(page){
+
+                        window.location.href =
+                            page;
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   MAGNETIC EFFECT
+========================================================= */
+
+function enableMagnetic(){
+
+    if(
+        !window.matchMedia(
+            "(pointer:fine)"
+        ).matches
+    ){
+
+        return;
+
+    }
+
+
+    document
+        .querySelectorAll(
+            ".magnetic"
+        )
+        .forEach(
+            element => {
+
+                element.addEventListener(
+                    "mousemove",
+                    event => {
+
+                        const rect =
+                            element.getBoundingClientRect();
+
+
+                        const x =
+                            event.clientX -
+                            rect.left -
+                            rect.width / 2;
+
+
+                        const y =
+                            event.clientY -
+                            rect.top -
+                            rect.height / 2;
+
+
+                        element.style.transform =
+                            `translate(${x * .14}px,${y * .14}px)`;
+
+                    }
+                );
+
+
+                element.addEventListener(
+                    "mouseleave",
+                    ()=>{
+
+                        element.style.transform =
+                            "";
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    ()=>{
+
+        loadBalance();
+
+        loadReferralCode();
+
+        loadMyReferrals();
+
+        enableMagnetic();
+
+    }
+);
+
+</script>
+
+</body>
+</html>

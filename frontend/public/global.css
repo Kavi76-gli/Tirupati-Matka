@@ -1,0 +1,33 @@
+/* =====================
+   GLOBAL SAFE AREA
+===================== */
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Apply safe area to body */
+body {
+  min-height: 100vh;
+  padding-top: var(--safe-top);
+  padding-bottom: calc(80px + var(--safe-bottom)); /* bottom nav height */
+}
+
+/* Utility wrappers */
+.safe-top {
+  padding-top: var(--safe-top);
+}
+
+.safe-bottom {
+  padding-bottom: var(--safe-bottom);
+}
+html, body {
+  overscroll-behavior: none;   /* 🚫 block native refresh */
+  touch-action: pan-x pan-y;
+}
+.bottom-nav.hide {
+  transform: translateY(100%);
+}
+.bottom-nav {
+  transition: transform 0.3s ease;
+}

@@ -1,0 +1,163 @@
+
+:root {
+  --neon-blue: #00e5ff;
+  --neon-blue-dark: #0097a7;
+  --bg-dark: #020b18;
+  --card-dark: #061a2f;
+  --border-glow: rgba(0,229,255,0.6);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #071a33, var(--bg-dark));
+  color: #e6f7ff;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, var(--neon-blue-dark), var(--neon-blue));
+  color: #001018;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 15px var(--border-glow);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+}
+
+.balance {
+  background: #001018;
+  color: var(--neon-blue);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  box-shadow: inset 0 0 8px var(--border-glow);
+}
+
+/* MARKET CARD */
+.market-card {
+  background: var(--card-dark);
+  margin: 15px;
+  padding: 15px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--border-glow);
+  box-shadow: 0 0 18px rgba(0,229,255,0.15);
+}
+
+.market-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.market-icon {
+  width: 45px;
+  height: 45px;
+  background: var(--neon-blue);
+  color: #001018;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.market-info h3 {
+  font-size: 18px;
+}
+
+.market-info p {
+  font-size: 13px;
+  color: #9bdfff;
+}
+
+/* GAME GRID */
+.game-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding: 15px;
+}
+
+.game-box {
+  background: linear-gradient(145deg, #041a30, #06284a);
+  border: 1px solid var(--border-glow);
+  border-radius: 16px;
+  padding: 28px 10px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  color: #e6f7ff;
+  cursor: pointer;
+  box-shadow: 0 0 14px rgba(0,229,255,0.2);
+  transition: all 0.25s ease;
+}
+
+.game-box:hover {
+  box-shadow: 0 0 22px var(--border-glow);
+  transform: translateY(-2px);
+}
+
+.game-box i {
+  display: block;
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: var(--neon-blue);
+}
+
+/* DISABLED */
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* FULL */
+.full {
+  grid-column: span 2;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #041424;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-top: 1px solid var(--border-glow);
+  box-shadow: 0 -2px 15px rgba(0,229,255,0.15);
+}
+
+.bottom-nav div {
+  text-align: center;
+  font-size: 12px;
+  color: #9bdfff;
+}
+
+.bottom-nav i {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.active {
+  color: var(--neon-blue);
+}
+

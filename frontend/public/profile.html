@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kalyan Master • Profile</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+referrerpolicy="no-referrer">
+<link rel="stylesheet" href="global.css">
+<style>
+/* =========================================
+   PREMIUM HEADER
+========================================= */
+
+.top-header{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:70px;
+
+    padding:0 15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    background:
+    linear-gradient(
+    135deg,
+    #00a86b,
+    #00c97a);
+
+    box-shadow:
+    0 4px 20px rgba(0,0,0,.12);
+
+    z-index:1000;
+
+    animation:
+    headerShow .6s ease;
+}
+
+.menu-icon,
+.header-icon{
+
+    width:42px;
+    height:42px;
+
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+    rgba(255,255,255,.18);
+
+    color:#fff;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.menu-icon:hover,
+.header-icon:hover{
+
+    transform:
+    translateY(-2px);
+
+    background:
+    rgba(255,255,255,.25);
+}
+
+.header-center{
+    flex:1;
+    padding:0 12px;
+}
+
+.header-title{
+    font-size:20px;
+    font-weight:800;
+    color:#fff;
+}
+
+.header-subtitle{
+    font-size:11px;
+    color:rgba(255,255,255,.9);
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.header-balance{
+
+    min-width:90px;
+    height:40px;
+
+    padding:0 14px;
+
+    border-radius:25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#fff;
+
+    color:#00a86b;
+
+    font-weight:700;
+
+    box-shadow:
+    0 4px 10px rgba(0,0,0,.10);
+}
+
+/* =========================================
+   POSTER
+========================================= */
+
+.header-poster{
+
+    margin:85px 15px 15px;
+
+    height:120px;
+
+    border-radius:22px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #00a86b,
+    #00d37f);
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    color:#fff;
+
+    font-size:28px;
+    font-weight:800;
+
+    box-shadow:
+    0 10px 30px rgba(0,168,107,.25);
+
+    animation:
+    posterShow .8s ease;
+}
+
+.header-poster i{
+    font-size:34px;
+}
+
+/* =========================================
+   OVERLAY
+========================================= */
+
+.menu-overlay{
+
+    position:fixed;
+    inset:0;
+
+    background:
+    rgba(0,0,0,.35);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:9998;
+}
+
+.menu-overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes headerShow{
+
+    from{
+        opacity:0;
+        transform:translateY(-50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes posterShow{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:768px){
+
+    .top-header{
+        height:65px;
+        padding:0 12px;
+    }
+
+    .header-title{
+        font-size:18px;
+    }
+
+    .header-poster{
+        height:105px;
+        font-size:22px;
+    }
+
+    .header-poster i{
+        font-size:28px;
+    }
+
+    .header-balance{
+        min-width:80px;
+        font-size:14px;
+    }
+}
+
+/* =========================================
+   CARDS
+========================================= */
+
+.card{
+    background:#fff;
+
+    border-radius:22px;
+
+    margin:15px;
+    padding:20px;
+
+    box-shadow:
+    0 5px 18px rgba(0,0,0,.08);
+
+    opacity:0;
+
+    transform:
+    translateY(50px);
+
+    animation:
+    cardShow .8s forwards;
+}
+
+.card:nth-child(1){
+animation-delay:.1s;
+}
+
+.card:nth-child(2){
+animation-delay:.2s;
+}
+
+.card:nth-child(3){
+animation-delay:.3s;
+}
+
+.card:nth-child(4){
+animation-delay:.4s;
+}
+
+@keyframes cardShow{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.card:hover{
+    transform:
+    translateY(-4px);
+
+    box-shadow:
+    0 10px 25px rgba(0,168,107,.12);
+}
+
+/* =========================================
+   PROFILE CARD
+========================================= */
+
+.header-card{
+    text-align:center;
+}
+
+.avatar{
+    width:100px;
+    height:100px;
+
+    border-radius:50%;
+
+    border:4px solid #00a86b;
+
+    box-shadow:
+    0 8px 20px rgba(0,168,107,.25);
+}
+
+#username{
+    margin-top:12px;
+    color:#111827;
+}
+
+#userRole{
+    color:#00a86b;
+    font-weight:700;
+}
+
+/* =========================================
+   INFO CARD
+========================================= */
+
+.info-card p{
+    margin:10px 0;
+    color:#475569;
+}
+
+.info-card strong{
+    color:#00a86b;
+}
+
+/* =========================================
+   WALLET CARD
+========================================= */
+
+.wallet-card h3{
+    color:#64748b;
+}
+
+.wallet-card h1{
+    color:#00a86b;
+    font-size:36px;
+}
+
+.wallet-actions{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.wallet-actions button{
+    flex:1;
+
+    border:none;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #00a86b,
+    #00c97a);
+
+    color:#fff;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+/* =========================================
+   SIDE MENU
+========================================= */
+
+.side-menu{
+    position:fixed;
+
+    top:0;
+    left:-320px;
+
+    width:300px;
+    height:100vh;
+
+    background:#fff;
+
+    transition:
+    .45s cubic-bezier(
+    .22,
+    1,
+    .36,
+    1);
+
+    z-index:9999;
+
+    overflow-y:auto;
+
+    box-shadow:
+    8px 0 25px rgba(0,0,0,.12);
+}
+
+.side-menu.active{
+    left:0;
+}
+
+/* =========================================
+   MENU HEADER
+========================================= */
+
+.menu-header{
+    background:
+    linear-gradient(
+    135deg,
+    #00a86b,
+    #00c97a);
+
+    padding:20px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.close-btn{
+    width:38px;
+    height:38px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.15);
+
+    color:#fff;
+
+    font-size:20px;
+
+    cursor:pointer;
+}
+
+/* =========================================
+   MENU PROFILE
+========================================= */
+
+.menu-profile{
+    margin:15px;
+
+    padding:15px;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #00a86b,
+    #00c97a);
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:#fff;
+
+    opacity:0;
+}
+
+.side-menu.active .menu-profile{
+    animation:
+    profileShow .4s forwards;
+}
+
+@keyframes profileShow{
+    from{
+        opacity:0;
+        transform:translateY(-20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.menu-avatar{
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.2);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:24px;
+}
+
+.menu-balance{
+    margin-top:6px;
+
+    display:inline-block;
+
+    background:#fff;
+
+    color:#00a86b;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-weight:700;
+}
+
+/* =========================================
+   MENU BUTTON CARDS
+========================================= */
+
+.menu-list{
+    padding:12px;
+    list-style:none;
+}
+
+.menu-list li{
+
+    background:#fff;
+
+    border-radius:16px;
+
+    padding:15px;
+
+    margin-bottom:10px;
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    box-shadow:
+    0 4px 12px rgba(0,0,0,.08);
+
+    color:#374151;
+
+    cursor:pointer;
+
+    opacity:0;
+
+    transform:
+    translateX(50px);
+}
+
+.side-menu.active .menu-list li{
+    animation:
+    menuItem .4s forwards;
+}
+
+.side-menu.active .menu-list li:nth-child(1){animation-delay:.05s;}
+.side-menu.active .menu-list li:nth-child(2){animation-delay:.10s;}
+.side-menu.active .menu-list li:nth-child(3){animation-delay:.15s;}
+.side-menu.active .menu-list li:nth-child(4){animation-delay:.20s;}
+.side-menu.active .menu-list li:nth-child(5){animation-delay:.25s;}
+.side-menu.active .menu-list li:nth-child(6){animation-delay:.30s;}
+.side-menu.active .menu-list li:nth-child(7){animation-delay:.35s;}
+.side-menu.active .menu-list li:nth-child(8){animation-delay:.40s;}
+.side-menu.active .menu-list li:nth-child(9){animation-delay:.45s;}
+
+@keyframes menuItem{
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+.menu-list li:hover{
+    background:#ecfdf5;
+    color:#00a86b;
+}
+
+/* =========================================
+   BOTTOM NAV
+========================================= */
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+
+    width:100%;
+    height:75px;
+
+    background:#fff;
+
+    border-radius:20px 20px 0 0;
+
+    display:flex;
+
+    box-shadow:
+    0 -4px 20px rgba(0,0,0,.08);
+}
+
+.nav-item{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    color:#64748b;
+
+    font-size:12px;
+}
+
+.nav-item i{
+    font-size:20px;
+}
+
+.nav-item.active{
+    color:#00a86b;
+}
+
+.nav-item.center i{
+    width:55px;
+    height:55px;
+
+    border-radius:50%;
+
+    background:#00a86b;
+
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+    0 6px 18px rgba(0,168,107,.30);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="top-header">
+
+    <div class="menu-icon" onclick="toggleMenu()">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <div class="header-center">
+        <div class="header-title">Tirupati Matka</div>
+        <div class="header-subtitle">Trusted Gaming Platform</div>
+    </div>
+
+    <div class="header-right">
+
+        <div class="header-icon"
+        onclick="goPage('notification.html')">
+            <i class="fa-solid fa-bell"></i>
+        </div>
+
+        <div class="header-balance"
+        id="balance">
+            ₹0
+        </div>
+
+    </div>
+
+</div>
+
+<!-- HEADER POSTER -->
+<div class="header-poster">Profile</div>
+
+<!-- MENU OVERLAY -->
+
+<div
+class="menu-overlay"
+id="menuOverlay"
+onclick="toggleMenu()">
+</div>
+
+<!-- SIDE MENU -->
+
+<div class="side-menu" id="sideMenu">
+
+    <div class="menu-header">
+
+        <div class="menu-profile">
+
+            <div class="menu-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="menu-user">
+
+                <h4 id="menuUserName">
+                    Loading...
+                </h4>
+
+                <p id="menuUserPhone">
+                    +91 XXXXX XXXXX
+                </p>
+
+                <div class="menu-balance">
+                    ₹ <span id="menuBalance">0</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <button
+        class="close-btn"
+        onclick="toggleMenu()">
+            ×
+        </button>
+
+    </div>
+
+    <ul class="menu-list">
+
+        <li onclick="go('profile.html')">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </li>
+
+        <li onclick="go('add-fund.html')">
+            <i class="fa-solid fa-wallet"></i>
+            <span>Deposit</span>
+        </li>
+
+        <li onclick="go('withdraw.html')">
+            <i class="fa-solid fa-money-bill-wave"></i>
+            <span>Withdraw</span>
+        </li>
+
+        <li onclick="go('transition.html')">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Transactions</span>
+        </li>
+
+        <li onclick="go('gamezone.html')">
+            <i class="fa-solid fa-gamepad"></i>
+            <span>Game Zone</span>
+        </li>
+
+        <li onclick="go('reer.html')">
+            <i class="fa-solid fa-gift"></i>
+            <span>Refer & Earn</span>
+        </li>
+
+        <li onclick="go('history.html')">
+            <i class="fa-solid fa-file-lines"></i>
+            <span>History</span>
+        </li>
+
+        <li class="active">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Ratios</span>
+        </li>
+
+        <li onclick="logout()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </li>
+
+    </ul>
+
+</div>
+
+
+
+<div class="profile-container">
+  <!-- HEADER CARD -->
+  <div class="card header-card">
+    <img id="avatar" class="avatar" src="default-avatar.png" />
+
+    <h2 id="username">Loading...</h2>
+    <p id="userRole">Player</p>
+    <input type="file" id="avatarInput" hidden>
+
+  </div>
+
+  <!-- INFO CARD -->
+  <div class="card info-card">
+    <p><strong>Mobile:</strong> <span id="mobile">-</span></p>
+   
+    <p><strong>User ID:</strong> <span id="userid">-</span></p>
+  </div>
+
+  <!-- WALLET CARD -->
+  <div class="card wallet-card">
+    <h3>Wallet Balance</h3>
+    <h1>₹<span id="wallet">0</span></h1>
+    <div class="wallet-actions">
+      <button onclick="goPage('add-fund.html')">Deposit</button>
+      <button onclick="goPage('withdraw.html')">Withdraw</button>
+      <button onclick="goPage('transition.html')">Transactions</button>
+    </div>
+  </div>
+
+  <!-- ADMIN CARD -->
+  <div class="card admin-card" id="adminArea" style="display:none;">
+    <h3>Admin Panel</h3>
+    <p>Welcome Admin 👑</p>
+    <button onclick="goPage('admin.html')">Open Admin Panel</button>
+  </div>
+</div>
+
+
+<script>
+const API = "http://localhost:5000/api/auth";
+const token = localStorage.getItem("token");
+
+/* DOM */
+const avatar = document.getElementById("avatar");
+const avatarInput = document.getElementById("avatarInput");
+const username = document.getElementById("username");
+const userRole = document.getElementById("userRole");
+const mobile = document.getElementById("mobile");
+const userid = document.getElementById("userid");
+const wallet = document.getElementById("wallet");
+const balance = document.getElementById("balance");
+const adminArea = document.getElementById("adminArea");
+
+if (!token) {
+    location.replace("auth.html");
+}
+
+function safeJSON(text) {
+    try {
+        return JSON.parse(text);
+    } catch {
+        return null;
+    }
+}
+
+function goPage(page) {
+    window.location.href = page;
+}
+
+function go(page) {
+    window.location.href = page;
+}
+
+function toggleMenu() {
+    const sideMenu = document.getElementById("sideMenu");
+    const overlay = document.getElementById("menuOverlay");
+
+    sideMenu.classList.toggle("active");
+    overlay.classList.toggle("active");
+}
+
+/* PROFILE */
+async function loadProfile() {
+    try {
+        const res = await fetch(`${API}/profile`, {
+            headers: { Authorization: "Bearer " + token }
+        });
+
+        const data = safeJSON(await res.text());
+
+        if (!res.ok || !data?.success) {
+            localStorage.removeItem("token");
+            location.replace("auth.html");
+            return;
+        }
+
+        const u = data.user || {};
+
+        username.innerText = u.name || "Player";
+        userRole.innerText = u.isAdmin ? "Admin" : "Player";
+        mobile.innerText = u.phone || "-";
+        userid.innerText = u.id || "-";
+
+        if (u.avatar) {
+            avatar.src = `http://localhost:5000/uploads/avatars/${u.avatar}`;
+        } else if (u.avatarUrl) {
+            avatar.src = u.avatarUrl;
+        } else {
+            avatar.src = "default-avatar.png";
+        }
+
+        if (u.isAdmin) {
+            adminArea.style.display = "block";
+        }
+
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+/* WALLET */
+async function loadWallet() {
+    try {
+        const res = await fetch(`${API}/balance`, {
+            headers: { Authorization: "Bearer " + token }
+        });
+
+        const data = safeJSON(await res.text());
+
+        if (data?.success) {
+            const bal = Number(data.balance || 0);
+            wallet.innerText = bal.toFixed(2);
+            balance.innerText = "₹" + bal.toFixed(2);
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+/* SIDE MENU USER INFO */
+async function loadUserInfo() {
+    try {
+        const res = await fetch(`${API}/profile`, {
+            headers: { Authorization: "Bearer " + token }
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+            document.getElementById("menuUserName").innerText =
+                data.user.name || "Player";
+
+            document.getElementById("menuUserPhone").innerText =
+                data.user.phone || "-";
+
+            document.getElementById("menuBalance").innerText =
+                Math.floor(data.user.wallet || 0);
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+/* BALANCE */
+async function loadBalance() {
+    try {
+        const res = await fetch(`${API}/balance`, {
+            headers: { Authorization: "Bearer " + token }
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+            balance.innerText = "₹" + Math.floor(data.balance || 0);
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+/* AVATAR */
+if (avatar && avatarInput) {
+    avatar.addEventListener("click", () => avatarInput.click());
+}
+
+/* INIT */
+document.addEventListener("DOMContentLoaded", () => {
+    loadProfile();
+    loadWallet();
+    loadUserInfo();
+    loadBalance();
+
+    const current = location.pathname.split("/").pop();
+
+    document.querySelectorAll(".bottom-nav .nav-item").forEach(item => {
+        if (item.dataset.page === current) {
+            item.classList.add("active");
+        }
+
+        item.onclick = () => goPage(item.dataset.page);
+    });
+});
+</script>
+
+
+<script src="nav.js"></script>
+</body>
+</html>
+
+

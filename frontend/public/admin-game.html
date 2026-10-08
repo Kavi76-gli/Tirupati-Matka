@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="global.css">
+</head>
+<body>
+  <header>
+    <h1>Admin Panel</h1>
+  </header>
+
+  <nav>
+    <button onclick="showSection('createGame')">Create Game</button>
+    <button onclick="showSection('viewGames')">View All Games</button>
+    <button onclick="showSection('openCloseResult')">Open/Close Result</button>
+    <button onclick="showSection('userBids')">User Bids</button>
+  </nav>
+
+  <main>
+    <!-- CREATE GAME -->
+    <!-- CREATE GAME -->
+<section id="createGame" class="section">
+  <h2>Create Game</h2>
+  <form id="createGameForm">
+    <input type="text" name="gameName" placeholder="Game Name" required>
+    <input type="text" name="gameCode" placeholder="Game Code" required>
+    <input type="time" name="openTime" required>
+    <input type="time" name="closeTime" required>
+    <input type="time" name="resultTime" required>
+    <input type="number" name="minBet" placeholder="Min Bet" min="1">
+    <input type="number" name="maxBet" placeholder="Max Bet" min="1">
+    <input type="text" name="allowedTypes" placeholder="Allowed Types (single,jodi,singlepanna,...)">
+    <button type="submit">Create Game</button>
+  </form>
+  <div id="createGameMsg" style="margin-top:8px;color:#00eaff;font-weight:700;"></div>
+</section>
+
+
+    <!-- VIEW ALL GAMES -->
+    <section id="viewGames" class="section">
+      <h2>All Games</h2>
+      <table id="gamesTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Open Time</th>
+            <th>Close Time</th>
+            <th>Result Time</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- OPEN/CLOSE RESULT -->
+    <section id="openCloseResult" class="section">
+      <h2>Declare Open/Close Result</h2>
+      <form id="declareResultForm">
+        <select id="matchSelect"></select>
+        <select id="resultType">
+          <option value="open">Open Result</option>
+          <option value="close">Close Result</option>
+        </select>
+        <input type="text" id="panel" placeholder="Panel" required>
+        <input type="number" id="single" placeholder="Single" required>
+        <button type="submit">Declare Result</button>
+      </form>
+      <div id="declareMsg"></div>
+    </section>
+
+    <!-- USER BIDS -->
+    <section id="userBids" class="section">
+      <h2>User Bids</h2>
+      <table id="bidsTable">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Game</th>
+            <th>Bet Type</th>
+            <th>Bet For</th>
+            <th>Number</th> <!-- ✅ NEW -->
+            <th>Amount</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+<!-- DELETE GAME -->
+<section id="deleteGame" class="section">
+  <h2>Delete Game</h2>
+
+  <select id="deleteMatchSelect">
+    <option value="">Select Game</option>
+  </select>
+
+  <br><br>
+
+  <button onclick="deleteSelectedGame()" class="delete-btn">
+    ❌ Delete Selected Game
+  </button>
+
+  <div id="deleteMsg"></div>
+</section>
+<button onclick="showSection('deleteGame')">Delete Game</button>
+
+<button
+  style="background:#ff0033;color:#fff;padding:10px 16px;border:none;border-radius:8px;cursor:pointer;"
+  onclick="resetAllMatches()"
+>
+  🔥 Reset ALL Matches
+</button>
+
+
+
+  <script src="js/admin.js"></script>
+  <script src="nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Ratios</title>
+
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    color:#111827;
+    overflow:hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.top-header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:70px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #00a86b,
+    #00c97a);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 15px;
+
+    z-index:1000;
+
+    box-shadow:
+    0 4px 15px rgba(0,0,0,.12);
+}
+
+.menu-icon,
+.header-icon{
+    width:42px;
+    height:42px;
+
+    border-radius:12px;
+
+    background:
+    rgba(255,255,255,.18);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#fff;
+
+    cursor:pointer;
+}
+
+.header-center{
+    flex:1;
+    padding:0 12px;
+}
+
+.header-title{
+    color:#fff;
+    font-size:20px;
+    font-weight:800;
+}
+
+.header-subtitle{
+    color:rgba(255,255,255,.9);
+    font-size:11px;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.header-balance{
+    background:#fff;
+
+    color:#00a86b;
+
+    min-width:90px;
+    height:40px;
+
+    padding:0 14px;
+
+    border-radius:30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:700;
+}
+
+/* =========================
+   PAGE TITLE
+========================= */
+
+.page-title{
+    margin-top:90px;
+
+    text-align:center;
+
+    color:#00a86b;
+
+    font-size:24px;
+    font-weight:800;
+
+    animation:fadeDown .7s ease;
+}
+
+/* =========================
+   RATIO CONTAINER
+========================= */
+
+#ratioContainer{
+    margin-top:15px;
+
+    height:calc(100vh - 170px);
+
+    overflow-y:auto;
+
+    padding:10px;
+}
+
+/* =========================
+   RATIO CARD
+========================= */
+
+.ratio-card{
+
+    background:#fff;
+
+    margin-bottom:14px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    border:1px solid #edf2f7;
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.05);
+
+    opacity:0;
+}
+
+.ratio-name{
+    font-size:16px;
+    font-weight:700;
+}
+
+.ratio-value{
+    color:#00a86b;
+    font-size:18px;
+    font-weight:800;
+}
+
+/* =========================
+   STAIRCASE ANIMATION
+========================= */
+
+.ratio-card:nth-child(odd){
+    transform:
+    translateX(-60px)
+    translateY(60px);
+}
+
+.ratio-card:nth-child(even){
+    transform:
+    translateX(60px)
+    translateY(60px);
+}
+
+.ratio-card.show{
+    opacity:1;
+
+    transform:
+    translateX(0)
+    translateY(0);
+
+    transition:
+    all .8s cubic-bezier(
+    .22,
+    1,
+    .36,
+    1);
+}
+
+.ratio-card:hover{
+
+    transform:
+    translateY(-4px)
+    scale(1.01);
+
+    box-shadow:
+    0 10px 30px rgba(0,168,107,.15);
+}
+
+/* =========================
+   SIDE MENU
+========================= */
+
+.side-menu{
+
+    position:fixed;
+
+    top:0;
+    left:-320px;
+
+    width:290px;
+    height:100vh;
+
+    background:#fff;
+
+    transition:.4s;
+
+    z-index:9999;
+
+    overflow-y:auto;
+
+    box-shadow:
+    5px 0 30px rgba(0,0,0,.12);
+}
+
+.side-menu.active{
+    left:0;
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+.menu-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    rgba(0,0,0,.35);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:9998;
+}
+
+.menu-overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+/* =========================
+   MENU HEADER
+========================= */
+
+.menu-header{
+
+    background:
+    linear-gradient(
+    135deg,
+    #00a86b,
+    #00c97a);
+
+    padding:15px;
+
+    position:relative;
+}
+
+.close-btn{
+
+    position:absolute;
+
+    right:12px;
+    top:12px;
+
+    width:36px;
+    height:36px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.2);
+
+    color:#fff;
+
+    font-size:22px;
+
+    cursor:pointer;
+}
+
+/* =========================
+   PROFILE CARD
+========================= */
+
+.menu-profile{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:#fff;
+}
+
+.menu-avatar{
+
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.2);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:24px;
+}
+
+.menu-user h4{
+    font-size:18px;
+}
+
+.menu-user p{
+    font-size:12px;
+    opacity:.9;
+}
+
+.menu-balance{
+
+    margin-top:8px;
+
+    background:#fff;
+
+    color:#00a86b;
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-weight:700;
+}
+
+/* =========================
+   MENU LIST
+========================= */
+
+.menu-list{
+    list-style:none;
+    padding:15px;
+}
+
+.menu-list li{
+
+    background:#fff;
+
+    margin-bottom:10px;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 4px 12px rgba(0,0,0,.05);
+
+    transition:.3s;
+}
+
+.menu-list li i{
+
+    width:38px;
+    height:38px;
+
+    border-radius:12px;
+
+    background:#ecfdf5;
+
+    color:#00a86b;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.menu-list li:hover{
+
+    background:#ecfdf5;
+
+    color:#00a86b;
+
+    transform:
+    translateX(6px);
+}
+
+.menu-list li.active{
+
+    background:#00a86b;
+
+    color:#fff;
+}
+
+.menu-list li.active i{
+
+    background:#fff;
+
+    color:#00a86b;
+}
+
+/* =========================
+   BOTTOM NAV
+========================= */
+
+.bottom-nav{
+
+    position:fixed;
+
+    bottom:0;
+    left:0;
+
+    width:100%;
+    height:70px;
+
+    background:#fff;
+
+    display:flex;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+    border-top:
+    1px solid #e5e7eb;
+
+    z-index:1000;
+}
+
+.nav-item{
+
+    flex:1;
+
+    text-align:center;
+
+    color:#64748b;
+
+    cursor:pointer;
+}
+
+.nav-item i{
+
+    display:block;
+
+    font-size:20px;
+
+    margin-bottom:4px;
+}
+
+.nav-item span{
+
+    font-size:11px;
+
+    font-weight:600;
+}
+
+.nav-item:hover{
+
+    color:#00a86b;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeDown{
+
+    from{
+        opacity:0;
+        transform:translateY(-30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+    .header-title{
+        font-size:18px;
+    }
+
+    .page-title{
+        font-size:22px;
+    }
+
+    .ratio-name{
+        font-size:15px;
+    }
+
+    .ratio-value{
+        font-size:17px;
+    }
+
+    .menu-icon,
+    .header-icon{
+        width:38px;
+        height:38px;
+    }
+
+    .header-balance{
+        min-width:80px;
+        font-size:14px;
+    }
+
+    .side-menu{
+        width:280px;
+    }
+}
+/* MENU OPEN ANIMATION */
+
+.side-menu.active .menu-profile{
+    animation:profilePop .5s ease forwards;
+}
+
+.side-menu.active .menu-list li{
+    opacity:0;
+    transform:translateX(-50px);
+}
+
+.side-menu.active .menu-list li:nth-child(1){
+    animation:menuItem .35s .05s forwards;
+}
+
+.side-menu.active .menu-list li:nth-child(2){
+    animation:menuItem .35s .10s forwards;
+}
+
+.side-menu.active .menu-list li:nth-child(3){
+    animation:menuItem .35s .15s forwards;
+}
+
+.side-menu.active .menu-list li:nth-child(4){
+    animation:menuItem .35s .20s forwards;
+}
+
+.side-menu.active .menu-list li:nth-child(5){
+    animation:menuItem .35s .25s forwards;
+}
+
+.side-menu.active .menu-list li:nth-child(6){
+    animation:menuItem .35s .30s forwards;
+}
+
+.side-menu.active .menu-list li:nth-child(7){
+    animation:menuItem .35s .35s forwards;
+}
+
+.side-menu.active .menu-list li:nth-child(8){
+    animation:menuItem .35s .40s forwards;
+}
+
+.side-menu.active .menu-list li:nth-child(9){
+    animation:menuItem .35s .45s forwards;
+}
+
+@keyframes menuItem{
+    from{
+        opacity:0;
+        transform:translateX(-50px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes profilePop{
+    from{
+        opacity:0;
+        transform:scale(.8);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+.menu-list li:hover{
+
+    transform:
+    translateX(8px)
+    scale(1.03);
+
+    box-shadow:
+    0 10px 20px rgba(0,168,107,.15);
+}
+.side-menu{
+
+    backdrop-filter:blur(15px);
+
+    background:
+    rgba(255,255,255,.96);
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+<div class="top-header">
+
+    <div class="menu-icon" onclick="toggleMenu()">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <div class="header-center">
+        <div class="header-title">Kalyan Master</div>
+        <div class="header-subtitle">Official Ratio Chart</div>
+    </div>
+
+    <div class="header-right">
+
+        <div class="header-icon"
+        onclick="goPage('notification.html')">
+            <i class="fa-solid fa-bell"></i>
+        </div>
+
+        <div class="header-balance"
+        id="balance">
+            ₹0
+        </div>
+
+    </div>
+
+</div>
+
+<!-- TITLE -->
+
+<div class="page-title">
+    🎯 Game Ratios
+</div>
+
+<!-- RATIO CONTAINER -->
+
+<div id="ratioContainer">
+
+    <div class="ratio-card">
+        <span class="ratio-name">Single</span>
+        <span class="ratio-value">1 : 9.50</span>
+    </div>
+
+    <div class="ratio-card">
+        <span class="ratio-name">Jodi</span>
+        <span class="ratio-value">1 : 95</span>
+    </div>
+
+    <div class="ratio-card">
+        <span class="ratio-name">Single Panna</span>
+        <span class="ratio-value">1 : 150</span>
+    </div>
+
+    <div class="ratio-card">
+        <span class="ratio-name">Double Panna</span>
+        <span class="ratio-value">1 : 300</span>
+    </div>
+
+    <div class="ratio-card">
+        <span class="ratio-name">Triple Panna</span>
+        <span class="ratio-value">1 : 1000</span>
+    </div>
+
+    <div class="ratio-card">
+        <span class="ratio-name">Half Sangam</span>
+        <span class="ratio-value">1 : 1000</span>
+    </div>
+
+    <div class="ratio-card">
+        <span class="ratio-name">Full Sangam</span>
+        <span class="ratio-value">1 : 10000</span>
+    </div>
+
+</div>
+
+<!-- MENU OVERLAY -->
+
+<div
+class="menu-overlay"
+id="menuOverlay"
+onclick="toggleMenu()">
+</div>
+
+<!-- SIDE MENU -->
+
+<div class="side-menu" id="sideMenu">
+
+    <div class="menu-header">
+
+        <div class="menu-profile">
+
+            <div class="menu-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="menu-user">
+
+                <h4 id="menuUserName">
+                    Loading...
+                </h4>
+
+                <p id="menuUserPhone">
+                    +91 XXXXX XXXXX
+                </p>
+
+                <div class="menu-balance">
+                    ₹ <span id="menuBalance">0</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <button
+        class="close-btn"
+        onclick="toggleMenu()">
+            ×
+        </button>
+
+    </div>
+
+    <ul class="menu-list">
+
+        <li onclick="go('profile.html')">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </li>
+
+        <li onclick="go('add-fund.html')">
+            <i class="fa-solid fa-wallet"></i>
+            <span>Deposit</span>
+        </li>
+
+        <li onclick="go('withdraw.html')">
+            <i class="fa-solid fa-money-bill-wave"></i>
+            <span>Withdraw</span>
+        </li>
+
+        <li onclick="go('transition.html')">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Transactions</span>
+        </li>
+
+        <li onclick="go('gamezone.html')">
+            <i class="fa-solid fa-gamepad"></i>
+            <span>Game Zone</span>
+        </li>
+
+        <li onclick="go('reer.html')">
+            <i class="fa-solid fa-gift"></i>
+            <span>Refer & Earn</span>
+        </li>
+
+        <li onclick="go('history.html')">
+            <i class="fa-solid fa-file-lines"></i>
+            <span>History</span>
+        </li>
+
+        <li class="active">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Ratios</span>
+        </li>
+
+        <li onclick="logout()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </li>
+
+    </ul>
+
+</div>
+
+
+
+<script>
+
+const API =
+"http://localhost:5000/api/auth";
+
+const token =
+localStorage.getItem("token");
+
+function go(page){
+    location.href = page;
+}
+
+function goPage(page){
+    location.href = page;
+}
+
+/* MENU */
+
+async function toggleMenu(){
+
+    const sideMenu =
+    document.getElementById(
+        "sideMenu"
+    );
+
+    const overlay =
+    document.getElementById(
+        "menuOverlay"
+    );
+
+    sideMenu.classList.toggle(
+        "active"
+    );
+
+    overlay.classList.toggle(
+        "active"
+    );
+
+    if(
+        sideMenu.classList.contains(
+            "active"
+        )
+    ){
+        loadUserInfo();
+    }
+}
+
+/* LOAD USER */
+
+async function loadUserInfo(){
+
+    try{
+
+        const res =
+        await fetch(
+        API + "/profile",
+        {
+            headers:{
+                Authorization:
+                "Bearer " + token
+            }
+        });
+
+        const data =
+        await res.json();
+
+        if(data.success){
+
+            document.getElementById(
+            "menuUserName"
+            ).innerText =
+            data.user.name || "Player";
+
+            document.getElementById(
+            "menuUserPhone"
+            ).innerText =
+            data.user.phone || "-";
+
+            document.getElementById(
+            "menuBalance"
+            ).innerText =
+            Math.floor(
+            data.user.balance || 0
+            );
+        }
+
+    }catch(err){
+        console.log(err);
+    }
+}
+
+/* BALANCE */
+
+async function loadBalance(){
+
+    try{
+
+        const res =
+        await fetch(
+        API + "/balance",
+        {
+            headers:{
+                Authorization:
+                "Bearer " + token
+            }
+        });
+
+        const data =
+        await res.json();
+
+        if(data.success){
+
+            document.getElementById(
+            "balance"
+            ).innerText =
+            "₹" +
+            Math.floor(
+            data.balance || 0
+            );
+        }
+
+    }catch(err){
+        console.log(err);
+    }
+}
+
+/* STAIRCASE ANIMATION */
+
+function animateCards(){
+
+    const cards =
+    document.querySelectorAll(
+    ".ratio-card"
+    );
+
+    const observer =
+    new IntersectionObserver(
+
+    entries=>{
+
+        entries.forEach(entry=>{
+
+            if(
+            entry.isIntersecting
+            ){
+
+                entry.target
+                .classList.add(
+                "show"
+                );
+
+            }
+
+        });
+
+    },
+    {
+        threshold:.15
+    });
+
+    cards.forEach(card=>{
+
+        observer.observe(card);
+
+    });
+}
+
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+
+    loadBalance();
+
+    loadUserInfo();
+
+    animateCards();
+
+});
+</script>
+
+
+</body>
+</html>

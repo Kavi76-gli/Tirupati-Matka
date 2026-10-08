@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gali Single</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="stylesheet" href="global.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Arial,sans-serif}
+body{
+  background: radial-gradient(circle at top,#0a1a2f,#020b18);
+  color:#00eaff;
+  padding-bottom:90px;
+}
+
+/* HEADER */
+.header{
+  background: linear-gradient(90deg,#021126,#0d47ff);
+  padding: 12px 15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #00eaff55;
+  box-shadow:0 0 12px #00eaff22;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:bold;
+  color:#00eaff;
+}
+.logo img{
+  width:32px;height:32px;border-radius:50%;
+  box-shadow:0 0 8px #00eaff;
+}
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.header-right i{
+  font-size:18px;
+  cursor:pointer;
+  color:#00eaff;
+  transition:.2s;
+}
+.header-right i:hover{ text-shadow:0 0 10px #00eaff; }
+.balance{
+  background:#001a3d;
+  padding:6px 14px;
+  border-radius:20px;
+  border:1px solid #00eaff;
+  font-weight:bold;
+  box-shadow:0 0 10px #00eaff33;
+}
+
+/* MARKET CARD */
+.market-card{
+  background:#001a3d;
+  margin:15px;
+  padding:15px;
+  border-radius:14px;
+  border:1px solid #00eaff55;
+  box-shadow:0 0 15px #00eaff22;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.market-left{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.market-icon{
+  width:45px;height:45px;
+  background:#00eaff;
+  color:#001a3d;
+  border-radius:12px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:bold;
+  box-shadow:0 0 12px #00eaff99;
+}
+.market-info h3{margin:0;font-size:16px;color:#00eaff}
+.market-info p{margin-top:4px;font-size:12px;color:#7fefff}
+
+/* INFO CARD */
+.card{
+  background:#001a3d;
+  margin:15px;
+  padding:15px;
+  border-radius:14px;
+  border:1px solid #00eaff55;
+  box-shadow:0 0 15px #00eaff22;
+}
+.card h2{font-size:18px;}
+.subtitle{
+  margin-top:4px;
+  font-size:13px;
+  color:#7fefff;
+}
+
+/* DIGIT GRID */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:15px;
+  padding:15px;
+}
+.digit-card{
+  background:#001a3d;
+  border:1px solid #00eaff;
+  border-radius:16px;
+  padding:16px;
+  text-align:center;
+  box-shadow: inset 0 0 10px #00eaff22;
+  transition:0.25s;
+}
+.digit-card:hover{
+  box-shadow:0 0 15px #00eaff88;
+  transform:scale(1.01);
+}
+.digit-card h1{
+  font-size:42px;
+  margin-bottom:8px;
+  color:#00eaff;
+  text-shadow:0 0 8px #00eaff66;
+}
+.digit-card input{
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #00eaff55;
+  background:#020f24;
+  color:#00eaff;
+  text-align:center;
+  font-size:15px;
+  outline:none;
+}
+.digit-card input::placeholder{ color:#6fdfff; }
+.digit-card small{
+  display:block;
+  margin-top:6px;
+  font-size:11px;
+  color:#7fefff;
+}
+
+/* CONFIRM BUTTON */
+.confirmBid{
+  background: linear-gradient(135deg,#00eaff,#0099ff);
+  color:#001a3d;
+  border:none;
+  padding:15px;
+  width:90%;
+  margin:20px auto;
+  display:block;
+  border-radius:30px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 0 20px #00eaff88;
+  transition:0.25s;
+}
+.confirmBid:hover{
+  box-shadow:0 0 30px #00eaff;
+  transform:scale(1.02);
+}
+
+/* SIDE MENU */
+.side-menu{
+  position:fixed;
+  top:0;
+  right:-280px;
+  width:260px;
+  height:100%;
+  background:#020f24;
+  box-shadow:-5px 0 15px #00eaff44;
+  transition:0.3s;
+  z-index:999;
+}
+.side-menu.active{right:0;}
+.menu-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px;
+  color:#00eaff;
+  border-bottom:1px solid #00eaff55;
+}
+.close-btn{
+  background:none;border:none;
+  font-size:24px;color:#00eaff;
+  cursor:pointer;
+}
+.menu-list{list-style:none;padding:10px;}
+.menu-list li{
+  padding:12px;
+  margin-bottom:8px;
+  background:#001a3d;
+  border-radius:10px;
+  cursor:pointer;
+  border:1px solid #00eaff33;
+  transition:0.2s;
+}
+.menu-list li:hover{
+  background:#003366;
+  box-shadow:0 0 10px #00eaff55;
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#020f24;
+  display:flex;
+  justify-content:space-around;
+  padding:8px 0;
+  border-top:1px solid #00eaff55;
+  box-shadow:0 -5px 15px #00eaff22;
+}
+.nav-item{
+  text-align:center;
+  color:#00eaffaa;
+  font-size:12px;
+  cursor:pointer;
+}
+.nav-item i{font-size:18px;display:block;}
+.nav-item.center{
+  background:#00eaff;
+  color:#001a3d;
+  padding:10px 16px;
+  border-radius:50%;
+  margin-top:-20px;
+  box-shadow:0 0 20px #00eaff;
+}
+.nav-item.center i{color:#001a3d;}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">
+    <img src="kalyan.jpeg" alt="Logo">
+    <span>Gali Disawar</span>
+  </div>
+
+  <div class="header-right">
+    <div class="balance" id="balance">₹0.00</div>
+    <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+  </div>
+</div>
+
+<!-- MARKET CARD -->
+<div class="market-card">
+  <div class="market-left">
+    <div class="market-icon" id="marketIcon">G</div>
+    <div class="market-info">
+      <h3 id="marketTitle">Loading...</h3>
+      <p id="marketTime">--:-- – --:--</p>
+    </div>
+  </div>
+</div>
+
+<!-- INFO CARD -->
+<div class="card">
+  <h2 id="gameTypeTitle">SINGLE</h2>
+  <p class="subtitle" id="sideText">Choose your number & enter amount</p>
+</div>
+
+<!-- GRID -->
+<div class="grid" id="digitGrid"></div>
+
+<button class="confirmBid" onclick="confirmGaliSingle()">
+  View Bid Details
+</button>
+
+<!-- SIDE MENU -->
+<div class="side-menu" id="sideMenu">
+  <div class="menu-header">
+    <h3>Menu</h3>
+    <button class="close-btn" onclick="toggleMenu()">×</button>
+  </div>
+  <ul class="menu-list">
+    <li onclick="go('profile.html')">Profile</li>
+    <li onclick="go('add-fund.html')">Deposit</li>
+    <li onclick="go('withdraw.html')">Withdraw</li>
+    <li onclick="go('transition.html')">Transactions</li>
+    <li onclick="go('gamezone.html')">Game Zone</li>
+     <li onclick="go('reer.html')">Refer & Earn</li>
+    <li onclick="go('history.html')">History</li>
+    <li onclick="go('ratio.html')">Ratios</li>
+    <li onclick="go('logout.html')">Logout</li>
+  </ul>
+</div>
+
+<!-- BOTTOM NAV -->
+
+<div class="bottom-nav">
+  <div class="nav-item" data-page="reer.html">
+    <i class="fa-solid fa-user"></i>
+    <span>Refer</span>
+  </div>
+
+  <div class="nav-item" data-page="history.html">
+    <i class="fa-solid fa-clock"></i>
+    <span>Bid History</span>
+  </div>
+
+  <div class="nav-item center" data-page="gamezone.html">
+    <i class="fa-solid fa-house"></i>
+    <span>Home</span>
+  </div>
+
+  <div class="nav-item" data-page="my-transition.html">
+    <i class="fa-solid fa-gavel"></i>
+    <span>Transaction</span>
+  </div>
+
+  <div class="nav-item" data-page="wallet.html">
+    <i class="fa-solid fa-wallet"></i>
+    <span>Wallet</span>
+  </div>
+
+  <div class="active-indicator"></div>
+</div>
+
+<script>
+const token = localStorage.getItem("token");
+const API_AUTH = "https://kalyanmaster.onrender.com/api/auth";
+
+/* ======================
+   LOAD galiBetInfo
+====================== */
+let bet = null;
+try{
+  bet = JSON.parse(localStorage.getItem("galiBetInfo"));
+}catch(e){}
+
+if(!bet || !bet.gameId || bet.betType !== "single" || !bet.betFor){
+  alert("No Single bet selected");
+  location.href="galibattype.html";
+}
+
+/* ======================
+   TIME FORMAT
+====================== */
+function formatTime12(timeStr){
+  if(!timeStr) return "--:--";
+  const [h,m] = timeStr.split(":").map(Number);
+  let hh = h % 12 || 12;
+  const ampm = h >= 12 ? "PM" : "AM";
+  return `${hh.toString().padStart(2,"0")}:${m.toString().padStart(2,"0")} ${ampm}`;
+}
+
+/* ======================
+   SHOW INFO
+====================== */
+document.getElementById("marketTitle").innerText = bet.gameName;
+document.getElementById("marketIcon").innerText = (bet.gameName || "G").charAt(0).toUpperCase();
+document.getElementById("marketTime").innerText =
+  `${formatTime12(bet.openTime)} – ${formatTime12(bet.closeTime)}`;
+
+document.getElementById("gameTypeTitle").innerText =
+  `SINGLE (${bet.betFor.toUpperCase()})`;
+
+document.getElementById("sideText").innerText =
+  bet.betFor === "left" ? "Left Digit (Open)" : "Right Digit (Close)";
+
+/* ======================
+   LOAD BALANCE
+====================== */
+async function loadBalance(){
+  const r = await fetch(API_AUTH+"/balance", {
+    headers:{ Authorization:"Bearer "+token }
+  });
+  const d = await r.json();
+  if(d.success) document.getElementById("balance").innerText="₹ "+d.balance;
+}
+loadBalance();
+
+/* ======================
+   CREATE DIGIT GRID
+====================== */
+const digitGrid = document.getElementById("digitGrid");
+
+for(let i=0;i<=9;i++){
+  const div = document.createElement("div");
+  div.className = "digit-card";
+  div.innerHTML = `
+    <h1>${i}</h1>
+    <input type="number" id="amt${i}" placeholder="₹ Amount">
+    <small>💡 Enter bid amount for ${i}</small>
+  `;
+  digitGrid.appendChild(div);
+}
+
+/* ======================
+   CONFIRM BIDS
+====================== */
+function confirmGaliSingle(){
+  let bids = [];
+  let totalAmount = 0;
+
+  for(let i=0;i<=9;i++){
+    const input = document.getElementById("amt"+i);
+    const amount = Number(input.value);
+
+    if(amount && amount > 0){
+      bids.push({
+        number: String(i),
+        amount: amount
+      });
+      totalAmount += amount;
+    }
+  }
+
+  if(!bids.length){
+    alert("Please enter at least one bid amount");
+    return;
+  }
+
+  // ✅ Save for gali bid details page
+  const galiPendingBet = {
+    matchId: bet.gameId,
+    gameName: bet.gameName,
+    betType: "single",
+    betFor: bet.betFor,      // left/right
+    bids,
+    totalAmount
+  };
+
+  localStorage.setItem("galiPendingBet", JSON.stringify(galiPendingBet));
+
+  location.href = "galibids-details.html";
+}
+
+/* ======================
+   MENU + NAV
+====================== */
+function toggleMenu(){
+  document.getElementById("sideMenu").classList.toggle("active");
+}
+function goPage(page){ location.href = page; }
+function logout(){
+  localStorage.clear();
+  location.href="login.html";
+}
+function go(page) {
+  window.location.href = page;
+}
+
+</script>
+<script src="nav.js"></script>
+</body>
+</html>

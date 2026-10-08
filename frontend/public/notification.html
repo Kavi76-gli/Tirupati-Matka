@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notifications</title>
+
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="global.css">
+<style>
+*{box-sizing:border-box;font-family:Arial,sans-serif}
+body{
+  margin:0;
+  background:#0a1a2f;
+  padding-bottom:90px;
+  color:#00f0ff;
+}
+
+/* ================= HEADER ================= */
+.header{
+  height:60px;
+  padding:0 14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:linear-gradient(90deg,#0d47ff,#00bfff);
+  box-shadow:0 0 18px rgba(0,191,255,.6);
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+}
+.logo img{
+  width:36px;height:36px;border-radius:6px;
+}
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.header-right i{font-size:22px;cursor:pointer}
+.balance{
+  padding:6px 14px;
+  background:#020b18;
+  color:#00eaff;
+  border-radius:20px;
+  font-weight:700;
+  box-shadow:0 0 10px rgba(0,234,255,.7);
+}
+
+/* ================= TITLE ================= */
+.title{
+  text-align:center;
+  font-size:22px;
+  font-weight:700;
+  margin:20px 0 10px;
+  text-shadow:0 0 6px #00f0ff;
+}
+
+/* ================= NOTIFICATIONS ================= */
+.notify-box{
+  margin:12px 14px;
+  background:#001a3d;
+  padding:14px;
+  border-radius:14px;
+  box-shadow:0 0 12px #00f0ff55;
+  display:flex;
+  gap:12px;
+}
+.notify-icon{
+  font-size:22px;
+  color:#00eaff;
+  text-shadow:0 0 8px #00eaff;
+}
+.notify-content{
+  flex:1;
+}
+.notify-content h4{
+  margin:0 0 4px;
+  font-size:15px;
+}
+.notify-content p{
+  margin:0;
+  font-size:13px;
+  opacity:.85;
+}
+.notify-time{
+  font-size:11px;
+  opacity:.6;
+  margin-top:4px;
+}
+
+/* ================= EMPTY ================= */
+.empty{
+  margin-top:80px;
+  text-align:center;
+  opacity:.7;
+}
+
+/* ================= BOTTOM NAV ================= */
+.bottom-nav{
+  position:fixed;
+  bottom:0;left:0;
+  width:100%;height:70px;
+  background:linear-gradient(180deg,#0d47ff,#0a3dd1);
+  display:flex;
+  justify-content:space-around;
+  border-radius:18px 18px 0 0;
+}
+.nav-item{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  cursor:pointer;
+  color:rgba(255,255,255,.8);
+}
+.nav-item i{font-size:20px}
+.nav-item.center i{
+  width:52px;height:52px;
+  background:#fff;color:#0d47ff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <img src="kalyan.jpeg">
+    Kalyan Satka Matka
+  </div>
+  <div class="header-right">
+    <i class="fa-solid fa-arrow-left" onclick="go('gamezone.html')"></i>
+    <div class="balance" id="balance">₹ 0.00</div>
+  </div>
+</header>
+
+<div class="title">🔔 Notifications</div>
+
+<!-- NOTIFICATIONS LIST -->
+<div id="notifyList">
+
+  <div class="notify-box">
+    <i class="fa-solid fa-gift notify-icon"></i>
+    <div class="notify-content">
+      <h4>Referral Bonus</h4>
+      <p>₹50 added to your wallet from referral reward.</p>
+      <div class="notify-time">Just now</div>
+    </div>
+  </div>
+
+  <div class="notify-box">
+    <i class="fa-solid fa-wallet notify-icon"></i>
+    <div class="notify-content">
+      <h4>Deposit Successful</h4>
+      <p>Your wallet has been credited successfully.</p>
+      <div class="notify-time">10 minutes ago</div>
+    </div>
+  </div>
+
+  <div class="notify-box">
+    <i class="fa-solid fa-trophy notify-icon"></i>
+    <div class="notify-content">
+      <h4>Game Result</h4>
+      <p>Kalyan Night result has been declared.</p>
+      <div class="notify-time">Today</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- EMPTY STATE (hide when notifications exist) -->
+<div class="empty" id="empty" style="display:none;">
+  No notifications yet
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <div class="nav-item" onclick="go('reer.html')">
+    <i class="fa-solid fa-user"></i><span>Refer</span>
+  </div>
+  <div class="nav-item" onclick="go('history.html')">
+    <i class="fa-solid fa-clock"></i><span>History</span>
+  </div>
+  <div class="nav-item center" onclick="go('gamezone.html')">
+    <i class="fa-solid fa-house"></i><span>Home</span>
+  </div>
+  <div class="nav-item" onclick="go('bid.html')">
+    <i class="fa-solid fa-gavel"></i><span>Bid</span>
+  </div>
+  <div class="nav-item" onclick="go('wallet.html')">
+    <i class="fa-solid fa-wallet"></i><span>Wallet</span>
+  </div>
+</div>
+
+<script>
+const API = "https://kalyanmaster.onrender.com/api/auth";
+const token = localStorage.getItem("token");
+
+function go(page){ window.location.href = page; }
+
+async function loadBalance(){
+  if(!token) return;
+  try{
+    const r = await fetch(API + "/balance",{
+      headers:{ Authorization:"Bearer " + token }
+    });
+    const d = await r.json();
+    if(d.success){
+      document.getElementById("balance").innerText = "₹ " + d.balance;
+    }
+  }catch(e){}
+}
+
+loadBalance();
+</script>
+<script src="nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+**/node_modules/
+**/.env
+**/.env.*
+!.env.example
+**/uploads/
+**/*-firebase-adminsdk-*.json
+**/serviceAccountKey.json
+**/firebase-service-account.json
+.vscode/
+.idea/
+desktop.ini
+*.log
+npm-debug.log*

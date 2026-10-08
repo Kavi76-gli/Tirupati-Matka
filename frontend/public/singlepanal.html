@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Single Panna</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="stylesheet" href="global.css">
+<style>
+/* =====================
+   RESET & BASE
+===================== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI",Arial,sans-serif;
+}
+
+body{
+  background:radial-gradient(circle at top,#0a1a2f,#020b18);
+  color:#00eaff;
+  padding-bottom:90px;
+}
+
+/* =====================
+   HEADER
+===================== */
+/* HEADER */
+/* HEADER */
+.header {
+  height: 76px;
+  background: linear-gradient(180deg, #000000, #050505);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(212,175,55,0.45);
+}
+
+/* LOGO AREA */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+/* LOGO IMAGE – CLEAR & PREMIUM */
+.logo img {
+  height: 64px;          /* 🔥 bigger = clarity */
+  width: auto;
+  object-fit: contain;
+  filter: 
+    contrast(1.25)
+    brightness(1.15);
+}
+
+
+/* RIGHT ICONS */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ICON STYLE */
+.header-icons i {
+  font-size: 20px;
+  color: #d4af37;             /* gold tone */
+  cursor: pointer;
+}
+
+/* BALANCE */
+.balance {
+  background: linear-gradient(135deg, #b8962e, #f3da8c);
+  color: #2b1a00;
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 700;
+}
+/* =====================
+   GAME INFO CARD ⭐
+===================== */
+.game-info{
+  margin:15px;
+  padding:14px;
+  background:#001a3d;
+  border-radius:16px;
+  border:1px solid #00eaff66;
+  text-align:center;
+  box-shadow:0 0 20px #00eaff33;
+}
+
+.game-info h2{
+  font-size:18px;
+  margin-bottom:6px;
+  text-shadow:0 0 10px #00eaffaa;
+}
+
+.game-info p{
+  font-size:14px;
+  color:#7fefff;
+}
+
+/* =====================
+   DIGIT FILTER
+===================== */
+.digits{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin:15px;
+}
+
+.digits button{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:#001a3d;
+  border:1px solid #00eaff55;
+  color:#00eaff;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.digits button.active,
+.digits button:hover{
+  background:#00eaff;
+  color:#001a3d;
+  box-shadow:0 0 15px #00eaffaa;
+  transform:scale(1.1);
+}
+
+/* =====================
+   SEARCH
+===================== */
+.search-box{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  padding:0 15px;
+}
+
+.search-box input{
+  width:70%;
+  padding:10px;
+  border-radius:12px;
+  background:#020f24;
+  border:1px solid #00eaff55;
+  color:#00eaff;
+}
+
+.search-box button{
+  padding:10px 16px;
+  border-radius:12px;
+  border:none;
+  background:#00eaff;
+  color:#001a3d;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.search-box button:hover{
+  box-shadow:0 0 20px #00eaff;
+  transform:scale(1.05);
+}
+
+/* =====================
+   PANNA GRID
+===================== */
+#pannaGrid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  padding:15px;
+}
+
+.card{
+  background:#001a3d;
+  border:1px solid #00eaff55;
+  border-radius:16px;
+  padding:15px;
+  text-align:center;
+  box-shadow:0 0 15px #00eaff22;
+}
+
+.card h2{
+  margin-bottom:8px;
+  text-shadow:0 0 10px #00eaff88;
+}
+
+.card input{
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  background:#020f24;
+  border:1px solid #00eaff55;
+  color:#00eaff;
+  text-align:center;
+}
+
+/* =====================
+   SUBMIT
+===================== */
+.submit-btn{
+  display:block;
+  margin:20px auto;
+  padding:14px 30px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#00eaff,#0099ff);
+  color:#001a3d;
+  font-size:16px;
+  font-weight:bold;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 0 25px #00eaffaa;
+  transition:0.3s;
+}
+
+.submit-btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 35px #00eaff;
+}
+
+/* =====================
+   BOTTOM NAV
+===================== */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#001a3d;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  box-shadow:0 -5px 15px #00eaff22;
+}
+
+.bottom-nav div{
+  text-align:center;
+  font-size:12px;
+  color:#00eaffaa;
+}
+
+.bottom-nav .active{
+  background:#00eaff;
+  color:#001a3d;
+  padding:8px 14px;
+  border-radius:12px;
+  box-shadow:0 0 15px #00eaffaa;
+}
+/* =====================
+   BLUE NEON THEME
+===================== */
+
+/* HEADER */
+.header {
+  height: 76px;
+  background: linear-gradient(180deg, #000000, #050505);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(212,175,55,0.45);
+}
+
+/* LOGO AREA */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+/* LOGO IMAGE – CLEAR & PREMIUM */
+.logo img {
+  height: 64px;          /* 🔥 bigger = clarity */
+  width: auto;
+  object-fit: contain;
+  filter: 
+    contrast(1.25)
+    brightness(1.15);
+}
+
+
+/* RIGHT ICONS */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ICON STYLE */
+.header-icons i {
+  font-size: 20px;
+  color: #d4af37;             /* gold tone */
+  cursor: pointer;
+}
+
+/* BALANCE */
+.balance {
+  background: linear-gradient(135deg, #b8962e, #f3da8c);
+  color: #2b1a00;
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 700;
+}
+/* =====================
+   SIDE MENU
+===================== */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 260px;
+  height: 100%;
+  background: #020f24;
+  box-shadow: -5px 0 15px #00eaff44;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.side-menu.active {
+  right: 0;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  color: #00eaff;
+  border-bottom: 1px solid #00eaff55;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #00eaff;
+  cursor: pointer;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 10px;
+}
+
+.menu-list li {
+  padding: 12px;
+  margin-bottom: 8px;
+  background: #001a3d;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid #00eaff33;
+  transition: 0.3s;
+}
+
+.menu-list li:hover {
+  background: #003366;
+  box-shadow: 0 0 10px #00eaff55;
+}
+
+/* =====================
+   BOTTOM NAV
+===================== */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #020f24;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  border-top: 1px solid #00eaff55;
+  box-shadow: 0 -5px 15px #00eaff22;
+}
+
+.nav-item {
+  text-align: center;
+  color: #00eaffaa;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.nav-item i {
+  font-size: 18px;
+  display: block;
+}
+
+.nav-item.center {
+  background: #00eaff;
+  color: #001a3d;
+  padding: 10px 16px;
+  border-radius: 50%;
+  margin-top: -20px;
+  box-shadow: 0 0 20px #00eaff;
+}
+
+.nav-item.center i {
+  color: #001a3d;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">
+    <img src="ka.jpeg" alt="Kalyan Master Logo">
+  </div>
+
+  <div class="header-icons">
+    <i class="fa-solid fa-bell" onclick="goPage('notification.html')"></i>
+
+    <div class="balance" id="balance">₹0.00</div>
+
+    <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+  </div>
+</div>
+
+<!-- SELECTED GAME INFO -->
+<div class="game-info">
+  <h2 id="gameName">Game</h2>
+  <p id="betInfoText">Single Panna • Open</p>
+</div>
+
+<!-- DIGIT FILTER -->
+<div class="digits">
+  <button onclick="filterDigit('1')">1</button>
+  <button onclick="filterDigit('2')">2</button>
+  <button onclick="filterDigit('3')">3</button>
+  <button onclick="filterDigit('4')">4</button>
+  <button onclick="filterDigit('5')">5</button>
+  <button onclick="filterDigit('6')">6</button>
+  <button onclick="filterDigit('7')">7</button>
+  <button onclick="filterDigit('8')">8</button>
+  <button onclick="filterDigit('9')">9</button>
+  <button onclick="filterDigit('0')">0</button>
+</div>
+
+<!-- SEARCH -->
+<div class="search-box">
+  <input id="searchInput" placeholder="Search panna">
+  <button onclick="searchPanna()">Search</button>
+</div>
+
+<!-- PANNA GRID -->
+<div id="pannaGrid"></div>
+
+<button class="submit-btn" onclick="submitBids()">Submit Bids</button>
+
+<!-- BOTTOM NAV -->
+
+<!-- SIDE MENU -->
+<div class="side-menu" id="sideMenu">
+  <div class="menu-header">
+    <h3>Menu</h3>
+    <button class="close-btn" onclick="toggleMenu()">×</button>
+  </div>
+
+  <ul class="menu-list">
+     <li onclick="go('profile.html')">Profile</li>
+    <li onclick="go('add-fund.html')">Deposit</li>
+    <li onclick="go('withdraw.html')">Withdraw</li>
+    <li onclick="go('transition.html')">Transactions</li>
+    <li onclick="go('gamezone.html')">Game Zone</li>
+     <li onclick="go('reer.html')">Refer & Earn</li>
+    <li onclick="go('history.html')">History</li>
+    <li onclick="go('ratio.html')">Ratios</li>
+    <li onclick="go('logout.html')">Logout</li>
+  </ul>
+</div>
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <div class="nav-item" onclick="goPage('reer.html')">
+    <i class="fa-solid fa-user"></i>
+    <span>Refer</span>
+  </div>
+
+  <div class="nav-item" onclick="goPage('history.html')">
+    <i class="fa-solid fa-clock"></i>
+    <span>History</span>
+  </div>
+
+  <div class="nav-item center" onclick="goPage('gamezone.html')">
+    <i class="fa-solid fa-house"></i>
+    <span>Home</span>
+  </div>
+
+  <div class="nav-item" onclick="goPage('bid.html')">
+    <i class="fa-solid fa-gavel"></i>
+    <span>Bid</span>
+  </div>
+
+  <div class="nav-item" onclick="goPage('wallet.html')">
+    <i class="fa-solid fa-wallet"></i>
+    <span>Wallet</span>
+  </div>
+</div>
+
+
+
+<script>
+/* ==============================
+   LOAD BET INFO
+============================== */
+const bet = JSON.parse(localStorage.getItem("betInfo"));
+if(!bet){
+  alert("No game selected");
+  location.href="gamezone.html";
+}
+
+const gameId = bet.gameId || bet.matchId;
+
+/* SHOW GAME DETAILS */
+document.getElementById("gameName").innerText = bet.gameName;
+document.getElementById("betInfoText").innerText =
+  `${bet.betType} • ${bet.betFor.toUpperCase()}`;
+
+/* ==============================
+   SP PANNA DATA
+============================== */
+const pannaMap = {
+ "1":["128","137","146","236","245","290","380","470","489","560","579","678"],
+ "2":["129","138","147","156","237","246","345","390","480","570","589","679"],
+ "3":["120","139","148","157","238","247","256","346","490","580","670","689"],
+ "4":["130","149","158","167","239","248","257","347","356","590","680","789"],
+ "5":["140","159","168","230","249","258","267","348","357","456","690","780"],
+ "6":["123","150","169","178","240","259","268","349","358","367","457","790"],
+ "7":["124","160","278","179","250","269","340","359","368","458","467","890"],
+ "8":["125","134","170","189","260","279","350","369","468","378","459","567"],
+ "9":["126","135","180","234","270","289","360","379","450","469","478","568"],
+ "0":["127","136","145","190","235","280","370","389","460","479","569","578"]
+};
+
+let currentList=[];
+const grid=document.getElementById("pannaGrid");
+
+function render(list){
+  grid.innerHTML="";
+  list.forEach(p=>{
+    grid.innerHTML+=`
+      <div class="card">
+        <h2>${p}</h2>
+        <input id="bid_${p}" type="number" placeholder="₹ Amount">
+      </div>`;
+  });
+}
+
+function filterDigit(d){
+  document.querySelectorAll(".digits button").forEach(b=>b.classList.remove("active"));
+  event.target.classList.add("active");
+  currentList=pannaMap[d];
+  render(currentList);
+}
+
+function searchPanna(){
+  const v=document.getElementById("searchInput").value;
+  render(currentList.filter(p=>p.includes(v)));
+}
+
+function submitBids(){
+  let bids=[],total=0;
+  currentList.forEach(p=>{
+    const v=document.getElementById("bid_"+p);
+    if(v && v.value>0){
+      bids.push({number:p,amount:+v.value});
+      total+=+v.value;
+    }
+  });
+  if(!bids.length) return alert("Enter bid amount");
+
+  localStorage.setItem("pendingBet",JSON.stringify({
+    matchId:gameId,
+    gameName:bet.gameName,
+    betType:bet.betType,
+    betFor:bet.betFor,
+    bids,
+    totalAmount:total
+  }));
+  location.href="bid-details.html";
+}
+function toggleMenu() {
+  document.getElementById("sideMenu").classList.toggle("active");
+}
+
+function goPage(page) {
+  window.location.href = page;
+}
+
+API="https://kalyanmaster.onrender.com/api/auth";
+const token=localStorage.getItem("token");
+
+  /* ===== balance ===== */
+async function loadBalance(){
+  const r=await fetch(API+"/balance",{headers:{Authorization:"Bearer "+token}});
+  const d=await r.json();
+  if(d.success) balance.innerText="₹ "+d.balance;
+}
+function go(page) {
+  window.location.href = page;
+}
+
+loadBalance();
+</script>
+<script src="nav.js"></script>
+</body>
+</html>

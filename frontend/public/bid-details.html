@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bid Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- FONT AWESOME -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+referrerpolicy="no-referrer">
+<link rel="stylesheet" href="global.css">
+  <style>
+/* ===============================
+   RESET
+=============================== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI",sans-serif;
+}
+
+/* ===============================
+   BODY
+=============================== */
+body{
+  background:radial-gradient(circle at top,#0a1a33,#020814);
+  color:#eaf2ff;
+  padding-bottom:90px;
+}
+
+/* ===============================
+   HEADER
+=============================== */
+/* HEADER */
+.header {
+  height: 76px;
+  background: linear-gradient(180deg, #000000, #050505);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(212,175,55,0.45);
+}
+
+/* LOGO AREA */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+/* LOGO IMAGE – CLEAR & PREMIUM */
+.logo img {
+  height: 64px;          /* 🔥 bigger = clarity */
+  width: auto;
+  object-fit: contain;
+  filter: 
+    contrast(1.25)
+    brightness(1.15);
+}
+
+
+/* RIGHT ICONS */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ICON STYLE */
+.header-icons i {
+  font-size: 20px;
+  color: #d4af37;             /* gold tone */
+  cursor: pointer;
+}
+
+/* BALANCE */
+.balance {
+  background: linear-gradient(135deg, #b8962e, #f3da8c);
+  color: #2b1a00;
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 700;
+}
+/* ===============================
+   CARD
+=============================== */
+.card{
+  background:rgba(10,20,45,.9);
+  margin:15px;
+  padding:15px;
+  border-radius:14px;
+  border:1px solid rgba(0,191,255,.4);
+  box-shadow:0 0 18px rgba(0,191,255,.25);
+}
+
+.card h3{
+  margin-bottom:8px;
+  color:#00eaff;
+  text-shadow:0 0 8px rgba(0,191,255,.8);
+}
+
+.card p{
+  margin:4px 0;
+  font-size:14px;
+}
+
+/* ===============================
+   TABLE
+=============================== */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+}
+
+th{
+  color:#00eaff;
+  font-size:13px;
+  border-bottom:1px solid rgba(0,191,255,.6);
+  padding:8px;
+}
+
+td{
+  padding:8px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+/* ===============================
+   TOTAL
+=============================== */
+.total{
+  margin-top:12px;
+  font-size:16px;
+  font-weight:bold;
+  text-align:right;
+  color:#00ffea;
+  text-shadow:0 0 8px rgba(0,255,234,.8);
+}
+
+/* ===============================
+   BUTTONS
+=============================== */
+.btn-box{
+  display:flex;
+  gap:12px;
+  margin:15px;
+}
+
+.btn{
+  flex:1;
+  padding:14px;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+/* BACK */
+.btn.back{
+  background:#1a1f3a;
+  color:#cbd7ff;
+  border:1px solid rgba(0,191,255,.3);
+}
+
+.btn.back:hover{
+  box-shadow:0 0 10px rgba(0,191,255,.4);
+}
+
+/* CONFIRM */
+.btn.confirm{
+  background:linear-gradient(135deg,#0d47ff,#00bfff);
+  color:#fff;
+  box-shadow:0 0 15px rgba(0,191,255,.9);
+}
+
+.btn.confirm:hover{
+  transform:translateY(-1px);
+  box-shadow:0 0 25px rgba(0,191,255,1);
+}
+
+/* ===============================
+   SIDE MENU
+=============================== */
+.side-menu{
+  position:fixed;
+  top:0;
+  left:-270px;
+  width:270px;
+  height:100%;
+  background:#020814;
+  transition:.35s;
+  z-index:1000;
+  padding:15px;
+  box-shadow:0 0 30px rgba(0,191,255,.6);
+}
+
+.side-menu.active{left:0}
+
+.menu-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:#00eaff;
+  margin-bottom:10px;
+}
+
+.menu-list li{
+  list-style:none;
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  cursor:pointer;
+  color:#dce7ff;
+}
+
+.menu-list li:hover{
+  color:#00eaff;
+  text-shadow:0 0 6px rgba(0,191,255,.8);
+}
+
+/* ===============================
+   BOTTOM NAV
+=============================== */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#020814;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  border-top:1px solid rgba(0,191,255,.4);
+  box-shadow:0 -5px 20px rgba(0,191,255,.5);
+}
+
+.nav-item{
+  text-align:center;
+  font-size:12px;
+  color:#bcdcff;
+  cursor:pointer;
+}
+
+.nav-item i{
+  font-size:18px;
+  display:block;
+  margin-bottom:2px;
+  filter:drop-shadow(0 0 6px #00bfff);
+}
+
+.nav-item:hover{
+  color:#00eaff;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- TOP HEADER -->
+<div class="header">
+  <div class="logo">
+    <img src="ka.jpeg" alt="Kalyan Master Logo">
+  </div>
+
+  <div class="header-icons">
+    <i class="fa-solid fa-bell" onclick="goPage('notification.html')"></i>
+
+    <div class="balance" id="balance">₹0.00</div>
+
+    <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+  </div>
+</div>
+<!-- TITLE -->
+<div class="header">
+  <strong>Bid Details</strong>
+</div>
+
+<!-- MARKET INFO -->
+<div class="card">
+  <h3 id="gameName">---</h3>
+  <p id="betTypeText"></p>
+  <p id="betForText"></p>
+</div>
+
+<!-- BID LIST -->
+<div class="card">
+  <h3>Your Bids</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Digit</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody id="bidTable"></tbody>
+  </table>
+
+  <div class="total">
+    Total: ₹ <span id="totalAmount">0</span>
+  </div>
+</div>
+
+<!-- BUTTONS -->
+<div class="btn-box">
+  <button class="btn back" onclick="goBack()">Edit</button>
+  <button class="btn confirm" onclick="confirmBid()">Confirm Bid</button>
+</div>
+
+<!-- SIDE MENU -->
+<div class="side-menu" id="sideMenu">
+  <div class="menu-header">
+    <h3>Menu</h3>
+    <button onclick="toggleMenu()">✕</button>
+  </div>
+  <ul class="menu-list">
+    <li onclick="go('profile.html')">Profile</li>
+    <li onclick="go('add-fund.html')">Deposit</li>
+    <li onclick="go('withdraw.html')">Withdraw</li>
+    <li onclick="go('transition.html')">Transactions</li>
+    <li onclick="go('gamezone.html')">Game Zone</li>
+     <li onclick="go('reer.html')">Refer & Earn</li>
+    <li onclick="go('history.html')">History</li>
+    <li onclick="go('ratio.html')">Ratios</li>
+    <li onclick="go('logout.html')">Logout</li>
+  </ul>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <div class="nav-item" data-page="reer.html">
+    <i class="fa-solid fa-user"></i>
+    <span>Refer</span>
+  </div>
+
+  <div class="nav-item" data-page="history.html">
+    <i class="fa-solid fa-clock"></i>
+    <span>Bid History</span>
+  </div>
+
+  <div class="nav-item center" data-page="gamezone.html">
+    <i class="fa-solid fa-house"></i>
+    <span>Home</span>
+  </div>
+
+  <div class="nav-item" data-page="my-transition.html">
+    <i class="fa-solid fa-gavel"></i>
+    <span>Transaction</span>
+  </div>
+
+  <div class="nav-item" data-page="wallet.html">
+    <i class="fa-solid fa-wallet"></i>
+    <span>Wallet</span>
+  </div>
+
+  <div class="active-indicator"></div>
+</div>
+
+
+
+<script>
+/* ===============================
+   LOAD DATA
+=============================== */
+const pendingBet = JSON.parse(localStorage.getItem("pendingBet") || "null");
+const token = localStorage.getItem("token");
+
+if (!pendingBet || !pendingBet.bids || !pendingBet.bids.length) {
+  alert("No pending bet found");
+  location.href = "play.html";
+}
+
+/* ===============================
+   UI DATA
+=============================== */
+document.getElementById("gameName").innerText = pendingBet.gameName;
+document.getElementById("betTypeText").innerHTML =
+  "<b>Game:</b> " + pendingBet.betType.toUpperCase();
+document.getElementById("betForText").innerHTML =
+  "<b>Type:</b> " + pendingBet.betFor.toUpperCase();
+
+/* ===============================
+   RENDER BET TABLE
+=============================== */
+let total = 0;
+bidTable.innerHTML = "";
+
+pendingBet.bids.forEach(b => {
+  total += Number(b.amount);
+
+  let displayNumber = "";
+
+  // FULL SANGAM
+  if (pendingBet.betType === "fullsangam") {
+    displayNumber = `${b.openPanna} - ${b.closePanna}`;
+  }
+  // ALL OTHER GAMES
+  else {
+    displayNumber = b.number;
+  }
+
+  bidTable.innerHTML += `
+    <tr>
+      <td>${displayNumber}</td>
+      <td>₹ ${b.amount}</td>
+    </tr>
+  `;
+});
+
+totalAmount.innerText = total;
+
+/* ===============================
+   BET TYPE MAP (API FORMAT)
+=============================== */
+const betTypeMap = {
+  single: "single",
+  jodi: "jodi",
+  singlepanna: "singlepanna",
+  doublepanna: "doublepanna",
+  triplepanna: "triplepanna",
+  halfsangam: "halfSangam",
+  "half-sangam": "halfSangam",
+  fullsangam: "fullSangam",
+  "full-sangam": "fullSangam"
+};
+
+/* ===============================
+   CONFIRM BID
+=============================== */
+async function confirmBid() {
+  try {
+    for (const bid of pendingBet.bids) {
+
+      const payload = {
+        matchId: pendingBet.matchId,
+        betType: betTypeMap[pendingBet.betType],
+        betFor: pendingBet.betFor,
+        amount: bid.amount
+      };
+
+      if (pendingBet.betType === "fullsangam") {
+        payload.number = `${bid.openPanna}-${bid.closePanna}`;
+        payload.openPanna = bid.openPanna;
+        payload.closePanna = bid.closePanna;
+      } else {
+        payload.number = bid.number;
+      }
+
+      const res = await fetch(
+        "https://kalyanmaster.onrender.com/api/admin/bet/place",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+          },
+          body: JSON.stringify(payload)
+        }
+      );
+
+      const data = await res.json();
+      if (!res.ok) {
+        alert(data.msg || "Bet failed");
+        return;
+      }
+    }
+
+    alert("🎉 Bet placed successfully!");
+    localStorage.removeItem("pendingBet");
+    location.href = "success.html";
+
+  } catch (err) {
+    console.error(err);
+    alert("Server error");
+  }
+}
+
+/* ===============================
+   LOAD BALANCE
+=============================== */
+async function loadBalance() {
+  try {
+    const r = await fetch("https://kalyanmaster.onrender.com/api/auth/balance", {
+      headers: { Authorization: "Bearer " + token }
+    });
+    const d = await r.json();
+    if (d.success) balance.innerText = "₹ " + d.balance;
+  } catch (e) {
+    console.error("Balance error:", e);
+  }
+}
+
+function go(page) {
+  window.location.href = page;
+}
+
+loadBalance();
+
+/* ===============================
+   UTILITIES
+=============================== */
+function toggleMenu(){ sideMenu.classList.toggle("active"); }
+function goBack(){ history.back(); }
+function goPage(p){ location.href = p; }
+</script>
+<script src="nav.js"></script>
+</body>
+</html>

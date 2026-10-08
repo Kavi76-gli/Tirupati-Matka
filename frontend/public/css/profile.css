@@ -1,0 +1,229 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: radial-gradient(circle at top, #071a2f, #020617);
+  color: #7dd3fc;
+  min-height: 100vh;
+  padding-bottom: 60px; /* only for bottom nav */
+  overflow-x: hidden;
+}
+
+/* ================= APP BAR ================= */
+.app-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: rgba(3, 12, 28, 0.98);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  box-shadow: 0 3px 12px rgba(56,189,248,0.35);
+  z-index: 100;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #38bdf8;
+  font-size: 22px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.app-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #38bdf8;
+}
+
+/* ================= PROFILE CONTAINER ================= */
+.profile-container {
+  max-width: 420px;
+  margin: 70px auto 0; /* exact height of app bar */
+  padding: 0 10px;
+}
+
+/* ================= CARD ================= */
+.card {
+  background: rgba(3, 12, 28, 0.96);
+  padding: 16px;
+  border-radius: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 0 20px rgba(56,189,248,0.35);
+}
+
+/* ================= HEADER CARD ================= */
+.header-card {
+  text-align: center;
+  padding-top: 18px;
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 3px solid #38bdf8;
+  object-fit: cover;
+  margin-bottom: 10px;
+  box-shadow: 0 0 14px rgba(56,189,248,0.7);
+}
+
+#avatarInput {
+  margin: 6px auto 12px;
+  font-size: 12px;
+  color: #7dd3fc;
+}
+
+.header-card h2 {
+  font-size: 20px;
+  margin-top: 4px;
+}
+
+.header-card p {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* ================= INFO CARD ================= */
+.info-card p {
+  font-size: 13px;
+  margin: 6px 0;
+  display: flex;
+  justify-content: space-between;
+  color: #bae6fd;
+}
+
+/* ================= WALLET CARD ================= */
+.wallet-card {
+  text-align: center;
+}
+
+.wallet-card h3 {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.wallet-card h1 {
+  margin: 8px 0 12px;
+  font-size: 28px;
+  color: #38bdf8;
+  text-shadow: 0 0 10px rgba(56,189,248,0.75);
+}
+
+.wallet-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ================= BUTTONS ================= */
+button {
+  padding: 11px;
+  border-radius: 26px;
+  border: none;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #00131f;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+
+button.secondary {
+  background: #1e293b;
+  color: #e0f2fe;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+/* ================= ADMIN CARD ================= */
+.admin-card {
+  border: 2px solid #38bdf8;
+  text-align: center;
+  animation: glow 2s infinite alternate;
+}
+
+.admin-card h3 {
+  color: #38bdf8;
+  margin-bottom: 8px;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 12px rgba(56,189,248,0.4); }
+  to   { box-shadow: 0 0 30px rgba(56,189,248,0.85); }
+}
+
+/* ================= BOTTOM NAV ================= */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: rgba(3, 12, 28, 0.98);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid rgba(56,189,248,0.25);
+}
+
+.bottom-nav div {
+  text-align: center;
+  font-size: 11px;
+  color: #7dd3fc;
+  cursor: pointer;
+}
+
+.bottom-nav .active {
+  color: #38bdf8;
+  text-shadow: 0 0 8px rgba(56,189,248,0.8);
+}
+
+/* ================= DESKTOP ENHANCEMENT ================= */
+@media (min-width: 768px) {
+  .profile-container {
+    margin-top: 80px;
+  }
+}
+/* ================= ADMIN SLIDE DOWN ================= */
+.admin-hidden {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 16px;
+  border-width: 0;
+  transition: all 0.45s ease;
+}
+
+.admin-show {
+  max-height: 300px;
+  opacity: 1;
+  padding: 16px;
+  border-width: 2px;
+}
+.profile-container {
+  max-width: 420px;
+  margin: 56px auto 0;   /* exact app-bar height */
+  padding: 12px;
+  padding-bottom: 90px; /* IMPORTANT: space for bottom nav */
+}
+body {
+  height: 100vh;
+  overflow-y: auto;
+}
+.admin-card {
+  margin-top: 18px;
+}

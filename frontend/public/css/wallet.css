@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f6f6f6;
+}
+
+/* HEADER */
+.header {
+  background: #d60000;
+  color: #fff;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-right span {
+  margin-left: 12px;
+  background: #fff;
+  color: #d60000;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+/* CONTENT */
+.container {
+  padding: 15px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* WALLET CARD */
+.wallet-card {
+  background: #fff;
+  border: 2px solid #d60000;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.wallet-card h1 {
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.wallet-card button {
+  background: #d60000;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* BREAKDOWN */
+.breakdown {
+  background: #fff;
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.breakdown div {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.breakdown div:last-child {
+  border-bottom: none;
+}
+
+/* QUICK OPTIONS */
+.quick-title {
+  margin: 20px 0 10px;
+}
+
+.options {
+  background: #fff;
+  border-radius: 8px;
+}
+
+.option {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  font-weight: bold;
+}
+
+.option:last-child {
+  border-bottom: none;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-top: 1px solid #ddd;
+}
+
+.bottom-nav div {
+  text-align: center;
+  font-size: 12px;
+}
+
+.bottom-nav .home {
+  background: #d60000;
+  color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  margin-top: -25px;
+}
+
+.bottom-nav .active {
+  color: #d60000;
+}

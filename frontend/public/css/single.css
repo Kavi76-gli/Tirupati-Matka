@@ -1,0 +1,148 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f6f6f6;
+}
+
+/* HEADER */
+.header {
+  background: #d71920;
+  color: #fff;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wallet {
+  background: #fff;
+  color: #d71920;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+/* MARKET */
+.market {
+  background: #fff;
+  margin: 12px;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.market-left {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  background: #d71920;
+  color: #fff;
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  margin-right: 10px;
+}
+
+/* SEARCH */
+.search-box {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+
+.search-box button {
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: none;
+  background: #d71920;
+  color: #fff;
+}
+
+/* DIGITS */
+.digits {
+  display: flex;
+  gap: 8px;
+  padding: 0 12px 12px;
+  overflow-x: auto;
+}
+
+.digits button {
+  min-width: 38px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #d71920;
+  background: #fff;
+  color: #d71920;
+  font-weight: bold;
+}
+
+.digits .active {
+  background: #d71920;
+  color: #fff;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 12px;
+}
+
+.card {
+  background: #fff;
+  border: 2px solid #d71920;
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+}
+
+.card h2 {
+  margin: 0 0 10px;
+  font-size: 32px;
+}
+
+.card input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.card .hint {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #555;
+}
+
+/* SUBMIT */
+.submit {
+  padding: 15px;
+}
+
+.submit button {
+  width: 100%;
+  padding: 14px;
+  background: #d71920;
+  color: #fff;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+}

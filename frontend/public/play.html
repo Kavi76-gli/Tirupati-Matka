@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Play Game</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="stylesheet" href="global.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f8fb;
+    min-height:100vh;
+    overflow-x:hidden;
+    padding-top:90px;
+    padding-bottom:100px;
+    position:relative;
+}
+
+/* =======================
+   FLOATING BUBBLES
+======================= */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    z-index:-1;
+    filter:blur(20px);
+}
+
+body::before{
+    width:280px;
+    height:280px;
+    background:rgba(0,168,107,.10);
+    top:-100px;
+    left:-100px;
+    animation:bubble1 10s infinite ease-in-out;
+}
+
+body::after{
+    width:350px;
+    height:350px;
+    background:rgba(0,201,122,.10);
+    right:-120px;
+    bottom:-120px;
+    animation:bubble2 12s infinite ease-in-out;
+}
+
+@keyframes bubble1{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(40px);
+    }
+}
+
+@keyframes bubble2{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-40px);
+    }
+}
+
+/* =======================
+   PREMIUM BLUE NEON HEADER
+======================= */
+/* =======================
+   PREMIUM GREEN NEON HEADER
+======================= */
+
+.top-header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:78px;
+    padding:0 15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:linear-gradient(
+        135deg,
+        #041d12 0%,
+        #065f46 50%,
+        #00a86b 100%
+    );
+    border-bottom:1px solid rgba(0,255,170,.25);
+    box-shadow:
+        0 8px 35px rgba(0,255,140,.18),
+        0 0 30px rgba(0,255,170,.12);
+    overflow:hidden;
+    z-index:1000;
+}
+
+/* Glow Effects */
+
+.top-header::before{
+    content:"";
+    position:absolute;
+    top:-60px;
+    right:-60px;
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    background:rgba(0,255,170,.18);
+    filter:blur(40px);
+}
+
+.top-header::after{
+    content:"";
+    position:absolute;
+    left:-50px;
+    bottom:-50px;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:rgba(0,255,100,.15);
+    filter:blur(35px);
+}
+
+/* =======================
+   BUTTONS
+======================= */
+
+.back-btn,
+.header-icon{
+    position:relative;
+    width:46px;
+    height:46px;
+    border-radius:16px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(0,255,170,.25);
+    backdrop-filter:blur(15px);
+    color:#a7ffda;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:
+        0 0 15px rgba(0,255,170,.18);
+}
+
+.back-btn:hover,
+.header-icon:hover{
+    transform:translateY(-3px);
+    box-shadow:
+        0 0 20px rgba(0,255,170,.45),
+        0 0 40px rgba(0,255,120,.25);
+}
+
+/* =======================
+   CENTER
+======================= */
+
+.header-center{
+    flex:1;
+    padding:0 15px;
+    position:relative;
+    z-index:2;
+}
+
+.market-name-header{
+    color:#ffffff;
+    font-size:21px;
+    font-weight:800;
+    letter-spacing:.5px;
+    text-shadow:
+        0 0 10px rgba(0,255,170,.45);
+}
+
+.market-subtitle{
+    margin-top:2px;
+    color:#b8ffe8;
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+/* =======================
+   RIGHT SIDE
+======================= */
+
+.header-right{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    position:relative;
+    z-index:2;
+}
+
+/* =======================
+   BALANCE
+======================= */
+
+.header-balance{
+    min-width:90px;
+    height:44px;
+    padding:0 16px;
+    border-radius:30px;
+    background:linear-gradient(
+        135deg,
+        #00ff9d,
+        #00c97a
+    );
+    color:#04361f;
+    font-size:15px;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid rgba(255,255,255,.2);
+    box-shadow:
+        0 0 20px rgba(0,255,140,.5),
+        inset 0 1px 2px rgba(255,255,255,.35);
+}
+
+/* =======================
+   MOBILE
+======================= */
+
+@media(max-width:480px){
+
+    .market-name-header{
+        font-size:18px;
+    }
+
+    .market-subtitle{
+        font-size:10px;
+    }
+
+    .header-balance{
+        min-width:75px;
+        padding:0 12px;
+        font-size:14px;
+    }
+}
+/* =======================
+   MARKET CARD
+======================= */
+
+.market-card{
+    margin:20px 15px;
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(20px);
+    border-radius:30px;
+    padding:22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+    animation:cardOpen .8s ease;
+}
+
+.market-left{
+    display:flex;
+    gap:15px;
+    align-items:center;
+}
+
+.market-logo{
+    width:70px;
+    height:70px;
+    border-radius:24px;
+    background:linear-gradient(135deg,#00a86b,#00c97a);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    font-weight:800;
+    box-shadow:0 10px 25px rgba(0,168,107,.3);
+}
+
+.market-info h2{
+    font-size:22px;
+    color:#111827;
+    font-weight:800;
+}
+
+.market-time{
+    color:#64748b;
+    font-size:13px;
+    margin-top:4px;
+}
+
+.market-phase{
+    color:#00a86b;
+    font-size:24px;
+    font-weight:800;
+}
+
+/* ==========================
+   GAME GRID
+========================== */
+
+.game-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+    padding:15px;
+}
+
+/* ==========================
+   GAME CARD
+========================== */
+
+.game-box{
+    background:#ffffff;
+    border-radius:22px;
+    padding:18px 10px;
+    text-align:center;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+    opacity:0;
+    transform:translateY(30px);
+    animation:cardOpen .5s ease forwards;
+}
+
+/* top bubble effect */
+
+.game-box::before{
+    content:"";
+    position:absolute;
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    top:-30px;
+    right:-30px;
+    background:rgba(0,168,107,.08);
+}
+
+.game-box:hover{
+    transform:
+        translateY(-6px)
+        scale(1.02);
+
+    box-shadow:
+        0 15px 30px rgba(0,168,107,.18);
+}
+
+.game-box.disabled{
+    opacity:.45;
+    pointer-events:none;
+}
+
+/* FULL CARD */
+
+.full{
+    grid-column:span 2;
+}
+
+/* ==========================
+   LUDO STICKER
+========================== */
+
+.game-sticker{
+    width:56px;
+    height:56px;
+
+    margin:0 auto 12px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#fff;
+
+    font-size:18px;
+    font-weight:800;
+
+    border:4px solid #fff;
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.15),
+        inset 0 3px 8px rgba(255,255,255,.35);
+}
+
+/* COLORS */
+
+.single{
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+}
+
+.jodi{
+    background:linear-gradient(135deg,#3b82f6,#2563eb);
+}
+
+.singlepanna{
+    background:linear-gradient(135deg,#f97316,#ea580c);
+}
+
+.doublepanna{
+    background:linear-gradient(135deg,#8b5cf6,#7c3aed);
+}
+
+.triplepanna{
+    background:linear-gradient(135deg,#ec4899,#db2777);
+}
+
+.halfsangam{
+    background:linear-gradient(135deg,#06b6d4,#0891b2);
+}
+
+.fullsangam{
+    background:linear-gradient(135deg,#f59e0b,#d97706);
+}
+
+/* ==========================
+   TITLE
+========================== */
+
+.game-title{
+    font-size:14px;
+    font-weight:700;
+    color:#1e293b;
+    line-height:1.3;
+}
+
+/* ==========================
+   ANIMATION
+========================== */
+
+.game-box:nth-child(1){
+    animation-delay:.1s;
+}
+
+.game-box:nth-child(2){
+    animation-delay:.2s;
+}
+
+.game-box:nth-child(3){
+    animation-delay:.3s;
+}
+
+.game-box:nth-child(4){
+    animation-delay:.4s;
+}
+
+.game-box:nth-child(5){
+    animation-delay:.5s;
+}
+
+.game-box:nth-child(6){
+    animation-delay:.6s;
+}
+
+.game-box:nth-child(7){
+    animation-delay:.7s;
+}
+
+@keyframes cardOpen{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(40px)
+            scale(.9);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:480px){
+
+    .game-grid{
+        gap:10px;
+        padding:12px;
+    }
+
+    .game-box{
+        padding:16px 6px;
+        border-radius:18px;
+    }
+
+    .game-sticker{
+        width:46px;
+        height:46px;
+        font-size:15px;
+        margin-bottom:8px;
+    }
+
+    .game-title{
+        font-size:12px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+
+    .full{
+        grid-column:span 2;
+    }
+}
+</style>
+</head>
+<body>
+
+
+
+
+<!-- PREMIUM HEADER -->
+<div class="top-header">
+
+    <div class="back-btn" onclick="history.back()">
+        <i class="fa-solid fa-arrow-left"></i>
+    </div>
+
+    <div class="header-center">
+        <div class="market-name-header" id="marketName">
+            Market Name
+        </div>
+
+        <div class="market-subtitle">
+            Official Game Market
+        </div>
+    </div>
+
+    <div class="header-right">
+
+        <div class="header-icon"
+        onclick="goPage('notification.html')">
+            <i class="fa-solid fa-bell"></i>
+        </div>
+
+        <div class="header-balance"
+        id="balance">
+            ₹0
+        </div>
+
+    </div>
+
+</div>
+
+<!-- MARKET CARD -->
+<div class="market-card">
+
+    <div class="market-left">
+
+        <div class="market-logo"
+        id="marketIcon">
+            M
+        </div>
+
+        <div class="market-info">
+
+            <h2 id="marketTitle">
+                MARKET
+            </h2>
+
+            <div class="market-time"
+            id="marketTime">
+                --:-- --:--
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="market-result">
+
+        <div class="result-label">
+            Current Result
+        </div>
+
+        <div class="market-phase"
+        id="marketPhase">
+            ***-**-***
+        </div>
+
+    </div>
+
+</div>
+
+<div class="game-grid">
+
+    <div class="game-box" id="singleBtn">
+        <div class="game-sticker single">S</div>
+        <div class="game-title">Single</div>
+    </div>
+
+    <div class="game-box" id="jodiBtn">
+        <div class="game-sticker jodi">J</div>
+        <div class="game-title">Jodi</div>
+    </div>
+
+    <div class="game-box" id="singlepannaBtn">
+        <div class="game-sticker singlepanna">SP</div>
+        <div class="game-title">Single Panna</div>
+    </div>
+
+    <div class="game-box" id="doublepannaBtn">
+        <div class="game-sticker doublepanna">DP</div>
+        <div class="game-title">Double Panna</div>
+    </div>
+
+    <div class="game-box" id="triplepannaBtn">
+        <div class="game-sticker triplepanna">TP</div>
+        <div class="game-title">Triple Panna</div>
+    </div>
+
+    <div class="game-box" id="halfsangamBtn">
+        <div class="game-sticker halfsangam">HS</div>
+        <div class="game-title">Half Sangam</div>
+    </div>
+
+    <div class="game-box full" id="fullsangamBtn">
+        <div class="game-sticker fullsangam">FS</div>
+        <div class="game-title">Full Sangam</div>
+    </div>
+
+</div>
+
+<script>
+
+function isAfterOpenTime(openTime) {
+  const now = new Date();
+  const [h, m] = openTime.split(":").map(Number);
+  const open = new Date();
+  open.setHours(h, m, 0, 0);
+  return now >= open;
+}
+
+const API = "http://localhost:5000/api/auth";
+
+(async () => {
+
+  // ==============================
+  // Load Selected Game
+  // ==============================
+  let game = null;
+
+  try {
+    game = JSON.parse(localStorage.getItem("selectedGame"));
+    console.log("Selected Game:", game);
+  } catch (e) {
+    game = null;
+  }
+
+  if (!game || !game.gameId) {
+    alert("Please select a game first!");
+    window.location.href = "gamezone.html";
+    return;
+  }
+
+  const gameId = game.gameId;
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    alert("Please login first!");
+    window.location.href = "login.html";
+    return;
+  }
+
+  // ==============================
+  // Get Latest Game Data
+  // ==============================
+  try {
+    const res = await fetch(`https://kalyanmaster.onrender.com/api/match/gamezone/${gameId}`, {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    });
+
+    const data = await res.json();
+
+    if (data.success && data.game) {
+      game = {
+        ...game,
+        ...data.game
+      };
+    }
+
+  } catch (err) {
+    console.log("Using cached game data");
+  }
+
+  // ==============================
+  // DOM
+  // ==============================
+  const marketName = document.getElementById("marketName");
+  const marketTitle = document.getElementById("marketTitle");
+  const marketIcon = document.getElementById("marketIcon");
+  const marketTime = document.getElementById("marketTime");
+  const marketPhase = document.getElementById("marketPhase");
+
+  // ==============================
+  // Format Time
+  // ==============================
+  function formatTime12(time) {
+
+    if (!time) return "--:--";
+
+    let date;
+
+    if (time.includes("T")) {
+      date = new Date(time);
+    } else {
+      const [h, m] = time.split(":");
+      date = new Date();
+      date.setHours(h, m, 0, 0);
+    }
+
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+
+    const ampm = hours >= 12 ? "PM" : "AM";
+
+    hours = hours % 12 || 12;
+
+    return `${String(hours).padStart(2,"0")}:${String(minutes).padStart(2,"0")} ${ampm}`;
+  }
+
+  // ==============================
+  // Load Balance
+  // ==============================
+  async function loadBalance() {
+
+    const res = await fetch(API + "/balance", {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      balance.innerText = "₹ " + data.balance;
+    }
+  }
+
+  loadBalance();
+
+  // ==============================
+  // Market Info
+  // ==============================
+  marketName.innerText = game.gameName || "Market";
+  marketTitle.innerText = game.gameName || "MARKET";
+  marketIcon.innerText = game.gameName?.charAt(0) || "M";
+
+  marketTime.innerText =
+    `${formatTime12(game.openTime)} – ${formatTime12(game.closeTime)}`;
+
+  // ==============================
+  // Result
+  // ==============================
+  let openPanel = "***";
+  let closePanel = "***";
+  let jodi = "**";
+
+  if (game.openResult?.panel) {
+    openPanel = game.openResult.panel;
+    jodi = game.openResult.single ?? "*";
+  }
+
+  if (game.closeResult?.panel) {
+    closePanel = game.closeResult.panel;
+    jodi = `${game.openResult?.single ?? "*"}${game.closeResult?.single ?? "*"}`;
+  }
+
+  marketPhase.innerText = `${openPanel}-${jodi}-${closePanel}`;
+
+  // ==============================
+  // Disable After Open Time
+  // ==============================
+  if (isAfterOpenTime(game.openTime)) {
+
+    ["jodiBtn", "halfsangamBtn", "fullsangamBtn"].forEach(id => {
+
+      const btn = document.getElementById(id);
+
+      if (btn) {
+        btn.classList.add("disabled");
+      }
+
+    });
+
+  }
+
+  // ==============================
+  // Game Click
+  // ==============================
+  document.querySelectorAll(".game-box").forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+      if (btn.classList.contains("disabled")) return;
+
+      const betType = btn.id.replace("Btn", "");
+
+      localStorage.setItem("betInfo", JSON.stringify({
+
+        gameId: game.gameId,
+        gameName: game.gameName,
+
+        betType: betType,
+
+        betFor: game.openResult?.panel ? "close" : "open",
+
+        openTime: game.openTime,
+        closeTime: game.closeTime
+
+      }));
+
+      // ✅ Every game now opens bet.html
+      window.location.href = "bet.html";
+
+    });
+
+  });
+
+})();
+
+function go(page) {
+  window.location.href = page;
+}
+
+function toggleMenu() {
+  document.getElementById("sideMenu").classList.toggle("active");
+}
+
+</script>
+<script src="nav.js"></script>
+</body>
+</html>

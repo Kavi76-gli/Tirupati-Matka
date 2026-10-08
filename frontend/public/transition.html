@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Transactions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+<link rel="stylesheet" href="global.css">
+<style>
+/* =====================================================
+   GOOGLE FONT
+===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* =====================================================
+   RESET
+===================================================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:#f4f7fb;
+    color:#1e293b;
+    overflow-x:hidden;
+    padding-bottom:95px;
+    position:relative;
+}
+
+/* =====================================================
+   FLOATING BACKGROUND
+===================================================== */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:-1;
+}
+
+body::before{
+    width:250px;
+    height:250px;
+    top:-100px;
+    left:-100px;
+    background:rgba(0,168,107,.08);
+    animation:floatBubble 10s infinite ease-in-out;
+}
+
+body::after{
+    width:300px;
+    height:300px;
+    right:-120px;
+    bottom:-120px;
+    background:rgba(0,211,127,.08);
+    animation:floatBubble 12s infinite ease-in-out;
+}
+
+@keyframes floatBubble{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-35px);
+    }
+}
+
+/* =====================================================
+   PREMIUM HEADER
+===================================================== */
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.top-header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:75px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #00a86b,
+        #00d37f);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 15px;
+
+    z-index:1000;
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 8px 30px rgba(0,168,107,.18);
+
+    animation:headerDrop .8s ease;
+}
+
+/* Add spacing because header is fixed */
+body{
+    padding-top:90px;
+    padding-bottom:90px;
+}
+
+/* Left menu button */
+.menu-icon,
+.header-icon{
+    width:42px;
+    height:42px;
+
+    border-radius:14px;
+
+    background:
+        rgba(255,255,255,.18);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.menu-icon:hover,
+.header-icon:hover{
+    transform:
+        translateY(-3px)
+        scale(1.05);
+
+    background:
+        rgba(255,255,255,.28);
+}
+
+/* =====================================
+   HEADER CENTER
+===================================== */
+/* =====================================
+   HEADER CENTER
+===================================== */
+
+.header-center{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+
+    padding:0 12px;
+
+    min-width:0;
+}
+
+/* Main Title */
+.header-title{
+    color:#fff;
+
+    font-size:18px;
+    font-weight:800;
+
+    line-height:1.2;
+
+    word-break:break-word;
+}
+
+/* Subtitle */
+.header-subtitle{
+    margin-top:2px;
+
+    color:rgba(255,255,255,.9);
+
+    font-size:11px;
+
+    font-weight:500;
+
+    line-height:1.3;
+
+    word-break:break-word;
+}
+/* Right side */
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+/* Balance */
+.header-balance{
+    min-width:90px;
+    height:40px;
+
+    padding:0 16px;
+
+    border-radius:30px;
+
+    background:#fff;
+
+    color:#00a86b;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:700;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.12);
+
+    transition:.3s;
+}
+
+.header-balance:hover{
+    transform:translateY(-2px);
+}
+
+/* Header animation */
+@keyframes headerDrop{
+    from{
+        opacity:0;
+        transform:translateY(-40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo img{
+    height:55px;
+    width:auto;
+    object-fit:contain;
+    transition:.3s;
+}
+
+.logo img:hover{
+    transform:scale(1.05);
+}
+
+/* =====================================================
+   HEADER CENTER
+===================================================== */
+
+.header-center{
+    flex:1;
+    padding:0 14px;
+    min-width:0;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.header-title{
+    color:#1e293b;
+    font-size:18px;
+    font-weight:800;
+    line-height:1.2;
+}
+
+.header-subtitle{
+    margin-top:2px;
+    color:#64748b;
+    font-size:11px;
+    font-weight:500;
+}
+
+/* =====================================================
+   HEADER ICONS
+===================================================== */
+
+.header-icons{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.header-icons i{
+    width:42px;
+    height:42px;
+
+    border-radius:14px;
+
+    background:#ffffff;
+
+    color:#00a86b;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.08);
+
+    transition:.3s;
+}
+
+.header-icons i:hover{
+    transform:
+        translateY(-4px)
+        scale(1.05);
+
+    background:#00a86b;
+    color:#fff;
+}
+
+/* =====================================================
+   BALANCE
+===================================================== */
+
+.balance{
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00a86b,
+            #00d37f);
+
+    color:#fff;
+
+    font-size:14px;
+    font-weight:700;
+
+    box-shadow:
+        0 10px 20px rgba(0,168,107,.25);
+}
+
+/* =====================================================
+   PAGE TITLE
+===================================================== */
+
+.page-title{
+    margin:15px;
+
+    height:85px;
+
+    border-radius:24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00a86b,
+            #00d37f);
+
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:28px;
+    font-weight:800;
+
+    box-shadow:
+        0 15px 35px rgba(0,168,107,.25);
+
+    animation:bubbleOpen .8s forwards;
+}
+
+/* =====================================================
+   TABS
+===================================================== */
+
+.tabs{
+    display:flex;
+    gap:10px;
+    margin:15px;
+
+    animation:bubbleOpen .8s .1s forwards;
+
+    opacity:0;
+}
+
+.tabs button{
+    flex:1;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#fff;
+
+    color:#64748b;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.08);
+}
+
+.tabs button:hover{
+    transform:translateY(-3px);
+}
+
+.tabs .active{
+    background:
+        linear-gradient(
+            135deg,
+            #00a86b,
+            #00d37f);
+
+    color:#fff;
+}
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.card{
+    margin:15px;
+    padding:22px;
+
+    background:#fff;
+
+    border-radius:24px;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+    opacity:0;
+
+    animation:
+        bubbleOpen .8s .2s forwards;
+}
+
+.card:hover{
+    transform:
+        translateY(-6px)
+        scale(1.01);
+
+    box-shadow:
+        0 20px 45px rgba(0,168,107,.12);
+}
+
+.card h3{
+    margin-bottom:20px;
+    color:#00a86b;
+    font-weight:700;
+}
+
+/* =====================================================
+   PAGE ANIMATION
+===================================================== */
+
+@keyframes bubbleOpen{
+
+    0%{
+        opacity:0;
+        transform:
+            translateY(60px)
+            scale(.85);
+        filter:blur(10px);
+    }
+
+    60%{
+        opacity:1;
+        transform:
+            translateY(-8px)
+            scale(1.03);
+    }
+
+    100%{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+        filter:blur(0);
+    }
+}
+
+/* =====================================================
+   FORM
+===================================================== */
+
+input,
+select{
+    width:100%;
+
+    height:55px;
+
+    padding:0 16px;
+
+    margin-bottom:14px;
+
+    border:1px solid #dbe3eb;
+
+    border-radius:16px;
+
+    background:#f8fafc;
+
+    color:#1e293b;
+
+    font-size:15px;
+
+    transition:.3s;
+}
+
+input:focus,
+select:focus{
+    outline:none;
+
+    border-color:#00a86b;
+
+    box-shadow:
+        0 0 0 4px rgba(0,168,107,.12);
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.submit-btn{
+    width:100%;
+    height:55px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00a86b,
+            #00d37f);
+
+    color:#fff;
+
+    font-size:16px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.submit-btn:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(0,168,107,.25);
+}
+
+/* =====================================================
+   NOTE
+===================================================== */
+
+.note{
+    margin-top:15px;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    background:#f8fafc;
+
+    color:#64748b;
+
+    line-height:1.7;
+
+    font-size:14px;
+}
+
+/* =====================================================
+   SIDE MENU
+===================================================== */
+.menu-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(4px);
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+    z-index:9998;
+}
+
+.menu-overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.side-menu{
+    position:fixed;
+    top:0;
+    left:-330px;
+    width:320px;
+    height:100%;
+    background:#ffffff;
+    z-index:9999;
+    transition:.4s ease;
+    overflow-y:auto;
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+
+.side-menu.active{
+    left:0;
+}
+
+.menu-header{
+    padding:25px;
+    background:linear-gradient(135deg,#00a86b,#00d37f);
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.menu-user{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.menu-logo{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:rgba(255,255,255,.2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+}
+
+.close-menu{
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.2);
+    color:#fff;
+    font-size:20px;
+}
+
+.menu-list{
+    list-style:none;
+    padding:15px;
+}
+
+.menu-list li{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px;
+    margin-bottom:12px;
+    border-radius:20px;
+    background:#fff;
+    box-shadow:0 5px 15px rgba(0,0,0,.06);
+    cursor:pointer;
+    transition:.3s;
+}
+
+.menu-list li:hover{
+    transform:translateX(8px);
+    background:#f0fff7;
+}
+
+.menu-item-left{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.menu-icon-box{
+    width:50px;
+    height:50px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:18px;
+}
+
+.icon-profile{background:#3b82f6;}
+.icon-wallet{background:#00a86b;}
+.icon-withdraw{background:#ef4444;}
+.icon-transaction{background:#8b5cf6;}
+.icon-game{background:#f59e0b;}
+.icon-refer{background:#ec4899;}
+.icon-history{background:#06b6d4;}
+.icon-ratio{background:#6366f1;}
+.icon-logout{background:#dc2626;}
+
+.menu-title{
+    font-weight:700;
+    color:#1e293b;
+}
+
+.menu-subtitle{
+    font-size:12px;
+    color:#64748b;
+}
+
+.menu-arrow{
+    color:#94a3b8;
+}
+
+.menu-footer{
+    text-align:center;
+    padding:20px;
+    color:#94a3b8;
+    font-size:13px;
+}
+/* =====================================
+   MENU MAGNET EFFECT
+===================================== */
+
+.side-menu.active .menu-list li{
+    opacity:0;
+    transform:translateX(-40px);
+    animation:menuMagnet .5s forwards;
+}
+
+.side-menu.active .menu-list li:nth-child(1){animation-delay:.05s;}
+.side-menu.active .menu-list li:nth-child(2){animation-delay:.1s;}
+.side-menu.active .menu-list li:nth-child(3){animation-delay:.15s;}
+.side-menu.active .menu-list li:nth-child(4){animation-delay:.2s;}
+.side-menu.active .menu-list li:nth-child(5){animation-delay:.25s;}
+.side-menu.active .menu-list li:nth-child(6){animation-delay:.3s;}
+.side-menu.active .menu-list li:nth-child(7){animation-delay:.35s;}
+.side-menu.active .menu-list li:nth-child(8){animation-delay:.4s;}
+.side-menu.active .menu-list li:nth-child(9){animation-delay:.45s;}
+
+@keyframes menuMagnet{
+    0%{
+        opacity:0;
+        transform:translateX(-40px) scale(.9);
+    }
+
+    70%{
+        transform:translateX(10px) scale(1.03);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateX(0) scale(1);
+    }
+}
+/* =========================
+   MENU HEADER
+========================= */
+
+.menu-header{
+
+    background:
+    linear-gradient(
+    135deg,
+    #00a86b,
+    #00c97a);
+
+    padding:15px;
+
+    position:relative;
+}
+
+.close-btn{
+
+    position:absolute;
+
+    right:12px;
+    top:12px;
+
+    width:36px;
+    height:36px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.2);
+
+    color:#fff;
+
+    font-size:22px;
+
+    cursor:pointer;
+}
+
+/* =========================
+   PROFILE CARD
+========================= */
+
+.menu-profile{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:#fff;
+}
+
+.menu-avatar{
+
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.2);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:24px;
+}
+
+.menu-user h4{
+    font-size:18px;
+}
+
+.menu-user p{
+    font-size:12px;
+    opacity:.9;
+}
+
+.menu-balance{
+
+    margin-top:8px;
+
+    background:#fff;
+
+    color:#00a86b;
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-weight:700;
+}
+
+/* ===========================
+   TRANSACTION LIST
+=========================== */
+
+#transactionList{
+
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+/* Card */
+
+.txn-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:15px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+    transition:.25s;
+}
+
+.txn-card:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.txn-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+}
+
+.txn-icon{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:22px;
+
+    font-weight:bold;
+}
+
+.credit{
+
+    background:#dcfce7;
+
+    color:#16a34a;
+}
+
+.debit{
+
+    background:#fee2e2;
+
+    color:#dc2626;
+}
+
+.txn-title{
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#222;
+}
+
+.txn-date{
+
+    margin-top:4px;
+
+    font-size:12px;
+
+    color:#888;
+}
+
+.txn-right{
+
+    text-align:right;
+}
+
+.txn-amount{
+
+    font-size:18px;
+
+    font-weight:700;
+}
+
+.txn-status{
+
+    margin-top:4px;
+
+    font-size:12px;
+
+    text-transform:capitalize;
+}
+
+.txn-status.APPROVED{
+
+    color:#16a34a;
+}
+
+.txn-status.PENDING{
+
+    color:#d97706;
+}
+
+.txn-status.REJECTED{
+
+    color:#dc2626;
+}
+
+/* Empty */
+
+.empty{
+
+    text-align:center;
+
+    padding:40px;
+
+    color:#999;
+
+    font-weight:600;
+}
+/* =====================================================
+   BOTTOM NAV
+===================================================== */
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+
+    width:100%;
+    height:72px;
+
+    background:#ffffff;
+
+    border-top:
+        1px solid #e5e7eb;
+
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+
+    box-shadow:
+        0 -10px 25px rgba(0,0,0,.06);
+
+    z-index:999;
+}
+
+.nav-item{
+    flex:1;
+    text-align:center;
+    color:#64748b;
+    cursor:pointer;
+}
+
+.nav-item i{
+    display:block;
+    font-size:20px;
+    margin-bottom:4px;
+}
+
+.nav-item span{
+    font-size:11px;
+    font-weight:600;
+}
+
+.nav-item.active{
+    color:#00a86b;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:768px){
+
+    .page-title{
+        font-size:24px;
+        height:80px;
+    }
+
+    .side-menu{
+        width:280px;
+    }
+
+    table{
+        font-size:12px;
+    }
+
+    thead{
+        display:none;
+    }
+
+    tbody tr{
+        display:block;
+        margin-bottom:12px;
+        background:#f8fafc;
+        border-radius:16px;
+        padding:10px;
+    }
+
+    tbody td{
+        display:flex;
+        justify-content:space-between;
+        border:none;
+        padding:6px 0;
+    }
+
+    tbody td::before{
+        content:attr(data-label);
+        font-weight:700;
+        color:#00a86b;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+<div class="top-header">
+
+    <div class="menu-icon" onclick="toggleMenu()">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <div class="header-center">
+        <div class="header-title">Kalyan Master</div>
+        <div class="header-subtitle">Official Ratio Chart</div>
+    </div>
+
+    <div class="header-right">
+
+        <div class="header-icon"
+        onclick="goPage('notification.html')">
+            <i class="fa-solid fa-bell"></i>
+        </div>
+
+        <div class="header-balance"
+        id="balance">
+            ₹0
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="page-title">Transactions</div>
+<!-- TABS -->
+<div class="tabs">
+  <button onclick="go('add-fund.html')">Add Cash</button>
+  <button onclick="go('withdraw.html')">Withdraw</button>
+  <button class="active">Transactions</button>
+</div>
+
+<!-- ================= TRANSACTIONS ================= -->
+<div class="card">
+  <h3>Wallet Transactions</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+      <th>Amount</th>
+      <th>Method</th>
+      <th>Status</th>
+      <th>Date</th>
+      </tr>
+    </thead>
+    <tbody id="txnBody"></tbody>
+  </table>
+
+  <div id="empty" class="empty" style="display:none;">
+    No Transactions Found
+</div>
+
+<div id="transactionList"></div>
+</div>
+
+
+<!-- MENU OVERLAY -->
+
+<div
+class="menu-overlay"
+id="menuOverlay"
+onclick="toggleMenu()">
+</div>
+
+<!-- SIDE MENU -->
+
+<div class="side-menu" id="sideMenu">
+
+    <div class="menu-header">
+
+        <div class="menu-profile">
+
+            <div class="menu-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="menu-user">
+
+                <h4 id="menuUserName">
+                    Loading...
+                </h4>
+
+                <p id="menuUserPhone">
+                    +91 XXXXX XXXXX
+                </p>
+
+                <div class="menu-balance">
+                    ₹ <span id="menuBalance">0</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <button
+        class="close-btn"
+        onclick="toggleMenu()">
+            ×
+        </button>
+
+    </div>
+
+    <ul class="menu-list">
+
+        <!-- PROFILE -->
+
+        <li onclick="go('profile.html')">
+
+            <div class="menu-item-left">
+
+                <div class="menu-icon-box icon-profile">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div>
+
+                    <div class="menu-title">
+                        Profile
+                    </div>
+
+                    <div class="menu-subtitle">
+                        Manage Account
+                    </div>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right menu-arrow"></i>
+
+        </li>
+
+        <!-- DEPOSIT -->
+
+        <li onclick="go('add-fund.html')">
+
+            <div class="menu-item-left">
+
+                <div class="menu-icon-box icon-wallet">
+                    <i class="fa-solid fa-wallet"></i>
+                </div>
+
+                <div>
+
+                    <div class="menu-title">
+                        Deposit
+                    </div>
+
+                    <div class="menu-subtitle">
+                        Add Fund
+                    </div>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right menu-arrow"></i>
+
+        </li>
+
+        <!-- WITHDRAW -->
+
+        <li onclick="go('withdraw.html')">
+
+            <div class="menu-item-left">
+
+                <div class="menu-icon-box icon-withdraw">
+                    <i class="fa-solid fa-money-bill-wave"></i>
+                </div>
+
+                <div>
+
+                    <div class="menu-title">
+                        Withdraw
+                    </div>
+
+                    <div class="menu-subtitle">
+                        Withdraw Money
+                    </div>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right menu-arrow"></i>
+
+        </li>
+
+        <!-- TRANSACTIONS -->
+
+        <li onclick="go('transition.html')">
+
+            <div class="menu-item-left">
+
+                <div class="menu-icon-box icon-transaction">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+
+                <div>
+
+                    <div class="menu-title">
+                        Transactions
+                    </div>
+
+                    <div class="menu-subtitle">
+                        Payment History
+                    </div>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right menu-arrow"></i>
+
+        </li>
+
+        <!-- GAME ZONE -->
+
+        <li onclick="go('gamezone.html')">
+
+            <div class="menu-item-left">
+
+                <div class="menu-icon-box icon-game">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+
+                <div>
+
+                    <div class="menu-title">
+                        Game Zone
+                    </div>
+
+                    <div class="menu-subtitle">
+                        Market Games
+                    </div>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right menu-arrow"></i>
+
+        </li>
+
+        <!-- REFER -->
+
+        <li onclick="go('reer.html')">
+
+            <div class="menu-item-left">
+
+                <div class="menu-icon-box icon-refer">
+                    <i class="fa-solid fa-gift"></i>
+                </div>
+
+                <div>
+
+                    <div class="menu-title">
+                        Refer & Earn
+                    </div>
+
+                    <div class="menu-subtitle">
+                        Invite Friends
+                    </div>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right menu-arrow"></i>
+
+        </li>
+
+        <!-- HISTORY -->
+
+        <li onclick="go('history.html')">
+
+            <div class="menu-item-left">
+
+                <div class="menu-icon-box icon-history">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
+
+                <div>
+
+                    <div class="menu-title">
+                        History
+                    </div>
+
+                    <div class="menu-subtitle">
+                        Game Records
+                    </div>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right menu-arrow"></i>
+
+        </li>
+
+        <!-- RATIOS -->
+
+        <li onclick="go('ratio.html')">
+
+            <div class="menu-item-left">
+
+                <div class="menu-icon-box icon-ratio">
+                    <i class="fa-solid fa-chart-pie"></i>
+                </div>
+
+                <div>
+
+                    <div class="menu-title">
+                        Ratios
+                    </div>
+
+                    <div class="menu-subtitle">
+                        Market Rates
+                    </div>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right menu-arrow"></i>
+
+        </li>
+
+        <!-- LOGOUT -->
+
+        <li onclick="logout()">
+
+            <div class="menu-item-left">
+
+                <div class="menu-icon-box icon-logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </div>
+
+                <div>
+
+                    <div class="menu-title">
+                        Logout
+                    </div>
+
+                    <div class="menu-subtitle">
+                        Sign Out
+                    </div>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right menu-arrow"></i>
+
+        </li>
+
+    </ul>
+
+    <!-- FOOTER -->
+
+    <div class="menu-footer">
+
+        Version 1.0
+
+    </div>
+
+
+
+
+
+
+<script>
+const API = "http://localhost:5000/api";
+const token = localStorage.getItem("token");
+
+if (!token) {
+    window.location.href = "auth.html";
+}
+
+/* ================= NAVIGATION ================= */
+function go(page) {
+    window.location.href = page;
+}
+
+/* ================= MENU ================= */
+function toggleMenu() {
+    const sideMenu = document.getElementById("sideMenu");
+    const overlay = document.getElementById("menuOverlay");
+
+    if (sideMenu) sideMenu.classList.toggle("active");
+    if (overlay) overlay.classList.toggle("active");
+}
+
+/* ================= LOAD BALANCE ================= */
+async function loadBalance() {
+    try {
+        const res = await fetch(API + "/auth/balance", {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+            const balanceEl = document.getElementById("balance");
+            if (balanceEl) {
+                balanceEl.innerText =
+                    "₹ " + Number(data.balance || 0).toFixed(2);
+            }
+        }
+
+    } catch (err) {
+        console.log("Balance Error:", err);
+    }
+}
+
+/* ================= LOAD USER ================= */
+async function loadUserInfo() {
+    try {
+        const res = await fetch(API + "/auth/profile", {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+            const user = data.user;
+
+            const nameEl = document.getElementById("menuUserName");
+            const phoneEl = document.getElementById("menuUserPhone");
+            const menuBalance = document.getElementById("menuBalance");
+
+            if (nameEl) nameEl.innerText = user.name || "Player";
+            if (phoneEl) phoneEl.innerText = user.phone || "-";
+            if (menuBalance) {
+                menuBalance.innerText =
+                    Math.floor(user.wallet || 0);
+            }
+        }
+
+    } catch (err) {
+        console.log("User Load Error:", err);
+    }
+}
+
+/* ================= TRANSACTIONS ================= */
+async function fetchTransactions() {
+
+    try {
+
+        const res = await fetch(API + "/auth/transactions", {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        });
+
+        const data = await res.json();
+
+        const list = document.getElementById("transactionList");
+        const empty = document.getElementById("empty");
+
+        list.innerHTML = "";
+
+        if (!data.transactions || data.transactions.length === 0) {
+
+            empty.style.display = "block";
+            return;
+
+        }
+
+        empty.style.display = "none";
+
+        data.transactions.forEach(txn => {
+
+            const card = document.createElement("div");
+
+            card.className = "txn-card";
+
+            const isCredit =
+                ["deposit","admin_update","win","bonus"]
+                .includes(txn.type);
+
+            const icon = isCredit ? "⬇️" : "⬆️";
+
+            const amountColor =
+                isCredit ? "credit" : "debit";
+
+            const date =
+                txn.createdAt
+                ? new Date(txn.createdAt).toLocaleString()
+                : "-";
+
+            card.innerHTML = `
+
+                <div class="txn-left">
+
+                    <div class="txn-icon ${amountColor}">
+                        ${icon}
+                    </div>
+
+                    <div>
+
+                        <div class="txn-title">
+                            ${txn.type.replace("_"," ").toUpperCase()}
+                        </div>
+
+                        <div class="txn-date">
+                            ${date}
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="txn-right">
+
+                    <div class="txn-amount ${amountColor}">
+                        ${isCredit?"+":"-"} ₹${Number(txn.amount).toFixed(2)}
+                    </div>
+
+                    <div class="txn-status ${txn.status}">
+                        ${txn.status}
+                    </div>
+
+                </div>
+
+            `;
+
+            list.appendChild(card);
+
+        });
+
+    }
+
+    catch(err){
+
+        console.log(err);
+
+    }
+
+}
+/* ================= CARD ANIMATION ================= */
+function animateCards() {
+    const cards = document.querySelectorAll(".ratio-card");
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+        });
+    }, {
+        threshold: 0.15
+    });
+
+    cards.forEach(card => observer.observe(card));
+}
+
+/* ================= NAV ITEMS ================= */
+document.querySelectorAll(".nav-item").forEach(item => {
+    item.onclick = () => {
+        location.href = item.dataset.page;
+    };
+});
+
+/* ================= INIT ================= */
+document.addEventListener("DOMContentLoaded", () => {
+    loadBalance();
+    loadUserInfo();
+    fetchTransactions();
+    animateCards();
+});
+</script>
+<script src="nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,2495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>Gali Betting</title>
+
+    <!-- Poppins -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --green: #159447;
+            --green-dark: #087a38;
+            --green-light: #eaf8ef;
+            --green-soft: #f4fcf6;
+            --white: #ffffff;
+            --bg: #f5f7f6;
+            --text: #17231c;
+            --muted: #78847d;
+            --border: #e3e9e5;
+            --danger: #e53935;
+            --shadow: 0 8px 25px rgba(20, 75, 43, 0.08);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 68px;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .menu-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            background: var(--green-light);
+            color: var(--green-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand strong {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--green-dark);
+        }
+
+        .brand span {
+            font-size: 9px;
+            color: var(--muted);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .wallet-mini {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--green-light);
+            color: var(--green-dark);
+            padding: 9px 12px;
+            border-radius: 13px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .wallet-mini i {
+            font-size: 13px;
+        }
+
+        /* =========================
+           PAGE
+        ========================= */
+
+        .page {
+            width: min(100%, 720px);
+            margin: auto;
+            padding: 18px 14px 110px;
+        }
+
+        /* =========================
+           GAME CARD
+        ========================= */
+
+        .game-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 18px;
+            box-shadow: var(--shadow);
+            margin-bottom: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card::after {
+            content: "";
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: rgba(21, 148, 71, 0.06);
+            right: -55px;
+            top: -55px;
+        }
+
+        .game-top {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .game-info {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .game-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            background: var(--green-light);
+            color: var(--green-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .game-info h2 {
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .game-info p {
+            margin-top: 3px;
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 500;
+        }
+
+        .bet-type-badge {
+            position: relative;
+            z-index: 2;
+            padding: 7px 11px;
+            background: var(--green);
+            color: white;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .time-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .time-box {
+            flex: 1;
+            background: var(--green-soft);
+            border: 1px solid #e5f1e8;
+            border-radius: 13px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 9px;
+            color: var(--muted);
+        }
+
+        .time-box strong {
+            display: block;
+            margin-top: 2px;
+            color: var(--green-dark);
+            font-size: 11px;
+        }
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        .section {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 17px;
+            box-shadow: var(--shadow);
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .section-title h3 {
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .section-title span {
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        /* =========================
+           SINGLE SIDE SELECTOR
+        ========================= */
+
+        .side-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .side-btn {
+            min-height: 58px;
+            border: 1.5px solid var(--border);
+            background: white;
+            color: var(--text);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            font-size: 13px;
+            font-weight: 800;
+            transition: 0.2s ease;
+        }
+
+        .side-btn i {
+            color: var(--green);
+        }
+
+        .side-btn.active {
+            background: var(--green);
+            color: white;
+            border-color: var(--green);
+            box-shadow: 0 8px 18px rgba(21, 148, 71, 0.20);
+            transform: translateY(-1px);
+        }
+
+        .side-btn.active i {
+            color: white;
+        }
+
+        .side-required {
+            margin-top: 9px;
+            color: var(--danger);
+            font-size: 10px;
+            display: none;
+        }
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-box {
+            position: relative;
+            margin-bottom: 14px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .search-box input {
+            width: 100%;
+            height: 45px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            outline: none;
+            padding: 0 14px 0 40px;
+            background: #fafcfb;
+            font-size: 12px;
+            color: var(--text);
+        }
+
+        .search-box input:focus {
+            border-color: var(--green);
+            background: white;
+        }
+
+        /* =========================
+           DIGIT FILTER
+        ========================= */
+
+        .filter-row {
+            display: flex;
+            gap: 7px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+            margin-bottom: 14px;
+            scrollbar-width: none;
+        }
+
+        .filter-row::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-btn {
+            min-width: 38px;
+            height: 34px;
+            border-radius: 11px;
+            background: #f4f7f5;
+            color: #66736b;
+            border: 1px solid var(--border);
+            font-size: 11px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .filter-btn.active {
+            background: var(--green);
+            border-color: var(--green);
+            color: white;
+        }
+
+        /* =========================
+           DIGIT GRID
+        ========================= */
+
+        .digit-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .digit-card {
+            border: 1px solid var(--border);
+            background: #fff;
+            border-radius: 16px;
+            padding: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 9px;
+            min-height: 65px;
+            transition: 0.2s ease;
+        }
+
+        .digit-card:focus-within {
+            border-color: var(--green);
+            box-shadow: 0 4px 14px rgba(21, 148, 71, 0.10);
+        }
+
+        .digit-number {
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            background: var(--green-light);
+            color: var(--green-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .amount-wrap {
+            position: relative;
+            flex: 1;
+        }
+
+        .amount-wrap span {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 11px;
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        .amount-input {
+            width: 100%;
+            height: 42px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0 8px 0 25px;
+            outline: none;
+            font-size: 12px;
+            font-weight: 600;
+            background: #fafcfb;
+        }
+
+        .amount-input:focus {
+            border-color: var(--green);
+            background: white;
+        }
+
+        /* =========================
+           JODI
+        ========================= */
+
+        .jodi-note {
+            background: var(--green-soft);
+            border: 1px solid #e2f0e5;
+            color: var(--green-dark);
+            border-radius: 13px;
+            padding: 10px 12px;
+            font-size: 10px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .jodi-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 9px;
+        }
+
+        .jodi-card {
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            background: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .jodi-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--green-light);
+            color: var(--green-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .jodi-input-wrap {
+            position: relative;
+            flex: 1;
+        }
+
+        .jodi-input-wrap span {
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .jodi-input {
+            width: 100%;
+            height: 39px;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            padding-left: 22px;
+            outline: none;
+            background: #fafcfb;
+            font-size: 11px;
+        }
+
+        .jodi-input:focus {
+            border-color: var(--green);
+            background: white;
+        }
+
+        /* =========================
+           SUMMARY
+        ========================= */
+
+        .summary {
+            position: sticky;
+            bottom: 78px;
+            z-index: 500;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            box-shadow: 0 -5px 25px rgba(0,0,0,0.07);
+            border-radius: 18px;
+            padding: 12px;
+            margin-top: 14px;
+        }
+
+        .summary-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 9px;
+        }
+
+        .summary-row span {
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .summary-row strong {
+            color: var(--green-dark);
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .confirm-btn {
+            width: 100%;
+            height: 49px;
+            border-radius: 15px;
+            background: var(--green);
+            color: white;
+            font-size: 13px;
+            font-weight: 800;
+            box-shadow: 0 8px 18px rgba(21,148,71,0.20);
+            transition: 0.2s ease;
+        }
+
+        .confirm-btn:active {
+            transform: scale(0.98);
+        }
+
+        .confirm-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* =========================
+           SIDE MENU
+        ========================= */
+
+        .menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.38);
+            z-index: 1500;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.25s ease;
+        }
+
+        .menu-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .side-menu {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: min(300px, 82vw);
+            background: white;
+            z-index: 1600;
+            transform: translateX(-100%);
+            transition: 0.28s ease;
+            padding: 22px 15px;
+            box-shadow: 8px 0 30px rgba(0,0,0,0.12);
+        }
+
+        .side-menu.show {
+            transform: translateX(0);
+        }
+
+        .menu-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .menu-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-logo {
+            width: 43px;
+            height: 43px;
+            border-radius: 13px;
+            background: var(--green);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-brand strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .menu-brand span {
+            display: block;
+            font-size: 9px;
+            color: var(--muted);
+        }
+
+        .close-menu {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: #f3f5f4;
+            color: #657169;
+        }
+
+        .menu-links {
+            margin-top: 18px;
+            display: grid;
+            gap: 7px;
+        }
+
+        .menu-link {
+            height: 49px;
+            width: 100%;
+            background: transparent;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 0 13px;
+            color: #4f5b54;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .menu-link i {
+            width: 20px;
+            color: var(--green);
+            text-align: center;
+        }
+
+        .menu-link:hover {
+            background: var(--green-light);
+            color: var(--green-dark);
+        }
+
+        /* =========================
+           BOTTOM NAV
+        ========================= */
+
+        .bottom-nav {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+            height: 70px;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(15px);
+            border-top: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .bottom-item {
+            background: transparent;
+            color: #89938d;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+        .bottom-item i {
+            font-size: 17px;
+        }
+
+        .bottom-item.active {
+            color: var(--green);
+        }
+
+        /* =========================
+           TOAST
+        ========================= */
+
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 88px;
+            transform: translate(-50%, 20px);
+            background: #17231c;
+            color: white;
+            padding: 11px 15px;
+            border-radius: 13px;
+            font-size: 11px;
+            font-weight: 600;
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.25s ease;
+            max-width: calc(100vw - 30px);
+            text-align: center;
+        }
+
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 0);
+        }
+
+        .toast.error {
+            background: #c62828;
+        }
+
+        .toast.success {
+            background: var(--green-dark);
+        }
+
+        /* =========================
+           LOADER
+        ========================= */
+
+        .loader-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+            background: rgba(255,255,255,0.78);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s ease;
+        }
+
+        .loader-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .loader-box {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 20px 24px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .loader {
+            width: 30px;
+            height: 30px;
+            border: 3px solid #dce9df;
+            border-top-color: var(--green);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: auto;
+        }
+
+        .loader-box p {
+            margin-top: 10px;
+            font-size: 11px;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* =========================
+           EMPTY
+        ========================= */
+
+        .empty {
+            grid-column: 1 / -1;
+            padding: 25px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .empty i {
+            display: block;
+            font-size: 25px;
+            margin-bottom: 8px;
+            color: #b9c7be;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 430px) {
+            .page {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .game-card,
+            .section {
+                border-radius: 19px;
+            }
+
+            .digit-grid,
+            .jodi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .wallet-mini {
+                padding: 8px 9px;
+            }
+
+            .wallet-mini span {
+                max-width: 70px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+
+        @media (min-width: 600px) {
+            .digit-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .jodi-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div class="header-left">
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Open menu"
+        >
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="brand">
+            <strong>Gali Betting</strong>
+            <span>PREMIUM PLAY</span>
+        </div>
+
+    </div>
+
+    <div class="wallet-mini">
+        <i class="fa-solid fa-wallet"></i>
+        <span id="walletBalance">₹0</span>
+    </div>
+
+</header>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="page">
+
+    <!-- GAME CARD -->
+
+    <section class="game-card">
+
+        <div class="game-top">
+
+            <div class="game-info">
+
+                <div class="game-icon">
+                    <i class="fa-solid fa-dice"></i>
+                </div>
+
+                <div>
+                    <h2 id="gameName">Gali Game</h2>
+                    <p id="gameSubtitle">
+                        Select your betting option
+                    </p>
+                </div>
+
+            </div>
+
+            <div
+                class="bet-type-badge"
+                id="betTypeBadge"
+            >
+                SINGLE
+            </div>
+
+        </div>
+
+        <div class="time-row">
+
+            <div class="time-box">
+                <span>OPEN</span>
+                <strong id="openTime">--:--</strong>
+            </div>
+
+            <div class="time-box">
+                <span>CLOSE</span>
+                <strong id="closeTime">--:--</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SINGLE SIDE SELECTOR
+    ========================= -->
+
+    <section
+        class="section"
+        id="singleSideSection"
+    >
+
+        <div class="section-title">
+            <h3>Select Side</h3>
+            <span>Required</span>
+        </div>
+
+        <div class="side-selector">
+
+            <button
+                type="button"
+                class="side-btn"
+                data-side="left"
+            >
+                <i class="fa-solid fa-arrow-left"></i>
+                LEFT
+            </button>
+
+            <button
+                type="button"
+                class="side-btn"
+                data-side="right"
+            >
+                RIGHT
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </div>
+
+        <div
+            class="side-required"
+            id="sideRequired"
+        >
+            Please select LEFT or RIGHT before placing your bid.
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SINGLE BET
+    ========================= -->
+
+    <section
+        class="section"
+        id="singleSection"
+    >
+
+        <div class="section-title">
+
+            <h3>Select Single Number</h3>
+
+            <span>0 - 9</span>
+
+        </div>
+
+        <div
+            class="digit-grid"
+            id="singleGrid"
+        ></div>
+
+    </section>
+
+
+    <!-- =========================
+         JODI BET
+    ========================= -->
+
+    <section
+        class="section"
+        id="jodiSection"
+    >
+
+        <div class="section-title">
+
+            <h3>Select Jodi Number</h3>
+
+            <span>00 - 99</span>
+
+        </div>
+
+        <div class="jodi-note">
+            <i class="fa-solid fa-circle-info"></i>
+            JODI betting does not require LEFT or RIGHT.
+        </div>
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="jodiSearch"
+                placeholder="Search Jodi number..."
+                inputmode="numeric"
+                maxlength="2"
+            >
+
+        </div>
+
+        <div
+            class="filter-row"
+            id="filterRow"
+        ></div>
+
+        <div
+            class="jodi-grid"
+            id="jodiGrid"
+        ></div>
+
+    </section>
+
+
+    <!-- =========================
+         SUMMARY
+    ========================= -->
+
+    <section class="summary">
+
+        <div class="summary-row">
+
+            <span>Total Bids</span>
+
+            <strong id="totalBids">
+                0
+            </strong>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span>Total Amount</span>
+
+            <strong id="totalAmount">
+                ₹0
+            </strong>
+
+        </div>
+
+        <button
+            type="button"
+            class="confirm-btn"
+            id="confirmBtn"
+        >
+            Confirm Bids
+        </button>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     SIDE MENU
+========================= -->
+
+<div
+    class="menu-overlay"
+    id="menuOverlay"
+></div>
+
+<aside
+    class="side-menu"
+    id="sideMenu"
+>
+
+    <div class="menu-head">
+
+        <div class="menu-brand">
+
+            <div class="menu-logo">
+                <i class="fa-solid fa-dice"></i>
+            </div>
+
+            <div>
+                <strong>Tirupati Matka</strong>
+                <span>Premium Gaming</span>
+            </div>
+
+        </div>
+
+        <button
+            class="close-menu"
+            id="closeMenu"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+    </div>
+
+
+    <div class="menu-links">
+
+        <button
+            class="menu-link"
+            data-page="index.html"
+        >
+            <i class="fa-solid fa-house"></i>
+            Home
+        </button>
+
+        <button
+            class="menu-link"
+            data-page="gali.html"
+        >
+            <i class="fa-solid fa-dice"></i>
+            Gali Games
+        </button>
+
+        <button
+            class="menu-link"
+            data-page="wallet.html"
+        >
+            <i class="fa-solid fa-wallet"></i>
+            Wallet
+        </button>
+
+        <button
+            class="menu-link"
+            data-page="withdraw.html"
+        >
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            Withdraw
+        </button>
+
+        <button
+            class="menu-link"
+            data-page="profile.html"
+        >
+            <i class="fa-solid fa-user"></i>
+            Profile
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================
+     BOTTOM NAV
+========================= -->
+
+<nav class="bottom-nav">
+
+    <button
+        class="bottom-item"
+        data-page="index.html"
+    >
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+    </button>
+
+    <button
+        class="bottom-item active"
+        data-page="gali.html"
+    >
+        <i class="fa-solid fa-dice"></i>
+        <span>Games</span>
+    </button>
+
+    <button
+        class="bottom-item"
+        data-page="wallet.html"
+    >
+        <i class="fa-solid fa-wallet"></i>
+        <span>Wallet</span>
+    </button>
+
+    <button
+        class="bottom-item"
+        data-page="profile.html"
+    >
+        <i class="fa-solid fa-user"></i>
+        <span>Profile</span>
+    </button>
+
+</nav>
+
+
+<!-- =========================
+     TOAST
+========================= -->
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+<!-- =========================
+     LOADER
+========================= -->
+
+<div
+    class="loader-overlay"
+    id="loaderOverlay"
+>
+
+    <div class="loader-box">
+
+        <div class="loader"></div>
+
+        <p>Preparing your bids...</p>
+
+    </div>
+
+</div>
+
+
+<script>
+/* =========================================================
+   CONFIG
+========================================================= */
+
+const API_AUTH = "http://localhost:5000/api/auth";
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let betInfo = null;
+
+let selectedSide = null;
+
+let betType = "single";
+
+let selectedJodiFilter = "all";
+
+const singleAmounts = {};
+
+const jodiAmounts = {};
+
+
+/* =========================================================
+   DOM
+========================================================= */
+
+const gameNameEl = document.getElementById("gameName");
+const gameSubtitleEl = document.getElementById("gameSubtitle");
+const betTypeBadge = document.getElementById("betTypeBadge");
+
+const openTimeEl = document.getElementById("openTime");
+const closeTimeEl = document.getElementById("closeTime");
+
+const walletBalanceEl = document.getElementById("walletBalance");
+
+const singleSideSection =
+    document.getElementById("singleSideSection");
+
+const singleSection =
+    document.getElementById("singleSection");
+
+const jodiSection =
+    document.getElementById("jodiSection");
+
+const singleGrid =
+    document.getElementById("singleGrid");
+
+const jodiGrid =
+    document.getElementById("jodiGrid");
+
+const filterRow =
+    document.getElementById("filterRow");
+
+const jodiSearch =
+    document.getElementById("jodiSearch");
+
+const totalBidsEl =
+    document.getElementById("totalBids");
+
+const totalAmountEl =
+    document.getElementById("totalAmount");
+
+const confirmBtn =
+    document.getElementById("confirmBtn");
+
+const sideRequired =
+    document.getElementById("sideRequired");
+
+
+/* =========================================================
+   STORAGE HELPERS
+========================================================= */
+
+function getToken() {
+
+    return (
+        localStorage.getItem("token") ||
+        localStorage.getItem("ki_token") ||
+        localStorage.getItem("adminToken") ||
+        ""
+    );
+
+}
+
+
+function clearAuth() {
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("ki_token");
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message, type = "normal") {
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.className = "toast";
+
+    if (type === "error") {
+        toast.classList.add("error");
+    }
+
+    if (type === "success") {
+        toast.classList.add("success");
+    }
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 2500);
+
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+function showLoader() {
+
+    document
+        .getElementById("loaderOverlay")
+        .classList.add("show");
+
+}
+
+
+function hideLoader() {
+
+    document
+        .getElementById("loaderOverlay")
+        .classList.remove("show");
+
+}
+
+
+/* =========================================================
+   LOAD GALI INFO
+========================================================= */
+
+function loadBetInfo() {
+
+    try {
+
+        const raw =
+            localStorage.getItem("galiBetInfo");
+
+        if (!raw) {
+
+            showToast(
+                "Game information not found.",
+                "error"
+            );
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "gali.html";
+
+            }, 1200);
+
+            return false;
+        }
+
+        betInfo = JSON.parse(raw);
+
+    } catch (error) {
+
+        console.error(
+            "galiBetInfo error:",
+            error
+        );
+
+        showToast(
+            "Invalid game information.",
+            "error"
+        );
+
+        setTimeout(() => {
+
+            window.location.href =
+                "gali.html";
+
+        }, 1200);
+
+        return false;
+    }
+
+
+    betType =
+        String(
+            betInfo.betType || "single"
+        )
+        .toLowerCase()
+        .trim();
+
+
+    if (!["single", "jodi"].includes(betType)) {
+
+        showToast(
+            "Invalid bet type.",
+            "error"
+        );
+
+        return false;
+    }
+
+
+    return true;
+
+}
+
+
+/* =========================================================
+   DISPLAY GAME INFO
+========================================================= */
+
+function displayGameInfo() {
+
+    gameNameEl.textContent =
+        betInfo.gameName ||
+        betInfo.name ||
+        "Gali Game";
+
+
+    if (betType === "single") {
+
+        gameSubtitleEl.textContent =
+            "Select LEFT / RIGHT and place your bid";
+
+        betTypeBadge.textContent =
+            "SINGLE";
+
+    } else {
+
+        gameSubtitleEl.textContent =
+            "Select Jodi number and place your bid";
+
+        betTypeBadge.textContent =
+            "JODI";
+
+    }
+
+
+    openTimeEl.textContent =
+        betInfo.openTime ||
+        betInfo.open ||
+        "--:--";
+
+
+    closeTimeEl.textContent =
+        betInfo.closeTime ||
+        betInfo.close ||
+        "--:--";
+
+}
+
+
+/* =========================================================
+   SHOW CORRECT BET TYPE
+========================================================= */
+
+function setupBetType() {
+
+    if (betType === "single") {
+
+        singleSideSection.style.display =
+            "block";
+
+        singleSection.style.display =
+            "block";
+
+        jodiSection.style.display =
+            "none";
+
+        renderSingleDigits();
+
+    } else {
+
+        singleSideSection.style.display =
+            "none";
+
+        singleSection.style.display =
+            "none";
+
+        jodiSection.style.display =
+            "block";
+
+        renderFilters();
+
+        renderJodis();
+
+    }
+
+}
+
+
+/* =========================================================
+   SINGLE SIDE
+========================================================= */
+
+document
+    .querySelectorAll(".side-btn")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                document
+                    .querySelectorAll(".side-btn")
+                    .forEach(btn =>
+                        btn.classList.remove(
+                            "active"
+                        )
+                    );
+
+                button.classList.add(
+                    "active"
+                );
+
+                selectedSide =
+                    button.dataset.side;
+
+                sideRequired.style.display =
+                    "none";
+
+                updateSummary();
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   RENDER SINGLE DIGITS
+========================================================= */
+
+function renderSingleDigits() {
+
+    singleGrid.innerHTML = "";
+
+    for (
+        let digit = 0;
+        digit <= 9;
+        digit++
+    ) {
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "digit-card";
+
+        card.innerHTML = `
+            <div class="digit-number">
+                ${digit}
+            </div>
+
+            <div class="amount-wrap">
+
+                <span>₹</span>
+
+                <input
+                    class="amount-input"
+                    type="number"
+                    min="0"
+                    step="1"
+                    inputmode="numeric"
+                    placeholder="Amount"
+                    data-number="${digit}"
+                    value="${singleAmounts[digit] || ""}"
+                >
+
+            </div>
+        `;
+
+        singleGrid.appendChild(card);
+
+    }
+
+
+    singleGrid
+        .querySelectorAll(".amount-input")
+        .forEach(input => {
+
+            input.addEventListener(
+                "input",
+                () => {
+
+                    const number =
+                        input.dataset.number;
+
+                    singleAmounts[number] =
+                        input.value;
+
+                    updateSummary();
+
+                }
+            );
+
+        });
+
+}
+
+
+/* =========================================================
+   JODI FILTERS
+========================================================= */
+
+function renderFilters() {
+
+    filterRow.innerHTML = "";
+
+    const filters = [
+        "all",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+    ];
+
+
+    filters.forEach(filter => {
+
+        const button =
+            document.createElement("button");
+
+        button.type = "button";
+
+        button.className =
+            "filter-btn";
+
+        if (
+            selectedJodiFilter === filter
+        ) {
+
+            button.classList.add(
+                "active"
+            );
+
+        }
+
+
+        button.textContent =
+            filter === "all"
+                ? "ALL"
+                : filter;
+
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                selectedJodiFilter =
+                    filter;
+
+                renderFilters();
+
+                renderJodis();
+
+            }
+        );
+
+
+        filterRow.appendChild(button);
+
+    });
+
+}
+
+
+/* =========================================================
+   GET JODI LIST
+========================================================= */
+
+function getFilteredJodis() {
+
+    const search =
+        jodiSearch.value
+            .trim();
+
+
+    const list = [];
+
+
+    for (
+        let number = 0;
+        number <= 99;
+        number++
+    ) {
+
+        const jodi =
+            String(number)
+                .padStart(2, "0");
+
+
+        if (
+            selectedJodiFilter !==
+            "all"
+        ) {
+
+            if (
+                !jodi.endsWith(
+                    selectedJodiFilter
+                )
+            ) {
+
+                continue;
+
+            }
+
+        }
+
+
+        if (
+            search &&
+            !jodi.includes(search)
+        ) {
+
+            continue;
+
+        }
+
+
+        list.push(jodi);
+
+    }
+
+
+    return list;
+
+}
+
+
+/* =========================================================
+   RENDER JODIS
+========================================================= */
+
+function renderJodis() {
+
+    const list =
+        getFilteredJodis();
+
+
+    jodiGrid.innerHTML = "";
+
+
+    if (!list.length) {
+
+        jodiGrid.innerHTML = `
+            <div class="empty">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                No Jodi number found.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    list.forEach(jodi => {
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "jodi-card";
+
+        card.innerHTML = `
+            <div class="jodi-number">
+                ${jodi}
+            </div>
+
+            <div class="jodi-input-wrap">
+
+                <span>₹</span>
+
+                <input
+                    class="jodi-input"
+                    type="number"
+                    min="0"
+                    step="1"
+                    inputmode="numeric"
+                    placeholder="Amount"
+                    data-jodi="${jodi}"
+                    value="${jodiAmounts[jodi] || ""}"
+                >
+
+            </div>
+        `;
+
+
+        jodiGrid.appendChild(card);
+
+    });
+
+
+    jodiGrid
+        .querySelectorAll(".jodi-input")
+        .forEach(input => {
+
+            input.addEventListener(
+                "input",
+                () => {
+
+                    const jodi =
+                        input.dataset.jodi;
+
+                    jodiAmounts[jodi] =
+                        input.value;
+
+                    updateSummary();
+
+                }
+            );
+
+        });
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+jodiSearch.addEventListener(
+    "input",
+    renderJodis
+);
+
+
+/* =========================================================
+   GET CURRENT BIDS
+========================================================= */
+
+function getBids() {
+
+    const bids = [];
+
+
+    if (betType === "single") {
+
+        for (
+            let digit = 0;
+            digit <= 9;
+            digit++
+        ) {
+
+            const amount =
+                Number(
+                    singleAmounts[digit] || 0
+                );
+
+
+            if (
+                amount > 0
+            ) {
+
+                bids.push({
+
+                    number: String(digit),
+
+                    amount
+
+                });
+
+            }
+
+        }
+
+    } else {
+
+        for (
+            let number = 0;
+            number <= 99;
+            number++
+        ) {
+
+            const jodi =
+                String(number)
+                    .padStart(2, "0");
+
+
+            const amount =
+                Number(
+                    jodiAmounts[jodi] || 0
+                );
+
+
+            if (
+                amount > 0
+            ) {
+
+                bids.push({
+
+                    number: jodi,
+
+                    amount
+
+                });
+
+            }
+
+        }
+
+    }
+
+
+    return bids;
+
+}
+
+
+/* =========================================================
+   UPDATE SUMMARY
+========================================================= */
+
+function updateSummary() {
+
+    const bids =
+        getBids();
+
+
+    const total =
+        bids.reduce(
+            (
+                sum,
+                bid
+            ) =>
+                sum + bid.amount,
+            0
+        );
+
+
+    totalBidsEl.textContent =
+        bids.length;
+
+
+    totalAmountEl.textContent =
+        "₹" +
+        total.toLocaleString(
+            "en-IN"
+        );
+
+
+    confirmBtn.disabled =
+        bids.length === 0;
+
+}
+
+
+/* =========================================================
+   CONFIRM
+========================================================= */
+
+confirmBtn.addEventListener(
+    "click",
+    confirmBids
+);
+
+
+function confirmBids() {
+
+    if (!betInfo) {
+
+        showToast(
+            "Game information not found.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    /* SINGLE MUST HAVE SIDE */
+
+    if (
+        betType === "single" &&
+        !selectedSide
+    ) {
+
+        sideRequired.style.display =
+            "block";
+
+        showToast(
+            "Please select LEFT or RIGHT.",
+            "error"
+        );
+
+        document
+            .getElementById(
+                "singleSideSection"
+            )
+            .scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        return;
+
+    }
+
+
+    const bids =
+        getBids();
+
+
+    if (!bids.length) {
+
+        showToast(
+            "Please enter at least one bid amount.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    /* MINIMUM ₹10 */
+
+    const invalidBid =
+        bids.find(
+            bid =>
+                bid.amount < 10
+        );
+
+
+    if (invalidBid) {
+
+        showToast(
+            "Minimum bid amount is ₹10.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const totalAmount =
+        bids.reduce(
+            (
+                sum,
+                bid
+            ) =>
+                sum + bid.amount,
+            0
+        );
+
+
+    /* WALLET CHECK */
+
+    const walletText =
+        walletBalanceEl.textContent
+            .replace(/[₹,\s]/g, "");
+
+
+    const wallet =
+        Number(walletText);
+
+
+    if (
+        !isNaN(wallet) &&
+        wallet < totalAmount
+    ) {
+
+        showToast(
+            "Insufficient wallet balance.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    showLoader();
+
+
+    const pendingBet = {
+
+        matchId:
+            betInfo.gameId ||
+            betInfo.matchId ||
+            betInfo._id,
+
+        gameName:
+            betInfo.gameName ||
+            betInfo.name ||
+            "Gali Game",
+
+        betType,
+
+        betFor:
+            betType === "single"
+                ? selectedSide
+                : "jodi",
+
+        bids,
+
+        totalAmount
+
+    };
+
+
+    localStorage.setItem(
+        "galiPendingBet",
+        JSON.stringify(
+            pendingBet
+        )
+    );
+
+
+    setTimeout(() => {
+
+        window.location.href =
+            "galibids-details.html";
+
+    }, 400);
+
+}
+
+
+/* =========================================================
+   LOAD WALLET BALANCE
+========================================================= */
+// ======================================================
+// LOAD BALANCE
+// ======================================================
+
+async function loadBalance() {
+
+    const token = getToken();
+
+    if (!token) {
+        walletBalanceEl.textContent = "₹0";
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            `${API_AUTH}/balance`,
+            {
+                method: "GET",
+
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+
+                cache: "no-store"
+            }
+        );
+
+        const data = await response.json();
+
+        console.log(
+            "Balance response:",
+            data
+        );
+
+        if (response.ok && data.success) {
+
+            const balance = Math.floor(
+                Number(
+                    data.balance ??
+                    data.user?.balance ??
+                    data.user?.wallet ??
+                    0
+                )
+            );
+
+            walletBalanceEl.textContent =
+                `₹${balance.toLocaleString("en-IN")}`;
+
+        } else {
+
+            console.error(
+                "Balance API error:",
+                data
+            );
+
+            walletBalanceEl.textContent = "₹0";
+        }
+
+    } catch (error) {
+
+        console.error(
+            "BALANCE ERROR:",
+            error
+        );
+
+        walletBalanceEl.textContent = "₹0";
+    }
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+const menuBtn =
+    document.getElementById("menuBtn");
+
+const closeMenu =
+    document.getElementById("closeMenu");
+
+const sideMenu =
+    document.getElementById("sideMenu");
+
+const menuOverlay =
+    document.getElementById("menuOverlay");
+
+
+function openMenu() {
+
+    sideMenu.classList.add(
+        "show"
+    );
+
+    menuOverlay.classList.add(
+        "show"
+    );
+
+}
+
+
+function closeSideMenu() {
+
+    sideMenu.classList.remove(
+        "show"
+    );
+
+    menuOverlay.classList.remove(
+        "show"
+    );
+
+}
+
+
+menuBtn.addEventListener(
+    "click",
+    openMenu
+);
+
+
+closeMenu.addEventListener(
+    "click",
+    closeSideMenu
+);
+
+
+menuOverlay.addEventListener(
+    "click",
+    closeSideMenu
+);
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+document
+    .querySelectorAll("[data-page]")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const page =
+                    button.dataset.page;
+
+                if (!page) {
+                    return;
+                }
+
+                window.location.href =
+                    page;
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   PREVENT NEGATIVE AMOUNTS
+========================================================= */
+
+document.addEventListener(
+    "input",
+    event => {
+
+        if (
+            event.target.matches(
+                ".amount-input, .jodi-input"
+            )
+        ) {
+
+            if (
+                Number(
+                    event.target.value
+                ) < 0
+            ) {
+
+                event.target.value = 0;
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+function init() {
+
+    if (!loadBetInfo()) {
+        return;
+    }
+
+
+    displayGameInfo();
+
+    setupBetType();
+
+    updateSummary();
+
+    loadBalance();
+
+}
+
+
+init();
+
+</script>
+
+</body>
+</html>

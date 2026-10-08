@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "292306570636",
+    "project_id": "televault-ead03",
+    "storage_bucket": "televault-ead03.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292306570636:android:a0055015bcd352736ddaa9",
+        "android_client_info": {
+          "package_name": "com.tirupati.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292306570636-od4aep5ppkvn6qvbv244lfbti6hqrn7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy6DUirbgsUpZOSjwrugKkoRGmFK7UXxE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292306570636-od4aep5ppkvn6qvbv244lfbti6hqrn7j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

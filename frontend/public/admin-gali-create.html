@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin • Create Gali Game</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #0a1a2f; color: #00eaff; padding: 20px; }
+    h2 { margin-bottom: 10px; }
+    input, button { padding: 8px; margin: 5px 0; width: 100%; max-width: 300px; }
+    button { cursor: pointer; background: #00eaff; border: none; color: #000; font-weight: bold; }
+    #createGameMsg { margin-top: 10px; color: #ffeb3b; }
+    .success { color: #4caf50; }
+    .error { color: #ff5722; }
+  </style>
+</head>
+<body>
+
+<section id="createGame">
+  <h2>Create Gali Game</h2>
+  <form id="createGameForm">
+    <input type="text" name="gameName" placeholder="Game Name" required>
+    <input type="text" name="gameCode" placeholder="Game Code" required>
+    <input type="time" name="openTime" required>
+    <input type="time" name="resultTime" required>
+    <input type="number" name="minBet" placeholder="Min Bet (default 10)">
+    <input type="number" name="maxBet" placeholder="Max Bet (default 10000)">
+    <button type="submit">Create Game</button>
+  </form>
+  <div id="createGameMsg"></div>
+</section>
+
+<script>
+const API = "http://localhost:5000/api/gali/admin";
+const token = localStorage.getItem("token");
+
+const form = document.getElementById("createGameForm");
+const msgEl = document.getElementById("createGameMsg");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  msgEl.innerText = "";
+  msgEl.className = "";
+
+  const formData = Object.fromEntries(new FormData(form).entries());
+
+  // Fill default min/max bets if empty
+  if (!formData.minBet) formData.minBet = 10;
+  if (!formData.maxBet) formData.maxBet = 10000;
+
+  // Validate required fields
+  if (!formData.gameName || !formData.gameCode || !formData.openTime || !formData.resultTime) {
+    msgEl.innerText = "⚠️ Game Name, Game Code, Open Time, and Result Time are required.";
+    msgEl.className = "error";
+    return;
+  }
+
+  const submitBtn = form.querySelector("button[type='submit']");
+  submitBtn.disabled = true;
+  submitBtn.innerText = "Creating...";
+
+  try {
+    const res = await fetch(`${API}/create`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
+      },
+      body: JSON.stringify(formData)
+    });
+
+    const data = await res.json();
+
+    if (!res.ok || !data.success) {
+      msgEl.innerText = "❌ " + (data.msg || "Failed to create game");
+      msgEl.className = "error";
+    } else {
+      msgEl.innerText = "✅ " + (data.msg || "Game created successfully!");
+      msgEl.className = "success";
+      form.reset();
+    }
+
+  } catch (err) {
+    console.error("Create Gali Game Error:", err);
+    msgEl.innerText = "❌ Server error, please try again";
+    msgEl.className = "error";
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerText = "Create Game";
+  }
+});
+</script>
+<script src="nav.js"></script>
+</body>
+
+</html>

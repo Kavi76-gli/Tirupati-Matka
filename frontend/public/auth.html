@@ -1,0 +1,2135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#dff8e9"
+    >
+
+    <title>Login | Tirupati Matka</title>
+
+
+    <style>
+
+        /* ==================================================
+           PREMIUM RESET
+        ================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+
+        body {
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff 0%,
+                    #f8fffb 48%,
+                    #effbf4 100%
+                );
+
+            color: #14251b;
+
+            overflow-x: hidden;
+        }
+
+
+        /* ==================================================
+           BACKGROUND AMBIENT LIGHT
+        ================================================== */
+
+        .ambient {
+
+            position: fixed;
+
+            width: 330px;
+            height: 330px;
+
+            border-radius: 50%;
+
+            filter: blur(100px);
+
+            pointer-events: none;
+
+            z-index: 0;
+
+            opacity: .42;
+
+            animation:
+                ambientFloat 8s ease-in-out infinite;
+        }
+
+
+        .ambient-one {
+
+            top: -150px;
+            left: -120px;
+
+            background:
+                rgba(74, 222, 128, .35);
+        }
+
+
+        .ambient-two {
+
+            right: -150px;
+            bottom: -130px;
+
+            background:
+                rgba(16, 185, 129, .24);
+
+            animation-delay: -4s;
+        }
+
+
+        @keyframes ambientFloat {
+
+            0%,
+            100% {
+                transform:
+                    translate3d(0, 0, 0)
+                    scale(1);
+            }
+
+            50% {
+                transform:
+                    translate3d(20px, 15px, 0)
+                    scale(1.08);
+            }
+
+        }
+
+
+        /* ==================================================
+           FLOATING DECORATIONS
+        ================================================== */
+
+        .floating {
+
+            position: fixed;
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            z-index: 1;
+
+            opacity: .5;
+
+            animation:
+                floatObject 7s ease-in-out infinite;
+        }
+
+
+        .floating.one {
+
+            width: 12px;
+            height: 12px;
+
+            background: #65d98d;
+
+            top: 16%;
+            left: 12%;
+        }
+
+
+        .floating.two {
+
+            width: 8px;
+            height: 8px;
+
+            background: #20b76b;
+
+            top: 30%;
+            right: 13%;
+
+            animation-delay: -2s;
+        }
+
+
+        .floating.three {
+
+            width: 16px;
+            height: 16px;
+
+            border: 2px solid #8be5ad;
+
+            bottom: 20%;
+            left: 10%;
+
+            animation-delay: -4s;
+        }
+
+
+        @keyframes floatObject {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-18px)
+                    rotate(180deg);
+            }
+
+        }
+
+
+        /* ==================================================
+           PAGE
+        ================================================== */
+
+        .page {
+
+            position: relative;
+
+            z-index: 5;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 25px 16px;
+        }
+
+
+        /* ==================================================
+           AUTH CARD
+        ================================================== */
+
+        .auth-card {
+
+            width: 100%;
+
+            max-width: 440px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                rgba(255, 255, 255, .94);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, .95);
+
+            border-radius: 32px;
+
+            box-shadow:
+                0 30px 90px
+                rgba(24, 70, 43, .13),
+
+                0 8px 30px
+                rgba(24, 70, 43, .06);
+
+            backdrop-filter:
+                blur(25px);
+
+            -webkit-backdrop-filter:
+                blur(25px);
+
+            animation:
+                cardEntrance .8s
+                cubic-bezier(.2,.8,.2,1);
+        }
+
+
+        @keyframes cardEntrance {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(35px)
+                    scale(.97);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+
+            }
+
+        }
+
+
+        /* ==================================================
+           LIGHT GREEN HEADER
+        ================================================== */
+
+        .premium-header {
+
+            position: relative;
+
+            height: 185px;
+
+            padding:
+                28px 25px;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #dffbea 0%,
+                    #c9f5da 48%,
+                    #b4efcc 100%
+                );
+        }
+
+
+        /* Header shine */
+
+        .premium-header::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 240px;
+            height: 240px;
+
+            top: -145px;
+            right: -80px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.58);
+
+            filter: blur(2px);
+
+            animation:
+                headerOrb 7s ease-in-out infinite;
+        }
+
+
+        .premium-header::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 170px;
+            height: 170px;
+
+            bottom: -115px;
+            left: -55px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(74, 222, 128, .16);
+
+            animation:
+                headerOrb 9s ease-in-out infinite reverse;
+        }
+
+
+        @keyframes headerOrb {
+
+            0%,
+            100% {
+                transform:
+                    translate3d(0,0,0);
+            }
+
+            50% {
+                transform:
+                    translate3d(-18px,12px,0);
+            }
+
+        }
+
+
+        /* ==================================================
+           HEADER CONTENT
+        ================================================== */
+
+        .header-content {
+
+            position: relative;
+
+            z-index: 3;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .logo-box {
+
+            width: 72px;
+            height: 72px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                rgba(255,255,255,.82);
+
+            border:
+                1px solid
+                rgba(255,255,255,.95);
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 14px 30px
+                rgba(30, 120, 67, .12);
+
+            overflow: hidden;
+
+            animation:
+                logoFloat 4s ease-in-out infinite;
+        }
+
+
+        @keyframes logoFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+
+        }
+
+
+        .logo {
+
+            width: 60px;
+            height: 60px;
+
+            object-fit: contain;
+        }
+
+
+        .header-brand {
+
+            color: #123c27;
+        }
+
+
+        .header-brand h1 {
+
+            font-size: 24px;
+
+            font-weight: 850;
+
+            letter-spacing: -.7px;
+        }
+
+
+        .header-brand p {
+
+            margin-top: 4px;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            color: #4b7d60;
+        }
+
+
+        /* ==================================================
+           PREMIUM BADGE
+        ================================================== */
+
+        .secure-badge {
+
+            position: absolute;
+
+            right: 23px;
+            bottom: 20px;
+
+            z-index: 4;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            padding:
+                7px 11px;
+
+            border-radius: 999px;
+
+            background:
+                rgba(255,255,255,.68);
+
+            border:
+                1px solid
+                rgba(255,255,255,.85);
+
+            color: #29734b;
+
+            font-size: 10px;
+
+            font-weight: 750;
+
+            box-shadow:
+                0 8px 20px
+                rgba(35, 100, 59, .08);
+        }
+
+
+        .secure-dot {
+
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #22b865;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(34,184,101,.12);
+
+            animation:
+                pulseDot 2s infinite;
+        }
+
+
+        @keyframes pulseDot {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.25);
+            }
+
+        }
+
+
+        /* ==================================================
+           FORM AREA
+        ================================================== */
+
+        .form-area {
+
+            padding:
+                30px 25px 25px;
+        }
+
+
+        .form-title {
+
+            font-size: 23px;
+
+            font-weight: 800;
+
+            letter-spacing: -.5px;
+
+            color: #16291e;
+
+            margin-bottom: 7px;
+        }
+
+
+        .form-description {
+
+            font-size: 13px;
+
+            line-height: 1.55;
+
+            color: #7b8b82;
+
+            margin-bottom: 24px;
+        }
+
+
+        /* ==================================================
+           MESSAGE
+        ================================================== */
+
+        .message {
+
+            display: none;
+
+            padding:
+                12px 14px;
+
+            border-radius: 13px;
+
+            margin-bottom: 17px;
+
+            font-size: 13px;
+
+            line-height: 1.45;
+        }
+
+
+        .message.error {
+
+            display: block;
+
+            background: #fff2f2;
+
+            color: #c52f2f;
+
+            border:
+                1px solid #ffd7d7;
+        }
+
+
+        .message.success {
+
+            display: block;
+
+            background: #effcf4;
+
+            color: #178044;
+
+            border:
+                1px solid #ccefd9;
+        }
+
+
+        /* ==================================================
+           FIELD
+        ================================================== */
+
+        .field {
+
+            margin-bottom: 17px;
+        }
+
+
+        .label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-size: 12px;
+
+            font-weight: 750;
+
+            color: #45574c;
+
+            letter-spacing: .1px;
+        }
+
+
+        .input-wrap {
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+        }
+
+
+        .input-icon {
+
+            position: absolute;
+
+            left: 15px;
+
+            z-index: 2;
+
+            font-size: 16px;
+
+            opacity: .72;
+
+            pointer-events: none;
+
+            transition:
+                .2s ease;
+        }
+
+
+        input {
+
+            width: 100%;
+
+            height: 55px;
+
+            border:
+                1px solid #dfe9e3;
+
+            border-radius: 16px;
+
+            outline: none;
+
+            background:
+                #f9fcfa;
+
+            color: #16291e;
+
+            font-size: 15px;
+
+            padding:
+                0 15px 0 46px;
+
+            transition:
+                .25s ease;
+
+            box-shadow:
+                inset 0 1px 2px
+                rgba(20,50,30,.02);
+        }
+
+
+        input:hover {
+
+            border-color:
+                #c8ddd0;
+        }
+
+
+        input:focus {
+
+            background: #ffffff;
+
+            border-color:
+                #39b96c;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(57,185,108,.10),
+
+                0 8px 20px
+                rgba(38,135,73,.05);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        input:focus + .input-icon {
+
+            opacity: 1;
+        }
+
+
+        input::placeholder {
+
+            color: #a0aca5;
+        }
+
+
+        .password-input {
+
+            padding-right: 50px;
+        }
+
+
+        /* ==================================================
+           PASSWORD TOGGLE
+        ================================================== */
+
+        .toggle-password {
+
+            position: absolute;
+
+            right: 12px;
+
+            width: 36px;
+            height: 36px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background:
+                transparent;
+
+            color: #75867b;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            transition:
+                .2s ease;
+        }
+
+
+        .toggle-password:hover {
+
+            background:
+                #eef9f2;
+
+            color:
+                #229957;
+
+            transform:
+                scale(1.05);
+        }
+
+
+        /* ==================================================
+           FORGOT PASSWORD
+        ================================================== */
+
+        .forgot-row {
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            margin-top: -3px;
+
+            margin-bottom: 21px;
+        }
+
+
+        .forgot-password {
+
+            text-decoration: none;
+
+            color: #249b57;
+
+            font-size: 13px;
+
+            font-weight: 750;
+
+            transition:
+                .2s ease;
+        }
+
+
+        .forgot-password:hover {
+
+            color: #13783d;
+
+            transform:
+                translateX(-2px);
+        }
+
+
+        /* ==================================================
+           MAGNETIC LOGIN BUTTON
+        ================================================== */
+
+        .magnetic-wrap {
+
+            position: relative;
+
+            width: 100%;
+
+            margin-top: 2px;
+        }
+
+
+        .login-btn {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 56px;
+
+            border: none;
+
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2bc66d,
+                    #159c51
+                );
+
+            color: #ffffff;
+
+            font-size: 16px;
+
+            font-weight: 800;
+
+            letter-spacing: .1px;
+
+            cursor: pointer;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 14px 28px
+                rgba(24, 155, 78, .22);
+
+            transition:
+                transform .18s
+                cubic-bezier(.2,.8,.2,1),
+
+                box-shadow .18s ease;
+        }
+
+
+        .login-btn::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -110%;
+
+            width: 70%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,.32),
+                    transparent
+                );
+
+            transform:
+                skewX(-20deg);
+
+            animation:
+                buttonShine 4s infinite;
+        }
+
+
+        @keyframes buttonShine {
+
+            0% {
+                left: -110%;
+            }
+
+            45%,
+            100% {
+                left: 150%;
+            }
+
+        }
+
+
+        .login-btn:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 18px 34px
+                rgba(24,155,78,.28);
+        }
+
+
+        .login-btn:active {
+
+            transform:
+                translateY(0)
+                scale(.985);
+
+            box-shadow:
+                0 9px 18px
+                rgba(24,155,78,.20);
+        }
+
+
+        .login-btn:disabled {
+
+            opacity: .65;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+
+        /* ==================================================
+           DIVIDER
+        ================================================== */
+
+        .divider {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin:
+                25px 0 19px;
+        }
+
+
+        .divider span {
+
+            height: 1px;
+
+            flex: 1;
+
+            background:
+                #e5ece8;
+        }
+
+
+        .divider-text {
+
+            font-size: 10px;
+
+            font-weight: 750;
+
+            letter-spacing: 1px;
+
+            color: #9aa79f;
+        }
+
+
+        /* ==================================================
+           REGISTER
+        ================================================== */
+
+        .register-text {
+
+            text-align: center;
+
+            font-size: 13px;
+
+            color: #7c8981;
+
+            margin-bottom: 11px;
+        }
+
+
+        .register-btn {
+
+            width: 100%;
+
+            height: 52px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-decoration: none;
+
+            border-radius: 15px;
+
+            border:
+                1px solid #cfe3d6;
+
+            background:
+                #ffffff;
+
+            color:
+                #198d4d;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            transition:
+                .2s ease;
+
+            box-shadow:
+                0 5px 15px
+                rgba(30,100,55,.04);
+        }
+
+
+        .register-btn:hover {
+
+            background:
+                #f1fbf5;
+
+            border-color:
+                #a9d9ba;
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 10px 20px
+                rgba(30,100,55,.08);
+        }
+
+
+        .register-btn:active {
+
+            transform:
+                scale(.985);
+        }
+
+
+        /* ==================================================
+           FOOTER
+        ================================================== */
+
+        .footer {
+
+            text-align: center;
+
+            margin-top: 21px;
+
+            font-size: 10px;
+
+            color: #a2ada6;
+        }
+
+
+        /* ==================================================
+           SPINNER
+        ================================================== */
+
+        .spinner {
+
+            display: inline-block;
+
+            width: 18px;
+            height: 18px;
+
+            border:
+                2px solid
+                rgba(255,255,255,.38);
+
+            border-top-color:
+                #ffffff;
+
+            border-radius: 50%;
+
+            animation:
+                spin .7s linear infinite;
+        }
+
+
+        @keyframes spin {
+
+            to {
+                transform:
+                    rotate(360deg);
+            }
+
+        }
+
+
+        /* ==================================================
+           MOBILE
+        ================================================== */
+
+        @media (max-width: 480px) {
+
+            .page {
+
+                padding:
+                    12px;
+            }
+
+
+            .auth-card {
+
+                max-width:
+                    430px;
+
+                border-radius:
+                    28px;
+            }
+
+
+            .premium-header {
+
+                height:
+                    175px;
+
+                padding:
+                    25px 20px;
+            }
+
+
+            .form-area {
+
+                padding:
+                    27px 19px 22px;
+            }
+
+
+            .logo-box {
+
+                width: 66px;
+                height: 66px;
+
+                border-radius:
+                    20px;
+            }
+
+
+            .logo {
+
+                width: 55px;
+                height: 55px;
+            }
+
+
+            .header-brand h1 {
+
+                font-size:
+                    22px;
+            }
+
+
+            .form-title {
+
+                font-size:
+                    21px;
+            }
+
+        }
+
+
+        /* ==================================================
+           SMALL PHONES
+        ================================================== */
+
+        @media (max-width: 360px) {
+
+            .premium-header {
+
+                height:
+                    165px;
+            }
+
+
+            .secure-badge {
+
+                display: none;
+            }
+
+
+            .form-area {
+
+                padding:
+                    24px 16px 20px;
+            }
+
+
+            input {
+
+                height:
+                    52px;
+            }
+
+
+            .login-btn {
+
+                height:
+                    53px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         AMBIENT BACKGROUND
+    ================================================== -->
+
+    <div class="ambient ambient-one"></div>
+
+    <div class="ambient ambient-two"></div>
+
+
+    <div class="floating one"></div>
+    <div class="floating two"></div>
+    <div class="floating three"></div>
+
+
+    <!-- ==================================================
+         PAGE
+    ================================================== -->
+
+    <main class="page">
+
+
+        <section class="auth-card">
+
+
+            <!-- ==================================================
+                 PREMIUM HEADER
+            ================================================== -->
+
+            <header class="premium-header">
+
+
+                <div class="header-content">
+
+
+                    <div class="logo-box">
+
+                        <img
+                            src="IMG_2121.PNG"
+                            class="logo"
+                            alt="Tirupati Matka"
+                        >
+
+                    </div>
+
+
+                    <div class="header-brand">
+
+                        <h1>
+                            Tirupati Matka
+                        </h1>
+
+                        <p>
+                            Welcome back to your account
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="secure-badge">
+
+                    <span class="secure-dot"></span>
+
+                    Secure Login
+
+                </div>
+
+
+            </header>
+
+
+            <!-- ==================================================
+                 FORM
+            ================================================== -->
+
+            <div class="form-area">
+
+
+                <h2 class="form-title">
+                    Login to your account
+                </h2>
+
+
+                <p class="form-description">
+                    Enter your registered mobile number and password to continue.
+                </p>
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="message"
+                    class="message"
+                ></div>
+
+
+                <!-- ==================================================
+                     MOBILE NUMBER
+                ================================================== -->
+
+                <div class="field">
+
+                    <label
+                        class="label"
+                        for="phone"
+                    >
+                        Mobile Number
+                    </label>
+
+
+                    <div class="input-wrap">
+
+                        <span class="input-icon">
+                            📱
+                        </span>
+
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Enter mobile number"
+                            maxlength="10"
+                            inputmode="numeric"
+                            autocomplete="tel"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================================
+                     PASSWORD
+                ================================================== -->
+
+                <div class="field">
+
+                    <label
+                        class="label"
+                        for="password"
+                    >
+                        Password
+                    </label>
+
+
+                    <div class="input-wrap">
+
+                        <span class="input-icon">
+                            🔒
+                        </span>
+
+
+                        <input
+                            type="password"
+                            id="password"
+                            class="password-input"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                        >
+
+
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            id="togglePassword"
+                            aria-label="Show password"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================================
+                     FORGOT PASSWORD
+                ================================================== -->
+
+                <div class="forgot-row">
+
+                    <a
+                        href="forgot-password.html"
+                        class="forgot-password"
+                    >
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+
+                <!-- ==================================================
+                     MAGNETIC LOGIN
+                ================================================== -->
+
+                <div class="magnetic-wrap">
+
+                    <button
+                        type="button"
+                        class="login-btn"
+                        id="loginBtn"
+                    >
+                        Login
+                    </button>
+
+                </div>
+
+
+                <!-- ==================================================
+                     DIVIDER
+                ================================================== -->
+
+                <div class="divider">
+
+                    <span></span>
+
+                    <div class="divider-text">
+                        NEW USER?
+                    </div>
+
+                    <span></span>
+
+                </div>
+
+
+                <!-- ==================================================
+                     REGISTER
+                ================================================== -->
+
+                <div class="register-text">
+
+                    Don't have an account?
+
+                </div>
+
+
+                <a
+                    href="register.html"
+                    class="register-btn"
+                >
+                    Create New Account
+                </a>
+
+
+                <!-- FOOTER -->
+
+                <div class="footer">
+
+                    © Tirupati Matka
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+
+        /* ==================================================
+           API CONFIGURATION
+        ================================================== */
+
+        const API_URL =
+            "http://localhost:5000/api";
+
+
+        /* ==================================================
+           ELEMENTS
+        ================================================== */
+
+        const phoneInput =
+            document.getElementById("phone");
+
+        const passwordInput =
+            document.getElementById("password");
+
+        const loginBtn =
+            document.getElementById("loginBtn");
+
+        const togglePassword =
+            document.getElementById("togglePassword");
+
+        const message =
+            document.getElementById("message");
+
+
+        /* ==================================================
+           MESSAGE
+        ================================================== */
+
+        function showMessage(
+            text,
+            type = "error"
+        ) {
+
+            message.textContent =
+                text;
+
+            message.className =
+                "message " + type;
+
+        }
+
+
+        function clearMessage() {
+
+            message.textContent = "";
+
+            message.className =
+                "message";
+
+        }
+
+
+        /* ==================================================
+           PHONE CLEANING
+        ================================================== */
+
+        function cleanPhone(value) {
+
+            return value
+                .replace(/\D/g, "")
+                .slice(-10);
+
+        }
+
+
+        phoneInput.addEventListener(
+            "input",
+            function () {
+
+                this.value =
+                    cleanPhone(
+                        this.value
+                    );
+
+                clearMessage();
+
+            }
+        );
+
+
+        /* ==================================================
+           PASSWORD VISIBILITY
+        ================================================== */
+
+        togglePassword.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    passwordInput.type ===
+                    "password"
+                ) {
+
+                    passwordInput.type =
+                        "text";
+
+                    togglePassword.textContent =
+                        "🙈";
+
+                    togglePassword.setAttribute(
+                        "aria-label",
+                        "Hide password"
+                    );
+
+                } else {
+
+                    passwordInput.type =
+                        "password";
+
+                    togglePassword.textContent =
+                        "👁";
+
+                    togglePassword.setAttribute(
+                        "aria-label",
+                        "Show password"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* ==================================================
+           LOGIN BUTTON
+        ================================================== */
+
+        loginBtn.addEventListener(
+            "click",
+            loginUser
+        );
+
+
+        /* ==================================================
+           LOGIN FUNCTION
+        ================================================== */
+
+        async function loginUser() {
+
+
+            clearMessage();
+
+
+            const phone =
+                cleanPhone(
+                    phoneInput.value
+                );
+
+
+            const password =
+                passwordInput.value.trim();
+
+
+            /* ------------------------------------------
+               VALIDATION
+            ------------------------------------------ */
+
+            if (!phone) {
+
+                showMessage(
+                    "Please enter your mobile number."
+                );
+
+                phoneInput.focus();
+
+                return;
+            }
+
+
+            if (phone.length !== 10) {
+
+                showMessage(
+                    "Please enter a valid 10-digit mobile number."
+                );
+
+                phoneInput.focus();
+
+                return;
+            }
+
+
+            if (!password) {
+
+                showMessage(
+                    "Please enter your password."
+                );
+
+                passwordInput.focus();
+
+                return;
+            }
+
+
+            if (password.length < 6) {
+
+                showMessage(
+                    "Password must contain at least 6 characters."
+                );
+
+                passwordInput.focus();
+
+                return;
+            }
+
+
+            /* ------------------------------------------
+               LOADING
+            ------------------------------------------ */
+
+            loginBtn.disabled = true;
+
+            loginBtn.innerHTML =
+                '<span class="spinner"></span>';
+
+
+            try {
+
+
+                /* --------------------------------------
+                   BACKEND LOGIN
+                -------------------------------------- */
+
+                const response =
+                    await fetch(
+                        `${API_URL}/auth/login`,
+                        {
+
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify({
+                                    phone,
+                                    password
+                                })
+
+                        }
+                    );
+
+
+                let data = {};
+
+
+                try {
+
+                    data =
+                        await response.json();
+
+                } catch (jsonError) {
+
+                    data = {};
+
+                }
+
+
+                /* --------------------------------------
+                   LOGIN FAILED
+                -------------------------------------- */
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.message ||
+                        data.error ||
+                        "Invalid mobile number or password."
+                    );
+
+                }
+
+
+                /* --------------------------------------
+                   TOKEN
+                -------------------------------------- */
+
+                const token =
+                    data.token ||
+                    data.accessToken ||
+                    data.jwt;
+
+
+                if (!token) {
+
+                    throw new Error(
+                        "Login successful but server did not return a token."
+                    );
+
+                }
+
+
+                /* --------------------------------------
+                   USER
+                -------------------------------------- */
+
+                const user =
+                    data.user ||
+                    data.data ||
+                    null;
+
+
+                /* --------------------------------------
+                   SAVE SESSION
+                -------------------------------------- */
+
+                localStorage.setItem(
+                    "token",
+                    token
+                );
+
+
+                localStorage.setItem(
+                    "ki_token",
+                    token
+                );
+
+
+                if (user) {
+
+                    localStorage.setItem(
+                        "user",
+                        JSON.stringify(user)
+                    );
+
+                } else {
+
+                    localStorage.setItem(
+                        "user",
+                        JSON.stringify({
+                            phone: phone
+                        })
+                    );
+
+                }
+
+
+                /* --------------------------------------
+                   SUCCESS
+                -------------------------------------- */
+
+                showMessage(
+                    "Login successful. Opening M-PIN...",
+                    "success"
+                );
+
+
+                setTimeout(
+                    function () {
+
+                        window.location.replace(
+                            "gamezone.html"
+                        );
+
+                    },
+                    500
+                );
+
+
+            } catch (error) {
+
+
+                console.error(
+                    "LOGIN ERROR:",
+                    error
+                );
+
+
+                showMessage(
+                    error.message ||
+                    "Unable to login. Please try again."
+                );
+
+
+            } finally {
+
+
+                loginBtn.disabled = false;
+
+                loginBtn.textContent =
+                    "Login";
+
+            }
+
+        }
+
+
+        /* ==================================================
+           ENTER KEY
+        ================================================== */
+
+        passwordInput.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key ===
+                    "Enter"
+                ) {
+
+                    loginUser();
+
+                }
+
+            }
+        );
+
+
+        /* ==================================================
+           PHONE KEYBOARD PROTECTION
+        ================================================== */
+
+        phoneInput.addEventListener(
+            "keydown",
+            function (event) {
+
+
+                const allowedKeys = [
+
+                    "Backspace",
+                    "Delete",
+                    "ArrowLeft",
+                    "ArrowRight",
+                    "Tab",
+                    "Home",
+                    "End"
+
+                ];
+
+
+                if (
+                    allowedKeys.includes(
+                        event.key
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    !/^\d$/.test(
+                        event.key
+                    )
+                ) {
+
+                    event.preventDefault();
+
+                }
+
+            }
+        );
+
+
+        /* ==================================================
+           MAGNETIC BUTTON EFFECT
+           
+           The button follows the pointer slightly.
+           This is intentionally subtle for a premium feel.
+        ================================================== */
+
+        const magneticButton =
+            document.getElementById("loginBtn");
+
+
+        magneticButton.addEventListener(
+            "pointermove",
+            function (event) {
+
+
+                if (
+                    magneticButton.disabled
+                ) {
+                    return;
+                }
+
+
+                const rect =
+                    magneticButton.getBoundingClientRect();
+
+
+                const x =
+                    event.clientX -
+                    rect.left -
+                    rect.width / 2;
+
+
+                const y =
+                    event.clientY -
+                    rect.top -
+                    rect.height / 2;
+
+
+                const moveX =
+                    x * 0.08;
+
+
+                const moveY =
+                    y * 0.08;
+
+
+                magneticButton.style.transform =
+                    `translate(${moveX}px, ${moveY}px)`;
+
+
+            }
+        );
+
+
+        magneticButton.addEventListener(
+            "pointerleave",
+            function () {
+
+                magneticButton.style.transform =
+                    "";
+
+            }
+        );
+
+
+        /* ==================================================
+           TOUCH FRIENDLY MAGNETIC FEEL
+        ================================================== */
+
+        magneticButton.addEventListener(
+            "touchstart",
+            function () {
+
+                magneticButton.style.transform =
+                    "scale(.985)";
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        magneticButton.addEventListener(
+            "touchend",
+            function () {
+
+                magneticButton.style.transform =
+                    "";
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        /* ==================================================
+           PAGE READY
+        ================================================== */
+
+        console.log(
+            "Premium Tirupati Matka Login Ready"
+        );
+
+        console.log(
+            "API:",
+            `${API_URL}/auth/login`
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
+

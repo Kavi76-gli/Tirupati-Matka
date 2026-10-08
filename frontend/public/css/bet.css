@@ -1,0 +1,31 @@
+body {
+  background: #050b18;
+  color: #00eaff;
+  font-family: Arial;
+}
+
+.header {
+  text-align: center;
+  padding: 20px;
+  font-size: 22px;
+}
+
+.box {
+  padding: 20px;
+}
+
+.session-btn {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 15px;
+  background: #020815;
+  border: 1px solid #00eaff55;
+  color: #00eaff;
+  font-size: 18px;
+  border-radius: 14px;
+}
+
+.session-btn:hover {
+  background: #00eaff;
+  color: #000;
+}

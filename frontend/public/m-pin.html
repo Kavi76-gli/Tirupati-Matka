@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tirupati Matka - Secure MPIN</title>
+
+
+
+<style>
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+font-family:'Segoe UI',sans-serif;
+
+}
+
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;   /* remove scroll */
+    position: fixed;    /* prevent move */
+    touch-action: none; /* disable touch scroll */
+}
+body{
+    background:linear-gradient(180deg,#fff7f3,#ffffff);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+top:-150px;
+
+right:-100px;
+
+width:300px;
+
+height:300px;
+
+background:linear-gradient(135deg,#ff7b42,#ff512f);
+
+border-radius:50%;
+
+opacity:.15;
+
+animation:float 6s infinite ease-in-out;
+
+}
+
+
+
+body::after{
+
+content:"";
+
+position:absolute;
+
+bottom:-120px;
+
+left:-100px;
+
+width:250px;
+
+height:250px;
+
+background:linear-gradient(135deg,#ffcc70,#ff512f);
+
+border-radius:50%;
+
+opacity:.15;
+
+animation:float 8s infinite ease-in-out;
+
+}
+
+
+
+@keyframes float{
+
+50%{transform:translateY(25px);}
+
+}
+
+
+
+.mobile{
+    width: 390px;
+    height: 844px;
+    max-width: 100vw;
+    max-height: 100vh;
+    background:#fff;
+    border-radius:40px;
+    box-shadow:0 25px 60px rgba(0,0,0,.18);
+    overflow:hidden;
+    position:relative;
+}
+
+
+.header{
+
+height:220px;
+
+background: linear-gradient(135deg, #021b14, #0f9d58, #00ff88);
+
+padding:35px 25px;
+
+color:white;
+
+position:relative;
+
+overflow:hidden;
+
+box-shadow: 0 10px 40px rgba(0,255,136,0.35);
+
+}
+
+.logo-box{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+}
+
+
+
+.logo{
+
+width:62px;
+
+height:62px;
+
+background:white;
+
+border-radius:20px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:28px;
+
+font-weight:bold;
+
+color:#ff512f;
+
+}
+
+
+
+.brand h1{
+
+font-size:28px;
+
+}
+
+
+
+.brand p{
+
+opacity:.9;
+
+font-size:14px;
+
+}
+
+
+
+.vip{
+
+position:absolute;
+
+right:20px;
+
+top:30px;
+
+background:linear-gradient(135deg,#ffd700,#ffed8a);
+
+color:#111;
+
+padding:8px 16px;
+
+border-radius:25px;
+
+font-size:12px;
+
+font-weight:700;
+
+animation:glow 1.2s infinite alternate;
+
+}
+
+
+
+@keyframes glow{
+
+from{box-shadow:0 0 5px gold;}
+
+to{box-shadow:0 0 20px gold;}
+
+}
+
+
+
+.card{
+
+position:absolute;
+
+top:140px;
+
+left:20px;
+
+right:20px;
+
+background:white;
+
+border-radius:30px;
+
+padding:28px;
+
+box-shadow:0 20px 40px rgba(0,0,0,.08);
+
+}
+
+
+
+.card h2{
+
+text-align:center;
+
+color:#222;
+
+font-size:28px;
+
+}
+
+
+
+.card p{
+
+text-align:center;
+
+color:#777;
+
+margin-top:8px;
+
+}
+
+
+
+.pin-dots{
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+margin:28px 0;
+
+}
+
+
+
+.dot{
+
+width:18px;
+
+height:18px;
+
+border-radius:50%;
+
+background:#e5e5e5;
+
+transition:.3s;
+
+}
+
+
+
+.dot.active{
+
+background:#ff512f;
+
+box-shadow:0 0 10px #ff512f;
+
+}
+
+.keypad{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:16px;
+
+margin-top:35px;
+
+}
+
+
+
+.key{
+
+height:65px;
+
+border:none;
+
+border-radius:20px;
+
+background:#f7f7f7;
+
+font-size:24px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.2s;
+
+box-shadow:0 5px 15px rgba(0,0,0,.05);
+
+}
+
+
+
+.key:hover{
+
+transform:translateY(-3px);
+
+background:#fff2eb;
+
+}
+
+
+
+.action{
+
+background:linear-gradient(135deg,#ff512f,#dd2476);
+
+color:white;
+
+}
+
+
+
+.fingerprint{
+
+margin-top:25px;
+
+text-align:center;
+
+font-size:40px;
+
+cursor:pointer;
+
+animation:pulse 1.4s infinite;
+
+}
+
+
+
+@keyframes pulse{
+
+50%{transform:scale(1.1);}
+
+}
+
+
+
+.shake{
+
+animation:shake .4s;
+
+}
+
+
+
+@keyframes shake{
+
+0%,100%{transform:translateX(0)}
+
+20%{transform:translateX(-8px)}
+
+40%{transform:translateX(8px)}
+
+60%{transform:translateX(-8px)}
+
+80%{transform:translateX(8px)}
+
+}
+
+
+
+.success{
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.8);
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+color:white;
+
+font-size:34px;
+
+font-weight:bold;
+
+z-index:999;
+
+}
+.forgot-mpin { text-align: center; margin-top: 22px; padding-top: 4px; } .forgot-mpin a { display: inline-block; color: #1769ff; text-decoration: none; font-size: 14px; font-weight: 700; padding: 8px 14px; border-radius: 12px; transition: 0.2s ease; } .forgot-mpin a:hover { background: #f0f7ff; color: #0b8fff; transform: translateY(-1px); }
+</style>
+
+</head>
+<body>
+
+<div class="mobile">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo-box">
+
+            <div class="logo-wrapper">
+                <img src="Tirupati.png" class="logo" alt="App Logo">
+            </div>
+
+            <div class="brand">
+                <h1>Tirupati Matka</h1>
+                <p>Secure Gaming Platform</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MPIN CARD -->
+   
+<!-- MPIN CARD -->
+<div class="card" id="app">
+
+    <h2>Enter MPIN</h2>
+
+    <p class="subtitle">
+        Enter your secure 4-digit MPIN
+    </p>
+
+    <!-- PIN DOTS -->
+    <div class="pin-dots">
+
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+
+    </div>
+
+
+    <!-- KEYPAD -->
+    <div class="keypad">
+
+        <button class="key">1</button>
+        <button class="key">2</button>
+        <button class="key">3</button>
+
+        <button class="key">4</button>
+        <button class="key">5</button>
+        <button class="key">6</button>
+
+        <button class="key">7</button>
+        <button class="key">8</button>
+        <button class="key">9</button>
+
+        <button class="key action">⌫</button>
+
+        <button class="key">0</button>
+
+       
+
+    </div>
+
+
+    <!-- FORGOT MPIN -->
+    <div class="forgot-mpin">
+
+        <a href="forgot-mpin.html">
+            Forgot M-PIN?
+        </a>
+
+    </div>
+
+</div>
+
+    </div>
+
+</div>
+
+</body>
+<script>
+
+const API_URL = "http://localhost:5000/api/auth";
+
+
+// ======================================================
+// PIN STATE
+// ======================================================
+
+let pin = "";
+
+const dots =
+    document.querySelectorAll(".dot");
+
+const keys =
+    document.querySelectorAll(".key");
+
+const app =
+    document.getElementById("app");
+
+
+// ======================================================
+// UPDATE PIN DOTS
+// ======================================================
+
+function updateDots() {
+
+    dots.forEach((dot, index) => {
+
+        dot.classList.toggle(
+            "active",
+            index < pin.length
+        );
+
+    });
+
+}
+
+
+// ======================================================
+// RESET PIN
+// ======================================================
+
+function resetPin() {
+
+    pin = "";
+
+    updateDots();
+
+}
+
+
+// ======================================================
+// SHAKE CARD
+// ======================================================
+
+function shakeCard() {
+
+    app.classList.remove("shake");
+
+    void app.offsetWidth;
+
+    app.classList.add("shake");
+
+    setTimeout(() => {
+
+        app.classList.remove("shake");
+
+    }, 450);
+
+}
+
+
+// ======================================================
+// GET STORED USER
+// ======================================================
+
+function getStoredUser() {
+
+    try {
+
+        const storedUser =
+            localStorage.getItem("user");
+
+        if (!storedUser) {
+            return null;
+        }
+
+        return JSON.parse(storedUser);
+
+    } catch (error) {
+
+        console.error(
+            "USER STORAGE ERROR:",
+            error
+        );
+
+        return null;
+
+    }
+
+}
+
+
+// ======================================================
+// GET PHONE NUMBER
+// ======================================================
+
+function getUserPhone() {
+
+    const user =
+        getStoredUser();
+
+    if (!user) {
+        return null;
+    }
+
+    const phone =
+        user.phone ||
+        user.mobile ||
+        user.number;
+
+    if (!phone) {
+        return null;
+    }
+
+    return String(phone)
+        .replace(/\D/g, "")
+        .slice(-10);
+
+}
+
+
+// ======================================================
+// VERIFY / LOGIN WITH M-PIN
+// ======================================================
+
+async function verifyPin() {
+
+    // ----------------------------------------------
+    // MUST BE 4 DIGITS
+    // ----------------------------------------------
+
+    if (pin.length !== 4) {
+        return;
+    }
+
+
+    // ----------------------------------------------
+    // GET USER PHONE
+    // ----------------------------------------------
+
+    const phone =
+        getUserPhone();
+
+
+    if (!phone) {
+
+        resetPin();
+
+        alert(
+            "Mobile number not found. Please login/register again."
+        );
+
+        window.location.href =
+            "auth.html";
+
+        return;
+    }
+
+
+    // ----------------------------------------------
+    // PHONE VALIDATION
+    // ----------------------------------------------
+
+    if (!/^[6-9]\d{9}$/.test(phone)) {
+
+        resetPin();
+
+        alert(
+            "Invalid mobile number. Please login again."
+        );
+
+        window.location.href =
+            "auth.html";
+
+        return;
+    }
+
+
+    try {
+
+        // ------------------------------------------
+        // DISABLE KEYPAD WHILE LOGIN
+        // ------------------------------------------
+
+        keys.forEach(key => {
+
+            key.disabled = true;
+
+        });
+
+
+        // ------------------------------------------
+        // BACKEND REQUEST
+        //
+        // IMPORTANT:
+        // Backend route is /login-mpin
+        // NOT /verify-mpin
+        // ------------------------------------------
+
+        const response =
+            await fetch(
+                API_URL + "/login-mpin",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        phone: phone,
+
+                        mpin: String(pin)
+
+                    })
+                }
+            );
+
+
+        // ------------------------------------------
+        // RESPONSE
+        // ------------------------------------------
+
+        let data;
+
+        try {
+
+            data =
+                await response.json();
+
+        } catch (jsonError) {
+
+            console.error(
+                "INVALID SERVER RESPONSE:",
+                jsonError
+            );
+
+            throw new Error(
+                "Invalid server response."
+            );
+
+        }
+
+
+        console.log(
+            "M-PIN LOGIN RESPONSE:",
+            data
+        );
+
+
+        // ------------------------------------------
+        // LOGIN FAILED
+        // ------------------------------------------
+
+        if (
+            !response.ok ||
+            !data.success
+        ) {
+
+            shakeCard();
+
+            const message =
+                data.message ||
+                data.msg ||
+                "Incorrect M-PIN.";
+
+
+            // Show remaining attempts
+            if (
+                data.remainingAttempts !==
+                undefined
+            ) {
+
+                alert(
+                    message +
+                    "\n\nRemaining attempts: " +
+                    data.remainingAttempts
+                );
+
+            } else {
+
+                alert(message);
+
+            }
+
+
+            resetPin();
+
+            return;
+        }
+
+
+        // ------------------------------------------
+        // TOKEN CHECK
+        // ------------------------------------------
+
+        if (!data.token) {
+
+            console.error(
+                "M-PIN login succeeded but token is missing."
+            );
+
+            shakeCard();
+
+            resetPin();
+
+            alert(
+                "Login failed because authentication token was not received."
+            );
+
+            return;
+        }
+
+
+        // ==================================================
+        // SAVE AUTH TOKEN
+        // ==================================================
+
+        localStorage.setItem(
+            "token",
+            data.token
+        );
+
+        localStorage.setItem(
+            "ki_token",
+            data.token
+        );
+
+
+        // ==================================================
+        // SAVE USER
+        // ==================================================
+
+        if (data.user) {
+
+            localStorage.setItem(
+                "user",
+                JSON.stringify(data.user)
+            );
+
+        }
+
+
+        // ==================================================
+        // LOGIN SUCCESS
+        // ==================================================
+
+        console.log(
+            "✅ M-PIN LOGIN SUCCESS"
+        );
+
+
+        console.log(
+            "Logged in user:",
+            data.user
+        );
+
+
+        // Small success delay
+        setTimeout(() => {
+
+            window.location.href =
+                "gamezone.html";
+
+        }, 250);
+
+
+    } catch (error) {
+
+        console.error(
+            "M-PIN LOGIN ERROR:",
+            error
+        );
+
+        resetPin();
+
+        alert(
+            "Unable to connect to the server. Please try again."
+        );
+
+    } finally {
+
+        // ------------------------------------------
+        // ENABLE KEYPAD AGAIN
+        // ------------------------------------------
+
+        keys.forEach(key => {
+
+            key.disabled = false;
+
+        });
+
+    }
+
+}
+
+
+// ======================================================
+// KEYPAD
+// ======================================================
+
+keys.forEach(key => {
+
+    key.addEventListener(
+        "click",
+        () => {
+
+            const value =
+                key.innerText.trim();
+
+
+            // --------------------------------------
+            // BACKSPACE
+            // --------------------------------------
+
+            if (value === "⌫") {
+
+                if (pin.length > 0) {
+
+                    pin =
+                        pin.slice(0, -1);
+
+                    updateDots();
+
+                }
+
+                return;
+            }
+
+
+            // --------------------------------------
+            // CONFIRM
+            // --------------------------------------
+
+            if (value === "✓") {
+
+                if (pin.length === 4) {
+
+                    verifyPin();
+
+                } else {
+
+                    alert(
+                        "Please enter your 4-digit M-PIN."
+                    );
+
+                }
+
+                return;
+            }
+
+
+            // --------------------------------------
+            // NUMBER
+            // --------------------------------------
+
+            if (
+                /^\d$/.test(value) &&
+                pin.length < 4
+            ) {
+
+                pin += value;
+
+                updateDots();
+
+
+                // ----------------------------------
+                // AUTO LOGIN AFTER 4 DIGITS
+                // ----------------------------------
+
+                if (pin.length === 4) {
+
+                    setTimeout(
+                        verifyPin,
+                        300
+                    );
+
+                }
+
+            }
+
+        }
+    );
+
+});
+
+
+// ======================================================
+// KEYBOARD SUPPORT
+// Allows physical keyboard numbers too
+// ======================================================
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        // Number 0-9
+        if (
+            /^\d$/.test(event.key)
+        ) {
+
+            if (pin.length < 4) {
+
+                pin += event.key;
+
+                updateDots();
+
+
+                if (pin.length === 4) {
+
+                    setTimeout(
+                        verifyPin,
+                        300
+                    );
+
+                }
+
+            }
+
+            return;
+        }
+
+
+        // Backspace
+        if (
+            event.key === "Backspace"
+        ) {
+
+            if (pin.length > 0) {
+
+                pin =
+                    pin.slice(0, -1);
+
+                updateDots();
+
+            }
+
+            return;
+        }
+
+
+        // Enter
+        if (
+            event.key === "Enter"
+        ) {
+
+            if (pin.length === 4) {
+
+                verifyPin();
+
+            }
+
+        }
+
+    }
+);
+
+
+// ======================================================
+// INITIAL STATE
+// ======================================================
+
+updateDots();
+
+
+// ======================================================
+// DEBUG
+// ======================================================
+
+console.log(
+    "M-PIN Login Page Ready"
+);
+
+console.log(
+    "API:",
+    API_URL + "/login-mpin"
+);
+
+</script>
+
+</body>
+
+</html>

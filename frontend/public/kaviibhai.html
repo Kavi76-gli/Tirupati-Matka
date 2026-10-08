@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Kalyan Bazar Multi Step Login</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#f5f7fb;
+  min-height:100vh;
+  overflow:hidden;
+}
+
+.container{
+  width:100%;
+  height:100vh;
+  position:relative;
+  overflow:hidden;
+}
+
+/* TOP SECTION */
+
+.top{
+  height:260px;
+  background:linear-gradient(135deg,#0067a5,#00b4ff);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+
+.circle{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+}
+
+.circle1{
+  width:140px;
+  height:140px;
+  top:-20px;
+  right:-40px;
+}
+
+.circle2{
+  width:80px;
+  height:80px;
+  bottom:20px;
+  left:-20px;
+}
+
+.logo{
+  width:85px;
+  height:85px;
+  border-radius:24px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+
+.logo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.title{
+  color:#fff;
+  margin-top:15px;
+  font-size:28px;
+  font-weight:700;
+  letter-spacing:.5px;
+}
+
+/* CARD */
+
+.card{
+  position:absolute;
+  top:220px;
+  left:0;
+  width:100%;
+  height:calc(100vh - 220px);
+  background:#fff;
+  border-radius:30px 30px 0 0;
+  overflow:hidden;
+}
+
+/* PAGE */
+
+.page{
+  position:absolute;
+  width:100%;
+  padding:30px 24px;
+  transition:.4s;
+}
+
+.page.hidden{
+  transform:translateX(100%);
+  opacity:0;
+}
+
+.page.active{
+  transform:translateX(0);
+  opacity:1;
+}
+
+.heading{
+  font-size:28px;
+  font-weight:700;
+  color:#111827;
+}
+
+.sub{
+  margin-top:6px;
+  font-size:14px;
+  color:#64748b;
+  line-height:1.5;
+}
+
+.label{
+  margin-top:28px;
+  margin-bottom:10px;
+  font-size:15px;
+  font-weight:600;
+  color:#334155;
+}
+
+/* INPUT */
+
+.input-box{
+  height:58px;
+  border:1.5px solid #dbe4ee;
+  border-radius:16px;
+  background:#f8fafc;
+  display:flex;
+  align-items:center;
+  padding:0 16px;
+  transition:.3s;
+}
+
+.input-box:focus-within{
+  border-color:#009dff;
+  background:#fff;
+  box-shadow:0 0 0 4px rgba(0,157,255,.12);
+}
+
+.country{
+  font-size:16px;
+  font-weight:600;
+  color:#334155;
+}
+
+.line{
+  width:1px;
+  height:24px;
+  background:#dbe4ee;
+  margin:0 12px;
+}
+
+input{
+  width:100%;
+  border:none;
+  outline:none;
+  background:transparent;
+  font-size:16px;
+  color:#111827;
+}
+
+input::placeholder{
+  color:#94a3b8;
+}
+
+/* BUTTON */
+
+.btn{
+  width:100%;
+  height:56px;
+  margin-top:30px;
+  border:none;
+  border-radius:16px;
+  background:linear-gradient(135deg,#0067a5,#00a6ff);
+  color:#fff;
+  font-size:17px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn:active{
+  transform:scale(.98);
+}
+
+/* OTP / PIN */
+
+.pin-box{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:15px;
+}
+
+.pin{
+  width:60px;
+  height:60px;
+  border:1.5px solid #dbe4ee;
+  border-radius:14px;
+  text-align:center;
+  font-size:22px;
+  font-weight:600;
+  background:#f8fafc;
+}
+
+.pin:focus{
+  border-color:#009dff;
+}
+
+/* BOTTOM */
+
+.bottom{
+  position:absolute;
+  bottom:20px;
+  left:0;
+  width:100%;
+  padding:0 20px;
+  text-align:center;
+}
+
+.terms{
+  font-size:12px;
+  color:#94a3b8;
+  line-height:1.6;
+}
+
+.terms span{
+  color:#009dff;
+  font-weight:600;
+}
+
+.help{
+  margin-top:12px;
+  color:#009dff;
+  font-size:15px;
+  font-weight:600;
+}
+
+.version{
+  margin-top:8px;
+  font-size:11px;
+  color:#cbd5e1;
+}
+
+/* MOBILE */
+
+@media(max-width:480px){
+
+  .top{
+    height:240px;
+  }
+
+  .card{
+    top:200px;
+    height:calc(100vh - 200px);
+  }
+
+  .heading{
+    font-size:24px;
+  }
+
+  .logo{
+    width:75px;
+    height:75px;
+  }
+
+  .title{
+    font-size:24px;
+  }
+
+  .pin{
+    width:52px;
+    height:52px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- TOP -->
+
+  <div class="top">
+
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+
+    <div class="logo">
+      <img src="1000096840.jpg">
+    </div>
+
+    <div class="title">KALYAN BAZAR</div>
+
+  </div>
+
+  <!-- CARD -->
+
+  <div class="card">
+
+    <!-- PAGE 1 MOBILE -->
+
+    <div class="page active" id="page1">
+
+      <div class="heading">Welcome Back</div>
+      <div class="sub">Enter your mobile number</div>
+
+      <div class="label">Mobile Number</div>
+
+      <div class="input-box">
+        <div class="country">+91</div>
+        <div class="line"></div>
+
+        <input type="tel" id="mobile" placeholder="0000 000 000">
+      </div>
+
+      <button class="btn" onclick="nextPage(1)">
+        Continue
+      </button>
+
+    </div>
+
+    <!-- PAGE 2 OTP -->
+
+    <div class="page hidden" id="page2">
+
+      <div class="heading">Verify OTP</div>
+      <div class="sub">Enter the OTP sent to your number</div>
+
+      <div class="label">OTP Code</div>
+
+      <div class="input-box">
+        <input type="number" id="otp" placeholder="Enter OTP">
+      </div>
+
+      <button class="btn" onclick="nextPage(2)">
+        Verify OTP
+      </button>
+
+    </div>
+
+    <!-- PAGE 3 NAME -->
+
+    <div class="page hidden" id="page3">
+
+      <div class="heading">Your Name</div>
+      <div class="sub">Enter your full name</div>
+
+      <div class="label">Full Name</div>
+
+      <div class="input-box">
+        <input type="text" id="name" placeholder="Enter Full Name">
+      </div>
+
+      <button class="btn" onclick="nextPage(3)">
+        Continue
+      </button>
+
+    </div>
+
+    <!-- PAGE 4 MPIN -->
+
+    <div class="page hidden" id="page4">
+
+      <div class="heading">Create MPIN</div>
+      <div class="sub">Set your secure 4 digit MPIN</div>
+
+      <div class="label">Enter MPIN</div>
+
+      <div class="pin-box">
+
+        <input type="password" maxlength="1" class="pin">
+        <input type="password" maxlength="1" class="pin">
+        <input type="password" maxlength="1" class="pin">
+        <input type="password" maxlength="1" class="pin">
+
+      </div>
+
+      <button class="btn" onclick="finish()">
+        Finish
+      </button>
+
+    </div>
+
+    <!-- BOTTOM -->
+
+    <div class="bottom">
+
+      <div class="terms">
+        By continuing, you agree to our
+        <span>Terms & Privacy Policy</span>
+      </div>
+
+      <div class="help">Need Help?</div>
+
+      <div class="version">v1.0.2</div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+/* MOBILE FORMAT */
+
+const mobile = document.getElementById("mobile");
+
+mobile.addEventListener("input",(e)=>{
+
+  let value = e.target.value.replace(/\D/g,'');
+
+  value = value.substring(0,10);
+
+  let formatted = value;
+
+  if(value.length > 4 && value.length <= 7){
+    formatted = value.slice(0,4) + " " + value.slice(4);
+  }
+
+  else if(value.length > 7){
+    formatted =
+      value.slice(0,4) + " " +
+      value.slice(4,7) + " " +
+      value.slice(7);
+  }
+
+  e.target.value = formatted;
+
+});
+
+/* PAGE CHANGE */
+
+function nextPage(current){
+
+  const currentPage =
+    document.getElementById(`page${current}`);
+
+  const nextPage =
+    document.getElementById(`page${current+1}`);
+
+  currentPage.classList.remove("active");
+  currentPage.classList.add("hidden");
+
+  nextPage.classList.remove("hidden");
+  nextPage.classList.add("active");
+
+}
+
+/* MPIN AUTO NEXT */
+
+const pins = document.querySelectorAll(".pin");
+
+pins.forEach((pin,index)=>{
+
+  pin.addEventListener("input",()=>{
+
+    if(pin.value.length === 1){
+
+      if(index < pins.length - 1){
+        pins[index + 1].focus();
+      }
+
+    }
+
+  });
+
+});
+
+/* FINISH */
+
+function finish(){
+
+  alert("Account Created Successfully!");
+
+}
+
+</script>
+
+</body>
+</html>

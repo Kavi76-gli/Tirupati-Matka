@@ -1,0 +1,3395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+>
+
+<title>Gali Disawar | Bet Type</title>
+
+<!-- =====================================================
+     FONT AWESOME
+===================================================== -->
+
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+>
+
+<!-- =====================================================
+     GOOGLE FONT
+===================================================== -->
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+
+<style>
+
+/* =====================================================
+   ROOT
+===================================================== */
+
+:root{
+
+    --green:#00a86b;
+    --green-dark:#007d52;
+    --green-light:#00d982;
+
+    --text:#17201d;
+    --muted:#8a9490;
+
+    --white:#ffffff;
+
+    --bg:#f6f9f8;
+    --soft:#f1f7f4;
+
+    --border:#e5ece9;
+
+    --danger:#e55353;
+
+    --shadow:
+        0 12px 35px rgba(0,0,0,.07);
+
+    --shadow-hover:
+        0 20px 45px rgba(0,168,107,.15);
+
+    --green-shadow:
+        0 12px 30px rgba(0,168,107,.22);
+
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+
+    margin:0;
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:"Poppins",sans-serif;
+
+    -webkit-tap-highlight-color:transparent;
+
+}
+
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+
+body{
+
+    min-height:100vh;
+
+    background:
+
+        radial-gradient(
+            circle at 5% 0%,
+            rgba(0,168,107,.09),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 100% 80%,
+            rgba(0,217,130,.07),
+            transparent 30%
+        ),
+
+        #f6f9f8;
+
+    color:var(--text);
+
+    padding-top:82px;
+
+    padding-bottom:105px;
+
+    overflow-x:hidden;
+
+}
+
+
+/* =====================================================
+   PAGE BACKGROUND ANIMATION
+===================================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    width:250px;
+    height:250px;
+
+    left:-120px;
+    top:80px;
+
+    border-radius:50%;
+
+    background:
+        rgba(0,168,107,.07);
+
+    filter:blur(70px);
+
+    pointer-events:none;
+
+    z-index:-1;
+
+    animation:
+        backgroundFloatOne 9s ease-in-out infinite;
+
+}
+
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    width:300px;
+    height:300px;
+
+    right:-150px;
+    bottom:80px;
+
+    border-radius:50%;
+
+    background:
+        rgba(0,217,130,.07);
+
+    filter:blur(80px);
+
+    pointer-events:none;
+
+    z-index:-1;
+
+    animation:
+        backgroundFloatTwo 11s ease-in-out infinite;
+
+}
+
+
+@keyframes backgroundFloatOne{
+
+    0%,
+    100%{
+
+        transform:
+            translate3d(0,0,0);
+
+    }
+
+    50%{
+
+        transform:
+            translate3d(40px,35px,0);
+
+    }
+
+}
+
+
+@keyframes backgroundFloatTwo{
+
+    0%,
+    100%{
+
+        transform:
+            translate3d(0,0,0);
+
+    }
+
+    50%{
+
+        transform:
+            translate3d(-40px,-30px,0);
+
+    }
+
+}
+
+
+/* =====================================================
+   PAGE ENTER
+===================================================== */
+
+body{
+
+    animation:
+        pageEnter .65s
+        cubic-bezier(.22,.61,.36,1);
+
+}
+
+
+@keyframes pageEnter{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(18px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    height:78px;
+
+    padding:
+        0 17px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    background:
+        rgba(255,255,255,.94);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    border-bottom:
+        1px solid
+        rgba(0,168,107,.10);
+
+    box-shadow:
+        0 8px 30px
+        rgba(0,0,0,.055);
+
+    z-index:1000;
+
+}
+
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    min-width:0;
+
+}
+
+
+.logo-image{
+
+    width:43px;
+    height:43px;
+
+    border-radius:14px;
+
+    object-fit:cover;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--green),
+            var(--green-light)
+        );
+
+    box-shadow:
+        0 8px 18px
+        rgba(0,168,107,.22);
+
+}
+
+
+.logo-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+    line-height:1.15;
+
+}
+
+
+.logo-title{
+
+    color:#15201c;
+
+    font-size:16px;
+
+    font-weight:800;
+
+    letter-spacing:-.3px;
+
+}
+
+
+.logo-subtitle{
+
+    margin-top:3px;
+
+    color:#8a9490;
+
+    font-size:9px;
+
+    font-weight:500;
+
+}
+
+
+/* =====================================================
+   HEADER RIGHT
+===================================================== */
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+
+.header-balance{
+
+    min-width:82px;
+
+    padding:
+        9px 11px;
+
+    text-align:center;
+
+    border-radius:13px;
+
+    color:var(--green-dark);
+
+    background:#effaf5;
+
+    border:
+        1px solid
+        rgba(0,168,107,.12);
+
+    font-size:12px;
+
+    font-weight:800;
+
+    white-space:nowrap;
+
+}
+
+
+.menu-button{
+
+    width:43px;
+    height:43px;
+
+    border:0;
+
+    border-radius:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--green),
+            var(--green-light)
+        );
+
+    color:#fff;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,168,107,.24);
+
+    transition:
+        box-shadow .25s ease;
+
+    will-change:transform;
+
+}
+
+
+.menu-button:hover{
+
+    box-shadow:
+        0 12px 27px
+        rgba(0,168,107,.32);
+
+}
+
+
+.menu-button:active{
+
+    transform:
+        scale(.93) !important;
+
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.main-content{
+
+    width:100%;
+
+    max-width:760px;
+
+    margin:0 auto;
+
+}
+
+
+/* =====================================================
+   MARKET CARD
+===================================================== */
+
+.market-card{
+
+    position:relative;
+
+    margin:18px;
+
+    padding:17px;
+
+    min-height:96px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    background:
+        rgba(255,255,255,.97);
+
+    border:
+        1px solid
+        rgba(0,168,107,.09);
+
+    border-radius:24px;
+
+    box-shadow:
+        var(--shadow);
+
+    overflow:hidden;
+
+    will-change:transform;
+
+}
+
+
+.market-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:120px;
+    height:120px;
+
+    right:-50px;
+    top:-65px;
+
+    border-radius:50%;
+
+    background:
+        rgba(0,168,107,.07);
+
+    transition:
+        transform .45s ease;
+
+}
+
+
+.market-card:hover::before{
+
+    transform:
+        scale(1.35);
+
+}
+
+
+.market-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:70px;
+    height:70px;
+
+    left:-40px;
+    bottom:-45px;
+
+    border-radius:50%;
+
+    background:
+        rgba(0,217,130,.05);
+
+}
+
+
+.market-left{
+
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+}
+
+
+.market-icon{
+
+    width:56px;
+    height:56px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:18px;
+
+    color:#fff;
+
+    font-size:21px;
+
+    font-weight:800;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--green-dark),
+            var(--green-light)
+        );
+
+    box-shadow:
+        0 9px 22px
+        rgba(0,168,107,.24);
+
+}
+
+
+.market-info h3{
+
+    color:#1c2421;
+
+    font-size:16px;
+
+    font-weight:800;
+
+    letter-spacing:-.2px;
+
+}
+
+
+.market-info p{
+
+    margin-top:4px;
+
+    color:#8a9490;
+
+    font-size:11px;
+
+    font-weight:500;
+
+}
+
+
+/* =====================================================
+   MARKET STATUS
+===================================================== */
+
+.market-status{
+
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    padding:
+        6px 9px;
+
+    border-radius:20px;
+
+    background:#effaf5;
+
+    color:var(--green-dark);
+
+    font-size:9px;
+
+    font-weight:700;
+
+}
+
+
+.status-dot{
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(0,168,107,.10);
+
+    animation:
+        statusPulse 1.8s ease-in-out infinite;
+
+}
+
+
+@keyframes statusPulse{
+
+    0%,
+    100%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        opacity:.55;
+
+        transform:scale(.75);
+
+    }
+
+}
+
+
+/* =====================================================
+   SECTION HEADING
+===================================================== */
+
+.section-heading{
+
+    margin:
+        25px 18px 13px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+
+.section-heading h2{
+
+    color:#17201d;
+
+    font-size:18px;
+
+    font-weight:800;
+
+}
+
+
+.section-heading span{
+
+    padding:
+        6px 10px;
+
+    border-radius:10px;
+
+    background:#effaf5;
+
+    color:var(--green);
+
+    font-size:9px;
+
+    font-weight:700;
+
+}
+
+
+/* =====================================================
+   GAME GRID
+===================================================== */
+
+.game-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:14px;
+
+    padding:
+        0 18px 20px;
+
+}
+
+
+/* =====================================================
+   MAGNETIC GAME CARD
+===================================================== */
+
+.game-box{
+
+    position:relative;
+
+    min-height:170px;
+
+    padding:
+        20px 12px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    background:
+        rgba(255,255,255,.98);
+
+    border:
+        1px solid
+        rgba(0,168,107,.10);
+
+    border-radius:25px;
+
+    box-shadow:
+        var(--shadow);
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+    transform:
+        translate3d(0,0,0);
+
+    will-change:
+        transform;
+
+    transition:
+        box-shadow .30s ease,
+        border-color .30s ease;
+
+}
+
+
+.game-box::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:145px;
+    height:145px;
+
+    top:-80px;
+    right:-70px;
+
+    border-radius:50%;
+
+    background:
+        rgba(0,168,107,.065);
+
+    transition:
+        transform .5s ease;
+
+}
+
+
+.game-box::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:-130%;
+
+    top:0;
+
+    width:75%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.85),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    transition:
+        left .7s ease;
+
+}
+
+
+.game-box:hover{
+
+    border-color:
+        rgba(0,168,107,.23);
+
+    box-shadow:
+        var(--shadow-hover);
+
+}
+
+
+.game-box:hover::before{
+
+    transform:
+        scale(1.45);
+
+}
+
+
+.game-box:hover::after{
+
+    left:145%;
+
+}
+
+
+/* =====================================================
+   GAME ICON
+===================================================== */
+
+.game-icon{
+
+    position:relative;
+
+    z-index:3;
+
+    width:68px;
+    height:68px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:21px;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--green),
+            var(--green-light)
+        );
+
+    font-size:25px;
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,168,107,.24);
+
+    margin-bottom:13px;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+
+}
+
+
+.game-box:hover .game-icon{
+
+    transform:
+        rotate(-6deg)
+        scale(1.07);
+
+    box-shadow:
+        0 15px 30px
+        rgba(0,168,107,.30);
+
+}
+
+
+.game-title{
+
+    position:relative;
+
+    z-index:3;
+
+    color:#17201d;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    letter-spacing:.2px;
+
+}
+
+
+.game-description{
+
+    position:relative;
+
+    z-index:3;
+
+    margin-top:4px;
+
+    color:#929b98;
+
+    font-size:10px;
+
+    font-weight:500;
+
+}
+
+
+/* =====================================================
+   CLICK RIPPLE
+===================================================== */
+
+.ripple{
+
+    position:absolute;
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:
+        rgba(0,168,107,.20);
+
+    transform:
+        translate(-50%,-50%)
+        scale(0);
+
+    animation:
+        rippleEffect .65s ease-out;
+
+    pointer-events:none;
+
+    z-index:10;
+
+}
+
+
+@keyframes rippleEffect{
+
+    to{
+
+        transform:
+            translate(-50%,-50%)
+            scale(18);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =====================================================
+   MENU OVERLAY
+===================================================== */
+
+.menu-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+        rgba(15,25,21,.28);
+
+    backdrop-filter:
+        blur(4px);
+
+    -webkit-backdrop-filter:
+        blur(4px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+        opacity .30s ease,
+        visibility .30s ease;
+
+    z-index:1998;
+
+}
+
+
+.menu-overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+
+/* =====================================================
+   SIDE MENU
+===================================================== */
+
+.side-menu{
+
+    position:fixed;
+
+    top:0;
+
+    right:-330px;
+
+    width:295px;
+
+    max-width:86%;
+
+    height:100vh;
+
+    background:
+        rgba(255,255,255,.985);
+
+    box-shadow:
+        -18px 0 50px
+        rgba(0,0,0,.13);
+
+    transition:
+        right .38s
+        cubic-bezier(.22,.61,.36,1);
+
+    z-index:1999;
+
+    overflow-y:auto;
+
+}
+
+
+.side-menu.active{
+
+    right:0;
+
+}
+
+
+.menu-header{
+
+    min-height:90px;
+
+    padding:
+        18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+}
+
+
+.menu-brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+}
+
+
+.menu-avatar{
+
+    width:45px;
+    height:45px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:15px;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--green),
+            var(--green-light)
+        );
+
+    box-shadow:
+        0 8px 18px
+        rgba(0,168,107,.20);
+
+}
+
+
+.menu-title{
+
+    color:#17201d;
+
+    font-size:15px;
+
+    font-weight:800;
+
+}
+
+
+.menu-subtitle{
+
+    margin-top:2px;
+
+    color:#8a9490;
+
+    font-size:10px;
+
+}
+
+
+.close-btn{
+
+    width:39px;
+    height:39px;
+
+    border:0;
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:#f2f6f4;
+
+    color:#17201d;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:
+        background .25s ease,
+        color .25s ease;
+
+    will-change:transform;
+
+}
+
+
+.close-btn:hover{
+
+    background:#eaf7f1;
+
+    color:var(--green);
+
+}
+
+
+/* =====================================================
+   MENU LIST
+===================================================== */
+
+.menu-list{
+
+    list-style:none;
+
+    padding:14px;
+
+}
+
+
+.menu-list li{
+
+    min-height:49px;
+
+    margin-bottom:8px;
+
+    padding:
+        0 14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:#34413c;
+
+    background:#fff;
+
+    border:
+        1px solid
+        #edf1ef;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0,0,0,.035);
+
+    transition:
+        .25s ease;
+
+}
+
+
+.menu-list li i{
+
+    width:20px;
+
+    text-align:center;
+
+    color:var(--green);
+
+}
+
+
+.menu-list li:hover{
+
+    color:var(--green-dark);
+
+    background:#f7fcfa;
+
+    border-color:
+        rgba(0,168,107,.18);
+
+    transform:
+        translateX(-4px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,168,107,.08);
+
+}
+
+
+.menu-list li.logout{
+
+    color:var(--danger);
+
+}
+
+
+.menu-list li.logout i{
+
+    color:var(--danger);
+
+}
+
+
+/* =====================================================
+   BOTTOM NAVIGATION
+===================================================== */
+
+.bottom-nav{
+
+    position:fixed;
+
+    left:10px;
+    right:10px;
+
+    bottom:10px;
+
+    height:70px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    align-items:center;
+
+    padding:7px;
+
+    background:
+        rgba(255,255,255,.96);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    border:
+        1px solid
+        rgba(0,168,107,.10);
+
+    border-radius:22px;
+
+    box-shadow:
+        0 12px 35px
+        rgba(0,0,0,.11);
+
+    z-index:1500;
+
+}
+
+
+.nav-item{
+
+    position:relative;
+
+    height:55px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:3px;
+
+    color:#929c98;
+
+    font-size:9px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    border-radius:16px;
+
+    transition:
+        background .25s ease,
+        color .25s ease;
+
+    will-change:transform;
+
+}
+
+
+.nav-item i{
+
+    font-size:17px;
+
+    transition:
+        transform .25s ease;
+
+}
+
+
+.nav-item:hover{
+
+    color:var(--green);
+
+    background:#f1faf6;
+
+}
+
+
+.nav-item:hover i{
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.nav-item.center{
+
+    width:58px;
+    height:58px;
+
+    justify-self:center;
+
+    margin-top:-23px;
+
+    border-radius:20px;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--green-dark),
+            var(--green-light)
+        );
+
+    box-shadow:
+        0 12px 25px
+        rgba(0,168,107,.30);
+
+}
+
+
+.nav-item.center i{
+
+    color:#fff;
+
+    font-size:20px;
+
+}
+
+
+.nav-item.center span{
+
+    font-size:8px;
+
+}
+
+
+.nav-item.active{
+
+    color:var(--green);
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+        rgba(255,255,255,.78);
+
+    backdrop-filter:
+        blur(7px);
+
+    -webkit-backdrop-filter:
+        blur(7px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
+
+    z-index:5000;
+
+}
+
+
+.loading.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+
+.loader-box{
+
+    width:70px;
+    height:70px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:22px;
+
+    background:#fff;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.10);
+
+}
+
+
+.loader{
+
+    width:36px;
+    height:36px;
+
+    border-radius:50%;
+
+    border:
+        4px solid
+        #e8f3ee;
+
+    border-top-color:
+        var(--green);
+
+    animation:
+        spin .75s linear infinite;
+
+}
+
+
+@keyframes spin{
+
+    to{
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:94px;
+
+    min-width:220px;
+
+    max-width:90%;
+
+    padding:
+        12px 17px;
+
+    border-radius:15px;
+
+    background:
+        #17201d;
+
+    color:#fff;
+
+    text-align:center;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:
+        translate(-50%,20px);
+
+    transition:
+        .3s ease;
+
+    z-index:6000;
+
+}
+
+
+.toast.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:
+        translate(-50%,0);
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media(min-width:600px){
+
+    .game-grid{
+
+        grid-template-columns:
+            repeat(2,220px);
+
+        justify-content:center;
+
+    }
+
+}
+
+
+/* =====================================================
+   DESKTOP
+===================================================== */
+
+@media(min-width:900px){
+
+    body{
+
+        max-width:1100px;
+
+        margin:auto;
+
+    }
+
+
+    .header{
+
+        left:50%;
+
+        transform:
+            translateX(-50%);
+
+        max-width:1100px;
+
+    }
+
+
+    .bottom-nav{
+
+        left:50%;
+
+        right:auto;
+
+        width:650px;
+
+        max-width:calc(100% - 20px);
+
+        transform:
+            translateX(-50%);
+
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media(max-width:380px){
+
+    .logo-title{
+
+        font-size:14px;
+
+    }
+
+
+    .logo-subtitle{
+
+        font-size:8px;
+
+    }
+
+
+    .logo-image{
+
+        width:40px;
+        height:40px;
+
+    }
+
+
+    .header-balance{
+
+        min-width:70px;
+
+        padding:
+            8px 8px;
+
+        font-size:11px;
+
+    }
+
+
+    .menu-button{
+
+        width:40px;
+        height:40px;
+
+    }
+
+
+    .market-card{
+
+        margin:
+            14px 12px;
+
+    }
+
+
+    .game-grid{
+
+        gap:10px;
+
+        padding:
+            0 12px 15px;
+
+    }
+
+
+    .game-box{
+
+        min-height:145px;
+
+        border-radius:21px;
+
+    }
+
+
+    .game-icon{
+
+        width:58px;
+        height:58px;
+
+        font-size:22px;
+
+    }
+
+
+    .game-title{
+
+        font-size:13px;
+
+    }
+
+
+    .game-description{
+
+        font-size:9px;
+
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+
+        animation-duration:.01ms !important;
+
+        animation-iteration-count:1 !important;
+
+        transition-duration:.01ms !important;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="logo">
+
+        <img
+            src="kalyan.jpeg"
+            class="logo-image"
+            alt="Gali Disawar"
+        >
+
+        <div class="logo-text">
+
+            <div class="logo-title">
+                Gali Disawar
+            </div>
+
+            <div class="logo-subtitle">
+                Premium Gaming Zone
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="header-right">
+
+        <div
+            class="header-balance"
+            id="balance"
+        >
+            ₹0.00
+        </div>
+
+
+        <button
+            class="menu-button magnetic"
+            id="menuButton"
+            type="button"
+            aria-label="Open menu"
+        >
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main-content">
+
+
+    <!-- =================================================
+         MARKET CARD
+    ================================================== -->
+
+    <section
+        class="market-card magnetic"
+        id="marketCard"
+    >
+
+        <div class="market-left">
+
+            <div
+                class="market-icon"
+                id="marketIcon"
+            >
+                G
+            </div>
+
+
+            <div class="market-info">
+
+                <h3 id="marketTitle">
+                    Loading...
+                </h3>
+
+                <p id="marketTime">
+                    --:-- – --:--
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="market-status">
+
+            <span class="status-dot"></span>
+
+            LIVE
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         SECTION TITLE
+    ================================================== -->
+
+    <div class="section-heading">
+
+        <h2>
+            Select Bet Type
+        </h2>
+
+        <span>
+            Choose Game
+        </span>
+
+    </div>
+
+
+    <!-- =================================================
+         GAME TYPE GRID
+    ================================================== -->
+
+    <div class="game-grid">
+
+
+        <!-- SINGLE -->
+
+        <div
+            class="game-box magnetic"
+            data-type="single"
+        >
+
+            <div class="game-icon">
+
+                <i class="fa-solid fa-1"></i>
+
+            </div>
+
+            <div class="game-title">
+                SINGLE
+            </div>
+
+            <div class="game-description">
+                Choose Single
+            </div>
+
+        </div>
+
+
+        <!-- JODI -->
+
+        <div
+            class="game-box magnetic"
+            data-type="jodi"
+        >
+
+            <div class="game-icon">
+
+                <i class="fa-solid fa-layer-group"></i>
+
+            </div>
+
+            <div class="game-title">
+                JODI
+            </div>
+
+            <div class="game-description">
+                Choose Jodi
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =====================================================
+     MENU OVERLAY
+===================================================== -->
+
+<div
+    class="menu-overlay"
+    id="menuOverlay"
+></div>
+
+
+<!-- =====================================================
+     SIDE MENU
+===================================================== -->
+
+<aside
+    class="side-menu"
+    id="sideMenu"
+>
+
+    <div class="menu-header">
+
+        <div class="menu-brand">
+
+            <div class="menu-avatar">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+
+            <div>
+
+                <div class="menu-title">
+                    Gali Disawar
+                </div>
+
+                <div class="menu-subtitle">
+                    Account Menu
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="close-btn magnetic"
+            id="closeMenu"
+            type="button"
+            aria-label="Close menu"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <ul class="menu-list">
+
+
+        <li onclick="go('profile.html')">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>
+                Profile
+            </span>
+
+        </li>
+
+
+        <li onclick="go('add-fund.html')">
+
+            <i class="fa-solid fa-wallet"></i>
+
+            <span>
+                Deposit
+            </span>
+
+        </li>
+
+
+        <li onclick="go('withdraw.html')">
+
+            <i class="fa-solid fa-money-bill-wave"></i>
+
+            <span>
+                Withdraw
+            </span>
+
+        </li>
+
+
+        <li onclick="go('transition.html')">
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            <span>
+                Transactions
+            </span>
+
+        </li>
+
+
+        <li onclick="go('gamezone.html')">
+
+            <i class="fa-solid fa-gamepad"></i>
+
+            <span>
+                Game Zone
+            </span>
+
+        </li>
+
+
+        <li onclick="go('reer.html')">
+
+            <i class="fa-solid fa-gift"></i>
+
+            <span>
+                Refer & Earn
+            </span>
+
+        </li>
+
+
+        <li onclick="go('history.html')">
+
+            <i class="fa-solid fa-file-lines"></i>
+
+            <span>
+                History
+            </span>
+
+        </li>
+
+
+        <li onclick="go('ratio.html')">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            <span>
+                Ratios
+            </span>
+
+        </li>
+
+
+        <li
+            class="logout"
+            onclick="logout()"
+        >
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>
+                Logout
+            </span>
+
+        </li>
+
+    </ul>
+
+</aside>
+
+
+<!-- =====================================================
+     BOTTOM NAVIGATION
+===================================================== -->
+
+<nav class="bottom-nav">
+
+
+    <div
+        class="nav-item magnetic"
+        data-page="reer.html"
+    >
+
+        <i class="fa-solid fa-gift"></i>
+
+        <span>
+            Refer
+        </span>
+
+    </div>
+
+
+    <div
+        class="nav-item magnetic"
+        data-page="history.html"
+    >
+
+        <i class="fa-solid fa-clock"></i>
+
+        <span>
+            History
+        </span>
+
+    </div>
+
+
+    <div
+        class="nav-item center magnetic active"
+        data-page="gamezone.html"
+    >
+
+        <i class="fa-solid fa-house"></i>
+
+        <span>
+            Home
+        </span>
+
+    </div>
+
+
+    <div
+        class="nav-item magnetic"
+        data-page="my-transition.html"
+    >
+
+        <i class="fa-solid fa-arrow-right-arrow-left"></i>
+
+        <span>
+            Transaction
+        </span>
+
+    </div>
+
+
+    <div
+        class="nav-item magnetic"
+        data-page="wallet.html"
+    >
+
+        <i class="fa-solid fa-wallet"></i>
+
+        <span>
+            Wallet
+        </span>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     LOADING
+===================================================== -->
+
+<div
+    class="loading"
+    id="loading"
+>
+
+    <div class="loader-box">
+
+        <div class="loader"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+    class="toast"
+    id="toast"
+>
+    Loading...
+</div>
+
+
+<script>
+
+/* =====================================================
+   CONFIG
+===================================================== */
+
+const API_AUTH =
+    "http://localhost:5000/api/auth";
+
+
+/*
+   DEPLOYED VERSION:
+
+   const API_AUTH =
+       "https://kalyanmaster.onrender.com/api/auth";
+*/
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const sideMenu =
+    document.getElementById("sideMenu");
+
+const menuOverlay =
+    document.getElementById("menuOverlay");
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const closeMenuButton =
+    document.getElementById("closeMenu");
+
+
+/* =====================================================
+   TOKEN
+===================================================== */
+
+function getToken(){
+
+    return (
+        localStorage.getItem("token") ||
+        localStorage.getItem("ki_token")
+    );
+
+}
+
+
+/* =====================================================
+   SELECTED GAME
+===================================================== */
+
+let game = null;
+
+
+try{
+
+    const storedGame =
+        localStorage.getItem(
+            "selectedGaliGame"
+        );
+
+    if(storedGame){
+
+        game =
+            JSON.parse(storedGame);
+
+    }
+
+}
+catch(error){
+
+    console.error(
+        "Selected Game Error:",
+        error
+    );
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+let toastTimer = null;
+
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    if(!toast) return;
+
+    toast.innerText =
+        message;
+
+    toast.classList.add(
+        "show"
+    );
+
+    clearTimeout(
+        toastTimer
+    );
+
+    toastTimer =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2500
+        );
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+function setLoading(status){
+
+    const loading =
+        document.getElementById("loading");
+
+    if(!loading) return;
+
+    loading.classList.toggle(
+        "active",
+        status
+    );
+
+}
+
+
+/* =====================================================
+   TIME FORMAT
+===================================================== */
+
+function formatTime12(timeStr){
+
+    if(!timeStr){
+
+        return "--:--";
+
+    }
+
+
+    if(
+        typeof timeStr === "string" &&
+        timeStr.includes("T")
+    ){
+
+        const date =
+            new Date(timeStr);
+
+        if(
+            Number.isNaN(
+                date.getTime()
+            )
+        ){
+
+            return "--:--";
+
+        }
+
+
+        let hours =
+            date.getHours();
+
+        const minutes =
+            date.getMinutes();
+
+        const ampm =
+            hours >= 12
+                ? "PM"
+                : "AM";
+
+        hours =
+            hours % 12 || 12;
+
+
+        return (
+            String(hours).padStart(2,"0") +
+            ":" +
+            String(minutes).padStart(2,"0") +
+            " " +
+            ampm
+        );
+
+    }
+
+
+    const parts =
+        String(timeStr)
+        .split(":");
+
+
+    if(parts.length < 2){
+
+        return String(timeStr);
+
+    }
+
+
+    let hours =
+        Number(parts[0]);
+
+    const minutes =
+        Number(parts[1]);
+
+
+    if(
+        Number.isNaN(hours) ||
+        Number.isNaN(minutes)
+    ){
+
+        return "--:--";
+
+    }
+
+
+    const ampm =
+        hours >= 12
+            ? "PM"
+            : "AM";
+
+    hours =
+        hours % 12 || 12;
+
+
+    return (
+        String(hours).padStart(2,"0") +
+        ":" +
+        String(minutes).padStart(2,"0") +
+        " " +
+        ampm
+    );
+
+}
+
+
+/* =====================================================
+   DISPLAY GAME
+===================================================== */
+
+function displayGame(){
+
+    if(!game){
+
+        showToast(
+            "No game selected"
+        );
+
+        setTimeout(
+            () => {
+
+                window.location.href =
+                    "gali-gamezone.html";
+
+            },
+            1000
+        );
+
+        return;
+
+    }
+
+
+    if(!game.gameId){
+
+        showToast(
+            "Invalid game"
+        );
+
+        setTimeout(
+            () => {
+
+                window.location.href =
+                    "gali-gamezone.html";
+
+            },
+            1000
+        );
+
+        return;
+
+    }
+
+
+    const title =
+        document.getElementById(
+            "marketTitle"
+        );
+
+    const icon =
+        document.getElementById(
+            "marketIcon"
+        );
+
+    const time =
+        document.getElementById(
+            "marketTime"
+        );
+
+
+    const gameName =
+        game.gameName ||
+        "GALI DISAWAR";
+
+
+    if(title){
+
+        title.innerText =
+            gameName;
+
+    }
+
+
+    if(icon){
+
+        icon.innerText =
+            gameName
+            .charAt(0)
+            .toUpperCase();
+
+    }
+
+
+    if(time){
+
+        time.innerText =
+            formatTime12(
+                game.openTime
+            ) +
+            " – " +
+            formatTime12(
+                game.closeTime
+            );
+
+    }
+
+}
+
+
+/* =====================================================
+   LOAD BALANCE
+===================================================== */
+
+async function loadBalance(){
+
+    const token =
+        getToken();
+
+
+    const balanceElement =
+        document.getElementById(
+            "balance"
+        );
+
+
+    if(!token){
+
+        if(balanceElement){
+
+            balanceElement.innerText =
+                "₹0.00";
+
+        }
+
+        return;
+
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                API_AUTH +
+                "/balance",
+                {
+
+                    method:"GET",
+
+                    headers:{
+                        Authorization:
+                            "Bearer " +
+                            token
+                    }
+
+                }
+            );
+
+
+        if(
+            response.status === 401
+        ){
+
+            localStorage.removeItem(
+                "token"
+            );
+
+            localStorage.removeItem(
+                "ki_token"
+            );
+
+            localStorage.removeItem(
+                "user"
+            );
+
+            window.location.href =
+                "auth.html";
+
+            return;
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        if(data.success){
+
+            const balance =
+                Number(
+                    data.balance ??
+                    data.user?.balance ??
+                    data.user?.wallet ??
+                    0
+                );
+
+
+            if(balanceElement){
+
+                balanceElement.innerText =
+                    "₹" +
+                    balance.toLocaleString(
+                        "en-IN",
+                        {
+                            minimumFractionDigits:2,
+                            maximumFractionDigits:2
+                        }
+                    );
+
+            }
+
+        }
+
+    }
+    catch(error){
+
+        console.error(
+            "Balance Error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   CHOOSE BET TYPE
+===================================================== */
+
+function chooseType(type){
+
+    if(!game){
+
+        showToast(
+            "Game information unavailable"
+        );
+
+        return;
+
+    }
+
+
+    if(
+        type !== "single" &&
+        type !== "jodi"
+    ){
+
+        return;
+
+    }
+
+
+    const galiBetInfo = {
+
+        gameId:
+            game.gameId,
+
+        gameName:
+            game.gameName,
+
+        betType:
+            type,
+
+        openTime:
+            game.openTime,
+
+        closeTime:
+            game.closeTime
+
+    };
+
+
+    localStorage.setItem(
+        "galiBetInfo",
+        JSON.stringify(
+            galiBetInfo
+        )
+    );
+
+
+    setLoading(true);
+
+
+    setTimeout(
+        () => {
+
+            if(type === "single"){
+
+                window.location.href =
+                    "galisingletype.html";
+
+            }
+            else{
+
+                window.location.href =
+                    "galijodi.html";
+
+            }
+
+        },
+        250
+    );
+
+}
+
+
+/* =====================================================
+   RIPPLE EFFECT
+===================================================== */
+
+function createRipple(
+    element,
+    event
+){
+
+    const ripple =
+        document.createElement(
+            "span"
+        );
+
+    ripple.className =
+        "ripple";
+
+
+    const rect =
+        element.getBoundingClientRect();
+
+
+    let x;
+    let y;
+
+
+    if(
+        event &&
+        event.clientX
+    ){
+
+        x =
+            event.clientX -
+            rect.left;
+
+        y =
+            event.clientY -
+            rect.top;
+
+    }
+    else{
+
+        x =
+            rect.width / 2;
+
+        y =
+            rect.height / 2;
+
+    }
+
+
+    ripple.style.left =
+        x + "px";
+
+    ripple.style.top =
+        y + "px";
+
+
+    element.appendChild(
+        ripple
+    );
+
+
+    setTimeout(
+        () => {
+
+            ripple.remove();
+
+        },
+        700
+    );
+
+}
+
+
+/* =====================================================
+   MENU OPEN
+===================================================== */
+
+function openMenu(){
+
+    if(!sideMenu) return;
+
+    sideMenu.classList.add(
+        "active"
+    );
+
+    menuOverlay.classList.add(
+        "active"
+    );
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* =====================================================
+   MENU CLOSE
+===================================================== */
+
+function closeMenu(){
+
+    if(!sideMenu) return;
+
+    sideMenu.classList.remove(
+        "active"
+    );
+
+    menuOverlay.classList.remove(
+        "active"
+    );
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+/* =====================================================
+   MENU TOGGLE
+===================================================== */
+
+function toggleMenu(){
+
+    if(
+        sideMenu.classList.contains(
+            "active"
+        )
+    ){
+
+        closeMenu();
+
+    }
+    else{
+
+        openMenu();
+
+    }
+
+}
+
+
+/* =====================================================
+   MENU EVENTS
+===================================================== */
+
+if(menuButton){
+
+    menuButton.addEventListener(
+        "click",
+        toggleMenu
+    );
+
+}
+
+
+if(closeMenuButton){
+
+    closeMenuButton.addEventListener(
+        "click",
+        closeMenu
+    );
+
+}
+
+
+if(menuOverlay){
+
+    menuOverlay.addEventListener(
+        "click",
+        closeMenu
+    );
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function go(page){
+
+    if(!page) return;
+
+    closeMenu();
+
+    setLoading(true);
+
+
+    setTimeout(
+        () => {
+
+            window.location.href =
+                page;
+
+        },
+        180
+    );
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout(){
+
+    localStorage.removeItem(
+        "token"
+    );
+
+    localStorage.removeItem(
+        "ki_token"
+    );
+
+    localStorage.removeItem(
+        "user"
+    );
+
+    localStorage.removeItem(
+        "selectedGaliGame"
+    );
+
+    localStorage.removeItem(
+        "galiBetInfo"
+    );
+
+
+    window.location.href =
+        "auth.html";
+
+}
+
+
+/* =====================================================
+   BOTTOM NAVIGATION
+===================================================== */
+
+document
+.querySelectorAll(
+    ".nav-item"
+)
+.forEach(
+    item => {
+
+        item.addEventListener(
+            "click",
+            () => {
+
+                const page =
+                    item.dataset.page;
+
+                if(page){
+
+                    go(page);
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   GAME CARD EVENTS
+===================================================== */
+
+document
+.querySelectorAll(
+    ".game-box"
+)
+.forEach(
+    card => {
+
+        card.addEventListener(
+            "click",
+            event => {
+
+                createRipple(
+                    card,
+                    event
+                );
+
+
+                const type =
+                    card.dataset.type;
+
+
+                chooseType(
+                    type
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   MAGNETIC ANIMATION
+===================================================== */
+
+function enableMagnetic(){
+
+    const elements =
+        document.querySelectorAll(
+            ".magnetic"
+        );
+
+
+    /*
+        Disable mouse magnetic
+        movement on touch devices.
+    */
+
+    if(
+        window.matchMedia(
+            "(pointer: coarse)"
+        ).matches
+    ){
+
+        return;
+
+    }
+
+
+    elements.forEach(
+        element => {
+
+            let frame = null;
+
+
+            element.addEventListener(
+                "mousemove",
+                event => {
+
+                    if(frame){
+
+                        cancelAnimationFrame(
+                            frame
+                        );
+
+                    }
+
+
+                    frame =
+                        requestAnimationFrame(
+                            () => {
+
+                                const rect =
+                                    element.getBoundingClientRect();
+
+
+                                const x =
+                                    event.clientX -
+                                    rect.left -
+                                    rect.width / 2;
+
+
+                                const y =
+                                    event.clientY -
+                                    rect.top -
+                                    rect.height / 2;
+
+
+                                let strength =
+                                    0.13;
+
+
+                                if(
+                                    element.classList.contains(
+                                        "game-box"
+                                    )
+                                ){
+
+                                    strength =
+                                        0.075;
+
+                                }
+
+
+                                if(
+                                    element.classList.contains(
+                                        "market-card"
+                                    )
+                                ){
+
+                                    strength =
+                                        0.045;
+
+                                }
+
+
+                                if(
+                                    element.classList.contains(
+                                        "nav-item"
+                                    )
+                                ){
+
+                                    strength =
+                                        0.11;
+
+                                }
+
+
+                                const moveX =
+                                    x * strength;
+
+
+                                const moveY =
+                                    y * strength;
+
+
+                                element.style.transform =
+                                    `translate3d(${moveX}px,${moveY}px,0)`;
+
+                            }
+                        );
+
+                }
+            );
+
+
+            element.addEventListener(
+                "mouseleave",
+                () => {
+
+                    if(frame){
+
+                        cancelAnimationFrame(
+                            frame
+                        );
+
+                    }
+
+
+                    element.style.transform =
+                        "translate3d(0,0,0)";
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   ESCAPE KEY
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key === "Escape"
+        ){
+
+            closeMenu();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        displayGame();
+
+        loadBalance();
+
+        enableMagnetic();
+
+    }
+);
+
+
+/* =====================================================
+   AUTO BALANCE REFRESH
+===================================================== */
+
+setInterval(
+    loadBalance,
+    30000
+);
+
+</script>
+
+
+</body>
+</html>

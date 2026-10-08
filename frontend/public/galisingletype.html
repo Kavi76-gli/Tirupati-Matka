@@ -1,0 +1,2252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gali Disawar | Select Side</title>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+>
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+  --green:#00a86b;
+  --green-dark:#007d52;
+  --green-light:#e9fff5;
+  --green-soft:#f3fff9;
+
+  --text:#17231e;
+  --muted:#7b8882;
+
+  --white:#ffffff;
+  --border:#e5eee9;
+
+  --shadow:0 12px 35px rgba(0,120,80,.10);
+  --shadow-soft:0 8px 22px rgba(0,120,80,.08);
+
+  --danger:#ef4444;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(0,168,107,.10),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 100% 20%,
+      rgba(0,168,107,.07),
+      transparent 28%
+    ),
+    #f8fbfa;
+
+  color:var(--text);
+  padding-bottom:100px;
+  overflow-x:hidden;
+}
+
+/* =========================================================
+   BACKGROUND DECORATION
+========================================================= */
+
+.bg-circle{
+  position:fixed;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:-1;
+  filter:blur(2px);
+}
+
+.bg-circle.one{
+  width:180px;
+  height:180px;
+  top:100px;
+  left:-90px;
+  background:rgba(0,168,107,.05);
+}
+
+.bg-circle.two{
+  width:220px;
+  height:220px;
+  right:-110px;
+  top:420px;
+  background:rgba(0,168,107,.05);
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:500;
+
+  height:70px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 16px;
+
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+
+  border-bottom:1px solid var(--border);
+
+  box-shadow:
+    0 5px 25px rgba(0,0,0,.04);
+}
+
+/* LOGO */
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+}
+
+.logo img{
+  width:40px;
+  height:40px;
+  object-fit:cover;
+  border-radius:13px;
+
+  border:1px solid rgba(0,168,107,.18);
+
+  box-shadow:
+    0 7px 18px rgba(0,168,107,.18);
+}
+
+.logo-text{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+
+.logo-title{
+  font-size:15px;
+  font-weight:800;
+  color:var(--text);
+  line-height:1.1;
+  white-space:nowrap;
+}
+
+.logo-subtitle{
+  margin-top:3px;
+  font-size:9px;
+  font-weight:600;
+  color:var(--green);
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+/* HEADER RIGHT */
+
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* BALANCE */
+
+.balance{
+  min-width:92px;
+
+  padding:8px 12px;
+
+  border-radius:30px;
+
+  background:var(--green-soft);
+
+  border:1px solid rgba(0,168,107,.18);
+
+  color:var(--green-dark);
+
+  font-size:12px;
+  font-weight:800;
+
+  text-align:center;
+
+  box-shadow:
+    0 5px 15px rgba(0,168,107,.08);
+}
+
+/* MENU BUTTON */
+
+.menu-button{
+  width:42px;
+  height:42px;
+
+  border:1px solid var(--border);
+  border-radius:13px;
+
+  background:#fff;
+
+  color:var(--green-dark);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:17px;
+
+  cursor:pointer;
+
+  transition:.25s;
+
+  box-shadow:0 5px 15px rgba(0,0,0,.05);
+}
+
+.menu-button:hover{
+  transform:translateY(-2px);
+  border-color:rgba(0,168,107,.35);
+
+  box-shadow:
+    0 8px 20px rgba(0,168,107,.12);
+}
+
+.menu-button:active{
+  transform:scale(.94);
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main{
+  width:100%;
+  max-width:650px;
+  margin:0 auto;
+  padding:18px 15px 25px;
+}
+
+/* =========================================================
+   MARKET CARD
+========================================================= */
+
+.market-card{
+  position:relative;
+  overflow:hidden;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:16px;
+
+  margin-bottom:16px;
+
+  background:#fff;
+
+  border:1px solid var(--border);
+  border-radius:20px;
+
+  box-shadow:var(--shadow);
+
+  animation:fadeUp .5s ease both;
+}
+
+.market-card::after{
+  content:"";
+  position:absolute;
+
+  width:130px;
+  height:130px;
+
+  right:-65px;
+  top:-65px;
+
+  border-radius:50%;
+
+  background:rgba(0,168,107,.06);
+}
+
+.market-left{
+  position:relative;
+  z-index:1;
+
+  display:flex;
+  align-items:center;
+  gap:13px;
+
+  min-width:0;
+}
+
+.market-icon{
+  width:48px;
+  height:48px;
+
+  flex-shrink:0;
+
+  border-radius:15px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--green),
+      var(--green-dark)
+    );
+
+  color:#fff;
+
+  font-size:18px;
+  font-weight:800;
+
+  box-shadow:
+    0 8px 18px rgba(0,168,107,.22);
+}
+
+.market-info{
+  min-width:0;
+}
+
+.market-info h3{
+  color:var(--text);
+
+  font-size:15px;
+  font-weight:800;
+
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.market-info p{
+  margin-top:4px;
+
+  color:var(--muted);
+
+  font-size:11px;
+  font-weight:500;
+}
+
+.market-status{
+  position:relative;
+  z-index:2;
+
+  padding:6px 9px;
+
+  border-radius:20px;
+
+  background:var(--green-light);
+
+  color:var(--green-dark);
+
+  font-size:9px;
+  font-weight:800;
+
+  text-transform:uppercase;
+  letter-spacing:.5px;
+
+  border:1px solid rgba(0,168,107,.12);
+}
+
+/* =========================================================
+   TITLE CARD
+========================================================= */
+
+.title-card{
+  margin-bottom:16px;
+
+  animation:fadeUp .55s ease both;
+}
+
+.title-card .eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+
+  padding:6px 10px;
+
+  border-radius:20px;
+
+  background:var(--green-light);
+
+  color:var(--green-dark);
+
+  font-size:9px;
+  font-weight:800;
+
+  text-transform:uppercase;
+  letter-spacing:.8px;
+}
+
+.title-card h1{
+  margin-top:10px;
+
+  font-size:23px;
+  line-height:1.2;
+
+  font-weight:800;
+
+  color:var(--text);
+}
+
+.title-card p{
+  margin-top:5px;
+
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* =========================================================
+   SIDE GRID
+========================================================= */
+
+.side-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+/* SIDE BOX */
+
+.side-box{
+  position:relative;
+  overflow:hidden;
+
+  min-height:190px;
+
+  padding:24px 15px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  background:#fff;
+
+  border:1px solid var(--border);
+  border-radius:24px;
+
+  cursor:pointer;
+
+  box-shadow:var(--shadow);
+
+  transition:
+    box-shadow .25s ease,
+    border-color .25s ease,
+    background .25s ease;
+}
+
+.side-box::before{
+  content:"";
+
+  position:absolute;
+
+  width:120px;
+  height:120px;
+
+  border-radius:50%;
+
+  background:rgba(0,168,107,.045);
+
+  top:-65px;
+  right:-55px;
+
+  transition:.3s;
+}
+
+.side-box::after{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:-100%;
+
+  width:60%;
+  height:100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.75),
+      transparent
+    );
+
+  transform:skewX(-20deg);
+
+  transition:.6s;
+}
+
+.side-box:hover{
+  border-color:rgba(0,168,107,.28);
+
+  box-shadow:
+    0 18px 40px rgba(0,168,107,.13);
+}
+
+.side-box:hover::after{
+  left:140%;
+}
+
+.side-box:active{
+  transform:scale(.97);
+}
+
+/* ICON */
+
+.side-icon{
+  position:relative;
+  z-index:2;
+
+  width:68px;
+  height:68px;
+
+  border-radius:21px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:var(--green-light);
+
+  color:var(--green);
+
+  font-size:27px;
+
+  border:1px solid rgba(0,168,107,.10);
+
+  box-shadow:
+    0 10px 24px rgba(0,168,107,.09);
+
+  margin-bottom:15px;
+
+  transition:.25s;
+}
+
+.side-box:hover .side-icon{
+  background:var(--green);
+  color:#fff;
+
+  box-shadow:
+    0 10px 25px rgba(0,168,107,.22);
+
+  transform:translateY(-3px);
+}
+
+.side-box strong{
+  position:relative;
+  z-index:2;
+
+  color:var(--text);
+
+  font-size:16px;
+  font-weight:800;
+
+  letter-spacing:.4px;
+}
+
+.side-box small{
+  position:relative;
+  z-index:2;
+
+  margin-top:5px;
+
+  color:var(--muted);
+
+  font-size:10px;
+  font-weight:500;
+}
+
+/* =========================================================
+   SIDE MENU OVERLAY
+========================================================= */
+
+.menu-overlay{
+  position:fixed;
+  inset:0;
+
+  background:rgba(10,25,19,.32);
+
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:.25s;
+
+  z-index:900;
+}
+
+.menu-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+
+/* =========================================================
+   SIDE MENU
+========================================================= */
+
+.side-menu{
+  position:fixed;
+
+  top:0;
+  right:-310px;
+
+  width:285px;
+  max-width:86vw;
+  height:100vh;
+
+  background:#fff;
+
+  border-left:1px solid var(--border);
+
+  box-shadow:
+    -15px 0 45px rgba(0,0,0,.12);
+
+  transition:right .32s cubic-bezier(.4,0,.2,1);
+
+  z-index:1000;
+
+  overflow-y:auto;
+}
+
+.side-menu.active{
+  right:0;
+}
+
+/* MENU HEADER */
+
+.menu-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:20px 18px;
+
+  border-bottom:1px solid var(--border);
+
+  position:sticky;
+  top:0;
+
+  background:rgba(255,255,255,.94);
+
+  backdrop-filter:blur(15px);
+
+  z-index:2;
+}
+
+.menu-brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.menu-brand-icon{
+  width:38px;
+  height:38px;
+
+  border-radius:12px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:var(--green-light);
+
+  color:var(--green);
+
+  font-size:15px;
+}
+
+.menu-header h3{
+  color:var(--text);
+  font-size:16px;
+  font-weight:800;
+}
+
+.close-btn{
+  width:38px;
+  height:38px;
+
+  border:none;
+  border-radius:12px;
+
+  background:#f5f8f6;
+
+  color:var(--text);
+
+  font-size:20px;
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.close-btn:hover{
+  background:var(--green-light);
+  color:var(--green);
+}
+
+/* MENU LIST */
+
+.menu-list{
+  list-style:none;
+
+  padding:15px;
+}
+
+.menu-list li{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  padding:13px 12px;
+
+  margin-bottom:7px;
+
+  border:1px solid transparent;
+
+  border-radius:13px;
+
+  color:var(--text);
+
+  font-size:12px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.menu-list li i{
+  width:24px;
+
+  color:var(--green);
+
+  text-align:center;
+
+  font-size:14px;
+}
+
+.menu-list li:hover{
+  background:var(--green-light);
+  border-color:rgba(0,168,107,.10);
+
+  transform:translateX(-2px);
+}
+
+.menu-list li.logout-item{
+  margin-top:10px;
+
+  color:var(--danger);
+
+  background:#fff5f5;
+}
+
+.menu-list li.logout-item i{
+  color:var(--danger);
+}
+
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
+
+.bottom-nav{
+  position:fixed;
+
+  left:50%;
+  bottom:0;
+
+  transform:translateX(-50%);
+
+  width:100%;
+  max-width:650px;
+
+  height:76px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+
+  padding:7px 7px 8px;
+
+  background:rgba(255,255,255,.96);
+
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+
+  border-top:1px solid var(--border);
+
+  box-shadow:
+    0 -8px 30px rgba(0,0,0,.07);
+
+  z-index:700;
+}
+
+.nav-item{
+  position:relative;
+
+  width:19%;
+
+  min-height:56px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  gap:4px;
+
+  color:#94a19b;
+
+  font-size:8px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.nav-item i{
+  font-size:17px;
+}
+
+.nav-item:hover{
+  color:var(--green);
+}
+
+.nav-item.center{
+  width:58px;
+  height:58px;
+
+  min-height:58px;
+
+  margin-top:-28px;
+
+  border-radius:19px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--green),
+      var(--green-dark)
+    );
+
+  color:#fff;
+
+  box-shadow:
+    0 10px 25px rgba(0,168,107,.27);
+
+  border:5px solid #f8fbfa;
+
+  font-size:8px;
+
+  z-index:2;
+}
+
+.nav-item.center i{
+  font-size:18px;
+}
+
+.nav-item.center:hover{
+  color:#fff;
+
+  box-shadow:
+    0 14px 30px rgba(0,168,107,.32);
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading-overlay{
+  position:fixed;
+  inset:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:rgba(255,255,255,.82);
+
+  backdrop-filter:blur(8px);
+
+  z-index:2000;
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:.2s;
+}
+
+.loading-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+
+.loader-box{
+  padding:20px 25px;
+
+  background:#fff;
+
+  border:1px solid var(--border);
+
+  border-radius:18px;
+
+  box-shadow:var(--shadow);
+
+  text-align:center;
+}
+
+.loader{
+  width:34px;
+  height:34px;
+
+  margin:0 auto 10px;
+
+  border:3px solid #e4f4ed;
+  border-top-color:var(--green);
+
+  border-radius:50%;
+
+  animation:spin .8s linear infinite;
+}
+
+.loader-box p{
+  color:var(--muted);
+
+  font-size:11px;
+  font-weight:600;
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+  position:fixed;
+
+  left:50%;
+  bottom:92px;
+
+  transform:translate(-50%,20px);
+
+  width:max-content;
+  max-width:90%;
+
+  padding:11px 16px;
+
+  background:#17231e;
+  color:#fff;
+
+  border-radius:12px;
+
+  font-size:11px;
+  font-weight:600;
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.16);
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:.25s;
+
+  z-index:2500;
+}
+
+.toast.show{
+  opacity:1;
+  visibility:visible;
+
+  transform:translate(-50%,0);
+}
+
+.toast.error{
+  background:#b42318;
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(15px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:480px){
+
+  .header{
+    height:66px;
+    padding:0 13px;
+  }
+
+  .logo img{
+    width:37px;
+    height:37px;
+  }
+
+  .logo-title{
+    font-size:14px;
+  }
+
+  .balance{
+    min-width:82px;
+    padding:7px 9px;
+    font-size:10px;
+  }
+
+  .menu-button{
+    width:39px;
+    height:39px;
+  }
+
+  .main{
+    padding:15px 12px 25px;
+  }
+
+  .market-card{
+    padding:14px;
+    border-radius:18px;
+  }
+
+  .market-icon{
+    width:44px;
+    height:44px;
+    border-radius:13px;
+  }
+
+  .market-status{
+    display:none;
+  }
+
+  .title-card h1{
+    font-size:21px;
+  }
+
+  .side-grid{
+    gap:11px;
+  }
+
+  .side-box{
+    min-height:175px;
+    padding:20px 10px;
+    border-radius:20px;
+  }
+
+  .side-icon{
+    width:60px;
+    height:60px;
+    border-radius:19px;
+    font-size:24px;
+  }
+
+  .side-box strong{
+    font-size:14px;
+  }
+
+  .side-box small{
+    font-size:9px;
+  }
+
+  .bottom-nav{
+    height:72px;
+  }
+
+  .nav-item{
+    min-height:53px;
+  }
+
+  .nav-item i{
+    font-size:16px;
+  }
+
+  .nav-item.center{
+    width:55px;
+    height:55px;
+    min-height:55px;
+  }
+}
+
+/* =========================================================
+   SMALL DEVICES
+========================================================= */
+
+@media(max-width:350px){
+
+  .logo-subtitle{
+    display:none;
+  }
+
+  .balance{
+    min-width:75px;
+    font-size:9px;
+  }
+
+  .side-box{
+    min-height:160px;
+  }
+
+  .side-icon{
+    width:54px;
+    height:54px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+
+<div class="bg-circle one"></div>
+<div class="bg-circle two"></div>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+  <div class="logo">
+
+    <img
+      src="kalyan.jpeg"
+      alt="Gali Disawar"
+    >
+
+    <div class="logo-text">
+
+      <div class="logo-title">
+        Gali Disawar
+      </div>
+
+      <div class="logo-subtitle">
+        Game Zone
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="header-right">
+
+    <div
+      class="balance"
+      id="balance"
+    >
+      ₹0.00
+    </div>
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-label="Open Menu"
+    >
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+
+  <!-- MARKET CARD -->
+
+  <section class="market-card">
+
+    <div class="market-left">
+
+      <div
+        class="market-icon"
+        id="marketIcon"
+      >
+        G
+      </div>
+
+      <div class="market-info">
+
+        <h3 id="marketTitle">
+          Loading...
+        </h3>
+
+        <p id="marketTime">
+          --:-- – --:--
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="market-status">
+      Selected
+    </div>
+
+  </section>
+
+
+  <!-- TITLE -->
+
+  <section class="title-card">
+
+    <div class="eyebrow">
+      <i class="fa-solid fa-bullseye"></i>
+      Single Game
+    </div>
+
+    <h1>
+      Select Your Side
+    </h1>
+
+    <p>
+      Choose whether you want to play on the Open or Close digit.
+    </p>
+
+  </section>
+
+
+  <!-- SIDE SELECT -->
+
+  <section class="side-grid">
+
+    <!-- LEFT -->
+
+    <div
+      class="side-box magnetic"
+      data-side="left"
+      tabindex="0"
+      role="button"
+      aria-label="Select Left Open Digit"
+    >
+
+      <div class="side-icon">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+      </div>
+
+      <strong>
+        LEFT
+      </strong>
+
+      <small>
+        Open Digit
+      </small>
+
+    </div>
+
+
+    <!-- RIGHT -->
+
+    <div
+      class="side-box magnetic"
+      data-side="right"
+      tabindex="0"
+      role="button"
+      aria-label="Select Right Close Digit"
+    >
+
+      <div class="side-icon">
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+      </div>
+
+      <strong>
+        RIGHT
+      </strong>
+
+      <small>
+        Close Digit
+      </small>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- =====================================================
+     MENU OVERLAY
+===================================================== -->
+
+<div
+  class="menu-overlay"
+  id="menuOverlay"
+></div>
+
+
+<!-- =====================================================
+     SIDE MENU
+===================================================== -->
+
+<aside
+  class="side-menu"
+  id="sideMenu"
+>
+
+  <div class="menu-header">
+
+    <div class="menu-brand">
+
+      <div class="menu-brand-icon">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+
+      <h3>
+        Menu
+      </h3>
+
+    </div>
+
+    <button
+      class="close-btn"
+      id="closeMenu"
+      type="button"
+      aria-label="Close Menu"
+    >
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+  </div>
+
+
+  <ul class="menu-list">
+
+    <li data-page="profile.html">
+      <i class="fa-solid fa-user"></i>
+      <span>Profile</span>
+    </li>
+
+    <li data-page="add-fund.html">
+      <i class="fa-solid fa-circle-plus"></i>
+      <span>Deposit</span>
+    </li>
+
+    <li data-page="withdraw.html">
+      <i class="fa-solid fa-money-bill-transfer"></i>
+      <span>Withdraw</span>
+    </li>
+
+    <li data-page="transition.html">
+      <i class="fa-solid fa-arrow-right-arrow-left"></i>
+      <span>Transactions</span>
+    </li>
+
+    <li data-page="gamezone.html">
+      <i class="fa-solid fa-gamepad"></i>
+      <span>Game Zone</span>
+    </li>
+
+    <li data-page="reer.html">
+      <i class="fa-solid fa-users"></i>
+      <span>Refer & Earn</span>
+    </li>
+
+    <li data-page="history.html">
+      <i class="fa-solid fa-clock-rotate-left"></i>
+      <span>History</span>
+    </li>
+
+    <li data-page="ratio.html">
+      <i class="fa-solid fa-chart-simple"></i>
+      <span>Ratios</span>
+    </li>
+
+    <li
+      class="logout-item"
+      id="logoutButton"
+    >
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <span>Logout</span>
+    </li>
+
+  </ul>
+
+</aside>
+
+
+<!-- =====================================================
+     BOTTOM NAV
+===================================================== -->
+
+<nav class="bottom-nav">
+
+  <div
+    class="nav-item"
+    data-page="reer.html"
+  >
+
+    <i class="fa-solid fa-users"></i>
+
+    <span>
+      Refer
+    </span>
+
+  </div>
+
+
+  <div
+    class="nav-item"
+    data-page="history.html"
+  >
+
+    <i class="fa-solid fa-clock"></i>
+
+    <span>
+      Bid History
+    </span>
+
+  </div>
+
+
+  <div
+    class="nav-item center"
+    data-page="gamezone.html"
+  >
+
+    <i class="fa-solid fa-house"></i>
+
+    <span>
+      Home
+    </span>
+
+  </div>
+
+
+  <div
+    class="nav-item"
+    data-page="my-transition.html"
+  >
+
+    <i class="fa-solid fa-receipt"></i>
+
+    <span>
+      Transaction
+    </span>
+
+  </div>
+
+
+  <div
+    class="nav-item"
+    data-page="wallet.html"
+  >
+
+    <i class="fa-solid fa-wallet"></i>
+
+    <span>
+      Wallet
+    </span>
+
+  </div>
+
+</nav>
+
+
+<!-- =====================================================
+     LOADING
+===================================================== -->
+
+<div
+  class="loading-overlay"
+  id="loadingOverlay"
+>
+
+  <div class="loader-box">
+
+    <div class="loader"></div>
+
+    <p>
+      Opening game...
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+  class="toast"
+  id="toast"
+></div>
+
+
+<script>
+
+/* =========================================================
+   CONFIG
+========================================================= */
+
+const API_AUTH =
+  "http://localhost:5000/api/auth";
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function $(id){
+  return document.getElementById(id);
+}
+
+
+function getToken(){
+
+  return (
+    localStorage.getItem("token") ||
+    localStorage.getItem("ki_token") ||
+    ""
+  );
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer = null;
+
+function showToast(message, type = ""){
+
+  const toast = $("toast");
+
+  if(!toast) return;
+
+  toast.textContent = message;
+
+  toast.className = "toast show";
+
+  if(type){
+    toast.classList.add(type);
+  }
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+
+    toast.classList.remove("show");
+
+  }, 2500);
+
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+function showLoading(){
+
+  $("loadingOverlay")?.classList.add("active");
+
+}
+
+
+function hideLoading(){
+
+  $("loadingOverlay")?.classList.remove("active");
+
+}
+
+
+/* =========================================================
+   LOAD GALI BET INFO
+========================================================= */
+
+let bet = null;
+
+try{
+
+  const storedBet =
+    localStorage.getItem("galiBetInfo");
+
+  if(storedBet){
+
+    bet = JSON.parse(storedBet);
+
+  }
+
+}catch(error){
+
+  console.error(
+    "galiBetInfo error:",
+    error
+  );
+
+}
+
+
+/* =========================================================
+   VALIDATE BET
+========================================================= */
+
+if(
+  !bet ||
+  !bet.gameId ||
+  bet.betType !== "single"
+){
+
+  showToast(
+    "No Single bet selected.",
+    "error"
+  );
+
+  setTimeout(() => {
+
+    window.location.href =
+      "galibattype.html";
+
+  }, 700);
+
+}
+
+
+/* =========================================================
+   TIME FORMAT
+========================================================= */
+
+function formatTime12(timeStr){
+
+  if(!timeStr){
+    return "--:--";
+  }
+
+  const parts =
+    String(timeStr).split(":");
+
+  const h =
+    Number(parts[0]);
+
+  const m =
+    Number(parts[1] || 0);
+
+  if(
+    Number.isNaN(h) ||
+    Number.isNaN(m)
+  ){
+
+    return timeStr;
+
+  }
+
+  const hh =
+    h % 12 || 12;
+
+  const ampm =
+    h >= 12 ? "PM" : "AM";
+
+  return (
+    String(hh).padStart(2,"0") +
+    ":" +
+    String(m).padStart(2,"0") +
+    " " +
+    ampm
+  );
+
+}
+
+
+/* =========================================================
+   DISPLAY MARKET
+========================================================= */
+
+function displayMarket(){
+
+  if(!bet) return;
+
+
+  const gameName =
+    bet.gameName ||
+    "Gali Disawar";
+
+
+  $("marketTitle").textContent =
+    gameName;
+
+
+  $("marketIcon").textContent =
+    gameName
+      .charAt(0)
+      .toUpperCase();
+
+
+  $("marketTime").textContent =
+    `${formatTime12(bet.openTime)}
+     – ${formatTime12(bet.closeTime)}`;
+
+}
+
+
+/* =========================================================
+   LOAD BALANCE
+========================================================= */
+
+async function loadBalance(){
+
+  const token = getToken();
+
+  if(!token){
+
+    $("balance").textContent =
+      "₹0.00";
+
+    return;
+
+  }
+
+
+  try{
+
+    const response =
+      await fetch(
+        API_AUTH + "/balance",
+        {
+          method:"GET",
+
+          headers:{
+            "Authorization":
+              "Bearer " + token,
+
+            "Content-Type":
+              "application/json"
+          }
+        }
+      );
+
+
+    if(response.status === 401){
+
+      localStorage.removeItem("token");
+      localStorage.removeItem("ki_token");
+
+      window.location.href =
+        "auth.html";
+
+      return;
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if(data.success){
+
+      let balance =
+        data.balance;
+
+
+      if(
+        balance === undefined &&
+        data.user
+      ){
+
+        balance =
+          data.user.balance ??
+          data.user.wallet;
+
+      }
+
+
+      const numericBalance =
+        Number(balance || 0);
+
+
+      $("balance").textContent =
+        "₹" +
+        numericBalance.toLocaleString(
+          "en-IN",
+          {
+            minimumFractionDigits:2,
+            maximumFractionDigits:2
+          }
+        );
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "Balance error:",
+      error
+    );
+
+    $("balance").textContent =
+      "₹0.00";
+
+  }
+
+}
+
+
+/* =========================================================
+   CHOOSE SIDE
+========================================================= */
+
+function chooseSide(side){
+
+  if(!bet){
+
+    showToast(
+      "Game information not available.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if(
+    side !== "left" &&
+    side !== "right"
+  ){
+
+    return;
+
+  }
+
+
+  /* SAVE SELECTED SIDE */
+
+  bet.betFor = side;
+
+
+  localStorage.setItem(
+    "galiBetInfo",
+    JSON.stringify(bet)
+  );
+
+
+  /* VISUAL */
+
+  showLoading();
+
+
+  /* NEXT PAGE */
+
+  setTimeout(() => {
+
+    window.location.href =
+      "galijodi.html";
+
+  }, 350);
+
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+const sideMenu =
+  $("sideMenu");
+
+const menuOverlay =
+  $("menuOverlay");
+
+const menuButton =
+  $("menuButton");
+
+const closeMenuButton =
+  $("closeMenu");
+
+
+function openMenu(){
+
+  sideMenu.classList.add("active");
+
+  menuOverlay.classList.add("active");
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+
+function closeMenu(){
+
+  sideMenu.classList.remove("active");
+
+  menuOverlay.classList.remove("active");
+
+  document.body.style.overflow =
+    "";
+
+}
+
+
+function toggleMenu(){
+
+  if(
+    sideMenu.classList.contains("active")
+  ){
+
+    closeMenu();
+
+  }else{
+
+    openMenu();
+
+  }
+
+}
+
+
+menuButton.addEventListener(
+  "click",
+  toggleMenu
+);
+
+
+closeMenuButton.addEventListener(
+  "click",
+  closeMenu
+);
+
+
+menuOverlay.addEventListener(
+  "click",
+  closeMenu
+);
+
+
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
+
+function go(page){
+
+  if(!page) return;
+
+  closeMenu();
+
+  window.location.href =
+    page;
+
+}
+
+
+/* MENU NAVIGATION */
+
+document
+  .querySelectorAll(".menu-list li[data-page]")
+  .forEach(item => {
+
+    item.addEventListener(
+      "click",
+      () => {
+
+        go(
+          item.dataset.page
+        );
+
+      }
+    );
+
+  });
+
+
+/* BOTTOM NAVIGATION */
+
+document
+  .querySelectorAll(".nav-item[data-page]")
+  .forEach(item => {
+
+    item.addEventListener(
+      "click",
+      () => {
+
+        go(
+          item.dataset.page
+        );
+
+      }
+    );
+
+  });
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+$("logoutButton")
+  .addEventListener(
+    "click",
+    () => {
+
+      localStorage.removeItem("token");
+      localStorage.removeItem("ki_token");
+      localStorage.removeItem("user");
+
+      localStorage.removeItem(
+        "selectedGaliGame"
+      );
+
+      localStorage.removeItem(
+        "galiBetInfo"
+      );
+
+      window.location.href =
+        "auth.html";
+
+    }
+  );
+
+
+/* =========================================================
+   SIDE BUTTONS
+========================================================= */
+
+document
+  .querySelectorAll(".side-box")
+  .forEach(box => {
+
+    box.addEventListener(
+      "click",
+      () => {
+
+        chooseSide(
+          box.dataset.side
+        );
+
+      }
+    );
+
+
+    /* KEYBOARD */
+
+    box.addEventListener(
+      "keydown",
+      event => {
+
+        if(
+          event.key === "Enter" ||
+          event.key === " "
+        ){
+
+          event.preventDefault();
+
+          chooseSide(
+            box.dataset.side
+          );
+
+        }
+
+      }
+    );
+
+  });
+
+
+/* =========================================================
+   MAGNETIC ANIMATION
+========================================================= */
+
+function enableMagnetic(){
+
+  const canHover =
+    window.matchMedia(
+      "(hover: hover) and (pointer: fine)"
+    ).matches;
+
+
+  if(!canHover) return;
+
+
+  document
+    .querySelectorAll(".magnetic")
+    .forEach(element => {
+
+
+      element.addEventListener(
+        "mousemove",
+        event => {
+
+          const rect =
+            element.getBoundingClientRect();
+
+
+          const x =
+            event.clientX -
+            (rect.left + rect.width / 2);
+
+
+          const y =
+            event.clientY -
+            (rect.top + rect.height / 2);
+
+
+          const moveX =
+            x * 0.08;
+
+
+          const moveY =
+            y * 0.08;
+
+
+          element.style.transform =
+            `translate(${moveX}px, ${moveY}px)`;
+
+        }
+      );
+
+
+      element.addEventListener(
+        "mouseleave",
+        () => {
+
+          element.style.transform =
+            "";
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =========================================================
+   ESC KEY
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if(event.key === "Escape"){
+
+      closeMenu();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+    if(bet){
+
+      displayMarket();
+
+      loadBalance();
+
+    }
+
+    enableMagnetic();
+
+  }
+);
+
+
+/* =========================================================
+   REFRESH BALANCE
+========================================================= */
+
+setInterval(
+  loadBalance,
+  30000
+);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
+
+  <title>Tirupati Matka - Authentication</title>
+
+  <link rel="stylesheet" href="css/auth.css" />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+</head>
+
+<body>
+
+  <!-- ======================================================
+       MAGNETIC BACKGROUND
+  ======================================================= -->
+
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="ambient ambient-three"></div>
+
+  <div class="magnetic-glow"></div>
+
+  <!-- ======================================================
+       FLOATING PARTICLES
+  ======================================================= -->
+
+  <div class="bubbles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+
+  <!-- ======================================================
+       PREMIUM HEADER
+  ======================================================= -->
+
+  <header class="app-header">
+
+    <div class="header-shine"></div>
+
+    <div class="app-brand">
+
+      <div class="app-logo">
+        <img
+          src="images/app-logo.png"
+          alt="Tirupati Matka Logo"
+        />
+      </div>
+
+      <div class="brand-text">
+        <h1>Tirupati Matka</h1>
+        <p>Premium Gaming Experience</p>
+      </div>
+
+    </div>
+
+
+    <div class="header-badge">
+      <span class="status-dot"></span>
+      <i class="fa-solid fa-shield-halved"></i>
+      Secure
+    </div>
+
+  </header>
+
+
+  <!-- ======================================================
+       AUTH CARD
+  ======================================================= -->
+
+  <main class="auth-container" id="authCard">
+
+    <!-- CARD GLOW -->
+    <div class="card-glow"></div>
+
+
+    <!-- ====================================================
+         PROGRESS
+    ===================================================== -->
+
+    <div class="progress">
+
+      <div class="step active"></div>
+      <div class="step"></div>
+      <div class="step"></div>
+      <div class="step"></div>
+      <div class="step"></div>
+      <div class="step"></div>
+
+    </div>
+
+
+    <!-- ====================================================
+         PHONE PAGE
+    ===================================================== -->
+
+    <section
+      class="page active"
+      id="phonePage"
+    >
+
+      <div class="logo-box">
+        <i class="fa-solid fa-mobile-screen-button"></i>
+      </div>
+
+      <div class="page-label">
+        STEP 01
+      </div>
+
+      <h1>Welcome</h1>
+
+      <p>
+        Verify your mobile number to create
+        your secure gaming account.
+      </p>
+
+
+      <div class="phone-box">
+
+        <span class="country-code">
+          <span class="flag">🇮🇳</span>
+          +91
+        </span>
+
+        <div class="input-divider"></div>
+
+        <input
+          type="tel"
+          id="phone"
+          inputmode="numeric"
+          autocomplete="tel"
+          maxlength="10"
+          placeholder="Enter mobile number"
+        />
+
+        <i class="fa-solid fa-check phone-check"></i>
+
+      </div>
+
+
+      <button
+        id="sendOtpBtn"
+        class="primary-button"
+        type="button"
+      >
+        <span>Send OTP</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+
+
+      <div class="security-note">
+        <i class="fa-solid fa-lock"></i>
+        Your mobile number is securely verified
+      </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         OTP PAGE
+    ===================================================== -->
+
+    <section
+      class="page"
+      id="otpPage"
+    >
+
+      <div class="logo-box">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+
+      <div class="page-label">
+        STEP 02
+      </div>
+
+      <h2>Verify OTP</h2>
+
+      <p>
+        Enter the 6-digit verification code
+        sent to your mobile number.
+      </p>
+
+
+      <div class="otp-wrapper">
+
+        <input
+          type="text"
+          maxlength="6"
+          id="otp"
+          class="input-full"
+          inputmode="numeric"
+          autocomplete="one-time-code"
+          placeholder="Enter OTP"
+        />
+
+        <i class="fa-solid fa-shield-halved otp-icon"></i>
+
+      </div>
+
+
+      <button
+        id="verifyBtn"
+        class="primary-button"
+        type="button"
+      >
+        <span>Verify OTP</span>
+        <i class="fa-solid fa-check"></i>
+      </button>
+
+
+      <div class="security-note">
+        <i class="fa-solid fa-circle-check"></i>
+        Firebase secure verification
+      </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         NAME PAGE
+    ===================================================== -->
+
+    <section
+      class="page"
+      id="namePage"
+    >
+
+      <div class="logo-box">
+        <i class="fa-solid fa-user"></i>
+      </div>
+
+      <div class="page-label">
+        STEP 03
+      </div>
+
+      <h2>Your Name</h2>
+
+      <p>
+        Tell us your name so we can personalize
+        your gaming experience.
+      </p>
+
+
+      <div class="input-wrapper">
+
+        <input
+          type="text"
+          id="fullName"
+          class="input-full"
+          autocomplete="name"
+          placeholder="Enter your full name"
+        />
+
+        <i class="fa-solid fa-user input-icon"></i>
+
+      </div>
+
+
+      <button
+        id="nextBtn"
+        class="primary-button"
+        type="button"
+      >
+        <span>Continue</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+
+    </section>
+
+
+    <!-- ====================================================
+         PASSWORD PAGE
+    ===================================================== -->
+
+    <section
+      class="page"
+      id="passwordPage"
+    >
+
+      <div class="logo-box">
+        <i class="fa-solid fa-lock"></i>
+      </div>
+
+      <div class="page-label">
+        STEP 04
+      </div>
+
+      <h2>Create Password</h2>
+
+      <p>
+        Create a strong password to protect
+        your account.
+      </p>
+
+
+      <div class="input-wrapper">
+
+        <input
+          type="password"
+          id="password"
+          class="input-full"
+          autocomplete="new-password"
+          placeholder="Create password"
+        />
+
+        <i class="fa-solid fa-lock input-icon"></i>
+
+      </div>
+
+
+      <div class="password-hint">
+        <i class="fa-solid fa-circle-info"></i>
+        Minimum 6 characters
+      </div>
+
+
+      <button
+        id="passwordBtn"
+        class="primary-button"
+        type="button"
+      >
+        <span>Continue</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+
+    </section>
+
+
+    <!-- ====================================================
+         REFERRAL PAGE
+    ===================================================== -->
+
+    <section
+      class="page"
+      id="referralPage"
+    >
+
+      <div class="logo-box">
+        <i class="fa-solid fa-gift"></i>
+      </div>
+
+      <div class="page-label">
+        STEP 05
+      </div>
+
+      <h2>Referral Code</h2>
+
+      <p>
+        Have a referral code?
+        Enter it below to continue.
+      </p>
+
+
+      <div class="input-wrapper">
+
+        <input
+          type="text"
+          id="referral"
+          class="input-full"
+          autocomplete="off"
+          placeholder="Enter referral code"
+        />
+
+        <i class="fa-solid fa-gift input-icon"></i>
+
+      </div>
+
+
+      <div class="optional-badge">
+        OPTIONAL
+      </div>
+
+
+      <button
+        id="createBtn"
+        class="primary-button"
+        type="button"
+      >
+        <span>Create Account</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+
+    </section>
+
+
+    <!-- ====================================================
+         MPIN PAGE
+    ===================================================== -->
+
+    <section
+      class="page"
+      id="mpinPage"
+    >
+
+      <div class="logo-box">
+        <i class="fa-solid fa-key"></i>
+      </div>
+
+      <div class="page-label">
+        STEP 06
+      </div>
+
+      <h2>Create M-PIN</h2>
+
+      <p>
+        Set a 4-digit M-PIN for quick and
+        secure account access.
+      </p>
+
+
+      <div class="input-wrapper mpin-wrapper">
+
+        <input
+          type="password"
+          maxlength="4"
+          id="mpin"
+          class="input-full"
+          inputmode="numeric"
+          autocomplete="off"
+          placeholder="••••"
+        />
+
+        <i class="fa-solid fa-key input-icon"></i>
+
+      </div>
+
+
+      <div class="mpin-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+
+      <button
+        id="mpinBtn"
+        class="primary-button"
+        type="button"
+      >
+        <span>Create M-PIN</span>
+        <i class="fa-solid fa-check"></i>
+      </button>
+
+
+      <div class="security-note">
+        <i class="fa-solid fa-shield-halved"></i>
+        Keep your M-PIN private
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ======================================================
+       RECAPTCHA
+  ======================================================= -->
+
+  <div id="recaptcha-container"></div>
+
+
+  <!-- ======================================================
+       JAVASCRIPT
+  ======================================================= -->
+
+  <script type="module" src="js/auth.js"></script>
+
+</body>
+</html>
+

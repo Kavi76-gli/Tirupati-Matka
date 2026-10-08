@@ -1,0 +1,119 @@
+/* =====================
+   BOTTOM NAV
+===================== */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #020f24;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  border-top: 1px solid #00eaff55;
+  box-shadow: 0 -5px 15px #00eaff22;
+}
+
+.nav-item {
+  text-align: center;
+  color: #00eaffaa;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.nav-item i {
+  font-size: 18px;
+  display: block;
+}
+
+.nav-item.center {
+  background: #00eaff;
+  color: #001a3d;
+  padding: 10px 16px;
+  border-radius: 50%;
+  margin-top: -20px;
+  box-shadow: 0 0 20px #00eaff;
+}
+
+.nav-item.center i {
+  color: #001a3d;
+} please update it like css remain same .bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: calc(70px + var(--safe-bottom));
+  padding-bottom: var(--safe-bottom);
+  background: linear-gradient(180deg, #0d47ff, #0a3dd1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  box-shadow: 0 -6px 16px rgba(0,0,0,0.25);
+  z-index: 999;
+}
+
+/* NAV ITEM */
+.bottom-nav .nav-item {
+  flex: 1;
+  text-align: center;
+  color: rgba(255,255,255,0.75);
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
+  position: relative;
+}
+
+.bottom-nav .nav-item i {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.bottom-nav .nav-item span {
+  font-weight: 500;
+}
+
+/* ACTIVE ITEM */
+.bottom-nav .nav-item.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* CENTER HOME BUTTON */
+.bottom-nav .nav-item.center {
+  transform: translateY(-18px);
+}
+
+.bottom-nav .nav-item.center i {
+  background: #ffffff;
+  color: #0d47ff;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  margin-bottom: 6px;
+}
+
+.bottom-nav .nav-item.center span {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ACTIVE INDICATOR */
+.active-indicator {
+  position: absolute;
+  bottom: 6px;
+  height: 3px;
+  width: 40px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: transform 0.3s ease;
+}

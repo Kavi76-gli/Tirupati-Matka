@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin • Gali Panel</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="stylesheet" href="global.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial}
+body{
+  background:radial-gradient(circle at top,#0a1a2f,#020b18);
+  color:#00eaff;
+}
+.header{
+  background:linear-gradient(90deg,#021126,#0d47ff);
+  padding:12px 16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #00eaff55;
+}
+.header b{font-size:16px}
+.header button{
+  background:linear-gradient(135deg,#00eaff,#0099ff);
+  border:none;
+  padding:8px 14px;
+  border-radius:20px;
+  font-weight:bold;
+  color:#001a3d;
+  cursor:pointer;
+}
+.container{padding:16px}
+
+.card{
+  background:#001a3d;
+  border:1px solid #00eaff55;
+  border-radius:16px;
+  padding:14px;
+  margin-bottom:14px;
+  box-shadow:0 0 14px #00eaff22;
+}
+.row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+.small{font-size:12px;color:#7fefff;margin-top:4px}
+
+.result{
+  min-width:80px;
+  text-align:center;
+  padding:8px 12px;
+  border-radius:14px;
+  background:#020f24;
+  border:1px solid #00eaff55;
+  font-weight:bold;
+}
+
+.btn-row{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+  flex-wrap:wrap;
+}
+.btn{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:20px;
+  font-weight:bold;
+  cursor:pointer;
+  background:linear-gradient(135deg,#00eaff,#0099ff);
+  color:#001a3d;
+}
+.btn.red{
+  background:linear-gradient(135deg,#ff4d4d,#ff0000);
+  color:#fff;
+}
+.btn.gray{
+  background:#333;
+  color:#aaa;
+  cursor:not-allowed;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <b>ADMIN • GALI PANEL</b>
+  <button onclick="location.href='admin-gali-create.html'">
+    <i class="fa fa-plus"></i> Create
+  </button>
+</div>
+
+<div class="container" id="list"></div>
+
+
+<script>
+const API = "http://localhost:5000/api/gali";
+
+const token = localStorage.getItem("token");
+
+/* ---------- FORMAT RESULT ---------- */
+function formatResult(result){
+  if(!result) return "**";
+
+  const left = result.left ?? "*";
+  const right = result.right ?? "*";
+
+  if(left !== "*" && right !== "*"){
+    return `${left}${right}`; // JODI
+  }
+
+  if(left !== "*") return `${left}*`;
+  if(right !== "*") return `*${right}`;
+
+  return "**";
+}
+
+/* ---------- LOAD GAMES ---------- */
+async function loadGames(){
+  const res = await fetch(API + "/admin/all",{
+    headers:{ Authorization:"Bearer " + token }
+  });
+
+  const data = await res.json();
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+  if(!data.success || !data.matches.length){
+    list.innerHTML = "<p>No Gali Games Found</p>";
+    return;
+  }
+
+  data.matches.forEach(m => {
+  const resultText = formatResult(m.openResult);
+  const declared = m.resultDeclared;
+
+  list.innerHTML += `
+    <div class="card">
+      <div class="row">
+        <div>
+          <b>${m.gameName} (${m.gameCode})</b>
+          <div class="small">
+            Open: ${new Date(m.openTime).toLocaleTimeString()} •
+            Close: ${new Date(m.closeTime).toLocaleTimeString()}
+          </div>
+        </div>
+
+        <div class="result ${declared ? "declared" : ""}">
+          ${resultText}
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn" onclick="declareResult('${m._id}')" ${declared ? "disabled" : ""}>
+          ${declared ? "Result Declared" : "Declare Result"}
+        </button>
+
+        <button class="btn" onclick="viewBets('${m._id}')">
+          View Bets
+        </button>
+
+        <button class="btn red" onclick="resetGali('${m._id}')">
+          Reset
+        </button>
+
+        <button class="btn red" onclick="deleteGame('${m._id}')">
+          Delete
+        </button>
+      </div>
+    </div>
+  `;
+});
+}
+
+function declareResult(id){
+  localStorage.setItem("galiAdminMatchId", id);
+  location.href = "admin-gali-close.html";
+}
+
+function viewBets(id){
+  localStorage.setItem("galiAdminMatchId", id);
+  location.href = "admin-gali-bets.html";
+}
+
+async function deleteGame(id){
+  if(!confirm("Delete this game?")) return;
+
+  const res = await fetch(API + "/admin/delete/" + id,{
+    method:"DELETE",
+    headers:{ Authorization:"Bearer " + token }
+  });
+
+  const data = await res.json();
+  if(!res.ok) return alert(data.msg || "Failed");
+
+  alert("✅ Game deleted");
+  loadGames();
+}
+function go(page) {
+  window.location.href = page;
+}
+
+
+
+
+
+async function resetGali(matchId) {
+  if (!matchId) return alert("Invalid match ID");
+
+  if (!confirm("Reset this Gali result?")) return;
+
+  try {
+    const res = await fetch(API + "/reset", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token
+      },
+      body: JSON.stringify({ matchId })
+    });
+
+    const data = await res.json();
+    if (!res.ok) return alert(data.msg || "Reset failed");
+
+    alert("✅ Gali result reset");
+    loadGames();
+
+  } catch {
+    alert("Server not reachable");
+  }
+}
+
+
+
+loadGames();
+</script>
+<script src="nav.js"></script>
+
+</body>
+</html>

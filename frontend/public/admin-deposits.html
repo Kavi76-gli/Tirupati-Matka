@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Admin • Deposit Requests</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+:root{
+  --bg:#020617;
+  --card:#030c1c;
+  --line:#0f172a;
+  --blue:#38bdf8;
+  --green:#22c55e;
+  --red:#ef4444;
+  --orange:#f59e0b;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Segoe UI,system-ui;
+  background:var(--bg);
+  color:#e5f3ff;
+}
+
+header{
+  padding:14px;
+  text-align:center;
+  font-weight:700;
+  color:var(--blue);
+  background:#020a1d;
+  border-bottom:1px solid var(--line);
+}
+
+.container{
+  padding:12px;
+}
+
+/* ===== TABLE ===== */
+.table-wrap{
+  overflow-x:auto;
+  background:var(--card);
+  border-radius:12px;
+  box-shadow:0 0 14px rgba(56,189,248,.15);
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:900px;
+}
+
+th,td{
+  padding:10px;
+  font-size:13px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  white-space:nowrap;
+}
+
+th{
+  color:#7dd3fc;
+  font-weight:600;
+}
+
+tr:hover{
+  background:#020a1d;
+}
+
+.status{
+  font-weight:700;
+  text-transform:uppercase;
+}
+.pending{color:var(--orange)}
+.approved{color:var(--green)}
+.rejected{color:var(--red)}
+
+/* ===== BUTTONS ===== */
+.actions{
+  display:flex;
+  gap:6px;
+}
+
+button{
+  border:none;
+  padding:6px 10px;
+  border-radius:6px;
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.approve{background:var(--green);color:#022c22}
+.reject{background:var(--red);color:#450a0a}
+.remove{background:#334155;color:#e5f3ff}
+
+button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:700px){
+  table{min-width:700px}
+}
+</style>
+</head>
+
+<body>
+
+<header>ADMIN – DEPOSIT REQUESTS</header>
+
+<div class="container">
+  <div style="margin-bottom:10px;text-align:right">
+    <button class="remove" onclick="removeAllUI()">🗑 Remove All (UI)</button>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Phone</th>
+          <th>Amount</th>
+          <th>UTR</th>
+          <th>Status</th>
+          <th>Time</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="rows">
+        <tr><td colspan="7">Loading...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+const API = "http://localhost:5000/api/auth";
+const token = localStorage.getItem("token");
+
+if(!token){
+  alert("Admin not logged in");
+  location.href="login.html";
+}
+
+/* =========================
+   FORMAT TIME (IST)
+========================= */
+function formatTime(dt){
+  if(!dt) return "-";
+  return new Date(dt).toLocaleString("en-IN",{
+    day:"2-digit",
+    month:"short",
+    year:"numeric",
+    hour:"2-digit",
+    minute:"2-digit"
+  });
+}
+
+/* =========================
+   LOAD DEPOSITS
+========================= */
+async function loadDeposits(){
+  const body=document.getElementById("rows");
+  body.innerHTML=`<tr><td colspan="7">Loading...</td></tr>`;
+
+  try{
+    const res=await fetch(`${API}/admin/deposits`,{
+      headers:{Authorization:"Bearer "+token}
+    });
+    const data=await res.json();
+
+    if(!data.success || !data.deposits.length){
+      body.innerHTML=`<tr><td colspan="7">No deposits</td></tr>`;
+      return;
+    }
+
+    body.innerHTML="";
+    data.deposits.forEach(d=>{
+      const tr=document.createElement("tr");
+      tr.id="row-"+d.txnId;
+
+      tr.innerHTML=`
+        <td>${d.user?.name || "-"}</td>
+        <td>${d.user?.phone || "-"}</td>
+        <td>₹${d.amount}</td>
+        <td>${d.utr || "-"}</td>
+        <td class="status ${d.status}">${d.status}</td>
+        <td>${formatTime(d.date)}</td>
+        <td>
+          <div class="actions">
+            <button class="approve"
+              ${d.status!=="pending"?"disabled":""}
+              onclick="processDeposit('${d.user._id}','${d.txnId}',true)">
+              Approve
+            </button>
+
+            <button class="reject"
+              ${d.status!=="pending"?"disabled":""}
+              onclick="processDeposit('${d.user._id}','${d.txnId}',false)">
+              Reject
+            </button>
+
+            <button class="remove"
+              onclick="removeSingleUI('${d.txnId}')">
+              Remove
+            </button>
+          </div>
+        </td>
+      `;
+      body.appendChild(tr);
+    });
+
+  }catch(err){
+    console.error(err);
+    body.innerHTML=`<tr><td colspan="7">Error loading</td></tr>`;
+  }
+}
+
+/* =========================
+   APPROVE / REJECT
+========================= */
+async function processDeposit(userId,txnId,approve){
+  try{
+    const res=await fetch(`${API}/admin/deposit/approve`,{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        Authorization:"Bearer "+token
+      },
+      body:JSON.stringify({
+        userId,
+        txnId,
+        approve
+      })
+    });
+
+    const data=await res.json();
+
+    if(!res.ok){
+      console.warn("Server warning:",data.msg);
+    }
+
+    // ✅ ALWAYS REMOVE ROW (no fake error UI)
+    document.getElementById("row-"+txnId)?.remove();
+
+  }catch(err){
+    console.error("Frontend error:",err);
+    document.getElementById("row-"+txnId)?.remove();
+  }
+}
+
+/* =========================
+   REMOVE UI ONLY
+========================= */
+function removeSingleUI(id){
+  if(!confirm("Remove from admin screen?")) return;
+  document.getElementById("row-"+id)?.remove();
+}
+
+function removeAllUI(){
+  if(!confirm("Clear admin screen?")) return;
+  document.getElementById("rows").innerHTML=
+    `<tr><td colspan="7">No deposits</td></tr>`;
+}
+
+/* =========================
+   INIT
+========================= */
+loadDeposits();
+</script>
+
+</body>
+</html>

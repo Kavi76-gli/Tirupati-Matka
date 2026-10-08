@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#ffffff"
+    >
+
+    <title>Tirupati Matka - Game Zone</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    >
+
+    <!-- Game Zone CSS -->
+    <link
+        rel="stylesheet"
+        href="css/gamezone.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     TOP HEADER
+===================================================== -->
+
+<header class="top-header">
+
+    <!-- MENU -->
+    <button
+        class="menu-icon"
+        type="button"
+        onclick="toggleMenu()"
+        aria-label="Open Menu"
+    >
+
+        <i class="fa-solid fa-bars"></i>
+
+    </button>
+
+
+    <!-- CENTER -->
+    <div class="header-center">
+
+        <div class="header-title">
+            Tirupati Matka
+        </div>
+
+        <div class="header-subtitle">
+            Trusted Gaming Platform
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT -->
+    <div class="header-right">
+
+        <div class="header-icon">
+
+            <i class="fa-solid fa-bell"></i>
+
+        </div>
+
+
+        <div
+            class="header-balance"
+            id="balance"
+        >
+            ₹0
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     NOTICE
+===================================================== -->
+
+<div class="notice-wrapper">
+
+    <div class="notice-left">
+
+        <i class="fa-solid fa-bullhorn"></i>
+
+        <span>
+            Notice
+        </span>
+
+    </div>
+
+
+    <div class="notice-text">
+
+        <span>
+            Welcome to Tirupati Matka
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MENU OVERLAY
+===================================================== -->
+
+<div
+    class="menu-overlay"
+    id="menuOverlay"
+    onclick="closeMenu()"
+></div>
+
+
+
+<!-- =====================================================
+     SIDE MENU
+===================================================== -->
+
+<aside
+    class="side-menu"
+    id="sideMenu"
+>
+
+
+    <!-- MENU HEADER -->
+
+    <div class="menu-header">
+
+        <div class="menu-profile">
+
+
+            <div class="menu-avatar">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+
+            <div class="menu-user">
+
+                <h4 id="menuUserName">
+                    Loading...
+                </h4>
+
+                <p id="menuUserPhone">
+                    +91 XXXXX XXXXX
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="close-btn"
+            type="button"
+            onclick="closeMenu()"
+            aria-label="Close Menu"
+        >
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    </div>
+
+
+
+    <!-- MENU LIST -->
+
+    <ul class="menu-list">
+
+
+        <li onclick="go('profile.html')">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>
+                Profile
+            </span>
+
+        </li>
+
+
+        <li onclick="go('add-fund.html')">
+
+            <i class="fa-solid fa-wallet"></i>
+
+            <span>
+                Deposit
+            </span>
+
+        </li>
+
+
+        <li onclick="go('withdraw.html')">
+
+            <i class="fa-solid fa-money-bill-wave"></i>
+
+            <span>
+                Withdraw
+            </span>
+
+        </li>
+
+
+        <li onclick="go('transition.html')">
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            <span>
+                Transactions
+            </span>
+
+        </li>
+
+
+        <li onclick="go('gamezone.html')">
+
+            <i class="fa-solid fa-gamepad"></i>
+
+            <span>
+                Game Zone
+            </span>
+
+        </li>
+
+
+        <li onclick="go('reer.html')">
+
+            <i class="fa-solid fa-gift"></i>
+
+            <span>
+                Refer & Earn
+            </span>
+
+        </li>
+
+
+        <li onclick="go('history.html')">
+
+            <i class="fa-solid fa-file-lines"></i>
+
+            <span>
+                History
+            </span>
+
+        </li>
+
+
+        <li onclick="go('ratio.html')">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            <span>
+                Ratios
+            </span>
+
+        </li>
+
+
+        <li
+            class="logout-item"
+            onclick="logout()"
+        >
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>
+                Logout
+            </span>
+
+        </li>
+
+    </ul>
+
+</aside>
+
+
+
+<!-- =====================================================
+     QUICK ACTIONS
+===================================================== -->
+
+<section class="action-grid">
+
+
+    <!-- ADD POINTS -->
+
+    <button
+        class="action-card"
+        type="button"
+        onclick="goPage('add-fund.html')"
+    >
+
+        <div class="action-icon green">
+
+            <i class="fa-solid fa-wallet"></i>
+
+        </div>
+
+        <h4>
+            Add Points
+        </h4>
+
+    </button>
+
+
+
+    <!-- WITHDRAW -->
+
+    <button
+        class="action-card"
+        type="button"
+        onclick="goPage('withdraw.html')"
+    >
+
+        <div class="action-icon blue">
+
+            <i class="fa-solid fa-building-columns"></i>
+
+        </div>
+
+        <h4>
+            Withdraw
+        </h4>
+
+    </button>
+
+
+
+    <!-- WHATSAPP -->
+
+    <button
+        class="action-card"
+        type="button"
+        onclick="openWhatsApp()"
+    >
+
+        <div class="action-icon whatsapp">
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+        </div>
+
+        <h4>
+            WhatsApp
+        </h4>
+
+    </button>
+
+
+
+    <!-- GALI -->
+
+    <button
+        class="action-card"
+        type="button"
+        onclick="goPage('gali-gamezone.html')"
+    >
+
+        <div class="action-icon gali">
+
+            <i class="fa-solid fa-dice"></i>
+
+        </div>
+
+        <h4>
+            Gali
+        </h4>
+
+    </button>
+
+</section>
+
+
+
+<!-- =====================================================
+     GAME ZONE
+===================================================== -->
+
+<main
+    id="gameContainer"
+    class="game-container"
+>
+
+    <!-- JavaScript loads games here -->
+
+</main>
+
+
+
+<!-- =====================================================
+     GAMEZONE JAVASCRIPT
+===================================================== -->
+
+<script src="js/gamezone.js"></script>
+<script src="js/notifications.js"></script>
+
+</body>
+
+</html>

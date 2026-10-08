@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Admin - Users</title>
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="global.css">
+<style>
+  body {
+    font-family: "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #071a2f;
+    color: #7dd3fc;
+  }
+  .app-bar {
+    position: sticky;
+    top: 0;
+    background: rgba(3,12,28,0.98);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: bold;
+    font-size: 18px;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(56,189,248,0.3);
+  }
+  .container {
+    max-width: 960px;
+    margin: 80px auto 20px;
+    padding: 0 12px;
+  }
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .controls input, .controls select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(3,12,28,0.95);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  th, td {
+    padding: 10px 8px;
+    text-align: left;
+    border-bottom: 1px solid rgba(56,189,248,0.2);
+    font-size: 14px;
+  }
+  th { background: rgba(56,189,248,0.1); }
+  tr:last-child td { border-bottom: none; }
+  button {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: 0.2s;
+    margin: 2px;
+  }
+  button:hover { transform: scale(1.05); }
+  .ban-btn { background: #ef4444; color: #fff; }
+  .unban-btn { background: #22c55e; color: #fff; }
+  .reset-btn { background: #fbbf24; color: #000; }
+  .view-btn { background: #0ea5e9; color: #fff; }
+  @media (max-width: 768px){
+    th, td { font-size: 12px; padding: 6px 4px; }
+    .controls { flex-direction: column; }
+  }
+  .view-btn { background:#2196f3; color:#fff; }
+.ban-btn { background:#e53935; color:#fff; }
+.unban-btn { background:#43a047; color:#fff; }
+.reset-btn { background:#fb8c00; color:#fff; }
+.whatsapp-btn { background:#25D366; color:#fff; }
+
+button {
+  border:none;
+  padding:6px 10px;
+  margin:2px;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:13px;
+}
+
+</style>
+</head>
+<body>
+<div class="app-bar">
+  <i class="ri-arrow-left-line" onclick="goBack()" style="cursor:pointer;"></i>
+  Admin - Users
+</div>
+
+<div class="container">
+  <div class="controls">
+    <input type="text" id="searchBox" placeholder="Search by name, phone, email">
+    <select id="filterSelect">
+      <option value="all">All</option>
+      <option value="banned">Banned</option>
+      <option value="active">Active</option>
+      <option value="admin">Admin</option>
+    </select>
+  </div>
+<button class="view-btn" onclick="openUser('${user._id}')">View</button>
+
+  <table id="usersTable">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Reg. No</th>
+        <th>Email</th>
+        <th>Admin</th>
+        <th>Banned</th>
+        <th>Created At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<script>
+const API = "https://kalyanmaster.onrender.com/api/auth";
+const token = localStorage.getItem("token");
+if (!token) location.href = "auth.html";
+
+let usersData = [];
+function openUser(userId) {
+  // redirect with userId
+  window.location.href = `admin-view.html?userId=${userId}`;
+}
+// =====================
+// LOAD USERS
+// =====================
+async function loadUsers() {
+  try {
+    const res = await fetch(`${API}/admin/users`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    const text = await res.text();
+    let data;
+    try { data = JSON.parse(text); } 
+    catch { console.error("Invalid JSON:", text); alert("Failed to load users"); return; }
+
+    if (!data.users) return alert("No users found");
+    usersData = data.users;
+    renderTable(usersData);
+  } catch (err) {
+    console.error(err);
+    alert("Network/server error. Could not load users.");
+  }
+}
+
+// =====================
+// RENDER TABLE
+// =====================
+function renderTable(users) {
+  const tbody = document.querySelector("#usersTable tbody");
+  tbody.innerHTML = "";
+
+  users.forEach((user, idx) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td>${user.name}</td>
+      <td>${user.phone}</td>
+      <td>${user.registrationNo || "-"}</td>
+      <td>${user.email}</td>
+      <td>${user.isAdmin ? "Yes" : "No"}</td>
+      <td>${user.isBanned ? "Yes" : "No"}</td>
+      <td>${new Date(user.createdAt).toLocaleString()}</td>
+      <td>
+  <button class="view-btn" onclick="viewUser('${user._id}')">View</button>
+
+  ${!user.isBanned 
+    ? `<button class="ban-btn" onclick="banUser('${user._id}')">Ban</button>` 
+    : `<button class="unban-btn" onclick="unbanUser('${user._id}')">Unban</button>`}
+
+  <button class="reset-btn" onclick="resetPassword('${user._id}')">Reset PW</button>
+  <button class="whatsapp-btn" onclick="whatsappMessage('${user.phone}')">WhatsApp</button>
+</td>
+
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// =====================
+// FILTER + SEARCH
+// =====================
+document.getElementById("searchBox").addEventListener("input", applyFilters);
+document.getElementById("filterSelect").addEventListener("change", applyFilters);
+
+function applyFilters() {
+  const query = document.getElementById("searchBox").value.toLowerCase();
+  const filter = document.getElementById("filterSelect").value;
+
+  const filtered = usersData.filter(user => {
+    const matchesQuery = user.name.toLowerCase().includes(query) ||
+                         user.email.toLowerCase().includes(query) ||
+                         user.phone.includes(query);
+
+    let matchesFilter = true;
+    if (filter === "banned") matchesFilter = user.isBanned;
+    else if (filter === "active") matchesFilter = !user.isBanned;
+    else if (filter === "admin") matchesFilter = user.isAdmin;
+
+    return matchesQuery && matchesFilter;
+  });
+
+  renderTable(filtered);
+}
+function viewUser(userId) {
+  const user = usersData.find(u => u._id === userId);
+  if (!user) return alert("User not found");
+
+  alert(`
+USER DETAILS
+
+Name: ${user.name}
+Phone: ${user.phone}
+Email: ${user.email}
+Registration No: ${user.registrationNo || "N/A"}
+Balance: ₹${user.balance ?? 0}
+
+Admin: ${user.isAdmin ? "YES" : "NO"}
+Banned: ${user.isBanned ? "YES" : "NO"}
+
+Created At:
+${new Date(user.createdAt).toLocaleString()}
+  `);
+}
+
+// =====================
+// BAN / UNBAN
+// =====================
+async function banUser(userId) {
+  if (!confirm("Ban this user?")) return;
+
+  try {
+    const res = await fetch(`${API}/admin/users/ban/${userId}`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    const text = await res.text();
+    let data;
+    try { data = JSON.parse(text); } 
+    catch { console.error("Invalid JSON:", text); alert("Server returned invalid data."); return; }
+
+    alert(data.msg || "User banned successfully");
+    loadUsers();
+  } catch (err) {
+    console.error(err);
+    alert("Network/server error. Try again.");
+  }
+}
+
+async function unbanUser(userId) {
+  if (!confirm("Unban this user?")) return;
+
+  try {
+    const res = await fetch(`${API}/admin/users/unban/${userId}`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    const text = await res.text();
+    let data;
+    try { data = JSON.parse(text); } 
+    catch { console.error("Invalid JSON:", text); alert("Server returned invalid data."); return; }
+
+    alert(data.msg || "User unbanned successfully");
+    loadUsers();
+  } catch (err) {
+    console.error(err);
+    alert("Network/server error. Try again.");
+  }
+}
+
+// =====================
+// RESET PASSWORD
+// =====================
+async function resetPassword(userId) {
+  const newPassword = prompt("Enter new password for user:");
+  if (!newPassword) return;
+
+  try {
+    const res = await fetch(`${API}/admin/users/reset-password/${userId}`, {
+      method: "POST",
+      headers: { 
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ newPassword })
+    });
+
+    const text = await res.text();
+    let data;
+    try { data = JSON.parse(text); } 
+    catch { console.error("Invalid JSON:", text); alert("Server returned invalid data."); return; }
+
+    alert(data.msg || "Password reset successfully");
+  } catch (err) {
+    console.error(err);
+    alert("Network/server error. Try again.");
+  }
+}
+
+// =====================
+// WHATSAPP MESSAGE
+// =====================
+function whatsappMessage(phone, name) {
+  if (!phone) return alert("User phone not available");
+
+  const userName = name ? name : "Player";
+
+  const text = encodeURIComponent(
+    "✨ *Welcome to Kalyan Master* ✨\n\n" +
+    "Hello *" + userName + "* 👋\n\n" +
+    "We’re delighted to welcome you to *Kalyan Master*, a platform built for a smooth, secure, and premium playing experience.\n\n" +
+    "Your account has been successfully activated and you’re all set to begin.\n\n" +
+    "🎮 Explore the games\n" +
+    "💰 Manage your wallet with ease\n" +
+    "🔒 Enjoy a trusted environment\n\n" +
+    "Play smart, play responsibly, and enjoy every moment.\n\n" +
+    "Warm regards,\n" +
+    "*Team Kalyan Master* 💙"
+  );
+
+  window.open(`https://wa.me/${phone}?text=${text}`, "_blank");
+}
+
+
+
+
+// =====================
+// NAVIGATION
+// =====================
+function goBack() {
+  if (document.referrer) history.back();
+  else location.href = "admin.html";
+}
+
+// =====================
+// INIT
+// =====================
+loadUsers();
+</script>
+
+
+<script src="nav.js"></script>
+</body>
+</html>

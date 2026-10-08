@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin – Pending Withdrawals</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font Awesome CDN (SAFE) -->
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #050c2a;
+      color: #e6f1ff;
+    }
+
+    header {
+      padding: 16px;
+      background: linear-gradient(135deg, #0d47ff, #00bfff);
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .container {
+      padding: 14px;
+    }
+
+    .card {
+      background: #0a1f4d;
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 14px;
+      box-shadow: 0 0 18px rgba(0,191,255,.25);
+    }
+
+    .row {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .row b {
+      color: #00eaff;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    button {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .approve {
+      background: #00c853;
+      color: #fff;
+    }
+
+    .reject {
+      background: #ff1744;
+      color: #fff;
+    }
+
+    .screenshot {
+      margin-top: 10px;
+    }
+
+    .screenshot img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #000;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 40px;
+      opacity: .6;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>Pending Withdrawals</header>
+
+<div class="container" id="list"></div>
+
+<script>
+const API = "http://localhost:5000/api/auth";
+const token = localStorage.getItem("token");
+
+if (!token) location.replace("auth.html");
+
+const list = document.getElementById("list");
+
+// =====================
+// LOAD PENDING WITHDRAWALS
+// =====================
+async function loadWithdrawals() {
+  list.innerHTML = "";
+
+  try {
+    const res = await fetch(API + "/admin/withdrawals/pending", {
+      headers: { Authorization: "Bearer " + token }
+    });
+
+    const data = await res.json();
+    if (!data.success || data.pending.length === 0) {
+      list.innerHTML = `<div class="empty">No pending withdrawals</div>`;
+      return;
+    }
+
+    data.pending.forEach(w => {
+      const div = document.createElement("div");
+      div.className = "card";
+
+      div.innerHTML = `
+        <div class="row"><b>User:</b> ${w.user.name}</div>
+        <div class="row"><b>Phone:</b> ${w.user.phone}</div>
+        <div class="row"><b>Amount:</b> ₹${w.amount}</div>
+        <div class="row"><b>Method:</b> ${w.method}</div>
+
+        ${w.upiId ? `<div class="row"><b>UPI:</b> ${w.upiId}</div>` : ""}
+        ${w.bank ? `
+          <div class="row"><b>Bank:</b> ${w.bank.bankName}</div>
+          <div class="row"><b>Acc:</b> ${w.bank.accountNumber}</div>
+          <div class="row"><b>IFSC:</b> ${w.bank.ifsc}</div>
+        ` : ""}
+
+        ${w.screenshot ? `
+          <div class="screenshot">
+            <img src="${w.screenshot}" onclick="window.open('${w.screenshot}','_blank')">
+          </div>
+        ` : ""}
+
+        <div class="actions">
+          <button class="approve" onclick="actionWithdraw('${w.userId}','${w.transactionId}','approve')">
+            Approve
+          </button>
+          <button class="reject" onclick="actionWithdraw('${w.userId}','${w.transactionId}','reject')">
+            Reject
+          </button>
+        </div>
+      `;
+
+      list.appendChild(div);
+    });
+
+  } catch (e) {
+    alert("Failed to load withdrawals");
+    console.error(e);
+  }
+}
+
+// =====================
+// APPROVE / REJECT
+// =====================
+async function actionWithdraw(userId, transactionId, action) {
+  if (!confirm(`Are you sure to ${action}?`)) return;
+
+  try {
+    const res = await fetch(API + "/admin/withdrawals/handle", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token
+      },
+      body: JSON.stringify({ userId, transactionId, action })
+    });
+
+    const data = await res.json();
+    if (!res.ok) return alert(data.msg || "Action failed");
+
+    alert(data.msg);
+    loadWithdrawals();
+
+  } catch (e) {
+    alert("Server error");
+    console.error(e);
+  }
+}
+
+// INIT
+loadWithdrawals();
+</script>
+<script src="nav.js"></script>
+</body>
+</html>

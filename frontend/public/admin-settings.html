@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Admin Payment Settings</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #020b18;
+    color: #e5faff;
+    padding: 20px;
+  }
+
+  .card {
+    max-width: 420px;
+    margin: auto;
+    background: #021126;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #00eaff22;
+  }
+
+  h2 {
+    text-align: center;
+    color: #7df9ff;
+  }
+
+  label {
+    font-size: 14px;
+    margin-top: 14px;
+    display: block;
+  }
+
+  input[type="text"],
+  input[type="file"] {
+    width: 100%;
+    margin-top: 6px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #00eaff55;
+    background: #020b1a;
+    color: #fff;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg,#00eaff,#0099ff);
+    color: #001a3d;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  button:hover {
+    opacity: 0.9;
+  }
+
+  #msg {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  #qrPreview {
+    display: none;
+    margin: 15px auto 0;
+    max-width: 200px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #00eaff55;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>Payment Settings</h2>
+
+  <label>UPI ID</label>
+  <input type="text" id="upiInput" placeholder="example@ybl"/>
+
+  <label>QR Image</label>
+  <input type="file" id="qrInput" accept="image/*"/>
+
+  <img id="qrPreview" />
+
+  <button id="saveBtn">Save Payment Info</button>
+
+  <div id="msg"></div>
+</div>
+
+<script>
+/* ======================
+   CONFIG
+====================== */
+const API = "http://localhost:5000/api/auth";
+const token = localStorage.getItem("token");
+
+const upiInput = document.getElementById("upiInput");
+const qrInput = document.getElementById("qrInput");
+const qrPreview = document.getElementById("qrPreview");
+const msg = document.getElementById("msg");
+
+/* ======================
+   LOAD PAYMENT DETAILS
+====================== */
+async function loadPayment() {
+  try {
+    const res = await fetch(API + "/payment-details", {
+      headers: { Authorization: "Bearer " + token }
+    });
+
+    const data = await res.json();
+    console.log("PAYMENT API RESPONSE:", data);
+
+    if (!data.success) {
+      msg.innerText = data.msg || "Payment info not found";
+      msg.style.color = "#ff6b6b";
+      return;
+    }
+
+    // set UPI
+    upiInput.value = data.upiId || "";
+
+    // set QR
+    if (data.qrImage) {
+      qrPreview.src = data.qrImage.replace("http://","https://") + "?t=" + Date.now();
+      qrPreview.style.display = "block";
+    } else {
+      qrPreview.style.display = "none";
+    }
+
+  } catch (err) {
+    console.error("loadPayment error:", err);
+    msg.innerText = "Failed to load payment info";
+    msg.style.color = "#ff6b6b";
+  }
+}
+
+/* ======================
+   SAVE PAYMENT DETAILS
+====================== */
+document.getElementById("saveBtn").onclick = async () => {
+  msg.innerText = "Saving...";
+  msg.style.color = "#7df9ff";
+
+  const fd = new FormData();
+  fd.append("upiId", upiInput.value.trim());
+  if (qrInput.files[0]) fd.append("qrImage", qrInput.files[0]);
+
+  try {
+    const res = await fetch(API + "/admin/payment-config", {
+      method: "POST",
+      headers: { Authorization: "Bearer " + token },
+      body: fd
+    });
+
+    const data = await res.json();
+
+    msg.innerText = data.msg || "Saved";
+    msg.style.color = data.success ? "#7df9ff" : "#ff6b6b";
+
+    if (data.success) loadPayment();
+
+  } catch (err) {
+    console.error("save error:", err);
+    msg.innerText = "Upload failed";
+    msg.style.color = "#ff6b6b";
+  }
+};
+
+/* ======================
+   INIT
+====================== */
+loadPayment();
+</script>
+
+</body>
+</html>

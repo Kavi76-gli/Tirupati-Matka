@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+
+
+<!-- ICONS -->
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="global.css">
+<style>
+:root{
+  --bg:#121212;
+  --sidebar:#1e1e1e;
+  --card:#1c1c1c;
+  --text:#fff;
+  --highlight:#00faff;
+}
+
+body.light{
+  --bg:#fafafa;
+  --sidebar:#ffffff;
+  --card:#ffffff;
+  --text:#000;
+  --highlight:#007f88;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Poppins,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  height:100vh;
+  overflow:hidden;
+}
+
+/* ================= APP BAR ================= */
+.app-bar{
+  position:fixed;
+  top:0;left:0;right:0;
+  height:56px;
+  background:var(--sidebar);
+  display:flex;
+  align-items:center;
+  padding:0 14px;
+  gap:10px;
+  z-index:50;
+  border-bottom:1px solid #333;
+}
+
+.app-bar button{
+  background:none;
+  border:none;
+  color:var(--highlight);
+  font-size:22px;
+  cursor:pointer;
+}
+
+.app-bar .title{
+  font-size:16px;
+  font-weight:600;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar{
+  position:fixed;
+  top:56px;
+  left:0;
+  width:230px;
+  height:calc(100% - 56px);
+  background:var(--sidebar);
+  padding:16px 8px;
+  overflow-y:auto;
+  transition:.3s;
+  z-index:40;
+}
+
+.sidebar.collapsed{width:70px}
+.sidebar h2{
+  text-align:center;
+  color:var(--highlight);
+  margin-bottom:20px;
+  font-size:18px;
+}
+.sidebar.collapsed h2{display:none}
+
+/* NAV */
+.nav-link{
+  padding:12px 14px;
+  margin:4px 6px;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  cursor:pointer;
+  color:#aaa;
+  transition:.25s;
+}
+.nav-link:hover,
+.nav-link.active{
+  background:var(--highlight);
+  color:#000;
+  font-weight:600;
+}
+.sidebar.collapsed .nav-text{display:none}
+
+/* ================= TOP BAR ================= */
+.top-bar{
+  position:fixed;
+  top:56px;
+  left:230px;
+  right:0;
+  height:52px;
+  background:var(--sidebar);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 16px;
+  border-bottom:1px solid #333;
+  transition:.3s;
+  z-index:30;
+}
+
+.sidebar.collapsed ~ .top-bar{left:70px}
+
+.menu-toggle,.theme-toggle{
+  font-size:22px;
+  color:var(--highlight);
+  cursor:pointer;
+}
+
+/* ================= CONTENT ================= */
+.content{
+  position:absolute;
+  top:108px;
+  left:230px;
+  right:0;
+  bottom:0;
+  padding:18px;
+  overflow-y:auto;
+  transition:.3s;
+}
+
+.sidebar.collapsed ~ .content{left:70px}
+
+/* SECTIONS */
+.section{display:none}
+.section.active{display:block;animation:fade .25s}
+@keyframes fade{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:none}
+}
+
+/* CARDS */
+.card{
+  background:var(--card);
+  padding:18px;
+  border-radius:14px;
+  margin-bottom:16px;
+  box-shadow:0 0 14px rgba(0,250,255,.4);
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .sidebar{
+    left:-230px;
+    width:230px;
+  }
+  .sidebar.open{left:0}
+  .top-bar{left:0}
+  .content{left:0}
+}
+
+/* SWIPE */
+.swipe-area{
+  position:fixed;
+  left:0;top:0;
+  width:26px;height:100%;
+  z-index:100;
+}
+.swipe-arrow{
+  position:fixed;
+  left:-44px;
+  top:50%;
+  transform:translateY(-50%);
+  width:36px;height:36px;
+  border-radius:50%;
+  background:rgba(0,0,0,.8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  color:#fff;
+  opacity:0;
+  transition:.2s;
+  z-index:200;
+}
+</style>
+</head>
+
+<body>
+
+<div class="swipe-area"></div>
+<div class="swipe-arrow">←</div>
+
+<!-- APP BAR -->
+<div class="app-bar">
+  <button onclick="goBack()">←</button>
+  <div class="title">Admin Dashboard</div>
+</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <h2>🎮 Admin</h2>
+
+  <div class="nav-link active" onclick="switchSection('users')">
+    <i class="ri-user-3-fill"></i><span class="nav-text">Users</span>
+  </div>
+
+  <div class="nav-link" onclick="switchSection('tournaments')">
+    <i class="ri-trophy-fill"></i><span class="nav-text">Tournaments</span>
+  </div>
+
+  <div class="nav-link" onclick="switchSection('withdrawals')">
+    <i class="ri-money-rupee-circle-fill"></i><span class="nav-text">Withdrawals</span>
+  </div>
+
+  <div class="nav-link" onclick="switchSection('deposits')">
+    <i class="ri-bank-fill"></i><span class="nav-text">Deposits</span>
+  </div>
+
+  <div class="nav-link" onclick="switchSection('settings')">
+    <i class="ri-settings-5-fill"></i><span class="nav-text">Settings</span>
+  </div>
+
+  <div class="nav-link" onclick="switchSection('gali')">
+    <i class="ri-game-fill"></i><span class="nav-text">Gali</span>
+  </div>
+
+</div>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <i id="menuToggle" class="ri-menu-fill menu-toggle"></i>
+  <span>Admin Panel</span>
+  <i id="themeToggle" class="ri-sun-fill theme-toggle"></i>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <div id="users" class="section active">
+    <h3>Users</h3>
+    <div class="card">
+      👤 Manage users<br>
+      <a href="admin.users.html" style="color:var(--highlight)">Open</a>
+    </div>
+  </div>
+
+  <div id="tournaments" class="section">
+    <h3>Tournaments</h3>
+    <div class="card">
+      🏆 Manage Games<br>
+      <a href="admin-game.html" style="color:var(--highlight)">Open</a>
+    </div>
+  </div>
+
+  <div id="withdrawals" class="section">
+    <h3>Withdrawals</h3>
+    <div class="card">
+      🏧 Approve withdrawal requests<br>
+      <a href="admin-withdrawal.html" style="color:var(--highlight)">Open</a>
+    </div>
+  </div>
+
+  <div id="deposits" class="section">
+    <h3>Deposits</h3>
+    <div class="card">
+      💰 Approve deposit requests<br>
+      <a href="admin-deposits.html" style="color:var(--highlight)">Open</a>
+    </div>
+  </div>
+
+  <div id="settings" class="section">
+    <h3>Settings</h3>
+    <div class="card">
+      ⚙ Configure app<br>
+      <a href="admin-settings.html" style="color:var(--highlight)">Open</a>
+    </div>
+  </div>
+
+  <div id="gali" class="section">
+    <h3>Gali</h3>
+    <div class="card">
+      🎲 Manage Gali<br>
+      <a href="gali-admin.html" style="color:var(--highlight)">Open</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const sidebar=document.getElementById("sidebar");
+const menuToggle=document.getElementById("menuToggle");
+const themeToggle=document.getElementById("themeToggle");
+
+menuToggle.onclick=()=>{
+  window.innerWidth<=768
+    ? sidebar.classList.toggle("open")
+    : sidebar.classList.toggle("collapsed");
+};
+
+themeToggle.onclick=()=>{
+  document.body.classList.toggle("light");
+  themeToggle.classList.toggle("ri-sun-fill");
+  themeToggle.classList.toggle("ri-moon-fill");
+};
+
+function switchSection(id){
+  document.querySelectorAll(".nav-link").forEach(n=>n.classList.remove("active"));
+  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+  event.currentTarget.classList.add("active");
+  document.getElementById(id).classList.add("active");
+  if(window.innerWidth<=768) sidebar.classList.remove("open");
+}
+
+function goBack(){
+  history.length>1 ? history.back() : location.href="admin-dashboard.html";
+}
+
+/* swipe back */
+let sx=0,sy=0,arrow=document.querySelector(".swipe-arrow");
+document.addEventListener("touchstart",e=>{
+  if(e.touches[0].clientX<30){
+    sx=e.touches[0].clientX;
+    sy=e.touches[0].clientY;
+    arrow.style.opacity=1;
+  }
+});
+document.addEventListener("touchend",e=>{
+  if(!sx) return;
+  const dx=e.changedTouches[0].clientX-sx;
+  arrow.style.opacity=0;
+  if(dx>90) goBack();
+  sx=0;
+});
+</script>
+<script src="nav.js"></script>
+</body>
+</html>

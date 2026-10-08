@@ -1,0 +1,29 @@
+# Node
+node_modules/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Capacitor / Android build
+frontend/android/.gradle/
+frontend/android/build/
+frontend/android/app/build/
+frontend/android/capacitor-cordova-android-plugins/build/
+
+# Gradle
+frontend/android/.idea/
+frontend/android/.kotlin/
+
+# Build output
+frontend/dist/
+frontend/build/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

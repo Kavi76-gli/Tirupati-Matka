@@ -1,0 +1,2385 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Forgot M-PIN | Tirupati Matka</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        :root {
+            --green: #18a66a;
+            --green-dark: #0d8c58;
+            --green-light: #eafaf2;
+            --green-soft: #f4fcf8;
+
+            --text: #15251e;
+            --muted: #74847d;
+
+            --border: #dfeae4;
+
+            --shadow:
+                0 25px 70px rgba(21, 119, 78, 0.13),
+                0 8px 25px rgba(21, 119, 78, 0.06);
+        }
+
+        html,
+        body {
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 22px;
+
+            background:
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(44, 190, 125, 0.13),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 90% 90%,
+                    rgba(91, 214, 158, 0.12),
+                    transparent 30%
+                ),
+                #ffffff;
+
+            color: var(--text);
+
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* =========================================
+           PREMIUM BACKGROUND ORBS
+        ========================================= */
+
+        body::before {
+            content: "";
+
+            position: fixed;
+
+            width: 320px;
+            height: 320px;
+
+            top: -150px;
+            left: -120px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(30, 180, 111, 0.10);
+
+            filter: blur(80px);
+
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "";
+
+            position: fixed;
+
+            width: 350px;
+            height: 350px;
+
+            right: -170px;
+            bottom: -170px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(50, 194, 128, 0.10);
+
+            filter: blur(90px);
+
+            pointer-events: none;
+        }
+
+        /* =========================================
+           MAGNETIC CARD
+        ========================================= */
+
+        .auth-card {
+            width: 100%;
+            max-width: 440px;
+
+            position: relative;
+            z-index: 5;
+
+            background:
+                rgba(255, 255, 255, 0.96);
+
+            border:
+                1px solid rgba(221, 237, 229, 0.95);
+
+            border-radius: 30px;
+
+            overflow: hidden;
+
+            box-shadow: var(--shadow);
+
+            transform:
+                perspective(1200px)
+                rotateX(var(--rx, 0deg))
+                rotateY(var(--ry, 0deg))
+                translate3d(
+                    var(--tx, 0px),
+                    var(--ty, 0px),
+                    0
+                );
+
+            transition:
+                transform 0.18s ease-out,
+                box-shadow 0.25s ease;
+
+            will-change: transform;
+        }
+
+        .auth-card:hover {
+            box-shadow:
+                0 30px 80px rgba(21, 119, 78, 0.17),
+                0 10px 30px rgba(21, 119, 78, 0.08);
+        }
+
+        /* =========================================
+           GREEN HEADER
+        ========================================= */
+
+        .premium-header {
+            position: relative;
+
+            padding:
+                30px 24px 72px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #dff9ec 0%,
+                    #c9f3df 45%,
+                    #b9edd3 100%
+                );
+
+            overflow: hidden;
+        }
+
+        .premium-header::before {
+            content: "";
+
+            position: absolute;
+
+            width: 240px;
+            height: 240px;
+
+            border-radius: 50%;
+
+            top: -150px;
+            right: -90px;
+
+            background:
+                rgba(255, 255, 255, 0.55);
+
+            filter: blur(2px);
+        }
+
+        .premium-header::after {
+            content: "";
+
+            position: absolute;
+
+            width: 190px;
+            height: 190px;
+
+            border-radius: 50%;
+
+            bottom: -140px;
+            left: -80px;
+
+            background:
+                rgba(255, 255, 255, 0.38);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* =========================================
+           LOGO
+        ========================================= */
+
+        .logo-box {
+            width: 92px;
+            height: 92px;
+
+            margin: 0 auto 15px;
+
+            padding: 7px;
+
+            background:
+                rgba(255, 255, 255, 0.82);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.95);
+
+            border-radius: 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow:
+                0 14px 30px rgba(28, 130, 86, 0.13);
+
+            transition:
+                transform 0.3s ease;
+        }
+
+        .logo-box:hover {
+            transform:
+                translateY(-3px)
+                rotate(-2deg);
+        }
+
+        .logo-box img {
+            width: 76px;
+            height: 76px;
+
+            object-fit: contain;
+
+            border-radius: 19px;
+        }
+
+        .brand {
+            color: #123d2c;
+
+            font-size: 27px;
+            font-weight: 850;
+
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            margin-top: 6px;
+
+            color: #56806d;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* =========================================
+           CONTENT
+        ========================================= */
+
+        .content {
+            position: relative;
+
+            margin-top: -43px;
+
+            padding:
+                25px 25px 27px;
+
+            background: #ffffff;
+
+            border-radius:
+                28px 28px 0 0;
+
+            z-index: 3;
+        }
+
+        /* =========================================
+           STEP INDICATOR
+        ========================================= */
+
+        .steps-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 9px;
+
+            margin-bottom: 22px;
+        }
+
+        .step-dot {
+            width: 30px;
+            height: 30px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #f0f5f2;
+
+            color: #819089;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            border: 1px solid #e3ebe7;
+
+            transition: 0.25s ease;
+        }
+
+        .step-dot.active {
+            background:
+                linear-gradient(
+                    135deg,
+                    #20ad72,
+                    #0e9159
+                );
+
+            color: #ffffff;
+
+            border-color: transparent;
+
+            box-shadow:
+                0 7px 18px rgba(18, 157, 99, 0.22);
+        }
+
+        .step-line {
+            width: 35px;
+            height: 2px;
+
+            background: #e7eeea;
+
+            border-radius: 10px;
+
+            transition: 0.25s ease;
+        }
+
+        .step-line.active {
+            background: #72d4a6;
+        }
+
+        /* =========================================
+           STEP
+        ========================================= */
+
+        .step {
+            display: none;
+
+            animation:
+                stepIn 0.35s ease;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        @keyframes stepIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-title {
+            font-size: 21px;
+
+            font-weight: 800;
+
+            margin-bottom: 7px;
+
+            color: var(--text);
+
+            letter-spacing: -0.3px;
+        }
+
+        .step-description {
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.55;
+
+            margin-bottom: 20px;
+        }
+
+        /* =========================================
+           INPUT
+        ========================================= */
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-label {
+            display: block;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            margin-bottom: 7px;
+
+            color: #41534b;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            height: 54px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 15px;
+
+            background:
+                #f8fbf9;
+
+            padding: 0 16px;
+
+            font-size: 15px;
+
+            color: var(--text);
+
+            outline: none;
+
+            transition:
+                border-color 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        input::placeholder {
+            color: #9aa9a2;
+        }
+
+        input:focus {
+            border-color: #43bd83;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(39, 180, 116, 0.10);
+
+            transform: translateY(-1px);
+        }
+
+        /* =========================================
+           PHONE
+        ========================================= */
+
+        .phone-input {
+            display: flex;
+            gap: 8px;
+        }
+
+        .country-code {
+            width: 72px;
+            height: 54px;
+
+            flex-shrink: 0;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 15px;
+
+            background:
+                #f5faf7;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            color: #3f5b4e;
+        }
+
+        .phone-input input {
+            flex: 1;
+        }
+
+        /* =========================================
+           BUTTONS
+        ========================================= */
+
+        button {
+            width: 100%;
+            height: 55px;
+
+            border: none;
+
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #20ad72,
+                    #0d9159
+                );
+
+            color: #ffffff;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 11px 24px
+                rgba(18, 157, 99, 0.20);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                opacity 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 15px 30px
+                rgba(18, 157, 99, 0.25);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.58;
+
+            cursor: not-allowed;
+
+            transform: none;
+
+            box-shadow:
+                0 6px 15px
+                rgba(18, 157, 99, 0.10);
+        }
+
+        .secondary-btn {
+            margin-top: 10px;
+
+            background:
+                #ffffff;
+
+            color: var(--green-dark);
+
+            border:
+                1px solid #dcebe3;
+
+            box-shadow: none;
+        }
+
+        .secondary-btn:hover {
+            background:
+                #f6fcf8;
+
+            box-shadow:
+                0 7px 18px
+                rgba(18, 157, 99, 0.07);
+        }
+
+        /* =========================================
+           OTP
+        ========================================= */
+
+        .otp-input {
+            text-align: center;
+
+            letter-spacing: 8px;
+
+            font-size: 21px;
+
+            font-weight: 800;
+        }
+
+        .mpin-input {
+            text-align: center;
+
+            letter-spacing: 10px;
+
+            font-size: 23px;
+
+            font-weight: 800;
+        }
+
+        /* =========================================
+           RESEND
+        ========================================= */
+
+        .resend-box {
+            text-align: center;
+
+            margin-top: 15px;
+
+            color: #7c8b84;
+
+            font-size: 12px;
+        }
+
+        .resend-btn {
+            width: auto;
+            height: auto;
+
+            margin-left: 4px;
+
+            padding: 0;
+
+            background: transparent;
+
+            color: var(--green-dark);
+
+            box-shadow: none;
+
+            font-size: 12px;
+
+            font-weight: 800;
+        }
+
+        .resend-btn:hover {
+            transform: none;
+
+            box-shadow: none;
+
+            text-decoration: underline;
+        }
+
+        /* =========================================
+           RECAPTCHA
+        ========================================= */
+
+        #recaptcha-container {
+            margin: 12px 0 16px;
+
+            display: flex;
+
+            justify-content: center;
+
+            overflow: hidden;
+        }
+
+        /* =========================================
+           MESSAGE
+        ========================================= */
+
+        .message {
+            display: none;
+
+            margin-bottom: 16px;
+
+            padding: 12px 14px;
+
+            border-radius: 13px;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+
+            font-weight: 600;
+        }
+
+        .message.error {
+            background:
+                #fff4f3;
+
+            color:
+                #c83d34;
+
+            border:
+                1px solid #ffd9d5;
+        }
+
+        .message.success {
+            background:
+                #effbf5;
+
+            color:
+                #168552;
+
+            border:
+                1px solid #ccefdc;
+        }
+
+        /* =========================================
+           BACK LINK
+        ========================================= */
+
+        .back-login {
+            text-align: center;
+
+            margin-top: 20px;
+        }
+
+        .back-login a {
+            color: var(--green-dark);
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            transition: 0.2s ease;
+        }
+
+        .back-login a:hover {
+            color: #076c43;
+        }
+
+        /* =========================================
+           SECURITY NOTE
+        ========================================= */
+
+        .security-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 6px;
+
+            margin-top: 18px;
+
+            color: #91a099;
+
+            font-size: 11px;
+        }
+
+        .security-icon {
+            width: 19px;
+            height: 19px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #edf9f3;
+
+            color: var(--green);
+
+            font-size: 10px;
+
+            font-weight: 900;
+        }
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 520px) {
+
+            body {
+                padding: 14px;
+                align-items: center;
+            }
+
+            .auth-card {
+                border-radius: 25px;
+            }
+
+            .premium-header {
+                padding:
+                    25px 20px 66px;
+            }
+
+            .content {
+                padding:
+                    22px 18px 23px;
+            }
+
+            .logo-box {
+                width: 84px;
+                height: 84px;
+            }
+
+            .logo-box img {
+                width: 69px;
+                height: 69px;
+            }
+
+            .brand {
+                font-size: 24px;
+            }
+
+            .subtitle {
+                font-size: 12px;
+            }
+
+            .step-title {
+                font-size: 20px;
+            }
+
+            .step-line {
+                width: 25px;
+            }
+        }
+
+        @media (max-width: 360px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .content {
+                padding:
+                    20px 15px 20px;
+            }
+
+            .premium-header {
+                padding-bottom: 62px;
+            }
+        }
+
+        /* =========================================
+           REDUCED MOTION
+        ========================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .auth-card,
+            button,
+            input,
+            .logo-box {
+                transition: none !important;
+            }
+
+            .step {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="auth-card" id="magneticCard">
+
+    <!-- ========================================= -->
+    <!-- PREMIUM HEADER -->
+    <!-- ========================================= -->
+
+    <div class="premium-header">
+
+        <div class="header-content">
+
+            <div class="logo-box">
+                <img
+                    src="IMG_2121.PNG"
+                    alt="Tirupati Matka"
+                >
+            </div>
+
+            <div class="brand">
+                Tirupati Matka
+            </div>
+
+            <div class="subtitle">
+                Secure M-PIN recovery
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- CONTENT -->
+    <!-- ========================================= -->
+
+    <div class="content">
+
+        <!-- STEP INDICATOR -->
+
+        <div class="steps-indicator">
+
+            <div
+                id="indicator1"
+                class="step-dot active"
+            >
+                1
+            </div>
+
+            <div
+                id="line1"
+                class="step-line"
+            ></div>
+
+            <div
+                id="indicator2"
+                class="step-dot"
+            >
+                2
+            </div>
+
+            <div
+                id="line2"
+                class="step-line"
+            ></div>
+
+            <div
+                id="indicator3"
+                class="step-dot"
+            >
+                3
+            </div>
+
+        </div>
+
+
+        <!-- MESSAGE -->
+
+        <div
+            id="message"
+            class="message"
+        ></div>
+
+
+        <!-- ========================================= -->
+        <!-- STEP 1 : PHONE -->
+        <!-- ========================================= -->
+
+        <div
+            id="stepPhone"
+            class="step active"
+        >
+
+            <div class="step-title">
+                Forgot M-PIN?
+            </div>
+
+            <div class="step-description">
+                Enter your registered mobile number.
+                We'll send you a secure OTP to verify
+                your identity.
+            </div>
+
+
+            <div class="input-group">
+
+                <label class="input-label">
+                    Mobile Number
+                </label>
+
+                <div class="phone-input">
+
+                    <div class="country-code">
+                        +91
+                    </div>
+
+                    <input
+                        id="phone"
+                        type="tel"
+                        inputmode="numeric"
+                        maxlength="10"
+                        placeholder="Enter mobile number"
+                        autocomplete="tel"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div id="recaptcha-container"></div>
+
+
+            <button id="sendOtpBtn">
+                Send OTP
+            </button>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- STEP 2 : OTP -->
+        <!-- ========================================= -->
+
+        <div
+            id="stepOtp"
+            class="step"
+        >
+
+            <div class="step-title">
+                Verify OTP
+            </div>
+
+            <div class="step-description">
+                Enter the 6-digit OTP sent to your
+                registered mobile number.
+            </div>
+
+
+            <div class="input-group">
+
+                <label class="input-label">
+                    Verification Code
+                </label>
+
+                <input
+                    id="otp"
+                    class="otp-input"
+                    type="tel"
+                    inputmode="numeric"
+                    maxlength="6"
+                    placeholder="••••••"
+                    autocomplete="one-time-code"
+                >
+
+            </div>
+
+
+            <button id="verifyOtpBtn">
+                Verify OTP
+            </button>
+
+
+            <div class="resend-box">
+
+                Didn't receive the OTP?
+
+                <button
+                    id="resendBtn"
+                    class="resend-btn"
+                    type="button"
+                    disabled
+                >
+                    Resend
+                </button>
+
+                <span id="timer"></span>
+
+            </div>
+
+
+            <button
+                id="changePhoneBtn"
+                class="secondary-btn"
+                type="button"
+            >
+                Change Mobile Number
+            </button>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- STEP 3 : MPIN -->
+        <!-- ========================================= -->
+
+        <div
+            id="stepMPin"
+            class="step"
+        >
+
+            <div class="step-title">
+                Create New M-PIN
+            </div>
+
+            <div class="step-description">
+                Set a new 4-digit M-PIN for quick and
+                secure account access.
+            </div>
+
+
+            <div class="input-group">
+
+                <label class="input-label">
+                    New M-PIN
+                </label>
+
+                <input
+                    id="newMPin"
+                    class="mpin-input"
+                    type="password"
+                    inputmode="numeric"
+                    maxlength="4"
+                    placeholder="••••"
+                    autocomplete="new-password"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label class="input-label">
+                    Confirm M-PIN
+                </label>
+
+                <input
+                    id="confirmMPin"
+                    class="mpin-input"
+                    type="password"
+                    inputmode="numeric"
+                    maxlength="4"
+                    placeholder="••••"
+                    autocomplete="new-password"
+                >
+
+            </div>
+
+
+            <button id="resetMPinBtn">
+                Reset M-PIN
+            </button>
+
+        </div>
+
+
+        <!-- BACK -->
+
+        <div class="back-login">
+
+            <a href="m-pin.html">
+                ← Back to M-PIN Login
+            </a>
+
+        </div>
+
+
+        <div class="security-note">
+
+            <span class="security-icon">
+                ✓
+            </span>
+
+            Your verification is protected
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script type="module">
+
+    // =====================================================
+    // FIREBASE
+    // =====================================================
+
+    import {
+        initializeApp
+    } from
+        "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+
+    import {
+        getAuth,
+        RecaptchaVerifier,
+        signInWithPhoneNumber
+    } from
+        "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBV4g_qG7ZnYopMt8UcznQojJnByVzynhQ",
+        authDomain: "televault-ead03.firebaseapp.com",
+        projectId: "televault-ead03",
+        storageBucket: "televault-ead03.firebasestorage.app",
+        messagingSenderId: "292306570636",
+        appId: "1:292306570636:web:b1c30466a050304e6ddaa9",
+        measurementId: "G-973KB6EJCB"
+    };
+
+
+    const app =
+        initializeApp(firebaseConfig);
+
+
+    const auth =
+        getAuth(app);
+
+
+    // =====================================================
+    // API
+    // =====================================================
+
+    const API_URL =
+        "http://localhost:5000/api";
+
+
+    // =====================================================
+    // ELEMENTS
+    // =====================================================
+
+    const messageBox =
+        document.getElementById("message");
+
+    const phoneInput =
+        document.getElementById("phone");
+
+    const otpInput =
+        document.getElementById("otp");
+
+    const newMPinInput =
+        document.getElementById("newMPin");
+
+    const confirmMPinInput =
+        document.getElementById("confirmMPin");
+
+    const sendOtpBtn =
+        document.getElementById("sendOtpBtn");
+
+    const verifyOtpBtn =
+        document.getElementById("verifyOtpBtn");
+
+    const resetMPinBtn =
+        document.getElementById("resetMPinBtn");
+
+    const resendBtn =
+        document.getElementById("resendBtn");
+
+    const timerText =
+        document.getElementById("timer");
+
+    const indicator1 =
+        document.getElementById("indicator1");
+
+    const indicator2 =
+        document.getElementById("indicator2");
+
+    const indicator3 =
+        document.getElementById("indicator3");
+
+    const line1 =
+        document.getElementById("line1");
+
+    const line2 =
+        document.getElementById("line2");
+
+
+    let confirmationResult = null;
+
+    let recaptchaVerifier = null;
+
+    let resendInterval = null;
+
+
+    // =====================================================
+    // MESSAGE
+    // =====================================================
+
+    function showMessage(
+        text,
+        type = "error"
+    ) {
+
+        messageBox.textContent =
+            text;
+
+        messageBox.className =
+            "message " + type;
+
+        messageBox.style.display =
+            "block";
+
+    }
+
+
+    function hideMessage() {
+
+        messageBox.style.display =
+            "none";
+
+    }
+
+
+    // =====================================================
+    // PHONE
+    // =====================================================
+
+    function cleanPhone(phone) {
+
+        return String(phone || "")
+            .replace(/\D/g, "")
+            .slice(-10);
+
+    }
+
+
+    // =====================================================
+    // STEP INDICATOR
+    // =====================================================
+
+    function updateStepIndicator(stepNumber) {
+
+        indicator1.classList.toggle(
+            "active",
+            stepNumber >= 1
+        );
+
+        indicator2.classList.toggle(
+            "active",
+            stepNumber >= 2
+        );
+
+        indicator3.classList.toggle(
+            "active",
+            stepNumber >= 3
+        );
+
+        line1.classList.toggle(
+            "active",
+            stepNumber >= 2
+        );
+
+        line2.classList.toggle(
+            "active",
+            stepNumber >= 3
+        );
+
+    }
+
+
+    // =====================================================
+    // STEP
+    // =====================================================
+
+    function showStep(stepId) {
+
+        document
+            .querySelectorAll(".step")
+            .forEach(step => {
+
+                step.classList.remove(
+                    "active"
+                );
+
+            });
+
+
+        const selectedStep =
+            document.getElementById(stepId);
+
+
+        selectedStep.classList.add(
+            "active"
+        );
+
+
+        if (stepId === "stepPhone") {
+
+            updateStepIndicator(1);
+
+        }
+
+
+        if (stepId === "stepOtp") {
+
+            updateStepIndicator(2);
+
+        }
+
+
+        if (stepId === "stepMPin") {
+
+            updateStepIndicator(3);
+
+        }
+
+
+        hideMessage();
+
+    }
+
+
+    // =====================================================
+    // RECAPTCHA
+    // =====================================================
+
+    function createRecaptcha() {
+
+        if (recaptchaVerifier) {
+            return;
+        }
+
+
+        recaptchaVerifier =
+            new RecaptchaVerifier(
+                auth,
+                "recaptcha-container",
+                {
+
+                    size: "normal",
+
+                    callback: function () {
+
+                        hideMessage();
+
+                    },
+
+                    "expired-callback":
+                        function () {
+
+                            showMessage(
+                                "reCAPTCHA expired. Please verify again."
+                            );
+
+                        }
+
+                }
+            );
+
+    }
+
+
+    // =====================================================
+    // CHECK PHONE
+    // =====================================================
+
+    async function checkRegisteredPhone(
+        phone
+    ) {
+
+        const response =
+            await fetch(
+                `${API_URL}/auth/check-phone`,
+                {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        phone
+                    })
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            !response.ok ||
+            !data.success
+        ) {
+
+            throw new Error(
+                data.message ||
+                "This mobile number is not registered."
+            );
+
+        }
+
+
+        return data;
+
+    }
+
+
+    // =====================================================
+    // SEND OTP
+    // =====================================================
+
+    async function sendOTP() {
+
+        hideMessage();
+
+
+        const phone =
+            cleanPhone(
+                phoneInput.value
+            );
+
+
+        if (
+            !/^[6-9]\d{9}$/.test(phone)
+        ) {
+
+            showMessage(
+                "Please enter a valid 10-digit Indian mobile number."
+            );
+
+            phoneInput.focus();
+
+            return;
+        }
+
+
+        sendOtpBtn.disabled = true;
+
+        sendOtpBtn.textContent =
+            "Checking...";
+
+
+        try {
+
+            await checkRegisteredPhone(
+                phone
+            );
+
+
+            createRecaptcha();
+
+
+            sendOtpBtn.textContent =
+                "Sending OTP...";
+
+
+            confirmationResult =
+                await signInWithPhoneNumber(
+                    auth,
+                    "+91" + phone,
+                    recaptchaVerifier
+                );
+
+
+            showMessage(
+                "OTP sent successfully to +91 " + phone,
+                "success"
+            );
+
+
+            showStep("stepOtp");
+
+
+            startResendTimer();
+
+
+            otpInput.focus();
+
+        } catch (error) {
+
+            console.error(error);
+
+
+            let errorMessage =
+                error.message ||
+                "Unable to send OTP.";
+
+
+            if (
+                error.code ===
+                "auth/invalid-phone-number"
+            ) {
+
+                errorMessage =
+                    "Invalid mobile number.";
+
+            }
+
+
+            if (
+                error.code ===
+                "auth/too-many-requests"
+            ) {
+
+                errorMessage =
+                    "Too many attempts. Please try again later.";
+
+            }
+
+
+            showMessage(
+                errorMessage
+            );
+
+
+            if (recaptchaVerifier) {
+
+                try {
+                    recaptchaVerifier.clear();
+                } catch (e) {}
+
+                recaptchaVerifier = null;
+
+            }
+
+        } finally {
+
+            sendOtpBtn.disabled =
+                false;
+
+            sendOtpBtn.textContent =
+                "Send OTP";
+
+        }
+
+    }
+
+
+    // =====================================================
+    // VERIFY OTP
+    // =====================================================
+
+    async function verifyOTP() {
+
+        hideMessage();
+
+
+        const otp =
+            otpInput.value
+                .replace(/\D/g, "");
+
+
+        if (
+            !/^\d{6}$/.test(otp)
+        ) {
+
+            showMessage(
+                "Please enter the complete 6-digit OTP."
+            );
+
+            otpInput.focus();
+
+            return;
+        }
+
+
+        if (!confirmationResult) {
+
+            showMessage(
+                "Please request a new OTP."
+            );
+
+            return;
+        }
+
+
+        verifyOtpBtn.disabled = true;
+
+        verifyOtpBtn.textContent =
+            "Verifying...";
+
+
+        try {
+
+            await confirmationResult.confirm(
+                otp
+            );
+
+
+            showMessage(
+                "Mobile number verified successfully.",
+                "success"
+            );
+
+
+            clearInterval(
+                resendInterval
+            );
+
+
+            showStep("stepMPin");
+
+
+            newMPinInput.focus();
+
+        } catch (error) {
+
+            console.error(error);
+
+
+            let errorMessage =
+                "Invalid OTP. Please try again.";
+
+
+            if (
+                error.code ===
+                "auth/invalid-verification-code"
+            ) {
+
+                errorMessage =
+                    "Incorrect OTP. Please check and try again.";
+
+            }
+
+
+            if (
+                error.code ===
+                "auth/code-expired"
+            ) {
+
+                errorMessage =
+                    "OTP has expired. Please request a new OTP.";
+
+            }
+
+
+            showMessage(
+                errorMessage
+            );
+
+        } finally {
+
+            verifyOtpBtn.disabled =
+                false;
+
+            verifyOtpBtn.textContent =
+                "Verify OTP";
+
+        }
+
+    }
+
+
+    // =====================================================
+    // RESET M-PIN
+    // =====================================================
+
+    async function resetMPin() {
+
+        hideMessage();
+
+
+        const phone =
+            cleanPhone(
+                phoneInput.value
+            );
+
+
+        const newMPin =
+            newMPinInput.value
+                .replace(/\D/g, "");
+
+
+        const confirmMPin =
+            confirmMPinInput.value
+                .replace(/\D/g, "");
+
+
+        if (
+            !/^\d{4}$/.test(newMPin)
+        ) {
+
+            showMessage(
+                "M-PIN must contain exactly 4 digits."
+            );
+
+            newMPinInput.focus();
+
+            return;
+        }
+
+
+        if (
+            !/^\d{4}$/.test(confirmMPin)
+        ) {
+
+            showMessage(
+                "Please confirm your 4-digit M-PIN."
+            );
+
+            confirmMPinInput.focus();
+
+            return;
+        }
+
+
+        if (
+            newMPin !== confirmMPin
+        ) {
+
+            showMessage(
+                "M-PINs do not match."
+            );
+
+            confirmMPinInput.focus();
+
+            return;
+        }
+
+
+        const firebaseUser =
+            auth.currentUser;
+
+
+        if (!firebaseUser) {
+
+            showMessage(
+                "OTP verification expired. Please start again."
+            );
+
+            showStep("stepPhone");
+
+            return;
+        }
+
+
+        resetMPinBtn.disabled = true;
+
+        resetMPinBtn.textContent =
+            "Updating M-PIN...";
+
+
+        try {
+
+            const firebaseToken =
+                await firebaseUser.getIdToken(
+                    true
+                );
+
+
+            const response =
+                await fetch(
+                    `${API_URL}/auth/reset-mpin`,
+                    {
+
+                        method: "POST",
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/json",
+
+                            "Authorization":
+                                `Bearer ${firebaseToken}`
+
+                        },
+
+                        body: JSON.stringify({
+
+                            phone,
+                            newMPin
+
+                        })
+
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (
+                !response.ok ||
+                !data.success
+            ) {
+
+                throw new Error(
+                    data.message ||
+                    "Unable to reset M-PIN."
+                );
+
+            }
+
+
+            showMessage(
+                "M-PIN reset successfully. Redirecting to login...",
+                "success"
+            );
+
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "auth.html";
+
+            }, 1800);
+
+
+        } catch (error) {
+
+            console.error(error);
+
+
+            showMessage(
+                error.message ||
+                "Unable to reset M-PIN."
+            );
+
+        } finally {
+
+            resetMPinBtn.disabled =
+                false;
+
+            resetMPinBtn.textContent =
+                "Reset M-PIN";
+
+        }
+
+    }
+
+
+    // =====================================================
+    // RESEND TIMER
+    // =====================================================
+
+    function startResendTimer() {
+
+        let seconds = 60;
+
+
+        resendBtn.disabled = true;
+
+
+        timerText.textContent =
+            ` (${seconds}s)`;
+
+
+        clearInterval(
+            resendInterval
+        );
+
+
+        resendInterval =
+            setInterval(() => {
+
+                seconds--;
+
+
+                timerText.textContent =
+                    ` (${seconds}s)`;
+
+
+                if (seconds <= 0) {
+
+                    clearInterval(
+                        resendInterval
+                    );
+
+
+                    timerText.textContent =
+                        "";
+
+
+                    resendBtn.disabled =
+                        false;
+
+                }
+
+            }, 1000);
+
+    }
+
+
+    // =====================================================
+    // RESEND OTP
+    // =====================================================
+
+    async function resendOTP() {
+
+        const phone =
+            cleanPhone(
+                phoneInput.value
+            );
+
+
+        hideMessage();
+
+
+        resendBtn.disabled =
+            true;
+
+
+        try {
+
+            if (recaptchaVerifier) {
+
+                try {
+                    recaptchaVerifier.clear();
+                } catch (e) {}
+
+                recaptchaVerifier = null;
+
+            }
+
+
+            createRecaptcha();
+
+
+            confirmationResult =
+                await signInWithPhoneNumber(
+                    auth,
+                    "+91" + phone,
+                    recaptchaVerifier
+                );
+
+
+            showMessage(
+                "A new OTP has been sent.",
+                "success"
+            );
+
+
+            otpInput.value =
+                "";
+
+
+            startResendTimer();
+
+
+        } catch (error) {
+
+            console.error(error);
+
+
+            showMessage(
+                error.message ||
+                "Unable to resend OTP."
+            );
+
+
+            resendBtn.disabled =
+                false;
+
+        }
+
+    }
+
+
+    // =====================================================
+    // CHANGE PHONE
+    // =====================================================
+
+    document
+        .getElementById(
+            "changePhoneBtn"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                confirmationResult =
+                    null;
+
+                otpInput.value =
+                    "";
+
+                showStep(
+                    "stepPhone"
+                );
+
+            }
+        );
+
+
+    // =====================================================
+    // EVENTS
+    // =====================================================
+
+    sendOtpBtn.addEventListener(
+        "click",
+        sendOTP
+    );
+
+
+    verifyOtpBtn.addEventListener(
+        "click",
+        verifyOTP
+    );
+
+
+    resetMPinBtn.addEventListener(
+        "click",
+        resetMPin
+    );
+
+
+    resendBtn.addEventListener(
+        "click",
+        resendOTP
+    );
+
+
+    // =====================================================
+    // PHONE INPUT
+    // =====================================================
+
+    phoneInput.addEventListener(
+        "input",
+        () => {
+
+            phoneInput.value =
+                phoneInput.value
+                    .replace(/\D/g, "")
+                    .slice(0, 10);
+
+        }
+    );
+
+
+    // =====================================================
+    // OTP INPUT
+    // =====================================================
+
+    otpInput.addEventListener(
+        "input",
+        () => {
+
+            otpInput.value =
+                otpInput.value
+                    .replace(/\D/g, "")
+                    .slice(0, 6);
+
+        }
+    );
+
+
+    // =====================================================
+    // MPIN INPUT
+    // =====================================================
+
+    newMPinInput.addEventListener(
+        "input",
+        () => {
+
+            newMPinInput.value =
+                newMPinInput.value
+                    .replace(/\D/g, "")
+                    .slice(0, 4);
+
+        }
+    );
+
+
+    confirmMPinInput.addEventListener(
+        "input",
+        () => {
+
+            confirmMPinInput.value =
+                confirmMPinInput.value
+                    .replace(/\D/g, "")
+                    .slice(0, 4);
+
+        }
+    );
+
+
+    // =====================================================
+    // ENTER SUPPORT
+    // =====================================================
+
+    phoneInput.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Enter") {
+                sendOTP();
+            }
+
+        }
+    );
+
+
+    otpInput.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Enter") {
+                verifyOTP();
+            }
+
+        }
+    );
+
+
+    confirmMPinInput.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Enter") {
+                resetMPin();
+            }
+
+        }
+    );
+
+
+    // =====================================================
+    // MAGNETIC CARD ANIMATION
+    // =====================================================
+
+    const magneticCard =
+        document.getElementById(
+            "magneticCard"
+        );
+
+
+    const reduceMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+
+    if (
+        !reduceMotion &&
+        window.matchMedia("(pointer: fine)").matches
+    ) {
+
+        document.addEventListener(
+            "pointermove",
+            event => {
+
+                const rect =
+                    magneticCard.getBoundingClientRect();
+
+
+                const centerX =
+                    rect.left +
+                    rect.width / 2;
+
+
+                const centerY =
+                    rect.top +
+                    rect.height / 2;
+
+
+                const distanceX =
+                    event.clientX -
+                    centerX;
+
+
+                const distanceY =
+                    event.clientY -
+                    centerY;
+
+
+                const maxDistance =
+                    500;
+
+
+                const distance =
+                    Math.sqrt(
+                        distanceX * distanceX +
+                        distanceY * distanceY
+                    );
+
+
+                if (
+                    distance > maxDistance
+                ) {
+
+                    magneticCard.style.setProperty(
+                        "--rx",
+                        "0deg"
+                    );
+
+                    magneticCard.style.setProperty(
+                        "--ry",
+                        "0deg"
+                    );
+
+                    magneticCard.style.setProperty(
+                        "--tx",
+                        "0px"
+                    );
+
+                    magneticCard.style.setProperty(
+                        "--ty",
+                        "0px"
+                    );
+
+                    return;
+                }
+
+
+                const rotateY =
+                    (distanceX / rect.width) *
+                    2.2;
+
+
+                const rotateX =
+                    -(distanceY / rect.height) *
+                    2.2;
+
+
+                const translateX =
+                    (distanceX / rect.width) *
+                    3;
+
+
+                const translateY =
+                    (distanceY / rect.height) *
+                    3;
+
+
+                magneticCard.style.setProperty(
+                    "--rx",
+                    `${rotateX}deg`
+                );
+
+
+                magneticCard.style.setProperty(
+                    "--ry",
+                    `${rotateY}deg`
+                );
+
+
+                magneticCard.style.setProperty(
+                    "--tx",
+                    `${translateX}px`
+                );
+
+
+                magneticCard.style.setProperty(
+                    "--ty",
+                    `${translateY}px`
+                );
+
+            }
+        );
+
+
+        magneticCard.addEventListener(
+            "pointerleave",
+            () => {
+
+                magneticCard.style.setProperty(
+                    "--rx",
+                    "0deg"
+                );
+
+                magneticCard.style.setProperty(
+                    "--ry",
+                    "0deg"
+                );
+
+                magneticCard.style.setProperty(
+                    "--tx",
+                    "0px"
+                );
+
+                magneticCard.style.setProperty(
+                    "--ty",
+                    "0px"
+                );
+
+            }
+        );
+
+    }
+
+</script>
+
+</body>
+</html>
+

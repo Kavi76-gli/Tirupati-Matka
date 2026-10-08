@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin • Wallet & Transactions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+/* ======================
+   GLOBAL
+====================== */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: radial-gradient(circle at top, #0a1a2f, #050b14);
+  margin: 0;
+  color: #cfe9ff;
+}
+
+/* ======================
+   APP BAR
+====================== */
+.app-bar {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: #fff;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 0 15px rgba(0, 140, 255, 0.6);
+}
+
+/* ======================
+   CONTAINER
+====================== */
+.container {
+  padding: 15px;
+}
+
+/* ======================
+   TABLE
+====================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(5, 15, 30, 0.9);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 18px rgba(0, 160, 255, 0.25);
+}
+
+th, td {
+  padding: 10px;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(0, 170, 255, 0.25);
+  text-align: left;
+}
+
+th {
+  background: linear-gradient(90deg, #00b4ff, #0066ff);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+td {
+  color: #d8f0ff;
+}
+
+tr:hover td {
+  background: rgba(0, 140, 255, 0.12);
+}
+
+/* ======================
+   BUTTON
+====================== */
+.view-btn {
+  background: linear-gradient(135deg, #00e0ff, #0072ff);
+  color: #fff;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 0 12px rgba(0, 200, 255, 0.8);
+  transition: all 0.25s ease;
+}
+
+.view-btn:hover {
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 200, 255, 1);
+}
+
+/* ======================
+   MODAL OVERLAY
+====================== */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 10, 25, 0.85);
+  backdrop-filter: blur(6px);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* ======================
+   MODAL BOX
+====================== */
+.modal-box {
+  background: linear-gradient(180deg, #061b33, #030c18);
+  width: 95%;
+  max-width: 680px;
+  max-height: 90vh;
+  border-radius: 14px;
+  padding: 16px;
+  overflow-y: auto;
+  box-shadow:
+    0 0 20px rgba(0, 170, 255, 0.5),
+    inset 0 0 25px rgba(0, 120, 255, 0.25);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ======================
+   CLOSE BUTTON
+====================== */
+.close-btn {
+  float: right;
+  cursor: pointer;
+  font-size: 18px;
+  color: #66d9ff;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  color: #00eaff;
+  text-shadow: 0 0 8px #00eaff;
+}
+
+/* ======================
+   TRANSACTION SCROLL
+====================== */
+.tx-scroll {
+  max-height: 45vh;
+  overflow-y: auto;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 180, 255, 0.35);
+  box-shadow: inset 0 0 12px rgba(0, 140, 255, 0.3);
+}
+
+/* ======================
+   SCROLLBAR (WEBKIT)
+====================== */
+.tx-scroll::-webkit-scrollbar,
+.modal-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tx-scroll::-webkit-scrollbar-thumb,
+.modal-box::-webkit-scrollbar-thumb {
+  background: linear-gradient(#00eaff, #0072ff);
+  border-radius: 10px;
+}
+
+.tx-scroll::-webkit-scrollbar-track,
+.modal-box::-webkit-scrollbar-track {
+  background: rgba(0, 20, 40, 0.6);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app-bar">Admin • Users Wallet & Transactions</div>
+
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Balance</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="usersBody"></tbody>
+  </table>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="userModal">
+  <div class="modal-box">
+    <span class="close-btn" onclick="closeModal()">✖</span>
+    <h3>User Profile</h3>
+    <div id="userInfo"></div>
+
+    <h4>Transactions</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="txBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+const API = "http://localhost:5000/api/auth";
+const token = localStorage.getItem("token");
+if (!token) location.href = "auth.html";
+
+let users = [];
+let transactions = [];
+
+// ==========================
+// LOAD USERS WALLET
+// ==========================
+async function loadUsersWallet() {
+  try {
+    const res = await fetch(`${API}/admin/users-wallet`, {
+      headers: { Authorization: "Bearer " + token }
+    });
+
+    const text = await res.text();
+    let data;
+    try { data = JSON.parse(text); }
+    catch { console.error(text); alert("Invalid users data"); return; }
+
+    users = data.users || [];
+    renderUsers();
+
+  } catch (err) {
+    console.error(err);
+    alert("Failed to load users wallet");
+  }
+}
+
+// ==========================
+// LOAD ALL TRANSACTIONS
+// ==========================
+async function loadTransactions() {
+  try {
+    const res = await fetch(`${API}/admin/transactions`, {
+      headers: { Authorization: "Bearer " + token }
+    });
+
+    const text = await res.text();
+    let data;
+    try { data = JSON.parse(text); }
+    catch { console.error(text); alert("Invalid transactions data"); return; }
+
+    transactions = data.transactions || [];
+
+  } catch (err) {
+    console.error(err);
+    alert("Failed to load transactions");
+  }
+}
+
+// ==========================
+// RENDER USERS
+// ==========================
+function renderUsers() {
+  const body = document.getElementById("usersBody");
+  body.innerHTML = "";
+
+  users.forEach((u, i) => {
+    body.innerHTML += `
+      <tr>
+        <td>${i + 1}</td>
+        <td>${u.name}</td>
+        <td>${u.phone}</td>
+        <td>${u.email}</td>
+        <td>₹${u.balance}</td>
+        <td>
+          <button class="view-btn" onclick="viewUser('${u.id}')">View</button>
+        </td>
+      </tr>
+    `;
+  });
+}
+
+// ==========================
+// VIEW USER DETAILS
+// ==========================
+
+function viewUser(userId) {
+  const user = users.find(u => u.id === userId);
+  if (!user) return alert("User not found");
+
+  document.getElementById("userModal").style.display = "flex";
+
+  document.getElementById("userInfo").innerHTML = `
+    <b>Name:</b> ${user.name}<br>
+    <b>Phone:</b> ${user.phone}<br>
+    <b>Email:</b> ${user.email}<br>
+    <b>Balance:</b> ₹${user.balance}
+  `;
+
+  const txBody = document.getElementById("txBody");
+  txBody.innerHTML = "";
+
+  // ✅ CORRECT FILTER (matches backend response)
+  const userTx = transactions.filter(
+    tx => tx.user && tx.user.id === userId
+  );
+
+  if (userTx.length === 0) {
+    txBody.innerHTML = `<tr><td colspan="4">No transactions</td></tr>`;
+    return;
+  }
+
+  userTx.forEach(tx => {
+    txBody.innerHTML += `
+      <tr>
+        <td>${new Date(tx.createdAt).toLocaleString()}</td>
+        <td>${tx.type}</td>
+        <td>₹${tx.amount}</td>
+        <td>${tx.status}</td>
+      </tr>
+    `;
+  });
+}
+
+
+
+function closeModal() {
+  document.getElementById("userModal").style.display = "none";
+}
+
+// ==========================
+// INIT
+// ==========================
+loadUsersWallet();
+loadTransactions();
+</script>
+
+</body>
+</html> 

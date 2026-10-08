@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Logout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: radial-gradient(circle at top, #0a2a43, #020b1a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00eaff;
+    }
+
+    .card {
+      background: rgba(0, 20, 40, 0.85);
+      border: 1px solid #00eaff55;
+      box-shadow:
+        0 0 15px #00eaff55,
+        0 0 30px #00eaff22;
+      padding: 30px;
+      border-radius: 16px;
+      width: 320px;
+      text-align: center;
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px #00eaff;
+    }
+
+    .card p {
+      font-size: 14px;
+      opacity: 0.85;
+      margin-bottom: 25px;
+    }
+
+    .logout-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #00eaff, #007bff);
+      border: none;
+      border-radius: 10px;
+      color: #00121f;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow:
+        0 0 10px #00eaff,
+        0 0 25px #00eaff66;
+      transition: all 0.25s ease;
+    }
+
+    .logout-btn:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 20px #00eaff,
+        0 0 40px #00eaffaa;
+    }
+
+    .msg {
+      margin-top: 15px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .msg.success {
+      color: #4cffc3;
+      text-shadow: 0 0 8px #4cffc3;
+    }
+
+    .msg.error {
+      color: #ff6b6b;
+      text-shadow: 0 0 8px #ff6b6b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Logout</h2>
+    <p>Are you sure you want to logout?</p>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
+    <div id="msg" class="msg"></div>
+  </div>
+
+  <script>
+    async function logout() {
+      const msg = document.getElementById("msg");
+
+      try {
+        const res = await fetch("https://kalyanmaster.onrender.com/api/auth/settings/logout", {
+          method: "POST",
+          headers: {
+            "Authorization": "Bearer " + localStorage.getItem("token"),
+            "Content-Type": "application/json"
+          }
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          msg.className = "msg success";
+          msg.innerText = data.msg || "Logged out successfully";
+          msg.style.display = "block";
+
+          // clear local data
+          localStorage.clear();
+
+          // redirect to login after 1.5 sec
+          setTimeout(() => {
+            window.location.href = "auth.html";
+          }, 1500);
+        } else {
+          throw new Error(data.msg || "Logout failed");
+        }
+      } catch (err) {
+        msg.className = "msg error";
+        msg.innerText = err.message || "Server error";
+        msg.style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>

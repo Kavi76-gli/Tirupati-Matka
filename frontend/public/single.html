@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Single Digit</title>
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+<link rel="stylesheet" href="global.css">
+<style>
+/* =====================
+   RESET & BASE
+===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #0a1a2f, #020b18);
+  color: #00eaff;
+  padding-bottom: 90px;
+}
+
+/* =====================
+   HEADER
+===================== */
+.top-bar {
+  background: linear-gradient(90deg, #021126, #041f3d);
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #00eaff55;
+  box-shadow: 0 0 15px #00eaff22;
+}
+
+.logo {
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.wallet {
+  background: #001a3d;
+  color: #00eaff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #00eaff;
+  box-shadow: 0 0 10px #00eaff33;
+}
+
+/* =====================
+   MARKET CARD
+===================== */
+.card {
+  background: #001a3d;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 14px;
+  border: 1px solid #00eaff55;
+  box-shadow: 0 0 15px #00eaff22;
+}
+
+.card h2 {
+  font-size: 18px;
+}
+
+.subtitle {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #7fefff;
+}
+
+/* =====================
+   DIGIT GRID
+===================== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  padding: 15px;
+}
+
+.digit-card {
+  background: #001a3d;
+  border: 1px solid #00eaff;
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: inset 0 0 10px #00eaff22;
+  transition: 0.3s;
+}
+
+.digit-card:hover {
+  box-shadow: 0 0 15px #00eaff55;
+}
+
+.digit-card h1 {
+  font-size: 42px;
+  margin-bottom: 8px;
+  color: #00eaff;
+  text-shadow: 0 0 8px #00eaff66;
+}
+
+.digit-card input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #00eaff55;
+  background: #020f24;
+  color: #00eaff;
+  text-align: center;
+  font-size: 15px;
+  outline: none;
+}
+
+.digit-card input::placeholder {
+  color: #6fdfff;
+}
+
+.digit-card small {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  color: #7fefff;
+}
+
+/* =====================
+   CONFIRM BUTTON
+===================== */
+.confirmBid {
+  background: linear-gradient(135deg, #00eaff, #0099ff);
+  color: #001a3d;
+  border: none;
+  padding: 15px;
+  width: 90%;
+  margin: 20px auto;
+  display: block;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 20px #00eaff88;
+  transition: 0.3s;
+}
+
+.confirmBid:hover {
+  box-shadow: 0 0 30px #00eaff;
+  transform: scale(1.02);
+}
+/* =====================
+   BLUE NEON THEME
+===================== */
+
+/* HEADER */
+.header {
+  height: 76px;
+  background: linear-gradient(180deg, #000000, #050505);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(212,175,55,0.45);
+}
+
+/* LOGO AREA */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+/* LOGO IMAGE – CLEAR & PREMIUM */
+.logo img {
+  height: 64px;          /* 🔥 bigger = clarity */
+  width: auto;
+  object-fit: contain;
+  filter: 
+    contrast(1.25)
+    brightness(1.15);
+}
+
+
+/* RIGHT ICONS */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ICON STYLE */
+.header-icons i {
+  font-size: 20px;
+  color: #d4af37;             /* gold tone */
+  cursor: pointer;
+}
+
+/* BALANCE */
+.balance {
+  background: linear-gradient(135deg, #b8962e, #f3da8c);
+  color: #2b1a00;
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* =====================
+   SIDE MENU
+===================== */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 260px;
+  height: 100%;
+  background: #020f24;
+  box-shadow: -5px 0 15px #00eaff44;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.side-menu.active {
+  right: 0;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  color: #00eaff;
+  border-bottom: 1px solid #00eaff55;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #00eaff;
+  cursor: pointer;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 10px;
+}
+
+.menu-list li {
+  padding: 12px;
+  margin-bottom: 8px;
+  background: #001a3d;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid #00eaff33;
+  transition: 0.3s;
+}
+
+.menu-list li:hover {
+  background: #003366;
+  box-shadow: 0 0 10px #00eaff55;
+}
+
+/* =====================
+   BOTTOM NAV
+===================== */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #020f24;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  border-top: 1px solid #00eaff55;
+  box-shadow: 0 -5px 15px #00eaff22;
+}
+
+.nav-item {
+  text-align: center;
+  color: #00eaffaa;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.nav-item i {
+  font-size: 18px;
+  display: block;
+}
+
+.nav-item.center {
+  background: #00eaff;
+  color: #001a3d;
+  padding: 10px 16px;
+  border-radius: 50%;
+  margin-top: -20px;
+  box-shadow: 0 0 20px #00eaff;
+}
+
+.nav-item.center i {
+  color: #001a3d;
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">
+    <img src="ka.jpeg" alt="Kalyan Master Logo">
+  </div>
+
+  <div class="header-icons">
+    <i class="fa-solid fa-bell" onclick="goPage('notification.html')"></i>
+
+    <div class="balance" id="balance">₹0.00</div>
+
+    <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+  </div>
+</div>
+
+
+
+<div class="card">
+  <h2>MAIN BAZAR</h2>
+  <p class="subtitle">Single</p>
+</div>
+
+<div class="grid">
+  <!-- 0–9 Boxes -->
+  <script>
+    for(let i=0;i<=9;i++){
+      document.write(`
+      <div class="digit-card">
+        <h1>${i}</h1>
+        <input type="number" placeholder="₹ Amount" id="amt${i}">
+        <small>💡 Enter bid amount for ${i}</small>
+      </div>
+      `);
+    }
+  </script>
+</div>
+
+<button class="confirmBid" onclick="confirmSingle()">
+  View Bid Details
+</button>
+<!-- SIDE MENU -->
+<div class="side-menu" id="sideMenu">
+  <div class="menu-header">
+    <h3>Menu</h3>
+    <button class="close-btn" onclick="toggleMenu()">×</button>
+  </div>
+
+  <ul class="menu-list">
+     <li onclick="go('profile.html')">Profile</li>
+    <li onclick="go('add-fund.html')">Deposit</li>
+    <li onclick="go('withdraw.html')">Withdraw</li>
+    <li onclick="go('transition.html')">Transactions</li>
+    <li onclick="go('gamezone.html')">Game Zone</li>
+     <li onclick="go('reer.html')">Refer & Earn</li>
+    <li onclick="go('history.html')">History</li>
+    <li onclick="go('ratio.html')">Ratios</li>
+    <li onclick="go('logout.html')">Logout</li>
+  </ul>
+</div>
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <div class="nav-item" onclick="goPage('reer.html')">
+    <i class="fa-solid fa-user"></i>
+    <span>Refer</span>
+  </div>
+
+  <div class="nav-item" onclick="goPage('history.html')">
+    <i class="fa-solid fa-clock"></i>
+    <span>History</span>
+  </div>
+
+  <div class="nav-item center" onclick="goPage('gamezone.html')">
+    <i class="fa-solid fa-house"></i>
+    <span>Home</span>
+  </div>
+
+  <div class="nav-item" onclick="goPage('bid.html')">
+    <i class="fa-solid fa-gavel"></i>
+    <span>Bid</span>
+  </div>
+
+  <div class="nav-item" onclick="goPage('wallet.html')">
+    <i class="fa-solid fa-wallet"></i>
+    <span>Wallet</span>
+  </div>
+</div>
+
+
+<script>
+  
+/* ==============================
+   LOAD BET INFO
+============================== */
+let bet = null;
+try {
+  bet = JSON.parse(localStorage.getItem("betInfo"));
+  console.log("betInfo:", bet);
+} catch (e) {}
+
+if (!bet?.gameId && !bet?.matchId) {
+  alert("No bet selected");
+  window.location.href = "gamezone.html";
+}
+
+const gameId = bet.gameId || bet.matchId;
+const token = localStorage.getItem("token");
+
+/* ==============================
+   TIME FORMATTER
+============================== */
+function formatTime12(time) {
+  if (!time) return "--:--";
+
+  let d;
+  if (time.includes("T")) {
+    d = new Date(time);
+  } else {
+    const [h, m] = time.split(":").map(Number);
+    d = new Date();
+    d.setHours(h, m, 0, 0);
+  }
+
+  let h = d.getHours();
+  const m = d.getMinutes();
+  const ampm = h >= 12 ? "PM" : "AM";
+  h = h % 12 || 12;
+
+  return `${h.toString().padStart(2,"0")}:${m
+    .toString()
+    .padStart(2,"0")} ${ampm}`;
+}
+
+/* ==============================
+   LOAD LIVE GAME DATA
+============================== */
+(async () => {
+  let game = {
+    gameName: bet.gameName,
+    openTime: bet.openTime,
+    closeTime: bet.closeTime,
+    openResult: null,
+    closeResult: null
+  };
+
+  try {
+    const res = await fetch(
+      `https://kalyanmaster.onrender.com/api/match/gamezone/${gameId}`,
+      { headers: { Authorization: "Bearer " + token } }
+    );
+    const data = await res.json();
+
+    if (data.success && data.game) {
+      game = { ...game, ...data.game };
+    }
+  } catch (err) {
+    console.warn("Using local data only", err);
+  }
+
+  /* ==============================
+     UPDATE UI (REAL DATA)
+  ============================== */
+  document.querySelector(".card h2").innerText = game.gameName;
+  document.querySelector(".card .subtitle").innerText =
+    `${bet.betType.toUpperCase()} (${bet.betFor.toUpperCase()})`;
+
+  // Optional: show time if you add element later
+  console.log("Open:", formatTime12(game.openTime));
+  console.log("Close:", formatTime12(game.closeTime));
+
+  /* ==============================
+     RESULT DISPLAY
+  ============================== */
+  let openPanel = "***";
+  let closePanel = "***";
+  let jodi = "**";
+
+  if (game.openResult?.panel) {
+    openPanel = game.openResult.panel;
+    jodi = game.openResult.single + "*";
+  }
+
+  if (game.openResult?.single != null && game.closeResult?.single != null) {
+    closePanel = game.closeResult.panel || "***";
+    jodi = `${game.openResult.single}${game.closeResult.single}`;
+  }
+
+  console.log("Result:", `${openPanel}-${jodi}-${closePanel}`);
+
+  // save back updated results for next pages
+  bet.openResult = game.openResult;
+  bet.closeResult = game.closeResult;
+  localStorage.setItem("betInfo", JSON.stringify(bet));
+})();
+
+/* ==============================
+   COLLECT BIDS → DETAILS PAGE
+============================== */
+function confirmSingle() {
+  let selectedBids = [];
+  let totalAmount = 0;
+
+  for (let i = 0; i <= 9; i++) {
+    const amt = document.getElementById("amt" + i).value;
+    if (amt && Number(amt) > 0) {
+      selectedBids.push({
+        number: i.toString(),
+        amount: Number(amt)
+      });
+      totalAmount += Number(amt);
+    }
+  }
+
+  if (!selectedBids.length) {
+    alert("Please enter at least one bid amount");
+    return;
+  }
+
+  localStorage.setItem("pendingBet", JSON.stringify({
+    matchId: gameId,
+    gameName: bet.gameName,
+    betType: bet.betType,
+    betFor: bet.betFor,
+    bids: selectedBids,
+    totalAmount
+  }));
+
+  window.location.href = "bid-details.html";
+}
+function toggleMenu() {
+  document.getElementById("sideMenu").classList.toggle("active");
+}
+
+function goPage(page) {
+  window.location.href = page;
+}
+
+API="https://kalyanmaster.onrender.com/api/auth";
+
+  /* ===== balance ===== */
+async function loadBalance(){
+  const r=await fetch(API+"/balance",{headers:{Authorization:"Bearer "+token}});
+  const d=await r.json();
+  if(d.success) balance.innerText="₹ "+d.balance;
+}
+function go(page) {
+  window.location.href = page;
+}
+
+loadBalance();
+</script>
+<script src="nav.js"></script>
+
+</body>
+</html> 
