@@ -1,1909 +1,2396 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Add Cash</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- Use CDN (recommended) -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-/>
-
-
-<link rel="stylesheet" href="global.css">
-<style>
-/* ===============================
-   GOOGLE FONT
-=============================== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
-
-/* ===============================
-   GLOBAL
-=============================== */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-body{
-    background:#f5f7fb;
-    color:#1e293b;
-    overflow-x:hidden;
-    padding-bottom:30px;
-}
-
-/* ===============================
-   PAGE OPEN ANIMATION
-=============================== */
-@keyframes magnetEffect{
-    0%{
-        opacity:0;
-        transform:scale(.7) translateY(80px);
-        filter:blur(10px);
-    }
-    60%{
-        opacity:1;
-        transform:scale(1.04) translateY(-10px);
-    }
-    100%{
-        opacity:1;
-        transform:scale(1);
-        filter:blur(0);
-    }
-}
-
-.page-title,
-.tabs,
-.card{
-    animation:magnetEffect .8s ease forwards;
-}
-
-.tabs{
-    animation-delay:.1s;
-}
-
-.card{
-    animation-delay:.2s;
-}
-
-/* ===============================
-   HEADER
-=============================== */
-.top-header{
-    position:sticky;
-    top:0;
-    left:0;
-    width:100%;
-    height:72px;
-
-    background:linear-gradient(
-        135deg,
-        #00a86b,
-        #00c97a);
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 15px;
-
-    z-index:1000;
-
-    box-shadow:
-    0 5px 20px rgba(0,0,0,.15);
-}
-
-.menu-icon,
-.header-icon{
-    width:42px;
-    height:42px;
-
-    border-radius:12px;
-
-    background:
-    rgba(255,255,255,.18);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    color:#fff;
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.menu-icon:hover,
-.header-icon:hover{
-    transform:translateY(-3px);
-}
-
-.header-center{
-    flex:1;
-    padding-left:15px;
-}
-
-.header-title{
-    color:#fff;
-    font-size:20px;
-    font-weight:800;
-}
-
-.header-subtitle{
-    color:rgba(255,255,255,.9);
-    font-size:12px;
-}
-
-.header-right{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.header-balance{
-    background:#fff;
-    color:#00a86b;
-
-    min-width:90px;
-    height:40px;
-
-    border-radius:30px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-weight:700;
-
-    box-shadow:
-    0 5px 15px rgba(0,0,0,.12);
-}
-
-/* ===============================
-   PAGE TITLE
-=============================== */
-.page-title{
-    margin:15px;
-
-    height:100px;
-
-    border-radius:25px;
-
-    background:
-    linear-gradient(
-        135deg,
-        #00a86b,
-        #00d37f);
-
-    color:#fff;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:30px;
-    font-weight:800;
-
-    box-shadow:
-    0 15px 30px rgba(0,168,107,.25);
-}
-
-/* ===============================
-   TABS
-=============================== */
-.tabs{
-    display:flex;
-    gap:10px;
-    margin:15px;
-}
-
-.tabs button{
-    flex:1;
-
-    padding:14px;
-
-    border:none;
-    border-radius:16px;
-
-    background:#fff;
-
-    color:#64748b;
-
-    font-weight:700;
-
-    box-shadow:
-    0 5px 15px rgba(0,0,0,.08);
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.tabs button:hover{
-    transform:translateY(-3px);
-}
-
-.tabs .active{
-    background:
-    linear-gradient(
-        135deg,
-        #00a86b,
-        #00c97a);
-
-    color:#fff;
-}
-
-/* ===============================
-   CARD
-=============================== */
-.card{
-    margin:15px;
-    padding:25px;
-
-    background:#fff;
-
-    border-radius:25px;
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,.08);
-}
-
-.card h3{
-    color:#00a86b;
-    font-size:22px;
-    margin-bottom:20px;
-}
-
-/* ===============================
-   QR SECTION
-=============================== */
-.payment-box{
-    text-align:center;
-}
-
-.payment-box img{
-    width:220px;
-
-    border-radius:20px;
-
-    box-shadow:
-    0 15px 30px rgba(0,0,0,.15);
-
-    transition:.3s;
-}
-
-.payment-box img:hover{
-    transform:scale(1.05);
-}
-
-/* ===============================
-   BUTTONS
-=============================== */
-.copy-btn,
-.download-btn,
-.submit-btn{
-    width:100%;
-
-    margin-top:12px;
-
-    padding:15px;
-
-    border:none;
-
-    border-radius:16px;
-
-    background:
-    linear-gradient(
-        135deg,
-        #00a86b,
-        #00c97a);
-
-    color:#fff;
-
-    font-size:16px;
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.copy-btn:hover,
-.download-btn:hover,
-.submit-btn:hover{
-    transform:translateY(-3px);
-    box-shadow:
-    0 10px 25px rgba(0,168,107,.25);
-}
-
-.submit-btn:disabled{
-    background:#d1d5db;
-    color:#64748b;
-    box-shadow:none;
-}
-
-/* ===============================
-   INPUTS
-=============================== */
-input{
-    width:100%;
-
-    padding:15px;
-
-    margin-top:12px;
-
-    border-radius:16px;
-
-    border:1px solid #dbe3eb;
-
-    background:#f8fafc;
-
-    font-size:15px;
-
-    transition:.3s;
-}
-
-input:focus{
-    outline:none;
-
-    border-color:#00a86b;
-
-    box-shadow:
-    0 0 0 4px rgba(0,168,107,.15);
-}
-
-/* ===============================
-   QUICK AMOUNTS
-=============================== */
-.quick-amounts{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top:15px;
-}
-
-.quick-amounts button{
-    flex:1;
-
-    min-width:80px;
-
-    padding:14px;
-
-    border:none;
-
-    border-radius:15px;
-
-    background:#ecfdf5;
-
-    color:#00a86b;
-
-    font-weight:700;
-
-    transition:.3s;
-}
-
-.quick-amounts button:hover{
-    transform:translateY(-3px);
-    background:#00a86b;
-    color:#fff;
-}
-
-/* ===============================
-   UPI APPS
-=============================== */
-.upi-apps{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:18px;
-}
-
-.upi-btn{
-    flex:1;
-
-    min-width:100px;
-
-    height:60px;
-
-    border:none;
-
-    border-radius:18px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    gap:8px;
-
-    color:#fff;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.upi-btn:hover{
-    transform:translateY(-4px);
-}
-
-.gpay{
-    background:#4285F4;
-}
-
-.phonepe{
-    background:#5f259f;
-}
-
-.paytm{
-    background:#00b9f1;
-}
-
-.upi-logo{
-    width:28px;
-}
-
-/* ===============================
-   NOTE BOX
-=============================== */
-.note{
-    margin-top:20px;
-
-    padding:18px;
-
-    border-radius:18px;
-
-    background:#f8fafc;
-
-    color:#64748b;
-
-    line-height:1.8;
-
-    font-size:14px;
-}
-/* ===============================
-   MENU OVERLAY
-=============================== */
-/* ===========================
-   PREMIUM MENU
-=========================== */
-
-/* ===============================
-   QR VIEWER
-=============================== */
-#qrViewer{
-    display:none;
-
-    position:fixed;
-    inset:0;
-
-    background:rgba(0,0,0,.85);
-
-    justify-content:center;
-    align-items:center;
-
-    z-index:99999;
-}
-
-#qrViewer img{
-    max-width:90%;
-    max-height:90%;
-
-    border-radius:20px;
-
-    box-shadow:
-    0 20px 40px rgba(0,0,0,.4);
-}
-
-/* ===============================
-   MOBILE
-=============================== */
-@media(max-width:480px){
-
-    .page-title{
-        height:85px;
-        font-size:24px;
-    }
-
-    .payment-box img{
-        width:180px;
-    }
-
-    .header-title{
-        font-size:18px;
-    }
-
-    .header-subtitle{
-        font-size:11px;
-    }
-}
-body{
-    background:#eef3f8;
-    overflow-x:hidden;
-}
-
-.top-header{
-    height:75px;
-    background:linear-gradient(135deg,#00a86b,#00d37f);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 15px;
-    box-shadow:0 8px 25px rgba(0,0,0,.15);
-}
-
-.header-logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.header-logo img{
-    width:45px;
-    height:45px;
-}
-
-.header-logo h2{
-    color:#fff;
-    font-size:18px;
-}
-
-.header-logo p{
-    color:#dff;
-    font-size:12px;
-}
-
-.wallet-box{
-    background:#fff;
-    color:#00a86b;
-    padding:10px 18px;
-    border-radius:30px;
-    font-weight:700;
-}
-
-.wallet-banner{
-    margin:15px;
-    padding:30px;
-    border-radius:25px;
-    background:linear-gradient(135deg,#00a86b,#00d37f);
-    color:#fff;
-    text-align:center;
-    box-shadow:0 20px 40px rgba(0,168,107,.25);
-}
-
-.deposit-card{
-    margin:15px;
-    background:#fff;
-    border-radius:25px;
-    padding:25px;
-    box-shadow:0 10px 35px rgba(0,0,0,.08);
-}
-
-.qr-image{
-    width:220px;
-    display:block;
-    margin:auto;
-    border-radius:20px;
-    box-shadow:0 15px 35px rgba(0,0,0,.15);
-}
-
-.upi-id{
-    text-align:center;
-    margin:20px 0;
-    font-weight:600;
-}
-
-.action-btn,
-#submitBtn{
-    width:100%;
-    height:55px;
-    border:none;
-    border-radius:18px;
-    background:linear-gradient(135deg,#00a86b,#00d37f);
-    color:#fff;
-    font-size:16px;
-    font-weight:700;
-    margin-top:12px;
-}
-
-input{
-    width:100%;
-    height:55px;
-    border:1px solid #ddd;
-    border-radius:18px;
-    padding:0 15px;
-    margin-top:15px;
-}
-
-.quick-box{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    margin-top:15px;
-}
-
-.quick-box button{
-    height:45px;
-    border:none;
-    border-radius:15px;
-    background:#ecfdf5;
-    color:#00a86b;
-    font-weight:700;
-}
-
-.upi-apps{
-    display:flex;
-    gap:10px;
-    margin-top:15px;
-}
-
-.upi-apps button{
-    flex:1;
-    height:55px;
-    border:none;
-    border-radius:15px;
-    color:#fff;
-    font-weight:700;
-}
-
-.gpay{
-    background:#34a853;
-}
-
-.phonepe{
-    background:#5f259f;
-}
-
-.paytm{
-    background:#00baf2;
-}
-.magnet{
-    opacity:0;
-    transform:translateY(80px) scale(.7);
-    filter:blur(20px);
-    animation:magnet 0.9s cubic-bezier(.2,1.3,.3,1) forwards;
-}
-
-@keyframes magnet{
-    0%{
-        opacity:0;
-        transform:translateY(80px) scale(.7);
-        filter:blur(20px);
-    }
-    60%{
-        transform:translateY(-10px) scale(1.04);
-    }
-    100%{
-        opacity:1;
-        transform:translateY(0) scale(1);
-        filter:blur(0);
-    }
-}
-
-.deposit-card{
-    animation-delay:.2s;
-}
-
-.wallet-banner{
-    animation-delay:.1s;
-}
-.menu-overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.45);
-    backdrop-filter:blur(4px);
-    opacity:0;
-    visibility:hidden;
-    transition:.3s;
-    z-index:9998;
-}
-
-.menu-overlay.active{
-    opacity:1;
-    visibility:visible;
-}
-
-.side-menu{
-    position:fixed;
-    top:0;
-    left:-330px;
-    width:320px;
-    height:100%;
-    background:#ffffff;
-    z-index:9999;
-    transition:.4s ease;
-    overflow-y:auto;
-    box-shadow:0 20px 50px rgba(0,0,0,.25);
-}
-
-.side-menu.active{
-    left:0;
-}
-
-.menu-header{
-    padding:25px;
-    background:linear-gradient(135deg,#00a86b,#00d37f);
-    color:#fff;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.menu-user{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.menu-logo{
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    background:rgba(255,255,255,.2);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:24px;
-}
-
-.close-menu{
-    width:40px;
-    height:40px;
-    border:none;
-    border-radius:50%;
-    background:rgba(255,255,255,.2);
-    color:#fff;
-    font-size:20px;
-}
-
-.menu-list{
-    list-style:none;
-    padding:15px;
-}
-
-.menu-list li{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:15px;
-    margin-bottom:12px;
-    border-radius:20px;
-    background:#fff;
-    box-shadow:0 5px 15px rgba(0,0,0,.06);
-    cursor:pointer;
-    transition:.3s;
-}
-
-.menu-list li:hover{
-    transform:translateX(8px);
-    background:#f0fff7;
-}
-
-.menu-item-left{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.menu-icon-box{
-    width:50px;
-    height:50px;
-    border-radius:15px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#fff;
-    font-size:18px;
-}
-
-.icon-profile{background:#3b82f6;}
-.icon-wallet{background:#00a86b;}
-.icon-withdraw{background:#ef4444;}
-.icon-transaction{background:#8b5cf6;}
-.icon-game{background:#f59e0b;}
-.icon-refer{background:#ec4899;}
-.icon-history{background:#06b6d4;}
-.icon-ratio{background:#6366f1;}
-.icon-logout{background:#dc2626;}
-
-.menu-title{
-    font-weight:700;
-    color:#1e293b;
-}
-
-.menu-subtitle{
-    font-size:12px;
-    color:#64748b;
-}
-
-.menu-arrow{
-    color:#94a3b8;
-}
-
-.menu-footer{
-    text-align:center;
-    padding:20px;
-    color:#94a3b8;
-    font-size:13px;
-}
-/* =====================================
-   MENU MAGNET EFFECT
-===================================== */
-
-.side-menu.active .menu-list li{
-    opacity:0;
-    transform:translateX(-40px);
-    animation:menuMagnet .5s forwards;
-}
-
-.side-menu.active .menu-list li:nth-child(1){animation-delay:.05s;}
-.side-menu.active .menu-list li:nth-child(2){animation-delay:.1s;}
-.side-menu.active .menu-list li:nth-child(3){animation-delay:.15s;}
-.side-menu.active .menu-list li:nth-child(4){animation-delay:.2s;}
-.side-menu.active .menu-list li:nth-child(5){animation-delay:.25s;}
-.side-menu.active .menu-list li:nth-child(6){animation-delay:.3s;}
-.side-menu.active .menu-list li:nth-child(7){animation-delay:.35s;}
-.side-menu.active .menu-list li:nth-child(8){animation-delay:.4s;}
-.side-menu.active .menu-list li:nth-child(9){animation-delay:.45s;}
-
-@keyframes menuMagnet{
-    0%{
-        opacity:0;
-        transform:translateX(-40px) scale(.9);
-    }
-
-    70%{
-        transform:translateX(10px) scale(1.03);
-    }
-
-    100%{
-        opacity:1;
-        transform:translateX(0) scale(1);
-    }
-}
-/* =========================
-   MENU HEADER
-========================= */
-
-.menu-header{
-
-    background:
-    linear-gradient(
-    135deg,
-    #00a86b,
-    #00c97a);
-
-    padding:15px;
-
-    position:relative;
-}
-
-.close-btn{
-
-    position:absolute;
-
-    right:12px;
-    top:12px;
-
-    width:36px;
-    height:36px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:
-    rgba(255,255,255,.2);
-
-    color:#fff;
-
-    font-size:22px;
-
-    cursor:pointer;
-}
-
-/* =========================
-   PROFILE CARD
-========================= */
-
-.menu-profile{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    color:#fff;
-}
-
-.menu-avatar{
-
-    width:60px;
-    height:60px;
-
-    border-radius:50%;
-
-    background:
-    rgba(255,255,255,.2);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:24px;
-}
-
-.menu-user h4{
-    font-size:18px;
-}
-
-.menu-user p{
-    font-size:12px;
-    opacity:.9;
-}
-
-.menu-balance{
-
-    margin-top:8px;
-
-    background:#fff;
-
-    color:#00a86b;
-
-    display:inline-block;
-
-    padding:6px 12px;
-
-    border-radius:20px;
-
-    font-weight:700;
-}
-
-</style>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Cash | Tirupati Matka</title>
+
+    <meta name="theme-color" content="#f0fff6">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="global.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --green: #0ca66a;
+            --green-dark: #087c4e;
+            --green-light: #eafff3;
+            --green-soft: #f3fff8;
+            --text: #172b22;
+            --muted: #718078;
+            --border: #e5eee8;
+            --white: #ffffff;
+            --shadow: 0 12px 35px rgba(21, 78, 49, .07);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            padding-bottom: 35px;
+            overflow-x: hidden;
+            background: #f6faf7;
+            color: var(--text);
+        }
+
+        button, input {
+            font: inherit;
+        }
+
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(12, 166, 106, .2);
+            outline-offset: 3px;
+        }
+
+        /* HEADER */
+
+        .top-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            min-height: 76px;
+            padding: 12px 16px;
+
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            background: linear-gradient(135deg, #e5fff0, #c9f8dc);
+            border-bottom: 1px solid #d8f1e1;
+            box-shadow: 0 5px 22px rgba(20, 100, 57, .06);
+        }
+
+        .menu-icon,
+        .header-icon {
+            width: 43px;
+            height: 43px;
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid rgba(12, 166, 106, .12);
+            border-radius: 14px;
+
+            background: rgba(255, 255, 255, .85);
+            color: var(--green-dark);
+
+            cursor: pointer;
+            transition: .25s ease;
+        }
+
+        .menu-icon:hover,
+        .header-icon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(12, 166, 106, .12);
+        }
+
+        .header-center {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .header-title {
+            font-size: 17px;
+            font-weight: 800;
+            letter-spacing: -.4px;
+            color: #126641;
+        }
+
+        .header-subtitle {
+            margin-top: 2px;
+            font-size: 11px;
+            color: #57806a;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-balance {
+            min-width: 83px;
+            min-height: 41px;
+            padding: 0 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #ffffff;
+            border: 1px solid #e2f1e7;
+            border-radius: 14px;
+
+            color: var(--green-dark);
+            font-size: 13px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        /* PAGE INTRO */
+
+        .page-intro {
+            position: relative;
+            overflow: hidden;
+
+            margin: 20px 15px 16px;
+            padding: 23px 21px;
+
+            border: 1px solid #d9f5e3;
+            border-radius: 23px;
+
+            background: linear-gradient(135deg, #ffffff, #eafff1);
+            box-shadow: var(--shadow);
+
+            animation: appear .65s ease both;
+        }
+
+        .page-intro::after {
+            content: "";
+            position: absolute;
+            right: -32px;
+            top: -43px;
+
+            width: 140px;
+            height: 140px;
+
+            border-radius: 50%;
+            background: rgba(12, 166, 106, .07);
+        }
+
+        .intro-row {
+            position: relative;
+            z-index: 1;
+
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .intro-icon {
+            width: 58px;
+            height: 58px;
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 19px;
+            background: linear-gradient(135deg, #14bd79, #078c55);
+
+            color: #ffffff;
+            font-size: 25px;
+
+            box-shadow: 0 8px 20px rgba(12, 166, 106, .2);
+        }
+
+        .intro-text h1 {
+            font-size: 23px;
+            font-weight: 800;
+            letter-spacing: -.7px;
+        }
+
+        .intro-text p {
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+
+            margin-top: 15px;
+            padding: 7px 11px;
+
+            border-radius: 30px;
+            background: #e5faed;
+            color: #16844f;
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        /* TABS */
+
+        .tabs {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 9px;
+
+            margin: 0 15px 17px;
+
+            animation: appear .7s ease both;
+        }
+
+        .tabs button {
+            min-height: 46px;
+            padding: 10px 5px;
+
+            border: 1px solid var(--border);
+            border-radius: 13px;
+
+            background: #ffffff;
+            color: #718078;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            cursor: pointer;
+            transition: .25s ease;
+        }
+
+        .tabs button.active {
+            border-color: var(--green);
+            background: var(--green);
+            color: #ffffff;
+            box-shadow: 0 6px 15px rgba(12, 166, 106, .16);
+        }
+
+        .tabs button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* MAIN CARD */
+
+        .deposit-card {
+            margin: 0 15px 18px;
+            padding: 21px 17px;
+
+            border: 1px solid #e7f0e9;
+            border-radius: 23px;
+
+            background: #ffffff;
+            box-shadow: var(--shadow);
+
+            animation: appear .8s ease both;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 19px;
+        }
+
+        .section-icon {
+            width: 43px;
+            height: 43px;
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 14px;
+            background: var(--green-light);
+            color: var(--green);
+            font-size: 18px;
+        }
+
+        .section-heading h2 {
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .section-heading p {
+            margin-top: 3px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .section-divider {
+            height: 1px;
+            margin: 22px 0;
+            background: #edf3ef;
+        }
+
+        /* QR CARD */
+
+        .qr-panel {
+            padding: 19px 13px;
+            text-align: center;
+
+            border: 1px solid #e0f4e7;
+            border-radius: 19px;
+
+            background: linear-gradient(180deg, #f5fff8, #ffffff);
+        }
+
+        .qr-label {
+            margin-bottom: 13px;
+            color: #5c7465;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .qr-frame {
+            width: 204px;
+            height: 204px;
+            max-width: 100%;
+
+            display: grid;
+            place-items: center;
+
+            margin: 0 auto 15px;
+            padding: 9px;
+
+            border: 1px solid #e6eee8;
+            border-radius: 19px;
+            background: #ffffff;
+
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+        }
+
+        .qr-image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+
+            border-radius: 10px;
+            cursor: zoom-in;
+        }
+
+        .qr-error {
+            display: none;
+            padding: 12px;
+            color: #b45309;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .upi-id-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+
+            padding: 12px;
+            border: 1px dashed #bfe8cf;
+            border-radius: 13px;
+
+            background: #ffffff;
+            text-align: left;
+        }
+
+        .upi-details {
+            min-width: 0;
+        }
+
+        .upi-details small {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .upi-details strong {
+            display: block;
+            overflow-wrap: anywhere;
+            color: #176640;
+            font-size: 12px;
+        }
+
+        .copy-small {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border: none;
+            border-radius: 11px;
+
+            background: var(--green-light);
+            color: var(--green-dark);
+
+            cursor: pointer;
+        }
+
+        /* BUTTONS */
+
+        .action-btn {
+            min-height: 48px;
+            padding: 12px 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            border: none;
+            border-radius: 14px;
+
+            background: linear-gradient(135deg, #12b873, #078b55);
+            color: #ffffff;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            cursor: pointer;
+            transition: transform .25s, box-shadow .25s;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(12, 166, 106, .18);
+        }
+
+        .action-btn:active {
+            transform: scale(.98);
+        }
+
+        .action-btn:disabled {
+            opacity: .55;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .secondary-btn {
+            background: #effbf3;
+            color: var(--green-dark);
+            border: 1px solid #d8f0e0;
+        }
+
+        .full-btn {
+            width: 100%;
+            margin-top: 13px;
+        }
+
+        /* AMOUNT */
+
+        .field-label {
+            display: block;
+            margin-bottom: 9px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .amount-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 0 15px;
+
+            border: 1px solid #dce9e0;
+            border-radius: 15px;
+
+            background: #fbfefc;
+            transition: .25s;
+        }
+
+        .amount-wrap:focus-within {
+            border-color: var(--green);
+            box-shadow: 0 0 0 4px rgba(12, 166, 106, .08);
+        }
+
+        .rupee-symbol {
+            color: var(--green);
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .amount-input {
+            width: 100%;
+            height: 54px;
+
+            border: none;
+            outline: none;
+
+            background: transparent;
+            color: var(--text);
+
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .amount-input:focus-visible {
+            outline: none;
+        }
+
+        .field-hint {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .quick-amounts {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .quick-amounts button {
+            min-height: 42px;
+            padding: 7px 2px;
+
+            border: 1px solid #d9f1e2;
+            border-radius: 12px;
+
+            background: #f0fff5;
+            color: #16834f;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            cursor: pointer;
+            transition: .25s;
+        }
+
+        .quick-amounts button:hover,
+        .quick-amounts button.selected {
+            border-color: var(--green);
+            background: var(--green);
+            color: #ffffff;
+        }
+
+        /* UPI APPS */
+
+        .upi-apps {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 9px;
+            margin-top: 17px;
+        }
+
+        .upi-btn {
+            min-width: 0;
+            min-height: 77px;
+            padding: 10px 4px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+
+            border: 1px solid #e7eee9;
+            border-radius: 15px;
+
+            background: #ffffff;
+            color: #34463b;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            cursor: pointer;
+            transition: .25s;
+        }
+
+        .upi-btn:hover {
+            transform: translateY(-3px);
+            border-color: #b8e7c8;
+            box-shadow: 0 8px 18px rgba(15, 80, 44, .08);
+        }
+
+        .upi-btn img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        .upi-placeholder {
+            width: 30px;
+            height: 30px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 9px;
+            background: #eefbf2;
+            color: var(--green);
+            font-size: 17px;
+        }
+
+        /* DEPOSIT FORM */
+
+        .form-group {
+            margin-top: 17px;
+        }
+
+        .form-input {
+            display: block;
+            width: 100%;
+            min-height: 50px;
+            padding: 13px 14px;
+
+            border: 1px solid #dfeae2;
+            border-radius: 13px;
+
+            background: #fbfefc;
+            color: var(--text);
+
+            font-size: 13px;
+            transition: .25s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--green);
+            box-shadow: 0 0 0 4px rgba(12, 166, 106, .08);
+        }
+
+        .form-input::placeholder {
+            color: #9aa89f;
+        }
+
+        .upload-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            padding: 14px;
+
+            border: 1px dashed #b8ddc5;
+            border-radius: 14px;
+
+            background: #f8fff9;
+            cursor: pointer;
+        }
+
+        .upload-icon {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 12px;
+            background: #e5faec;
+            color: var(--green);
+        }
+
+        .upload-text strong {
+            display: block;
+            font-size: 12px;
+        }
+
+        .upload-text small {
+            display: block;
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-name {
+            margin-top: 8px;
+            color: var(--green-dark);
+            font-size: 11px;
+            overflow-wrap: anywhere;
+        }
+
+        .submit-btn {
+            width: 100%;
+            min-height: 53px;
+            margin-top: 19px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            border: none;
+            border-radius: 15px;
+
+            background: linear-gradient(135deg, #12b873, #078b55);
+            color: #ffffff;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            cursor: pointer;
+            transition: .25s;
+        }
+
+        .submit-btn:disabled {
+            background: #d8e5dc;
+            color: #78867c;
+            cursor: not-allowed;
+        }
+
+        /* NOTICE */
+
+        .notice {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+
+            margin-top: 19px;
+            padding: 15px;
+
+            border: 1px solid #dcefe2;
+            border-radius: 15px;
+
+            background: #f3fff7;
+        }
+
+        .notice > i {
+            margin-top: 2px;
+            color: var(--green);
+        }
+
+        .notice h4 {
+            margin-bottom: 6px;
+            font-size: 12px;
+        }
+
+        .notice p {
+            color: #68796e;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        /* QR MODAL */
+
+        .qr-viewer {
+            position: fixed;
+            inset: 0;
+            z-index: 10001;
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            background: rgba(12, 29, 19, .84);
+            backdrop-filter: blur(8px);
+        }
+
+        .qr-viewer.active {
+            display: flex;
+        }
+
+        .qr-modal {
+            position: relative;
+            width: 100%;
+            max-width: 360px;
+
+            padding: 20px;
+
+            border-radius: 23px;
+            background: #ffffff;
+
+            text-align: center;
+            animation: modalIn .3s ease;
+        }
+
+        .qr-modal h3 {
+            margin-bottom: 6px;
+            font-size: 17px;
+        }
+
+        .qr-modal p {
+            margin-bottom: 16px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .qr-modal img {
+            width: 100%;
+            max-width: 290px;
+            max-height: 65vh;
+            object-fit: contain;
+        }
+
+        .qr-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+
+            width: 35px;
+            height: 35px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #eef6f0;
+            color: #254b34;
+
+            cursor: pointer;
+        }
+
+        /* SIDE MENU */
+
+        .menu-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+
+            background: rgba(16, 34, 23, .45);
+            backdrop-filter: blur(3px);
+
+            opacity: 0;
+            visibility: hidden;
+            transition: .3s;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 2001;
+
+            width: min(320px, 86vw);
+
+            overflow-y: auto;
+            overscroll-behavior: contain;
+
+            background: #ffffff;
+            box-shadow: 15px 0 45px rgba(0, 0, 0, .13);
+
+            transform: translateX(-105%);
+            transition: transform .35s cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .side-menu.active {
+            transform: translateX(0);
+        }
+
+        .menu-header {
+            padding: 23px 18px;
+
+            background: linear-gradient(135deg, #e2fff0, #c5f6d9);
+            border-bottom: 1px solid #d7f1e1;
+        }
+
+        .menu-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+
+        .menu-avatar {
+            width: 49px;
+            height: 49px;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid #d1f0dc;
+            border-radius: 16px;
+
+            background: #ffffff;
+            color: var(--green);
+            font-size: 20px;
+        }
+
+        .menu-user h3 {
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .menu-user p {
+            margin-top: 4px;
+            color: #63816d;
+            font-size: 11px;
+        }
+
+        .close-btn {
+            width: 35px;
+            height: 35px;
+            flex-shrink: 0;
+
+            border: none;
+            border-radius: 11px;
+
+            background: rgba(255, 255, 255, .85);
+            color: #236541;
+
+            font-size: 19px;
+            cursor: pointer;
+        }
+
+        .menu-balance {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 13px;
+
+            border-radius: 12px;
+            background: #ffffff;
+
+            color: var(--green-dark);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .menu-list {
+            list-style: none;
+            padding: 13px;
+        }
+
+        .menu-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-bottom: 6px;
+            padding: 12px;
+
+            border-radius: 14px;
+            cursor: pointer;
+
+            transition: .2s;
+        }
+
+        .menu-list li:hover {
+            background: #f0fff5;
+            transform: translateX(3px);
+        }
+
+        .menu-icon-box {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 12px;
+
+            background: #eafff1;
+            color: var(--green);
+
+            font-size: 15px;
+        }
+
+        .menu-title {
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .menu-subtitle {
+            margin-top: 3px;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .menu-arrow {
+            margin-left: auto;
+            color: #a3b3a8;
+            font-size: 11px;
+        }
+
+        .menu-footer {
+            padding: 15px;
+            color: #94a49a;
+            font-size: 10px;
+            text-align: center;
+        }
+
+        /* ANIMATIONS */
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(.92) translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+
+        @media (min-width: 700px) {
+            .page-intro,
+            .tabs,
+            .deposit-card {
+                width: min(100% - 40px, 560px);
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .page-intro {
+                margin-top: 25px;
+                margin-bottom: 20px;
+                padding: 27px;
+            }
+
+            .deposit-card {
+                padding: 27px;
+            }
+
+            .top-header {
+                padding-left: max(20px, calc((100% - 1000px) / 2));
+                padding-right: max(20px, calc((100% - 1000px) / 2));
+            }
+        }
+
+        @media (max-width: 380px) {
+            .top-header {
+                gap: 8px;
+                padding: 10px;
+            }
+
+            .menu-icon,
+            .header-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .header-title {
+                font-size: 14px;
+            }
+
+            .header-subtitle {
+                font-size: 10px;
+            }
+
+            .header-balance {
+                min-width: 65px;
+                padding: 0 8px;
+                font-size: 11px;
+            }
+
+            .intro-text h1 {
+                font-size: 20px;
+            }
+
+            .deposit-card {
+                padding: 17px 13px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
 </head>
- <body>
 
-<!-- HEADER -->
-<div class="top-header">
+<body>
 
-    <div class="menu-icon" onclick="toggleMenu()">
-        <i class="fa-solid fa-bars"></i>
-    </div>
+    <!-- HEADER -->
 
-    <div class="header-center">
-        <div class="header-title">Tirupati Matka</div>
-        <div class="header-subtitle">Official Ratio Chart</div>
-    </div>
+    <header class="top-header">
 
-    <div class="header-right">
-
-        <div class="header-icon"
-        onclick="goPage('notification.html')">
-            <i class="fa-solid fa-bell"></i>
-        </div>
-
-        <div class="header-balance"
-        id="balance">
-            ₹0
-        </div>
-
-    </div>
-
-</div>
-
-<div class="page-title">Add Cash</div>
-
-<div class="tabs">
-  <button class="active">Add Cash</button>
-  <button onclick="go('withdraw.html')">Withdraw</button>
-  <button onclick="go('transition.html')">Transactions</button>
-</div>
-
-<div class="card">
-  <h3>Deposit via UPI</h3>
-
-  <div class="payment-box">
-  
-<!-- Small QR -->
-<img
-  id="qrImage"
-  src="qr.png"
-  alt="QR Code"
-  onclick="openQrViewer()"
-  style="cursor:pointer"
-/>
-
-<!-- Fullscreen QR Viewer -->
-<div id="qrViewer" onclick="closeQrViewer()">
-  <img id="qrZoom" />
-</div>
-
-
-    <button class="copy-btn" onclick="copyUpi()">Copy UPI ID</button>
-    <button onclick="downloadQr(event)">Download QR</button>
-
-
-    
-<!-- Amount input -->
-<div style="margin-bottom: 15px;">
-  <input 
-    type="number" 
-    id="amount" 
-    placeholder="Enter amount (₹100 minimum)" 
-    min="100" 
-    style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #ccc; font-size: 16px;"
-  />
-</div>
-
-<!-- UPI apps -->
-<div class="upi-apps" style="display: flex; gap: 10px; justify-content: space-between; flex-wrap: wrap;">
-
-  <!-- Google Pay -->
-  <button class="upi-btn gpay" onclick="payVia('gpay')" style="flex: 1 1 30%; display: flex; align-items: center; gap: 5px; padding: 8px; border-radius: 10px; border: none; font-size: 14px; color: #fff; background: linear-gradient(90deg, #00c853, #b2ff59); transition: transform 0.2s;">
-    <img src="resources/images/gpay.webp" class="upi-logo" alt="Google Pay" style="width: 24px; height: 24px;">
-    <span>Google Pay</span>
-  </button>
-
-  <!-- PhonePe -->
-  <button class="upi-btn phonepe" onclick="payVia('phonepe')" style="flex: 1 1 30%; display: flex; align-items: center; gap: 5px; padding: 8px; border-radius: 10px; border: none; font-size: 14px; color: #fff; background: #4A148C; transition: transform 0.2s;">
-    <img src="resources/images/phonepe.png" class="upi-logo" alt="PhonePe" style="width: 24px; height: 24px;">
-    <span>PhonePe</span>
-  </button>
-
-  <!-- Paytm -->
-  <button class="upi-btn paytm" onclick="payVia('paytm')" style="flex: 1 1 30%; display: flex; align-items: center; gap: 5px; padding: 8px; border-radius: 10px; border: none; font-size: 14px; color: #fff; background: #002970; transition: transform 0.2s;">
-    <img src="resources/images/paytm.png" class="upi-logo" alt="Paytm" style="width: 24px; height: 24px;">
-    <span>Paytm</span>
-  </button>
-
-</div>
-
-
-    <p id="upiText"></p>
-  </div>
-
- 
-  <input type="text" id="utr" placeholder="UTR  No" class="hidden-input">
-  <input type="file" id="screenshot" accept="image/*" class="hidden-input">
-
-  <p style="font-size:12px">Minimum deposit ₹100</p>
-
-  <div class="quick-amounts">
-    <button onclick="addAmount(100)">+100</button>
-    <button onclick="addAmount(300)">+300</button>
-    <button onclick="addAmount(500)">+500</button>
-    <button onclick="addAmount(1000)">+1000</button>
-  </div>
-
-  <button id="submitBtn" class="submit-btn" disabled>Submit Deposit</button>
-
-  <div class="note">
-  • Enter deposit amount (minimum ₹100)<br>
-  • Select a UPI app (GPay / PhonePe / Paytm) to complete payment<br>
-  • After payment, enter UTR number and upload payment screenshot<br>
-  • Deposit will be approved by admin<br>
-  • Balance updates after admin approval
-</div>
-
-</div>
-<!-- MENU OVERLAY -->
-
-<div
-class="menu-overlay"
-id="menuOverlay"
-onclick="toggleMenu()">
-</div>
-
-<!-- SIDE MENU -->
-
-<div class="side-menu" id="sideMenu">
-
-    <div class="menu-header">
-
-        <div class="menu-profile">
-
-            <div class="menu-avatar">
-                <i class="fa-solid fa-user"></i>
-            </div>
-
-            <div class="menu-user">
-
-                <h4 id="menuUserName">
-                    Loading...
-                </h4>
-
-                <p id="menuUserPhone">
-                    +91 XXXXX XXXXX
-                </p>
-
-                <div class="menu-balance">
-                    ₹ <span id="menuBalance">0</span>
-                </div>
-
-            </div>
-
-        </div>
-
-        <button
-        class="close-btn"
-        onclick="toggleMenu()">
-            ×
+        <button class="menu-icon"
+                type="button"
+                aria-label="Open menu"
+                onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
         </button>
 
-    </div>
+        <div class="header-center">
+            <div class="header-title">Tirupati Matka</div>
+            <div class="header-subtitle">Your account dashboard</div>
+        </div>
 
-    <ul class="menu-list">
+        <div class="header-right">
 
-        <!-- PROFILE -->
+            <button class="header-icon"
+                    type="button"
+                    aria-label="Notifications"
+                    onclick="go('notification.html')">
+                <i class="fa-regular fa-bell"></i>
+            </button>
 
-        <li onclick="go('profile.html')">
+            <div class="header-balance" id="balance">
+                ₹0.00
+            </div>
 
-            <div class="menu-item-left">
+        </div>
 
-                <div class="menu-icon-box icon-profile">
+    </header>
+
+    <!-- PAGE INTRO -->
+
+    <section class="page-intro">
+
+        <div class="intro-row">
+
+            <div class="intro-icon">
+                <i class="fa-solid fa-wallet"></i>
+            </div>
+
+            <div class="intro-text">
+                <h1>Add Cash</h1>
+                <p>Choose an amount and follow the payment instructions.</p>
+            </div>
+
+        </div>
+
+        <div class="security-badge">
+            <i class="fa-solid fa-shield-halved"></i>
+            Secure payment submission
+        </div>
+
+    </section>
+
+    <!-- NAVIGATION TABS -->
+
+    <nav class="tabs">
+
+        <button class="active" type="button">
+            <i class="fa-solid fa-plus"></i>
+            Add Cash
+        </button>
+
+        <button type="button" onclick="go('withdraw.html')">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            Withdraw
+        </button>
+
+        <button type="button" onclick="go('transition.html')">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            History
+        </button>
+
+    </nav>
+
+    <!-- MAIN CARD -->
+
+    <main class="deposit-card">
+
+        <!-- PAYMENT DETAILS -->
+
+        <section>
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    <i class="fa-solid fa-qrcode"></i>
+                </div>
+
+                <div>
+                    <h2>Pay via UPI</h2>
+                    <p>Scan the QR code or copy the UPI ID.</p>
+                </div>
+
+            </div>
+
+            <div class="qr-panel">
+
+                <div class="qr-label">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    Scan using your preferred UPI app
+                </div>
+
+                <div class="qr-frame">
+
+                    <img
+                        id="qrImage"
+                        class="qr-image"
+                        src="qr4.jpeg"
+                        alt="Payment QR Code"
+                        loading="eager"
+                    >
+
+                    <div id="qrError" class="qr-error">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        QR code could not be loaded.
+                        Please contact support or try again.
+                    </div>
+
+                </div>
+
+                <div class="upi-id-box">
+
+                    <div class="upi-details">
+                        <small>Payment UPI ID</small>
+                        <strong id="upiText">Loading payment details...</strong>
+                    </div>
+
+                    <button
+                        class="copy-small"
+                        type="button"
+                        onclick="copyUpi()"
+                        aria-label="Copy UPI ID"
+                    >
+                        <i class="fa-regular fa-copy"></i>
+                    </button>
+
+                </div>
+
+                <button
+                    class="action-btn secondary-btn full-btn"
+                    type="button"
+                    onclick="downloadQr(event)"
+                >
+                    <i class="fa-solid fa-download"></i>
+                    Download QR Code
+                </button>
+
+                <button
+                    class="action-btn secondary-btn full-btn"
+                    type="button"
+                    onclick="openQrViewer()"
+                >
+                    <i class="fa-solid fa-expand"></i>
+                    View Full QR Code
+                </button>
+
+            </div>
+
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- AMOUNT -->
+
+        <section>
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+                </div>
+
+                <div>
+                    <h2>Enter Amount</h2>
+                    <p>Select how much you want to pay.</p>
+                </div>
+
+            </div>
+
+            <label class="field-label" for="amount">
+                Deposit amount
+            </label>
+
+            <div class="amount-wrap">
+
+                <span class="rupee-symbol">₹</span>
+
+                <input
+                    type="number"
+                    id="amount"
+                    class="amount-input"
+                    placeholder="Enter amount"
+                    min="100"
+                    max="100000"
+                    step="1"
+                    inputmode="decimal"
+                    autocomplete="off"
+                >
+
+            </div>
+
+            <p class="field-hint">
+                Minimum ₹100 · Maximum ₹1,00,000
+            </p>
+
+            <div class="quick-amounts">
+
+                <button type="button" data-amount="100">₹100</button>
+                <button type="button" data-amount="300">₹300</button>
+                <button type="button" data-amount="500">₹500</button>
+                <button type="button" data-amount="1000">₹1,000</button>
+
+            </div>
+
+            <!-- UPI APPS -->
+
+            <div class="section-divider"></div>
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                </div>
+
+                <div>
+                    <h2>Choose UPI App</h2>
+                    <p>Continue to your preferred payment app.</p>
+                </div>
+
+            </div>
+
+            <div class="upi-apps">
+
+                <button
+                    type="button"
+                    class="upi-btn"
+                    onclick="payVia('gpay')"
+                >
+                    <img
+                        src="resources/images/gpay.webp"
+                        alt=""
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
+                    >
+                    <span class="upi-placeholder" style="display:none">
+                        <i class="fa-solid fa-g"></i>
+                    </span>
+                    Google Pay
+                </button>
+
+                <button
+                    type="button"
+                    class="upi-btn"
+                    onclick="payVia('phonepe')"
+                >
+                    <img
+                        src="resources/images/phonepe.png"
+                        alt=""
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
+                    >
+                    <span class="upi-placeholder" style="display:none">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </span>
+                    PhonePe
+                </button>
+
+                <button
+                    type="button"
+                    class="upi-btn"
+                    onclick="payVia('paytm')"
+                >
+                    <img
+                        src="resources/images/paytm.png"
+                        alt=""
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
+                    >
+                    <span class="upi-placeholder" style="display:none">
+                        <i class="fa-solid fa-wallet"></i>
+                    </span>
+                    Paytm
+                </button>
+
+            </div>
+
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- DEPOSIT SUBMISSION -->
+
+        <section>
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    <i class="fa-solid fa-receipt"></i>
+                </div>
+
+                <div>
+                    <h2>Confirm Payment</h2>
+                    <p>Submit the transaction details after paying.</p>
+                </div>
+
+            </div>
+
+            <form id="depositForm">
+
+                <div class="form-group">
+
+                    <label class="field-label" for="utr">
+                        UTR / Transaction Reference Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="utr"
+                        class="form-input"
+                        placeholder="Enter your UTR number"
+                        maxlength="50"
+                        autocomplete="off"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label class="field-label">
+                        Payment screenshot
+                    </label>
+
+                    <label class="upload-box" for="screenshot">
+
+                        <span class="upload-icon">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </span>
+
+                        <span class="upload-text">
+                            <strong>Upload payment screenshot</strong>
+                            <small>Choose an image from your device</small>
+                        </span>
+
+                    </label>
+
+                    <input
+                        type="file"
+                        id="screenshot"
+                        class="file-input"
+                        accept="image/jpeg,image/png,image/webp"
+                        required
+                    >
+
+                    <p class="file-name" id="fileName">
+                        No file selected
+                    </p>
+
+                </div>
+
+                <button
+                    type="submit"
+                    id="submitBtn"
+                    class="submit-btn"
+                    disabled
+                >
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Submit Deposit Request
+                </button>
+
+            </form>
+
+        </section>
+
+        <!-- IMPORTANT NOTICE -->
+
+        <div class="notice">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            <div>
+                <h4>Important Payment Information</h4>
+
+                <p>
+                    1. Enter an amount of at least ₹100.<br>
+                    2. Complete the payment using the displayed QR code or UPI ID.<br>
+                    3. Enter the correct UTR/reference number and upload your screenshot.<br>
+                    4. Keep your payment confirmation for your records.<br>
+                    5. Your deposit request will be reviewed according to the platform's payment process.<br>
+                    6. Your wallet should be updated only after the payment has been verified and approved.
+                </p>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- SIDE MENU OVERLAY -->
+
+    <div
+        class="menu-overlay"
+        id="menuOverlay"
+        onclick="closeMenu()"
+    ></div>
+
+    <!-- SIDE MENU -->
+
+    <aside class="side-menu" id="sideMenu">
+
+        <div class="menu-header">
+
+            <div class="menu-top">
+
+                <div class="menu-brand">
+
+                    <div class="menu-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div class="menu-user">
+                        <h3 id="menuUserName">Loading...</h3>
+                        <p id="menuUserPhone">Loading phone...</p>
+                    </div>
+
+                </div>
+
+                <button
+                    class="close-btn"
+                    type="button"
+                    onclick="closeMenu()"
+                    aria-label="Close menu"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <div class="menu-balance">
+                <i class="fa-solid fa-wallet"></i>
+                Wallet: ₹<span id="menuBalance">0.00</span>
+            </div>
+
+        </div>
+
+        <ul class="menu-list">
+
+            <li onclick="go('profile.html')">
+                <span class="menu-icon-box">
                     <i class="fa-solid fa-user"></i>
-                </div>
+                </span>
+                <span>
+                    <div class="menu-title">My Profile</div>
+                    <div class="menu-subtitle">Manage your account</div>
+                </span>
+                <i class="fa-solid fa-chevron-right menu-arrow"></i>
+            </li>
 
-                <div>
-
-                    <div class="menu-title">
-                        Profile
-                    </div>
-
-                    <div class="menu-subtitle">
-                        Manage Account
-                    </div>
-
-                </div>
-
-            </div>
-
-            <i class="fa-solid fa-chevron-right menu-arrow"></i>
-
-        </li>
-
-        <!-- DEPOSIT -->
-
-        <li onclick="go('add-fund.html')">
-
-            <div class="menu-item-left">
-
-                <div class="menu-icon-box icon-wallet">
+            <li onclick="go('add-fund.html')">
+                <span class="menu-icon-box">
                     <i class="fa-solid fa-wallet"></i>
-                </div>
+                </span>
+                <span>
+                    <div class="menu-title">Add Cash</div>
+                    <div class="menu-subtitle">Submit a deposit request</div>
+                </span>
+                <i class="fa-solid fa-chevron-right menu-arrow"></i>
+            </li>
 
-                <div>
+            <li onclick="go('withdraw.html')">
+                <span class="menu-icon-box">
+                    <i class="fa-solid fa-money-bill-transfer"></i>
+                </span>
+                <span>
+                    <div class="menu-title">Withdraw</div>
+                    <div class="menu-subtitle">Withdrawal requests</div>
+                </span>
+                <i class="fa-solid fa-chevron-right menu-arrow"></i>
+            </li>
 
-                    <div class="menu-title">
-                        Deposit
-                    </div>
-
-                    <div class="menu-subtitle">
-                        Add Fund
-                    </div>
-
-                </div>
-
-            </div>
-
-            <i class="fa-solid fa-chevron-right menu-arrow"></i>
-
-        </li>
-
-        <!-- WITHDRAW -->
-
-        <li onclick="go('withdraw.html')">
-
-            <div class="menu-item-left">
-
-                <div class="menu-icon-box icon-withdraw">
-                    <i class="fa-solid fa-money-bill-wave"></i>
-                </div>
-
-                <div>
-
-                    <div class="menu-title">
-                        Withdraw
-                    </div>
-
-                    <div class="menu-subtitle">
-                        Withdraw Money
-                    </div>
-
-                </div>
-
-            </div>
-
-            <i class="fa-solid fa-chevron-right menu-arrow"></i>
-
-        </li>
-
-        <!-- TRANSACTIONS -->
-
-        <li onclick="go('transition.html')">
-
-            <div class="menu-item-left">
-
-                <div class="menu-icon-box icon-transaction">
+            <li onclick="go('transition.html')">
+                <span class="menu-icon-box">
                     <i class="fa-solid fa-clock-rotate-left"></i>
-                </div>
+                </span>
+                <span>
+                    <div class="menu-title">Transactions</div>
+                    <div class="menu-subtitle">Payment history</div>
+                </span>
+                <i class="fa-solid fa-chevron-right menu-arrow"></i>
+            </li>
 
-                <div>
-
-                    <div class="menu-title">
-                        Transactions
-                    </div>
-
-                    <div class="menu-subtitle">
-                        Payment History
-                    </div>
-
-                </div>
-
-            </div>
-
-            <i class="fa-solid fa-chevron-right menu-arrow"></i>
-
-        </li>
-
-        <!-- GAME ZONE -->
-
-        <li onclick="go('gamezone.html')">
-
-            <div class="menu-item-left">
-
-                <div class="menu-icon-box icon-game">
+            <li onclick="go('gamezone.html')">
+                <span class="menu-icon-box">
                     <i class="fa-solid fa-chart-line"></i>
-                </div>
+                </span>
+                <span>
+                    <div class="menu-title">Game Zone</div>
+                    <div class="menu-subtitle">Games and results</div>
+                </span>
+                <i class="fa-solid fa-chevron-right menu-arrow"></i>
+            </li>
 
-                <div>
-
-                    <div class="menu-title">
-                        Game Zone
-                    </div>
-
-                    <div class="menu-subtitle">
-                        Market Games
-                    </div>
-
-                </div>
-
-            </div>
-
-            <i class="fa-solid fa-chevron-right menu-arrow"></i>
-
-        </li>
-
-        <!-- REFER -->
-
-        <li onclick="go('reer.html')">
-
-            <div class="menu-item-left">
-
-                <div class="menu-icon-box icon-refer">
+            <li onclick="go('reer.html')">
+                <span class="menu-icon-box">
                     <i class="fa-solid fa-gift"></i>
-                </div>
+                </span>
+                <span>
+                    <div class="menu-title">Refer & Earn</div>
+                    <div class="menu-subtitle">Referral information</div>
+                </span>
+                <i class="fa-solid fa-chevron-right menu-arrow"></i>
+            </li>
 
-                <div>
-
-                    <div class="menu-title">
-                        Refer & Earn
-                    </div>
-
-                    <div class="menu-subtitle">
-                        Invite Friends
-                    </div>
-
-                </div>
-
-            </div>
-
-            <i class="fa-solid fa-chevron-right menu-arrow"></i>
-
-        </li>
-
-        <!-- HISTORY -->
-
-        <li onclick="go('history.html')">
-
-            <div class="menu-item-left">
-
-                <div class="menu-icon-box icon-history">
+            <li onclick="go('history.html')">
+                <span class="menu-icon-box">
                     <i class="fa-solid fa-file-lines"></i>
-                </div>
+                </span>
+                <span>
+                    <div class="menu-title">History</div>
+                    <div class="menu-subtitle">View your records</div>
+                </span>
+                <i class="fa-solid fa-chevron-right menu-arrow"></i>
+            </li>
 
-                <div>
-
-                    <div class="menu-title">
-                        History
-                    </div>
-
-                    <div class="menu-subtitle">
-                        Game Records
-                    </div>
-
-                </div>
-
-            </div>
-
-            <i class="fa-solid fa-chevron-right menu-arrow"></i>
-
-        </li>
-
-        <!-- RATIOS -->
-
-        <li onclick="go('ratio.html')">
-
-            <div class="menu-item-left">
-
-                <div class="menu-icon-box icon-ratio">
+            <li onclick="go('ratio.html')">
+                <span class="menu-icon-box">
                     <i class="fa-solid fa-chart-pie"></i>
-                </div>
+                </span>
+                <span>
+                    <div class="menu-title">Ratios</div>
+                    <div class="menu-subtitle">Market information</div>
+                </span>
+                <i class="fa-solid fa-chevron-right menu-arrow"></i>
+            </li>
 
-                <div>
+            <li onclick="go('notification.html')">
+                <span class="menu-icon-box">
+                    <i class="fa-regular fa-bell"></i>
+                </span>
+                <span>
+                    <div class="menu-title">Notifications</div>
+                    <div class="menu-subtitle">Important updates</div>
+                </span>
+                <i class="fa-solid fa-chevron-right menu-arrow"></i>
+            </li>
 
-                    <div class="menu-title">
-                        Ratios
-                    </div>
-
-                    <div class="menu-subtitle">
-                        Market Rates
-                    </div>
-
-                </div>
-
-            </div>
-
-            <i class="fa-solid fa-chevron-right menu-arrow"></i>
-
-        </li>
-
-        <!-- LOGOUT -->
-
-        <li onclick="logout()">
-
-            <div class="menu-item-left">
-
-                <div class="menu-icon-box icon-logout">
+            <li onclick="logout()">
+                <span class="menu-icon-box">
                     <i class="fa-solid fa-right-from-bracket"></i>
-                </div>
+                </span>
+                <span>
+                    <div class="menu-title">Logout</div>
+                    <div class="menu-subtitle">Sign out of your account</div>
+                </span>
+                <i class="fa-solid fa-chevron-right menu-arrow"></i>
+            </li>
 
-                <div>
+        </ul>
 
-                    <div class="menu-title">
-                        Logout
-                    </div>
+        <div class="menu-footer">
+            Tirupati Matka · Version 1.0
+        </div>
 
-                    <div class="menu-subtitle">
-                        Sign Out
-                    </div>
+    </aside>
 
-                </div>
+    <!-- QR MODAL: ONLY ONE VIEWER -->
 
-            </div>
+    <div
+        class="qr-viewer"
+        id="qrViewer"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Payment QR code"
+        onclick="closeQrViewer()"
+    >
 
-            <i class="fa-solid fa-chevron-right menu-arrow"></i>
+        <div class="qr-modal" onclick="event.stopPropagation()">
 
-        </li>
+            <button
+                class="qr-close"
+                type="button"
+                onclick="closeQrViewer()"
+                aria-label="Close QR viewer"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
-    </ul>
+            <h3>Scan to Pay</h3>
+            <p>Open your UPI app and scan this code.</p>
 
-    <!-- FOOTER -->
+            <img id="qrZoom" src="" alt="Full-size payment QR code">
 
-    <div class="menu-footer">
+            <button
+                type="button"
+                class="action-btn full-btn"
+                onclick="downloadQr(event)"
+            >
+                <i class="fa-solid fa-download"></i>
+                Download QR
+            </button>
 
-        Version 1.0
+        </div>
 
     </div>
 
-</div>
-
-
-    </ul>
-
-</div>
-
-<!-- QR POPUP -->
-<div class="qr-viewer" id="qrViewer" onclick="closeQrViewer()">
-  <img id="qrZoom">
-</div>
-
-<script>
-const API = "https://tirupati-matka.onrender.com/api/auth";
-const token = localStorage.getItem("token");
-if (!token) location.replace("auth.html");
-
-const DEFAULT_UPI = "jaishrishyamji12@axl";  // Admin UPI
-const DEFAULT_QR = "qr4.jpeg";  // Default QR image
-
-const amount = document.getElementById("amount");
-const btn = document.getElementById("submitBtn");
-const bal = document.getElementById("balance");
-const utr = document.getElementById("utr");
-const screenshot = document.getElementById("screenshot");
-const upiText = document.getElementById("upiText");
-const qrImage = document.getElementById("qrImage");
-const qrViewer = document.getElementById("qrViewer");
-const qrZoom = document.getElementById("qrZoom");
-
-window.currentUpi = DEFAULT_UPI;
-
-// =====================
-// VALIDATE MINIMUM AMOUNT
-// =====================
-function validate() {
-  btn.disabled = Number(amount.value) < 100;
-}
-amount.addEventListener("input", validate);
-
-function addAmount(v) {
-  amount.value = (Number(amount.value) || 0) + v;
-  validate();
-}
-
-// =====================
-// LOAD BALANCE
-// =====================
-async function loadBalance() {
-  try {
-    const res = await fetch(API + "/balance", {
-      headers: { Authorization: "Bearer " + token }
-    });
-    const data = await res.json().catch(() => null);
-    if (data?.success) bal.innerText = "₹ " + data.balance.toFixed(2);
-  } catch {}
-}
-
-// =====================
-// LOAD PAYMENT DETAILS
-// =====================
-async function loadPayment() {
-  // ✅ Always set defaults first
-  currentUpi = DEFAULT_UPI;
-  upiText.innerText = "UPI ID: " + DEFAULT_UPI;
-
-  if (qrImage) {
-    qrImage.src = DEFAULT_QR;
-    qrImage.style.display = "block";
-  }
-
-  try {
-    const res = await fetch(API + "/payment-details", {
-      headers: { Authorization: "Bearer " + token }
-    });
-
-    if (!res.ok) {
-      console.warn("Payment API failed:", res.status);
-      return;
-    }
-
-    const data = await res.json();
-    console.log("PAYMENT DATA:", data);
-
-    if (!data || !data.success) return;
-
-    // ✅ Update UPI
-    if (data.upiId) {
-      window.currentUpi = data.upiId;
-
-    upiText.innerText = "UPI ID: " + window.currentUpi;
-
-    }
-
-    // ✅ Update QR (NO fetch() test — browsers block it on prod)
-    if (data.qrImage && qrImage) {
-      const safeUrl = data.qrImage
-        .replace("http://", "https://") + "?t=" + Date.now();
-
-      qrImage.onload = () => {
-        console.log("QR loaded successfully");
-        qrImage.style.display = "block";
-      };
-
-      qrImage.onerror = () => {
-        console.warn("QR failed to load, keeping default");
-        qrImage.src = DEFAULT_QR;
-      };
-
-      qrImage.src = safeUrl;
-    }
-
-  } catch (e) {
-    console.warn("Failed to load payment details:", e);
-  }
-}
-
-
-// =====================
-// COPY UPI
-// =====================
-function copyUpi() {
-  navigator.clipboard.writeText(window.currentUpi);
-
-  alert("UPI ID copied");
-}
-
-// =====================
-// TOGGLE SIDE MENU
-// =====================
-// TOGGLE SIDE MENU
-function toggleMenu() {
-    document.getElementById("sideMenu").classList.toggle("active");
-    document.getElementById("menuOverlay").classList.toggle("active");
-}
-
-// Close menu when clicking outside (optional)
-document.addEventListener("click", function(e) {
-  const menu = document.getElementById("sideMenu");
-  const toggleButton = document.querySelector(".fa-bars");
-  if (!menu || !menu.classList.contains("active")) return;
-
-  // If click is outside the menu and not on the hamburger icon
-  if (!menu.contains(e.target) && e.target !== toggleButton) {
-    menu.classList.remove("active");
-  }
-});
-
-
-// =====================
-// QR VIEWER & AUTO SAVE
-// =====================
-// =====================
-// QR VIEWER (FIXED)
-// =====================
-/* ==========================
-   QR ZOOM + AUTO ACTION
-========================== */
-function openQrViewer(){
-  const qr = document.getElementById("qrImage");
-  if (!qr.src) return;
-
-  document.getElementById("qrZoom").src = qr.src;
-  document.getElementById("qrViewer").style.display = "flex";
-
-  autoSaveQr();
-  openUpiApp();
-}
-
-function closeQrViewer(){
-  document.getElementById("qrViewer").style.display = "none";
-}
-
-
-
-// Save QR to device when clicked
-function handleQrClick() {
-  autoSaveQr();
-  setTimeout(openUpi, 200);  // Open UPI app after short delay
-  setTimeout(openQrViewer, 800);
-}
-
-async function downloadQr(event) {
-  event.preventDefault();
-  event.stopPropagation();
-
-  const img = document.getElementById("qrImage");
-  if (!img || !img.src) {
-    alert("QR image not available");
-    return;
-  }
-
-  try {
-    const res = await fetch(img.src, { mode: "cors" });
-    const blob = await res.blob();
-
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-
-    a.href = url;
-    a.download = "kalyanmaster_qr.jpeg";
-    document.body.appendChild(a);
-    a.click();
-
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-
-    // ✅ Honest + correct message
-    setTimeout(() => {
-      alert("QR downloaded. It will appear in your Gallery shortly.");
-    }, 300);
-
-  } catch (err) {
-    alert("Unable to download QR");
-    console.error(err);
-  }
-}
-
-
-
-// =====================
-// AUTO OPEN UPI WITH AMOUNT
-// =====================
-
-// =====================
-// AUTO OPEN UPI WITH AMOUNT (ADMIN UPI)
-// =====================
-/* =====================
-   PAY VIA UPI (MOBILE)
-===================== */
-function payVia(app) {
-  const amt = Number(amount.value);
-
-  if (!amt || amt < 100) {
-    alert("Minimum deposit ₹100");
-    return;
-  }
-
-  if (!/Android|iPhone/i.test(navigator.userAgent)) {
-    alert("Please use a mobile phone for UPI payment");
-    return;
-  }
-
-  const upiId = (window.currentUpi || DEFAULT_UPI).trim();
-  if (!upiId) {
-    alert("UPI not available");
-    return;
-  }
-
-  const txnRef = "KM" + Date.now() + Math.floor(Math.random() * 10000);
-
-  const upiURL =
-    `upi://pay?pa=${encodeURIComponent(upiId)}` +
-    `&pn=${encodeURIComponent("Kalyan Master")}` +
-    `&tn=${encodeURIComponent("Wallet Deposit")}` +
-    `&tr=${txnRef}` +
-    `&am=${amt.toFixed(2)}` +
-    `&cu=INR`;
-
-  alert(`Redirecting to ${app} for ₹${amt}`);
-  setTimeout(() => (window.location.href = upiURL), 200);
-}
-
-// =====================
-// SUBMIT DEPOSIT
-// =====================
-btn.onclick = async () => {
-  if (!utr.value) return alert("UTR / Reference No required");
-
-  const fd = new FormData();
-  fd.append("amount", amount.value);
-  fd.append("utr", utr.value);
-  if (screenshot.files[0]) fd.append("screenshot", screenshot.files[0]);
-
-  try {
-    const res = await fetch(API + "/deposit", {
-      method: "POST",
-      headers: { Authorization: "Bearer " + token },
-      body: fd
-    });
-
-    const data = await res.json().catch(() => null);
-    if (!res.ok || !data) return alert("Deposit failed");
-
-    alert("Deposit submitted successfully");
-    amount.value = "";
-    utr.value = "";
-    validate();
-  } catch {
-    alert("Server error");
-  }
-};
-
-// =====================
-// DETECT UTR
-// =====================
-function detectUTR() {
-  alert(`After payment:\n1. Open SMS app\n2. Copy UTR / Reference No\n3. Come back & paste`);
-  utr.focus();
-}
-utr.addEventListener("input", () => {
-  utr.value = utr.value.replace(/[^0-9]/g, "").slice(0, 12);
-});
-function go(page) {
-  window.location.href = page;
-}
-/* ==========================
-   AUTO SAVE QR (ANDROID)
-========================== */
-async function autoSaveQr(){
-  try {
-    const res = await fetch(document.getElementById("qrImage").src);
-    const blob = await res.blob();
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "kalyanmaster_qr.jpeg";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  } catch {
-    console.warn("Auto save skipped");
-  }
-}
-
-/* ==========================
-   OPEN UPI WITH AMOUNT ✅
-========================== */
-function openUpiApp(){
-  if (!currentUpi || !currentAmount) return;
-
-  if (!/Android|iPhone/i.test(navigator.userAgent)) return;
-
-  const txnRef = "KM" + Date.now();
-
-  const upiUrl =
-    `upi://pay?pa=${encodeURIComponent(currentUpi)}` +
-    `&pn=Kalyan Master` +
-    `&tn=Wallet Deposit` +
-    `&tr=${txnRef}` +
-    `&am=${currentAmount.toFixed(2)}` +
-    `&cu=INR`;
-
-  setTimeout(() => {
-    window.location.href = upiUrl;
-  }, 600);
-}
-function toggleMenu() {
-    document
-        .getElementById("sideMenu")
-        .classList.toggle("active");
-
-    document
-        .getElementById("menuOverlay")
-        .classList.toggle("active");
-}
-
-/* LOAD USER */
-
-async function loadUserInfo(){
-
-    try{
-
-        const res =
-        await fetch(
-        API + "/profile",
-        {
-            headers:{
-                Authorization:
-                "Bearer " + token
+    <script>
+        "use strict";
+
+        // ==================================================
+        // CONFIGURATION
+        // ==================================================
+
+        const API = "https://tirupati-matka.onrender.com/api/auth";
+
+        const DEFAULT_UPI = "jaishrishyamji12@axl";
+        const DEFAULT_QR = "qr4.jpeg";
+
+        const token = localStorage.getItem("token");
+
+        const amountInput = document.getElementById("amount");
+        const utrInput = document.getElementById("utr");
+        const screenshotInput = document.getElementById("screenshot");
+        const submitBtn = document.getElementById("submitBtn");
+        const depositForm = document.getElementById("depositForm");
+
+        const qrImage = document.getElementById("qrImage");
+        const qrZoom = document.getElementById("qrZoom");
+        const qrViewer = document.getElementById("qrViewer");
+        const qrError = document.getElementById("qrError");
+        const upiText = document.getElementById("upiText");
+
+        let currentUpi = DEFAULT_UPI;
+        let isSubmitting = false;
+
+        // ==================================================
+        // AUTHENTICATION
+        // ==================================================
+
+        if (!token) {
+            window.location.replace("auth.html");
+        }
+
+        // ==================================================
+        // SAFE HELPERS
+        // ==================================================
+
+        function formatINR(value) {
+            const number = Number(value) || 0;
+
+            return number.toLocaleString("en-IN", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+
+        async function readJson(response) {
+            try {
+                return await response.json();
+            } catch {
+                return null;
+            }
+        }
+
+        async function apiRequest(endpoint, options = {}) {
+            const response = await fetch(API + endpoint, {
+                ...options,
+                headers: {
+                    Authorization: "Bearer " + token,
+                    ...(options.headers || {})
+                }
+            });
+
+            if (response.status === 401) {
+                localStorage.removeItem("token");
+                window.location.replace("auth.html");
+                throw new Error("Session expired. Please log in again.");
+            }
+
+            return response;
+        }
+
+        // ==================================================
+        // BALANCE
+        // ==================================================
+
+        async function loadBalance() {
+            try {
+                const response = await apiRequest("/balance");
+
+                const data = await readJson(response);
+
+                if (!response.ok || !data || !data.success) {
+                    return;
+                }
+
+                const value = Number(data.balance) || 0;
+
+                document.getElementById("balance").textContent =
+                    "₹" + formatINR(value);
+
+                document.getElementById("menuBalance").textContent =
+                    formatINR(value);
+
+            } catch (error) {
+                console.error("Balance loading failed:", error);
+            }
+        }
+
+        // ==================================================
+        // USER PROFILE
+        // ==================================================
+
+        async function loadUserInfo() {
+            try {
+                const response = await apiRequest("/profile");
+
+                const data = await readJson(response);
+
+                if (!response.ok || !data || !data.success) {
+                    return;
+                }
+
+                const user = data.user || {};
+
+                document.getElementById("menuUserName").textContent =
+                    user.name || "Player";
+
+                document.getElementById("menuUserPhone").textContent =
+                    user.phone || "Phone unavailable";
+
+                if (user.balance !== undefined) {
+                    document.getElementById("menuBalance").textContent =
+                        formatINR(user.balance);
+                }
+
+            } catch (error) {
+                console.error("Profile loading failed:", error);
+            }
+        }
+
+        // ==================================================
+        // PAYMENT DETAILS
+        // ==================================================
+
+        function setQrImage(url) {
+            if (!url) {
+                return;
+            }
+
+            qrImage.onerror = () => {
+                qrError.style.display = "block";
+                qrImage.style.display = "none";
+            };
+
+            qrImage.onload = () => {
+                qrError.style.display = "none";
+                qrImage.style.display = "block";
+            };
+
+            qrImage.src = url;
+        }
+
+        async function loadPayment() {
+            currentUpi = DEFAULT_UPI;
+
+            upiText.textContent = currentUpi;
+
+            setQrImage(DEFAULT_QR);
+
+            try {
+                const response = await apiRequest("/payment-details");
+
+                if (!response.ok) {
+                    console.warn(
+                        "Payment details unavailable:",
+                        response.status
+                    );
+                    return;
+                }
+
+                const data = await readJson(response);
+
+                if (!data || !data.success) {
+                    return;
+                }
+
+                if (data.upiId && typeof data.upiId === "string") {
+                    currentUpi = data.upiId.trim();
+                    upiText.textContent = currentUpi;
+                }
+
+                if (data.qrImage && typeof data.qrImage === "string") {
+                    let qrUrl = data.qrImage.trim();
+
+                    // Support absolute API URLs and relative image paths.
+                    if (qrUrl.startsWith("http://")) {
+                        qrUrl = "https://" + qrUrl.slice(7);
+                    } else if (qrUrl.startsWith("/")) {
+                        qrUrl = "https://tirupati-matka.onrender.com" + qrUrl;
+                    }
+
+                    setQrImage(qrUrl);
+                }
+
+            } catch (error) {
+                console.warn("Payment details loading failed:", error);
+            }
+        }
+
+        // ==================================================
+        // AMOUNT VALIDATION
+        // ==================================================
+
+        function getAmount() {
+            return Number(amountInput.value);
+        }
+
+        function validateDeposit() {
+            const amount = getAmount();
+
+            const validAmount =
+                Number.isFinite(amount) &&
+                amount >= 100 &&
+                amount <= 100000;
+
+            const validUtr =
+                utrInput.value.trim().length >= 6;
+
+            const validScreenshot =
+                screenshotInput.files.length > 0;
+
+            submitBtn.disabled =
+                !validAmount ||
+                !validUtr ||
+                !validScreenshot ||
+                isSubmitting;
+        }
+
+        amountInput.addEventListener("input", () => {
+            document.querySelectorAll("[data-amount]").forEach(button => {
+                button.classList.toggle(
+                    "selected",
+                    Number(button.dataset.amount) === getAmount()
+                );
+            });
+
+            validateDeposit();
+        });
+
+        document.querySelectorAll("[data-amount]").forEach(button => {
+            button.addEventListener("click", () => {
+                amountInput.value = button.dataset.amount;
+
+                document.querySelectorAll("[data-amount]").forEach(item => {
+                    item.classList.toggle("selected", item === button);
+                });
+
+                validateDeposit();
+            });
+        });
+
+        // ==================================================
+        // UTR VALIDATION
+        // ==================================================
+
+        utrInput.addEventListener("input", () => {
+            utrInput.value = utrInput.value
+                .replace(/[^a-zA-Z0-9]/g, "")
+                .slice(0, 50);
+
+            validateDeposit();
+        });
+
+        // ==================================================
+        // SCREENSHOT VALIDATION
+        // ==================================================
+
+        screenshotInput.addEventListener("change", () => {
+            const file = screenshotInput.files[0];
+
+            if (!file) {
+                document.getElementById("fileName").textContent =
+                    "No file selected";
+
+                validateDeposit();
+                return;
+            }
+
+            const allowedTypes = [
+                "image/jpeg",
+                "image/png",
+                "image/webp"
+            ];
+
+            if (!allowedTypes.includes(file.type)) {
+                screenshotInput.value = "";
+
+                document.getElementById("fileName").textContent =
+                    "Please choose a JPG, PNG or WebP image.";
+
+                validateDeposit();
+                return;
+            }
+
+            const maxSize = 5 * 1024 * 1024;
+
+            if (file.size > maxSize) {
+                screenshotInput.value = "";
+
+                document.getElementById("fileName").textContent =
+                    "Image must be smaller than 5 MB.";
+
+                validateDeposit();
+                return;
+            }
+
+            document.getElementById("fileName").textContent =
+                file.name + " · " +
+                (file.size / 1024).toFixed(0) + " KB";
+
+            validateDeposit();
+        });
+
+        // ==================================================
+        // COPY UPI
+        // ==================================================
+
+        async function copyUpi() {
+            if (!currentUpi) {
+                alert("UPI ID is unavailable.");
+                return;
+            }
+
+            try {
+                await navigator.clipboard.writeText(currentUpi);
+                alert("UPI ID copied successfully.");
+            } catch {
+                // Fallback for older browsers or restricted contexts.
+                const input = document.createElement("textarea");
+
+                input.value = currentUpi;
+                input.style.position = "fixed";
+                input.style.opacity = "0";
+
+                document.body.appendChild(input);
+                input.select();
+
+                const copied = document.execCommand("copy");
+
+                input.remove();
+
+                alert(
+                    copied
+                        ? "UPI ID copied successfully."
+                        : "Please copy this UPI ID manually: " + currentUpi
+                );
+            }
+        }
+
+        // ==================================================
+        // UPI PAYMENT
+        // ==================================================
+
+        function payVia(app) {
+            const amount = getAmount();
+
+            if (
+                !Number.isFinite(amount) ||
+                amount < 100 ||
+                amount > 100000
+            ) {
+                alert("Please enter an amount between ₹100 and ₹1,00,000.");
+                amountInput.focus();
+                return;
+            }
+
+            if (!currentUpi) {
+                alert("Payment UPI ID is unavailable.");
+                return;
+            }
+
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(
+                navigator.userAgent
+            );
+
+            if (!isMobile) {
+                alert(
+                    "Please scan the QR code using your mobile UPI app."
+                );
+                openQrViewer();
+                return;
+            }
+
+            const transactionRef =
+                "TM" + Date.now() +
+                Math.floor(Math.random() * 10000);
+
+            const params = new URLSearchParams({
+                pa: currentUpi,
+                pn: "Tirupati Matka",
+                tn: "Wallet Deposit",
+                tr: transactionRef,
+                am: amount.toFixed(2),
+                cu: "INR"
+            });
+
+            const upiUrl = "upi://pay?" + params.toString();
+
+            // The UPI URL opens the available payment app.
+            // It cannot guarantee which specific UPI app Android selects.
+            window.location.href = upiUrl;
+        }
+
+        // ==================================================
+        // QR VIEWER
+        // ==================================================
+
+        function openQrViewer() {
+            if (
+                !qrImage.src ||
+                qrImage.style.display === "none"
+            ) {
+                alert("QR code is unavailable.");
+                return;
+            }
+
+            qrZoom.src = qrImage.src;
+
+            qrViewer.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeQrViewer() {
+            qrViewer.classList.remove("active");
+
+            document.body.style.overflow = "";
+        }
+
+        qrImage.addEventListener("click", openQrViewer);
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") {
+                closeQrViewer();
+                closeMenu();
             }
         });
 
-        const data =
-        await res.json();
+        // ==================================================
+        // DOWNLOAD QR
+        // ==================================================
 
-        if(data.success){
-
-            document.getElementById(
-            "menuUserName"
-            ).innerText =
-            data.user.name || "Player";
-
-            document.getElementById(
-            "menuUserPhone"
-            ).innerText =
-            data.user.phone || "-";
-
-            document.getElementById(
-            "menuBalance"
-            ).innerText =
-            Math.floor(
-            data.user.balance || 0
-            );
-        }
-
-    }catch(err){
-        console.log(err);
-    }
-}
-
-/* BALANCE */
-
-async function loadBalance(){
-
-    try{
-
-        const res =
-        await fetch(
-        API + "/balance",
-        {
-            headers:{
-                Authorization:
-                "Bearer " + token
+        async function downloadQr(event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
             }
-        });
 
-        const data =
-        await res.json();
+            if (
+                !qrImage.src ||
+                qrImage.style.display === "none"
+            ) {
+                alert("QR image is unavailable.");
+                return;
+            }
 
-        if(data.success){
+            try {
+                const response = await fetch(qrImage.src);
 
-            document.getElementById(
-            "balance"
-            ).innerText =
-            "₹" +
-            Math.floor(
-            data.balance || 0
-            );
+                if (!response.ok) {
+                    throw new Error("QR image could not be fetched.");
+                }
+
+                const blob = await response.blob();
+                const objectUrl = URL.createObjectURL(blob);
+
+                const link = document.createElement("a");
+
+                link.href = objectUrl;
+                link.download = "tirupati-payment-qr.png";
+
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+
+                setTimeout(() => URL.revokeObjectURL(objectUrl), 1500);
+
+            } catch (error) {
+                console.error("QR download failed:", error);
+
+                // A new tab is a useful fallback when cross-origin
+                // restrictions prevent downloading the image directly.
+                const newTab = window.open(qrImage.src, "_blank");
+
+                if (!newTab) {
+                    alert(
+                        "Automatic download was blocked. " +
+                        "Open the QR image and save it manually."
+                    );
+                }
+            }
         }
 
-    }catch(err){
-        console.log(err);
-    }
-}
+        // ==================================================
+        // SUBMIT DEPOSIT
+        // ==================================================
 
-/* STAIRCASE ANIMATION */
+        depositForm.addEventListener("submit", async event => {
+            event.preventDefault();
 
-function animateCards(){
+            if (isSubmitting) {
+                return;
+            }
 
-    const cards =
-    document.querySelectorAll(
-    ".ratio-card"
-    );
+            validateDeposit();
 
-    const observer =
-    new IntersectionObserver(
+            if (submitBtn.disabled) {
+                alert(
+                    "Please enter a valid amount, UTR number " +
+                    "and payment screenshot."
+                );
+                return;
+            }
 
-    entries=>{
+            const amount = getAmount();
 
-        entries.forEach(entry=>{
+            if (amount < 100 || amount > 100000) {
+                alert("Amount must be between ₹100 and ₹1,00,000.");
+                return;
+            }
 
-            if(
-            entry.isIntersecting
-            ){
+            const file = screenshotInput.files[0];
 
-                entry.target
-                .classList.add(
-                "show"
+            if (!file) {
+                alert("Please upload your payment screenshot.");
+                return;
+            }
+
+            const formData = new FormData();
+
+            formData.append("amount", String(amount));
+            formData.append("utr", utrInput.value.trim());
+            formData.append("screenshot", file);
+
+            isSubmitting = true;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML =
+                '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+
+            try {
+                const response = await apiRequest("/deposit", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await readJson(response);
+
+                if (!response.ok || !data || data.success === false) {
+                    throw new Error(
+                        data?.message ||
+                        data?.error ||
+                        "Deposit submission failed."
+                    );
+                }
+
+                alert(
+                    data.message ||
+                    "Deposit request submitted. Please wait for verification."
                 );
 
-            }
+                depositForm.reset();
 
+                document.getElementById("fileName").textContent =
+                    "No file selected";
+
+                document.querySelectorAll("[data-amount]").forEach(button => {
+                    button.classList.remove("selected");
+                });
+
+                // The wallet should only change after server-side approval.
+                await loadBalance();
+
+            } catch (error) {
+                console.error("Deposit submission failed:", error);
+
+                alert(
+                    error.message ||
+                    "Unable to submit your deposit. Please try again."
+                );
+
+            } finally {
+                isSubmitting = false;
+
+                submitBtn.innerHTML =
+                    '<i class="fa-solid fa-paper-plane"></i> Submit Deposit Request';
+
+                validateDeposit();
+            }
         });
 
-    },
-    {
-        threshold:.15
-    });
+        // ==================================================
+        // SIDE MENU
+        // ==================================================
 
-    cards.forEach(card=>{
+        function toggleMenu() {
+            const menu = document.getElementById("sideMenu");
+            const overlay = document.getElementById("menuOverlay");
 
-        observer.observe(card);
+            const isOpen = menu.classList.contains("active");
 
-    });
-}
+            if (isOpen) {
+                closeMenu();
+            } else {
+                menu.classList.add("active");
+                overlay.classList.add("active");
 
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
+                document.body.style.overflow = "hidden";
+            }
+        }
 
-    loadBalance();
+        function closeMenu() {
+            document.getElementById("sideMenu").classList.remove("active");
+            document.getElementById("menuOverlay").classList.remove("active");
 
-    loadUserInfo();
+            if (!qrViewer.classList.contains("active")) {
+                document.body.style.overflow = "";
+            }
+        }
 
-    animateCards();
+        // ==================================================
+        // NAVIGATION
+        // ==================================================
 
-});
-// =====================
-// INIT
-// =====================
-loadBalance();
-loadPayment();
-validate();
-</script>
+        function go(page) {
+            window.location.href = page;
+        }
 
+        // ==================================================
+        // LOGOUT
+        // ==================================================
 
-<script src="nav.js"></script>
+        function logout() {
+            if (!confirm("Are you sure you want to log out?")) {
+                return;
+            }
+
+            localStorage.removeItem("token");
+            localStorage.removeItem("ki_token");
+            localStorage.removeItem("adminToken");
+
+            window.location.replace("auth.html");
+        }
+
+        // ==================================================
+        // INITIALIZE
+        // ==================================================
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadBalance();
+            loadUserInfo();
+            loadPayment();
+            validateDeposit();
+        });
+    </script>
+
+    <script src="nav.js"></script>
+
 </body>
+</html>
 
-
-
-</html> 

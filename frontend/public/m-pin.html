@@ -1,1126 +1,630 @@
+
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Tirupati Matka - Secure MPIN</title>
-
-
+<meta name="theme-color" content="#07965b">
+<title>Tirupati Matka | Secure M-PIN</title>
 
 <style>
-
-*{
-
-margin:0;
-
-padding:0;
-
-box-sizing:border-box;
-
-font-family:'Segoe UI',sans-serif;
-
+:root {
+    --green: #07965b;
+    --green-dark: #057747;
+    --green-light: #e9f9f0;
+    --text: #172b22;
+    --muted: #78877f;
+    --border: #e5eee8;
+    --white: #ffffff;
 }
 
-
-
-html, body {
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
     width: 100%;
-    height: 100%;
-    overflow: hidden;   /* remove scroll */
-    position: fixed;    /* prevent move */
-    touch-action: none; /* disable touch scroll */
-}
-body{
-    background:linear-gradient(180deg,#fff7f3,#ffffff);
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    min-height: 100%;
 }
 
-
-body::before{
-
-content:"";
-
-position:absolute;
-
-top:-150px;
-
-right:-100px;
-
-width:300px;
-
-height:300px;
-
-background:linear-gradient(135deg,#ff7b42,#ff512f);
-
-border-radius:50%;
-
-opacity:.15;
-
-animation:float 6s infinite ease-in-out;
-
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    background: linear-gradient(145deg, #f0fbf4, #ffffff 55%, #eaf8ef);
+    color: var(--text);
 }
 
-
-
-body::after{
-
-content:"";
-
-position:absolute;
-
-bottom:-120px;
-
-left:-100px;
-
-width:250px;
-
-height:250px;
-
-background:linear-gradient(135deg,#ffcc70,#ff512f);
-
-border-radius:50%;
-
-opacity:.15;
-
-animation:float 8s infinite ease-in-out;
-
+.mobile {
+    width: 100%;
+    max-width: 390px;
+    min-height: min(740px, calc(100dvh - 32px));
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid rgba(7, 150, 91, .10);
+    border-radius: 30px;
+    box-shadow: 0 20px 65px rgba(17, 80, 48, .12);
+    display: flex;
+    flex-direction: column;
 }
 
-
-
-@keyframes float{
-
-50%{transform:translateY(25px);}
-
+.header {
+    min-height: 190px;
+    padding: 30px 24px 58px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    background: linear-gradient(135deg, #075b3a, #07965b 65%, #21bd78);
 }
 
-
-
-.mobile{
-    width: 390px;
-    height: 844px;
-    max-width: 100vw;
-    max-height: 100vh;
-    background:#fff;
-    border-radius:40px;
-    box-shadow:0 25px 60px rgba(0,0,0,.18);
-    overflow:hidden;
-    position:relative;
+.header::after {
+    content: "";
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    right: -75px;
+    top: -95px;
+    border: 30px solid rgba(255,255,255,.08);
+    border-radius: 50%;
+    pointer-events: none;
 }
 
-
-.header{
-
-height:220px;
-
-background: linear-gradient(135deg, #021b14, #0f9d58, #00ff88);
-
-padding:35px 25px;
-
-color:white;
-
-position:relative;
-
-overflow:hidden;
-
-box-shadow: 0 10px 40px rgba(0,255,136,0.35);
-
+.logo-box {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    z-index: 1;
 }
 
-.logo-box{
-
-display:flex;
-
-align-items:center;
-
-gap:14px;
-
+.logo {
+    width: 58px;
+    height: 58px;
+    border-radius: 17px;
+    object-fit: contain;
+    background: white;
+    padding: 5px;
+    box-shadow: 0 8px 22px rgba(0,0,0,.12);
 }
 
-
-
-.logo{
-
-width:62px;
-
-height:62px;
-
-background:white;
-
-border-radius:20px;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-size:28px;
-
-font-weight:bold;
-
-color:#ff512f;
-
+.brand h1 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -.5px;
 }
 
-
-
-.brand h1{
-
-font-size:28px;
-
+.brand p {
+    margin-top: 5px;
+    font-size: 12px;
+    opacity: .85;
 }
 
-
-
-.brand p{
-
-opacity:.9;
-
-font-size:14px;
-
+.secure-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 22px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: 30px;
+    background: rgba(255,255,255,.12);
+    font-size: 11px;
+    font-weight: 600;
 }
 
-
-
-.vip{
-
-position:absolute;
-
-right:20px;
-
-top:30px;
-
-background:linear-gradient(135deg,#ffd700,#ffed8a);
-
-color:#111;
-
-padding:8px 16px;
-
-border-radius:25px;
-
-font-size:12px;
-
-font-weight:700;
-
-animation:glow 1.2s infinite alternate;
-
+.card {
+    position: relative;
+    z-index: 2;
+    margin: -34px 15px 20px;
+    padding: 26px 22px 24px;
+    background: white;
+    border: 1px solid #edf3ef;
+    border-radius: 25px;
+    box-shadow: 0 12px 35px rgba(17, 80, 48, .09);
+    animation: cardIn .35s ease-out both;
 }
 
-
-
-@keyframes glow{
-
-from{box-shadow:0 0 5px gold;}
-
-to{box-shadow:0 0 20px gold;}
-
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-
-
-.card{
-
-position:absolute;
-
-top:140px;
-
-left:20px;
-
-right:20px;
-
-background:white;
-
-border-radius:30px;
-
-padding:28px;
-
-box-shadow:0 20px 40px rgba(0,0,0,.08);
-
+.card h2 {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -.6px;
 }
 
-
-
-.card h2{
-
-text-align:center;
-
-color:#222;
-
-font-size:28px;
-
+.subtitle {
+    margin-top: 8px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
 }
 
-
-
-.card p{
-
-text-align:center;
-
-color:#777;
-
-margin-top:8px;
-
+.pin-dots {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 26px 0 20px;
 }
 
-
-
-.pin-dots{
-
-display:flex;
-
-justify-content:center;
-
-gap:18px;
-
-margin:28px 0;
-
+.dot {
+    width: 15px;
+    height: 15px;
+    border: 2px solid #dce8e0;
+    border-radius: 50%;
+    background: #f5f8f6;
+    transition: background .15s, border-color .15s, transform .15s;
 }
 
-
-
-.dot{
-
-width:18px;
-
-height:18px;
-
-border-radius:50%;
-
-background:#e5e5e5;
-
-transition:.3s;
-
+.dot.active {
+    background: var(--green);
+    border-color: var(--green);
+    transform: scale(1.12);
+    box-shadow: 0 0 0 4px rgba(7,150,91,.10);
 }
 
-
-
-.dot.active{
-
-background:#ff512f;
-
-box-shadow:0 0 10px #ff512f;
-
+.status {
+    min-height: 20px;
+    margin: 0 0 12px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
 }
 
-.keypad{
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:16px;
-
-margin-top:35px;
-
+.status.error {
+    color: #dc2626;
 }
 
-
-
-.key{
-
-height:65px;
-
-border:none;
-
-border-radius:20px;
-
-background:#f7f7f7;
-
-font-size:24px;
-
-font-weight:600;
-
-cursor:pointer;
-
-transition:.2s;
-
-box-shadow:0 5px 15px rgba(0,0,0,.05);
-
+.status.success {
+    color: var(--green-dark);
 }
 
-
-
-.key:hover{
-
-transform:translateY(-3px);
-
-background:#fff2eb;
-
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 11px;
 }
 
-
-
-.action{
-
-background:linear-gradient(135deg,#ff512f,#dd2476);
-
-color:white;
-
+.key {
+    height: 57px;
+    border: 1px solid #edf2ee;
+    border-radius: 16px;
+    background: #f8fbf9;
+    color: #20352a;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: background .12s, transform .12s;
 }
 
-
-
-.fingerprint{
-
-margin-top:25px;
-
-text-align:center;
-
-font-size:40px;
-
-cursor:pointer;
-
-animation:pulse 1.4s infinite;
-
+.key:active {
+    transform: scale(.95);
+    background: #e5f7ed;
 }
 
-
-
-@keyframes pulse{
-
-50%{transform:scale(1.1);}
-
+.key.action {
+    color: var(--green-dark);
+    background: var(--green-light);
+    font-size: 20px;
 }
 
-
-
-.shake{
-
-animation:shake .4s;
-
+.key:disabled {
+    opacity: .55;
+    cursor: wait;
 }
 
-
-
-@keyframes shake{
-
-0%,100%{transform:translateX(0)}
-
-20%{transform:translateX(-8px)}
-
-40%{transform:translateX(8px)}
-
-60%{transform:translateX(-8px)}
-
-80%{transform:translateX(8px)}
-
+.key.empty {
+    visibility: hidden;
 }
 
-
-
-.success{
-
-position:fixed;
-
-inset:0;
-
-background:rgba(0,0,0,.8);
-
-display:none;
-
-justify-content:center;
-
-align-items:center;
-
-color:white;
-
-font-size:34px;
-
-font-weight:bold;
-
-z-index:999;
-
+.forgot-mpin {
+    margin-top: 19px;
+    text-align: center;
 }
-.forgot-mpin { text-align: center; margin-top: 22px; padding-top: 4px; } .forgot-mpin a { display: inline-block; color: #1769ff; text-decoration: none; font-size: 14px; font-weight: 700; padding: 8px 14px; border-radius: 12px; transition: 0.2s ease; } .forgot-mpin a:hover { background: #f0f7ff; color: #0b8fff; transform: translateY(-1px); }
+
+.forgot-mpin a {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 10px;
+    color: var(--green-dark);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.forgot-mpin a:active {
+    background: var(--green-light);
+}
+
+.footer {
+    margin-top: auto;
+    padding: 0 15px 20px;
+    text-align: center;
+    color: #93a198;
+    font-size: 11px;
+}
+
+.shake {
+    animation: shake .25s ease;
+}
+
+@keyframes shake {
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-3px); }
+}
+
+@media (max-height: 650px) {
+    body {
+        padding: 8px;
+        align-items: flex-start;
+    }
+
+    .mobile {
+        min-height: calc(100dvh - 16px);
+    }
+
+    .header {
+        min-height: 145px;
+        padding: 20px 20px 48px;
+    }
+
+    .secure-badge {
+        margin-top: 12px;
+    }
+
+    .card {
+        padding: 18px;
+        margin-top: -28px;
+    }
+
+    .pin-dots {
+        margin: 17px 0 12px;
+    }
+
+    .keypad {
+        gap: 8px;
+    }
+
+    .key {
+        height: 45px;
+    }
+
+    .forgot-mpin {
+        margin-top: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
 </style>
-
 </head>
+
 <body>
 
-<div class="mobile">
+<main class="mobile">
 
-    <!-- HEADER -->
-    <div class="header">
+    <header class="header">
         <div class="logo-box">
-
-            <div class="logo-wrapper">
-                <img src="Tirupati.png" class="logo" alt="App Logo">
-            </div>
+            <img
+                src="Tirupati.png"
+                class="logo"
+                alt="Tirupati Matka logo"
+                onerror="this.style.display='none'"
+            >
 
             <div class="brand">
                 <h1>Tirupati Matka</h1>
                 <p>Secure Gaming Platform</p>
             </div>
+        </div>
+
+        <div class="secure-badge">
+            <span>●</span>
+            <span>Secure 4-digit authentication</span>
+        </div>
+    </header>
+
+    <section class="card" id="app">
+
+        <h2>Welcome Back</h2>
+
+        <p class="subtitle">
+            Enter your 4-digit M-PIN to continue
+        </p>
+
+        <div class="pin-dots" aria-label="M-PIN entry progress">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+        <p class="status" id="status" role="status" aria-live="polite">
+            Enter your secure M-PIN
+        </p>
+
+        <div class="keypad" id="keypad">
+
+            <button class="key" type="button" data-key="1">1</button>
+            <button class="key" type="button" data-key="2">2</button>
+            <button class="key" type="button" data-key="3">3</button>
+
+            <button class="key" type="button" data-key="4">4</button>
+            <button class="key" type="button" data-key="5">5</button>
+            <button class="key" type="button" data-key="6">6</button>
+
+            <button class="key" type="button" data-key="7">7</button>
+            <button class="key" type="button" data-key="8">8</button>
+            <button class="key" type="button" data-key="9">9</button>
+
+            <button class="key action" type="button" data-key="backspace"
+                    aria-label="Delete last digit">⌫</button>
+
+            <button class="key" type="button" data-key="0">0</button>
+
+            <button class="key action" type="button" data-key="clear"
+                    aria-label="Clear M-PIN">C</button>
 
         </div>
-    </div>
 
-    <!-- MPIN CARD -->
-   
-<!-- MPIN CARD -->
-<div class="card" id="app">
+        <div class="forgot-mpin">
+            <a href="forgot-mpin.html">Forgot M-PIN?</a>
+        </div>
 
-    <h2>Enter MPIN</h2>
+    </section>
 
-    <p class="subtitle">
-        Enter your secure 4-digit MPIN
-    </p>
+    <footer class="footer">
+        Protect your M-PIN. Never share it with anyone.
+    </footer>
 
-    <!-- PIN DOTS -->
-    <div class="pin-dots">
+</main>
 
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-
-    </div>
-
-
-    <!-- KEYPAD -->
-    <div class="keypad">
-
-        <button class="key">1</button>
-        <button class="key">2</button>
-        <button class="key">3</button>
-
-        <button class="key">4</button>
-        <button class="key">5</button>
-        <button class="key">6</button>
-
-        <button class="key">7</button>
-        <button class="key">8</button>
-        <button class="key">9</button>
-
-        <button class="key action">⌫</button>
-
-        <button class="key">0</button>
-
-       
-
-    </div>
-
-
-    <!-- FORGOT MPIN -->
-    <div class="forgot-mpin">
-
-        <a href="forgot-mpin.html">
-            Forgot M-PIN?
-        </a>
-
-    </div>
-
-</div>
-
-    </div>
-
-</div>
-
-</body>
 <script>
+"use strict";
 
 const API_URL = "https://tirupati-matka.onrender.com/api/auth";
+const LOGIN_URL = `${API_URL}/login-mpin`;
 
-
-// ======================================================
-// PIN STATE
-// ======================================================
+const pinDots = document.querySelectorAll(".dot");
+const keypad = document.getElementById("keypad");
+const app = document.getElementById("app");
+const statusBox = document.getElementById("status");
 
 let pin = "";
+let isVerifying = false;
+let requestController = null;
 
-const dots =
-    document.querySelectorAll(".dot");
-
-const keys =
-    document.querySelectorAll(".key");
-
-const app =
-    document.getElementById("app");
-
-
-// ======================================================
-// UPDATE PIN DOTS
-// ======================================================
+function setStatus(message, type = "") {
+    statusBox.textContent = message;
+    statusBox.className = "status" + (type ? " " + type : "");
+}
 
 function updateDots() {
-
-    dots.forEach((dot, index) => {
-
-        dot.classList.toggle(
-            "active",
-            index < pin.length
-        );
-
+    pinDots.forEach((dot, index) => {
+        dot.classList.toggle("active", index < pin.length);
     });
-
 }
-
-
-// ======================================================
-// RESET PIN
-// ======================================================
 
 function resetPin() {
-
     pin = "";
-
     updateDots();
-
 }
 
-
-// ======================================================
-// SHAKE CARD
-// ======================================================
+function setKeypadDisabled(disabled) {
+    keypad.querySelectorAll("button").forEach(button => {
+        button.disabled = disabled;
+    });
+}
 
 function shakeCard() {
-
     app.classList.remove("shake");
-
     void app.offsetWidth;
-
     app.classList.add("shake");
-
-    setTimeout(() => {
-
-        app.classList.remove("shake");
-
-    }, 450);
-
 }
-
-
-// ======================================================
-// GET STORED USER
-// ======================================================
 
 function getStoredUser() {
-
     try {
-
-        const storedUser =
-            localStorage.getItem("user");
-
-        if (!storedUser) {
-            return null;
-        }
-
-        return JSON.parse(storedUser);
-
-    } catch (error) {
-
-        console.error(
-            "USER STORAGE ERROR:",
-            error
-        );
-
+        const raw = localStorage.getItem("user");
+        return raw ? JSON.parse(raw) : null;
+    } catch {
         return null;
-
     }
-
 }
-
-
-// ======================================================
-// GET PHONE NUMBER
-// ======================================================
 
 function getUserPhone() {
+    const user = getStoredUser();
 
-    const user =
-        getStoredUser();
+    if (!user) return "";
 
-    if (!user) {
-        return null;
-    }
-
-    const phone =
-        user.phone ||
-        user.mobile ||
-        user.number;
-
-    if (!phone) {
-        return null;
-    }
-
-    return String(phone)
-        .replace(/\D/g, "")
-        .slice(-10);
-
+    return String(
+        user.phone || user.mobile || user.number || ""
+    ).replace(/\D/g, "").slice(-10);
 }
 
-
-// ======================================================
-// VERIFY / LOGIN WITH M-PIN
-// ======================================================
-
 async function verifyPin() {
+    if (pin.length !== 4 || isVerifying) return;
 
-    // ----------------------------------------------
-    // MUST BE 4 DIGITS
-    // ----------------------------------------------
-
-    if (pin.length !== 4) {
-        return;
-    }
-
-
-    // ----------------------------------------------
-    // GET USER PHONE
-    // ----------------------------------------------
-
-    const phone =
-        getUserPhone();
-
-
-    if (!phone) {
-
-        resetPin();
-
-        alert(
-            "Mobile number not found. Please login/register again."
-        );
-
-        window.location.href =
-            "auth.html";
-
-        return;
-    }
-
-
-    // ----------------------------------------------
-    // PHONE VALIDATION
-    // ----------------------------------------------
+    const submittedPin = pin;
+    const phone = getUserPhone();
 
     if (!/^[6-9]\d{9}$/.test(phone)) {
-
         resetPin();
-
-        alert(
-            "Invalid mobile number. Please login again."
-        );
-
-        window.location.href =
-            "auth.html";
-
+        setStatus("Your saved mobile number is missing. Please log in again.", "error");
+        setTimeout(() => {
+            location.replace("auth.html");
+        }, 700);
         return;
     }
 
+    isVerifying = true;
+    setKeypadDisabled(true);
+    setStatus("Verifying your M-PIN…");
+
+    requestController = new AbortController();
+
+    // Stop waiting indefinitely if the backend does not respond.
+    const timeoutId = setTimeout(() => {
+        requestController.abort();
+    }, 20000);
 
     try {
-
-        // ------------------------------------------
-        // DISABLE KEYPAD WHILE LOGIN
-        // ------------------------------------------
-
-        keys.forEach(key => {
-
-            key.disabled = true;
-
+        const response = await fetch(LOGIN_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                phone: phone,
+                mpin: submittedPin
+            }),
+            signal: requestController.signal
         });
 
+        const data = await response.json();
 
-        // ------------------------------------------
-        // BACKEND REQUEST
-        //
-        // IMPORTANT:
-        // Backend route is /login-mpin
-        // NOT /verify-mpin
-        // ------------------------------------------
-
-        const response =
-            await fetch(
-                API_URL + "/login-mpin",
-                {
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
-
-                    body: JSON.stringify({
-
-                        phone: phone,
-
-                        mpin: String(pin)
-
-                    })
-                }
-            );
-
-
-        // ------------------------------------------
-        // RESPONSE
-        // ------------------------------------------
-
-        let data;
-
-        try {
-
-            data =
-                await response.json();
-
-        } catch (jsonError) {
-
-            console.error(
-                "INVALID SERVER RESPONSE:",
-                jsonError
-            );
-
-            throw new Error(
-                "Invalid server response."
-            );
-
-        }
-
-
-        console.log(
-            "M-PIN LOGIN RESPONSE:",
-            data
-        );
-
-
-        // ------------------------------------------
-        // LOGIN FAILED
-        // ------------------------------------------
-
-        if (
-            !response.ok ||
-            !data.success
-        ) {
-
+        if (!response.ok || !data.success) {
+            resetPin();
+            updateDots();
             shakeCard();
 
             const message =
                 data.message ||
                 data.msg ||
-                "Incorrect M-PIN.";
+                "Incorrect M-PIN. Please try again.";
 
+            const remaining = data.remainingAttempts;
 
-            // Show remaining attempts
-            if (
-                data.remainingAttempts !==
-                undefined
-            ) {
-
-                alert(
-                    message +
-                    "\n\nRemaining attempts: " +
-                    data.remainingAttempts
-                );
-
-            } else {
-
-                alert(message);
-
-            }
-
-
-            resetPin();
+            setStatus(
+                remaining !== undefined
+                    ? `${message} ${remaining} attempt(s) remaining.`
+                    : message,
+                "error"
+            );
 
             return;
         }
-
-
-        // ------------------------------------------
-        // TOKEN CHECK
-        // ------------------------------------------
 
         if (!data.token) {
-
-            console.error(
-                "M-PIN login succeeded but token is missing."
-            );
-
-            shakeCard();
-
             resetPin();
-
-            alert(
-                "Login failed because authentication token was not received."
-            );
-
+            setStatus("Login failed: the server did not return an authentication token.", "error");
             return;
         }
 
-
-        // ==================================================
-        // SAVE AUTH TOKEN
-        // ==================================================
-
-        localStorage.setItem(
-            "token",
-            data.token
-        );
-
-        localStorage.setItem(
-            "ki_token",
-            data.token
-        );
-
-
-        // ==================================================
-        // SAVE USER
-        // ==================================================
+        // Save the authentication token only after successful verification.
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("ki_token", data.token);
 
         if (data.user) {
-
-            localStorage.setItem(
-                "user",
-                JSON.stringify(data.user)
-            );
-
+            localStorage.setItem("user", JSON.stringify(data.user));
         }
 
+        setStatus("Login successful. Opening your dashboard…", "success");
 
-        // ==================================================
-        // LOGIN SUCCESS
-        // ==================================================
-
-        console.log(
-            "✅ M-PIN LOGIN SUCCESS"
-        );
-
-
-        console.log(
-            "Logged in user:",
-            data.user
-        );
-
-
-        // Small success delay
-        setTimeout(() => {
-
-            window.location.href =
-                "gamezone.html";
-
-        }, 250);
-
+        // Navigate immediately; no artificial success delay.
+        location.replace("gamezone.html");
 
     } catch (error) {
-
-        console.error(
-            "M-PIN LOGIN ERROR:",
-            error
-        );
-
         resetPin();
 
-        alert(
-            "Unable to connect to the server. Please try again."
-        );
+        if (error.name === "AbortError") {
+            setStatus(
+                "The server took too long to respond. Please try again.",
+                "error"
+            );
+        } else {
+            console.error("M-PIN login error:", error);
+            setStatus(
+                "Unable to connect. Check your internet and try again.",
+                "error"
+            );
+        }
 
     } finally {
-
-        // ------------------------------------------
-        // ENABLE KEYPAD AGAIN
-        // ------------------------------------------
-
-        keys.forEach(key => {
-
-            key.disabled = false;
-
-        });
-
+        clearTimeout(timeoutId);
+        requestController = null;
+        isVerifying = false;
+        setKeypadDisabled(false);
+        updateDots();
     }
-
 }
 
+function handleKey(value) {
+    if (isVerifying) return;
 
-// ======================================================
-// KEYPAD
-// ======================================================
+    if (value === "backspace") {
+        pin = pin.slice(0, -1);
+        updateDots();
+        setStatus("Enter your 4-digit M-PIN");
+        return;
+    }
 
-keys.forEach(key => {
+    if (value === "clear") {
+        resetPin();
+        setStatus("Enter your 4-digit M-PIN");
+        return;
+    }
 
-    key.addEventListener(
-        "click",
-        () => {
+    if (!/^\d$/.test(value) || pin.length >= 4) return;
 
-            const value =
-                key.innerText.trim();
+    pin += value;
+    updateDots();
 
+    if (pin.length === 4) {
+        verifyPin();
+    }
+}
 
-            // --------------------------------------
-            // BACKSPACE
-            // --------------------------------------
+keypad.addEventListener("click", event => {
+    const button = event.target.closest("button[data-key]");
+    if (!button) return;
 
-            if (value === "⌫") {
-
-                if (pin.length > 0) {
-
-                    pin =
-                        pin.slice(0, -1);
-
-                    updateDots();
-
-                }
-
-                return;
-            }
-
-
-            // --------------------------------------
-            // CONFIRM
-            // --------------------------------------
-
-            if (value === "✓") {
-
-                if (pin.length === 4) {
-
-                    verifyPin();
-
-                } else {
-
-                    alert(
-                        "Please enter your 4-digit M-PIN."
-                    );
-
-                }
-
-                return;
-            }
-
-
-            // --------------------------------------
-            // NUMBER
-            // --------------------------------------
-
-            if (
-                /^\d$/.test(value) &&
-                pin.length < 4
-            ) {
-
-                pin += value;
-
-                updateDots();
-
-
-                // ----------------------------------
-                // AUTO LOGIN AFTER 4 DIGITS
-                // ----------------------------------
-
-                if (pin.length === 4) {
-
-                    setTimeout(
-                        verifyPin,
-                        300
-                    );
-
-                }
-
-            }
-
-        }
-    );
-
+    handleKey(button.dataset.key);
 });
 
+document.addEventListener("keydown", event => {
+    if (event.ctrlKey || event.altKey || event.metaKey) return;
 
-// ======================================================
-// KEYBOARD SUPPORT
-// Allows physical keyboard numbers too
-// ======================================================
-
-document.addEventListener(
-    "keydown",
-    (event) => {
-
-        // Number 0-9
-        if (
-            /^\d$/.test(event.key)
-        ) {
-
-            if (pin.length < 4) {
-
-                pin += event.key;
-
-                updateDots();
-
-
-                if (pin.length === 4) {
-
-                    setTimeout(
-                        verifyPin,
-                        300
-                    );
-
-                }
-
-            }
-
-            return;
-        }
-
-
-        // Backspace
-        if (
-            event.key === "Backspace"
-        ) {
-
-            if (pin.length > 0) {
-
-                pin =
-                    pin.slice(0, -1);
-
-                updateDots();
-
-            }
-
-            return;
-        }
-
-
-        // Enter
-        if (
-            event.key === "Enter"
-        ) {
-
-            if (pin.length === 4) {
-
-                verifyPin();
-
-            }
-
-        }
-
+    if (/^\d$/.test(event.key)) {
+        handleKey(event.key);
+    } else if (event.key === "Backspace") {
+        handleKey("backspace");
+    } else if (event.key === "Escape") {
+        handleKey("clear");
     }
-);
-
-
-// ======================================================
-// INITIAL STATE
-// ======================================================
+});
 
 updateDots();
-
-
-// ======================================================
-// DEBUG
-// ======================================================
-
-console.log(
-    "M-PIN Login Page Ready"
-);
-
-console.log(
-    "API:",
-    API_URL + "/login-mpin"
-);
-
 </script>
 
 </body>
-
 </html>
+

@@ -251,6 +251,195 @@ body::after{
   color:#fff;
   font-weight:700;
 }
+/* =========================================
+PREMIUM GAME RATES
+========================================= */
+
+.rates-section {
+margin: 16px;
+padding: 18px;
+background: #ffffff;
+border: 1px solid #e5f3eb;
+border-radius: 22px;
+box-shadow: 0 10px 30px rgba(0, 80, 50, 0.06);
+animation: ratesEntrance 0.7s ease both;
+}
+
+.rates-heading {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 10px;
+margin-bottom: 18px;
+}
+
+.rates-heading h2 {
+font-size: 19px;
+color: #087f50;
+font-weight: 800;
+}
+
+.rates-heading h2 i {
+margin-right: 6px;
+}
+
+.rates-heading p {
+margin-top: 5px;
+font-size: 12px;
+color: #64748b;
+}
+
+.rates-badge {
+padding: 7px 10px;
+border-radius: 10px;
+background: #e9fff3;
+color: #087f50;
+font-size: 10px;
+font-weight: 800;
+letter-spacing: 0.5px;
+}
+
+.rates-grid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 13px;
+}
+
+.rate-card {
+position: relative;
+padding: 16px;
+border: 1px solid #e6f1eb;
+border-radius: 18px;
+background: linear-gradient(135deg, #ffffff, #f5fff9);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rate-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 12px 25px rgba(0, 168, 107, 0.12);
+}
+
+.rate-icon {
+width: 43px;
+height: 43px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 14px;
+color: #ffffff;
+font-size: 18px;
+margin-bottom: 12px;
+}
+
+.single-icon {
+background: linear-gradient(135deg, #00a86b, #00d084);
+}
+
+.jodi-icon {
+background: linear-gradient(135deg, #087f50, #20c997);
+}
+
+.rate-info h3 {
+color: #172b23;
+font-size: 16px;
+font-weight: 800;
+}
+
+.rate-info p {
+margin-top: 4px;
+color: #64748b;
+font-size: 12px;
+}
+
+.rate-value {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 10px;
+margin-top: 18px;
+padding: 12px;
+border-radius: 13px;
+background: #eafff3;
+}
+
+.rate-value span {
+font-size: 17px;
+color: #334155;
+font-weight: 700;
+}
+
+.rate-value i {
+color: #00a86b;
+font-size: 14px;
+}
+
+.rate-value strong {
+color: #008653;
+font-size: 23px;
+font-weight: 800;
+}
+
+.rate-footer {
+display: flex;
+justify-content: space-between;
+gap: 10px;
+margin-top: 9px;
+color: #64748b;
+font-size: 11px;
+}
+
+.rates-note {
+display: flex;
+align-items: flex-start;
+gap: 8px;
+margin-top: 16px;
+padding: 12px;
+border-radius: 12px;
+background: #f8fafc;
+color: #64748b;
+font-size: 11px;
+line-height: 1.6;
+}
+
+.rates-note i {
+color: #00a86b;
+margin-top: 3px;
+}
+
+@keyframes ratesEntrance {
+from {
+opacity: 0;
+transform: translateY(18px);
+}
+
+
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+}
+
+@media (min-width: 600px) {
+.rates-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.rates-section {
+animation: none;
+}
+
+
+.rate-card {
+    transition: none;
+}
+
+
+}
+
 </style>
 </head>
 
@@ -267,6 +456,77 @@ body::after{
   <button class="top-btn primary" onclick="goPage('gali-history.html')">📜 My Gali Bets</button>
   <button class="top-btn" onclick="loadGaliGames()">🔄 Refresh</button>
 </div>
+
+
+<!-- GAME RATES -->
+
+<section class="rates-section">
+    <div class="rates-heading">
+        <div>
+            <h2><i class="fa-solid fa-chart-line"></i> Game Rates</h2>
+            <p>Check the available game categories</p>
+        </div>
+        <span class="rates-badge">RATE CARD</span>
+    </div>
+
+
+<div class="rates-grid">
+
+    <!-- SINGLE RATE -->
+    <div class="rate-card">
+        <div class="rate-icon single-icon">
+            <i class="fa-solid fa-hashtag"></i>
+        </div>
+
+        <div class="rate-info">
+            <h3>Single Digit</h3>
+            <p>Choose one digit (0–9)</p>
+        </div>
+
+        <div class="rate-value">
+            <span>₹10</span>
+            <i class="fa-solid fa-arrow-right"></i>
+            <strong>₹95</strong>
+        </div>
+
+        <div class="rate-footer">
+            <span>Entry</span>
+            <span>Displayed return</span>
+        </div>
+    </div>
+
+    <!-- JODI RATE -->
+    <div class="rate-card">
+        <div class="rate-icon jodi-icon">
+            <i class="fa-solid fa-table-cells"></i>
+        </div>
+
+        <div class="rate-info">
+            <h3>Jodi</h3>
+            <p>Choose a two-digit pair (00–99)</p>
+        </div>
+
+        <div class="rate-value">
+            <span>₹10</span>
+            <i class="fa-solid fa-arrow-right"></i>
+            <strong>₹950</strong>
+        </div>
+
+        <div class="rate-footer">
+            <span>Entry</span>
+            <span>Displayed return</span>
+        </div>
+    </div>
+
+</div>
+
+<p class="rates-note">
+    <i class="fa-solid fa-circle-info"></i>
+    Rates shown are illustrative. Confirm the applicable rules before use.
+</p>
+
+
+</section>
 
 <!-- GAME LIST -->
 <div class="game-list" id="gameList"></div>

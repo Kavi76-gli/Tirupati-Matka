@@ -3,308 +3,512 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Wallet</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-referrerpolicy="no-referrer">
+<meta name="theme-color" content="#e4f8eb">
+<title>Wallet | Tirupati Matka</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="global.css">
 <!-- ===== CSS ===== -->
 <style>
-/* ===================== BASE ===================== */
-*{margin:0; padding:0; box-sizing:border-box; font-family:"Segoe UI", sans-serif;}
-body{
-  background: radial-gradient(circle at top, #0a1a2f, #020b18);
-  color:#e6f1ff;
-  padding-bottom:90px;
+:root {
+  --primary: #0a9b63;
+  --primary-dark: #087b4f;
+  --primary-light: #eaf8f0;
+  --header-light: #e4f8eb;
+  --text: #17231c;
+  --text-soft: #718078;
+  --border: #e3ece6;
+  --surface: #ffffff;
+  --page: #f6faf7;
+  --shadow: 0 8px 26px rgba(24, 64, 43, .07);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* HEADER */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  padding-bottom: calc(92px + var(--safe-bottom));
+  color: var(--text);
+  background: var(--page);
+  -webkit-font-smoothing: antialiased;
+}
+
+button, a, .option, .nav-item, .menu-list li {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ================= HEADER ================= */
 .header {
-  height: 76px;
-  background: linear-gradient(180deg, #000000, #050505);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  min-height: 74px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
-  border-bottom: 1px solid rgba(212,175,55,0.45);
+  gap: 12px;
+  padding: 9px 15px;
+  background: linear-gradient(135deg, #eafbf0 0%, #d9f4e3 100%);
+  border-bottom: 1px solid #cfeada;
+  box-shadow: 0 4px 18px rgba(24, 84, 51, .06);
 }
 
-/* LOGO AREA */
 .logo {
   display: flex;
   align-items: center;
+  min-width: 0;
 }
 
-/* LOGO IMAGE – CLEAR & PREMIUM */
 .logo img {
-  height: 64px;          /* 🔥 bigger = clarity */
+  display: block;
   width: auto;
+  height: 49px;
+  max-width: 138px;
   object-fit: contain;
-  filter: 
-    contrast(1.25)
-    brightness(1.15);
 }
 
-
-/* RIGHT ICONS */
 .header-icons {
   display: flex;
   align-items: center;
-  gap: 14px;
+  justify-content: flex-end;
+  gap: 7px;
+  flex-shrink: 0;
 }
 
-/* ICON STYLE */
-.header-icons i {
-  font-size: 20px;
-  color: #d4af37;             /* gold tone */
+.header-icons > i {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d5eadd;
+  border-radius: 12px;
+  color: #4e6a5a;
+  background: rgba(255,255,255,.84);
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform .2s ease, color .2s ease, background .2s ease;
+}
+
+.header-icons > i:hover {
+  color: var(--primary-dark);
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.balance {
+  min-height: 37px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 11px;
+  border: 1px solid rgba(10,155,99,.12);
+  border-radius: 12px;
+  color: #087447;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(10,155,99,.08);
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* ================= PAGE BANNER ================= */
+.header-poster {
+  position: relative;
+  width: calc(100% - 28px);
+  max-width: 1000px;
+  min-height: 105px;
+  margin: 18px auto 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid #d5efdf;
+  border-radius: 19px;
+  color: #145337;
+  background:
+    radial-gradient(circle at 88% 18%, rgba(255,255,255,.85) 0 12%, transparent 12.5%),
+    linear-gradient(135deg, #e9faef 0%, #d8f4e3 100%);
+  box-shadow: 0 7px 22px rgba(24,84,51,.06);
+  font-size: 25px;
+  font-weight: 850;
+  letter-spacing: -.5px;
+}
+
+.header-poster::after {
+  content: "\f555";
+  position: absolute;
+  right: 23px;
+  bottom: -15px;
+  color: rgba(10,155,99,.11);
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 84px;
+}
+
+.header-poster::before {
+  content: "WALLET OVERVIEW";
+  display: block;
+  margin-bottom: 6px;
+  color: #4f8768;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 1.5px;
+}
+
+/* ================= SIDE MENU ================= */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2000;
+  width: min(290px, 86vw);
+  height: 100%;
+  padding-bottom: 20px;
+  overflow-y: auto;
+  background: #fff;
+  box-shadow: -10px 0 35px rgba(19,53,34,.14);
+  transform: translateX(105%);
+  transition: transform .28s ease;
+  border-radius: 18px 0 0 18px;
+}
+
+.side-menu.active { transform: translateX(0); }
+
+.menu-overlay { position: fixed; inset: 0; z-index: 1999; background: rgba(15,34,24,.32); opacity: 0; visibility: hidden; transition: opacity .25s ease, visibility .25s ease; }
+.menu-overlay.active { opacity: 1; visibility: visible; }
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 17px;
+  color: #12452f;
+  background: linear-gradient(135deg, #e7faee, #d5f2e0);
+  border-bottom: 1px solid #d4ecdd;
+}
+
+.menu-header h3 { font-size: 16px; font-weight: 850; }
+
+.close-btn {
+  width: 35px;
+  height: 35px;
+  border: 1px solid #cde8d7;
+  border-radius: 11px;
+  color: #315f46;
+  background: rgba(255,255,255,.85);
+  font-size: 22px;
   cursor: pointer;
 }
 
-/* BALANCE */
-.balance {
-  background: linear-gradient(135deg, #b8962e, #f3da8c);
-  color: #2b1a00;
-  padding: 6px 14px;
-  border-radius: 16px;
-  font-size: 14px;
+.menu-list { list-style: none; padding: 10px; }
+
+.menu-list li {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin: 3px 0;
+  padding: 13px 12px;
+  border-radius: 11px;
+  color: #405247;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: color .18s ease, background .18s ease;
+}
+
+.menu-list li i {
+  width: 18px;
+  color: #779183;
+  text-align: center;
+}
+
+.menu-list li:hover,
+.menu-list li.active {
+  color: var(--primary-dark);
+  background: #eff9f3;
+}
+
+/* ================= WALLET CONTENT ================= */
+.container {
+  width: min(100% - 28px, 1000px);
+  margin: 0 auto;
+  padding: 0 0 20px;
+}
+
+.wallet-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-bottom: 15px;
+  padding: 23px 20px 21px;
+  border: 1px solid #d8eee0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #f0fbf4 100%);
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.wallet-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -55px;
+  right: -35px;
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(10,155,99,.12), rgba(10,155,99,0) 70%);
+}
+
+.wallet-card p {
+  margin-bottom: 7px;
+  color: var(--text-soft);
+  font-size: 12px;
   font-weight: 700;
 }
-/* ===================== HEADER POSTER/BANNER ===================== */
-.header-poster{
-  width:100%;
-  height:120px;
-  background: linear-gradient(135deg,#0d47ff,#00bfff);
-  margin-bottom:10px;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:24px;
-  font-weight:bold;
-  color:#fff;
-  text-shadow:0 0 10px #00ffff;
+
+.wallet-card h1 {
+  margin-bottom: 17px;
+  color: #125c3b;
+  font-size: clamp(29px, 7vw, 37px);
+  line-height: 1.1;
+  font-weight: 900;
+  letter-spacing: -.8px;
 }
 
-/* ===================== SIDE MENU ===================== */
-.side-menu{
-  position:fixed;
-  top:0;
-  right:-280px;
-  width:280px;
-  height:100%;
-  background: linear-gradient(180deg,#0a1f4d,#050c2a);
-  box-shadow:-8px 0 28px rgba(0,153,255,0.35);
-  transition:0.35s ease;
-  z-index:9999;
-  border-top-left-radius:18px;
-  border-bottom-left-radius:18px;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
+.wallet-card button {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 17px;
+  border: 0;
+  border-radius: 12px;
+  color: #fff;
+  background: linear-gradient(135deg, #0a9b63, #087b4f);
+  box-shadow: 0 6px 15px rgba(10,155,99,.2);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.side-menu.active{ right:0; }
-
-.menu-header{
-  padding:16px;
-  background: linear-gradient(135deg,#0d47ff,#00bfff);
-  color:#fff;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 4px 18px rgba(0,191,255,0.5);
+.wallet-card button::before {
+  content: "\f067";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
 }
 
-.menu-header h3{
-  margin:0;
-  font-size:18px;
-  font-weight:600;
+.wallet-card button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 9px 20px rgba(10,155,99,.25);
 }
 
-.close-btn{
-  background: rgba(255,255,255,0.15);
-  border:none;
-  width:34px;
-  height:34px;
-  border-radius:50%;
-  font-size:20px;
-  color:#fff;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.wallet-card button:active { transform: scale(.97); }
+
+/* ================= BREAKDOWN ================= */
+.breakdown {
+  margin-bottom: 22px;
+  padding: 5px 16px;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 5px 17px rgba(24,64,43,.045);
 }
 
-.close-btn:hover{ background: rgba(255,255,255,0.3); }
-
-.menu-list{ list-style:none; padding:10px 0; margin:0; }
-
-.menu-list li{
-  padding:14px 20px;
-  color:#e6f1ff;
-  font-weight:500;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  transition:0.25s ease;
+.breakdown div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  padding: 14px 0;
+  border-bottom: 1px solid #edf3ef;
+  color: #5d6e63;
+  font-size: 12px;
+  font-weight: 650;
 }
 
-.menu-list li:hover{
-  background: rgba(0,191,255,0.12);
-  padding-left:26px;
-  color:#00eaff;
+.breakdown div:last-child { border-bottom: 0; }
+
+.breakdown div span:last-child {
+  color: #1c4932;
+  font-size: 13px;
+  font-weight: 850;
+  white-space: nowrap;
 }
 
-.menu-list li.active{
-  background: rgba(0,191,255,0.18);
-  color:#00eaff;
+/* ================= QUICK OPTIONS ================= */
+.quick-title {
+  margin: 0 0 10px 2px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: .5px;
 }
 
-/* ===================== WALLET CARD ===================== */
-.container{ padding:15px; }
-
-.wallet-card{
-  background:#061a33;
-  border-radius:16px;
-  padding:20px;
-  text-align:center;
-  box-shadow:0 0 15px rgba(0,229,255,0.15);
-  margin-bottom:15px;
+.options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
 }
 
-.wallet-card p{ color:#00eaff; font-weight:600; margin-bottom:6px; }
-.wallet-card h1{ font-size:32px; color:#00eaff; text-shadow:0 0 12px #00ffff; margin-bottom:12px; }
-.wallet-card button{
-  padding:12px 20px;
-  border:none;
-  border-radius:20px;
-  font-weight:600;
-  background: linear-gradient(135deg,#00ffff,#0077ff);
-  cursor:pointer;
-  color:#00121f;
-  box-shadow:0 0 15px #00ffff;
-  transition:0.2s;
-}
-.wallet-card button:active{ transform:scale(0.97); }
-
-/* BREAKDOWN */
-.breakdown{
-  background:#061a33;
-  padding:16px;
-  border-radius:16px;
-  margin-bottom:15px;
-  box-shadow:0 0 12px rgba(0,229,255,0.15);
-}
-.breakdown div{
-  display:flex;
-  justify-content:space-between;
-  color:#00eaff;
-  font-weight:600;
-  margin-bottom:8px;
+.option {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 10px;
+  border: 1px solid #dceee3;
+  border-radius: 15px;
+  color: #246143;
+  background: #fff;
+  box-shadow: 0 4px 13px rgba(24,64,43,.04);
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 750;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .2s ease, border-color .2s ease, background .2s ease;
 }
 
-/* QUICK OPTIONS */
-.quick-title{ font-weight:600; color:#00eaff; margin-bottom:8px; }
-.options{ display:flex; flex-direction:column; gap:10px; }
-.option{
-  padding:12px;
-  border-radius:12px;
-  background:#061a33;
-  cursor:pointer;
-  color:#00eaff;
-  font-weight:600;
-  box-shadow:0 0 10px rgba(0,229,255,0.1);
+.option::before {
+  display: block;
+  color: var(--primary);
+  font-family: "Font Awesome 6 Free";
+  font-size: 18px;
+  font-weight: 900;
 }
-.option:hover{ background:#00bfff; color:#00121f; }
 
-/* ===================== BOTTOM NAV ===================== */
-/* =====================
-   BOTTOM NAV (SAFE)
-===================== */
+.option:nth-child(1)::before { content: "\f055"; }
+.option:nth-child(2)::before { content: "\f093"; }
+.option:nth-child(3)::before { content: "\f1da"; }
+
+.option:hover {
+  transform: translateY(-2px);
+  border-color: #b8e2c9;
+  background: #f7fcf8;
+}
+
+/* ================= BOTTOM NAV ================= */
 .bottom-nav {
   position: fixed;
-  bottom: 0;
   left: 0;
-  width: 100%;
-  height: calc(70px + var(--safe-bottom));
-  padding-bottom: var(--safe-bottom);
-  background: linear-gradient(180deg, #0d47ff, #0a3dd1);
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  min-height: calc(68px + var(--safe-bottom));
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
-  box-shadow: 0 -6px 16px rgba(0,0,0,0.25);
-  z-index: 999;
+  justify-content: space-around;
+  padding: 7px 5px calc(7px + var(--safe-bottom));
+  border-top: 1px solid #e1ece5;
+  border-radius: 18px 18px 0 0;
+  background: rgba(255,255,255,.97);
+  box-shadow: 0 -7px 24px rgba(25,61,40,.07);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-/* NAV ITEM */
 .bottom-nav .nav-item {
+  position: relative;
   flex: 1;
-  text-align: center;
-  color: rgba(255,255,255,0.75);
-  font-size: 11px;
-  cursor: pointer;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: 0.25s ease;
-  position: relative;
+  gap: 4px;
+  padding: 4px 2px;
+  color: #829087;
+  font-size: 10px;
+  font-weight: 650;
+  text-align: center;
+  cursor: pointer;
+  transition: color .2s ease;
 }
 
-.bottom-nav .nav-item i {
-  font-size: 20px;
-  margin-bottom: 4px;
+.bottom-nav .nav-item i { font-size: 17px; }
+.bottom-nav .nav-item span { line-height: 1.1; font-weight: 650; }
+.bottom-nav .nav-item.active { color: var(--primary-dark); }
+
+.bottom-nav .nav-item.active::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  width: 25px;
+  height: 3px;
+  border-radius: 10px;
+  background: var(--primary);
 }
 
-.bottom-nav .nav-item span {
-  font-weight: 500;
-}
-
-/* ACTIVE ITEM */
-.bottom-nav .nav-item.active {
-  color: #ffffff;
-  font-weight: 600;
-}
-
-/* CENTER HOME BUTTON */
-.bottom-nav .nav-item.center {
-  transform: translateY(-18px);
-}
+.bottom-nav .nav-item.center { transform: translateY(-8px); }
 
 .bottom-nav .nav-item.center i {
-  background: #ffffff;
-  color: #0d47ff;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
+  width: 43px;
+  height: 43px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-  margin-bottom: 6px;
+  margin-bottom: 1px;
+  border: 4px solid var(--page);
+  border-radius: 15px;
+  color: #fff;
+  background: linear-gradient(135deg, #0a9b63, #087b4f);
+  box-shadow: 0 5px 12px rgba(10,155,99,.22);
+  font-size: 16px;
 }
 
-.bottom-nav .nav-item.center span {
-  color: #ffffff;
-  font-weight: 600;
+.bottom-nav .nav-item.center span { color: #718078; }
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 520px) {
+  .header { min-height: 68px; padding: 8px 11px; }
+  .logo img { height: 43px; max-width: 112px; }
+  .header-icons { gap: 5px; }
+  .header-icons > i { width: 34px; height: 34px; border-radius: 10px; font-size: 13px; }
+  .balance { min-height: 33px; padding: 0 8px; border-radius: 10px; font-size: 10px; }
+  .header-poster { min-height: 92px; margin-top: 13px; padding: 17px; font-size: 22px; }
+  .header-poster::after { right: 15px; font-size: 69px; }
+  .container { width: calc(100% - 22px); }
+  .wallet-card { padding: 20px 17px; border-radius: 17px; }
+  .breakdown { padding: 4px 13px; }
+  .options { gap: 7px; }
+  .option { min-height: 79px; padding: 10px 6px; border-radius: 12px; font-size: 10px; }
+  .option::before { font-size: 16px; }
+  .bottom-nav .nav-item { font-size: 9px; }
+  .bottom-nav .nav-item i { font-size: 16px; }
 }
 
-/* ACTIVE INDICATOR */
-.active-indicator {
-  position: absolute;
-  bottom: 6px;
-  height: 3px;
-  width: 40px;
-  background: #ffffff;
-  border-radius: 2px;
-  transition: transform 0.3s ease;
+@media (max-width: 360px) {
+  .logo img { max-width: 88px; height: 39px; }
+  .header-poster { min-height: 82px; font-size: 20px; }
+  .options { grid-template-columns: 1fr; }
+  .option { min-height: 48px; flex-direction: row; }
+  .option::before { font-size: 15px; }
+  .bottom-nav .nav-item span { font-size: 8px; }
+  .bottom-nav .nav-item.center i { width: 38px; height: 38px; }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 </style>
 </head>
 
@@ -313,15 +517,13 @@ body{
 <!-- HEADER -->
 <div class="header">
   <div class="logo">
-    <img src="ka.jpeg" alt="Kalyan Master Logo">
+    <img src="Tirupati.png" alt="Kalyan Master Logo">
   </div>
 
   <div class="header-icons">
-    <i class="fa-solid fa-bell" onclick="goPage('notification.html')"></i>
-
+    <i class="fa-solid fa-bell" role="button" tabindex="0" aria-label="Notifications" onclick="goPage('notification.html')"></i>
     <div class="balance" id="balance">₹0.00</div>
-
-    <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+    <i class="fa-solid fa-bars" role="button" tabindex="0" aria-label="Open menu" aria-controls="sideMenu" onclick="toggleMenu()"></i>
   </div>
 </div>
 
@@ -329,7 +531,8 @@ body{
 <div class="header-poster">Your Wallet</div>
 
 <!-- SIDE MENU -->
-<div class="side-menu" id="sideMenu">
+<div class="menu-overlay" id="menuOverlay" onclick="toggleMenu(false)"></div>
+<div class="side-menu" id="sideMenu" aria-label="Main menu">
   <div class="menu-header">
     <h3>Menu</h3>
     <button class="close-btn" onclick="toggleMenu()">×</button>
@@ -404,7 +607,7 @@ body{
 <!-- ===== JS ===== -->
 <script>
 const API = "https://tirupati-matka.onrender.com/api/auth";
-const token = localStorage.getItem("token");
+const token = localStorage.getItem("token") || localStorage.getItem("ki_token");
 if(!token) location.href="auth.html";
 
 // ===== LOAD BALANCE =====
@@ -422,10 +625,23 @@ async function loadBalance(){
 }
 
 // ===== SIDE MENU =====
-function toggleMenu(){ document.getElementById("sideMenu").classList.toggle("active"); }
+function toggleMenu(forceState) {
+  const menu = document.getElementById("sideMenu");
+  const overlay = document.getElementById("menuOverlay");
+  const shouldOpen = typeof forceState === "boolean"
+    ? forceState
+    : !menu.classList.contains("active");
+  menu.classList.toggle("active", shouldOpen);
+  overlay.classList.toggle("active", shouldOpen);
+  document.body.style.overflow = shouldOpen ? "hidden" : "";
+}
 
 // ===== NAV HELPER =====
 function goPage(page){ location.href=page; }
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") toggleMenu(false);
+});
 
 // ===== LOGOUT =====
 function logout(){ localStorage.removeItem("token"); location.href="auth.html"; }

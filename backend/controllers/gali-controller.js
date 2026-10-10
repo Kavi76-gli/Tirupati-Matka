@@ -156,117 +156,260 @@ exports.getGaliZone = async (req, res) => {
 };
 
 
+/* ======================================
+   ADMIN → DECLARE GALI / DESAWAR RESULT
+====================================== */
 
-/* ======================================
-   ADMIN → DECLARE GALI OPEN RESULT
-====================================== */
-/* ======================================
-   ADMIN → DECLARE GALI OPEN RESULT
-====================================== */
 exports.declareGaliResult = async (req, res) => {
   try {
     const { matchId, left, right } = req.body;
 
     if (!matchId) {
-      return res.status(400).json({ msg: "Match ID required" });
+      return res.status(400).json({
+        msg: "Match ID required"
+      });
     }
 
-    // ✅ validate digits (0–9)
+    // ======================================
+    // VALIDATE DIGITS
+    // ======================================
+
     if (
-      left === undefined || right === undefined ||
-      isNaN(left) || isNaN(right) ||
-      left < 0 || left > 9 ||
-      right < 0 || right > 9
+      left === undefined ||
+      right === undefined ||
+      isNaN(left) ||
+      isNaN(right) ||
+      left < 0 ||
+      left > 9 ||
+      right < 0 ||
+      right > 9
     ) {
-      return res.status(400).json({ msg: "Enter valid digits (0–9)" });
+      return res.status(400).json({
+        msg: "Enter valid digits (0–9)"
+      });
     }
 
     const l = String(left);
     const r = String(right);
+
     const jodi = `${l}${r}`;
     const reverseJodi = `${r}${l}`;
 
-    const match = await GaliMatch.findById(matchId);
-    if (!match) return res.status(404).json({ msg: "Game not found" });
-    if (match.resultDeclared)
-      return res.status(400).json({ msg: "Result already declared" });
+    // ======================================
+    // FIND GALI / DESAWAR GAME
+    // ======================================
 
-    // ✅ Save open result only
-    match.openResult = { left: l, right: r, jodi };
+    const match = await GaliMatch.findById(matchId);
+
+    if (!match) {
+      return res.status(404).json({
+        msg: "Gali / Desawar game not found"
+      });
+    }
+
+    // ======================================
+    // CHECK RESULT ALREADY DECLARED
+    // ======================================
+
+    if (match.resultDeclared) {
+      return res.status(400).json({
+        msg: "Result already declared"
+      });
+    }
+
+    // ======================================
+    // SAVE RESULT
+    // ======================================
+
+    match.openResult = {
+      left: l,
+      right: r,
+      jodi
+    };
+
     match.resultDeclared = true;
+
     await match.save();
 
-    // ---------------- Process bets ----------------
-    const bets = await GaliBet.find({ match: matchId, isSettled: false }).populate("user");
+    console.log("==========================================");
+    console.log("🎯 GALI / DESAWAR RESULT SAVED");
+    console.log("Game:", match.gameName || match.name || "Gali / Desawar");
+    console.log("Result:", `${l}${r}`);
+    console.log("Jodi:", jodi);
+    console.log("==========================================");
+
+    // ======================================
+    // PROCESS GALI BETS
+    // ======================================
+
+    const bets = await GaliBet
+      .find({
+        match: matchId,
+        isSettled: false
+      })
+      .populate("user");
 
     let winners = 0;
     let totalWinAmount = 0;
+
     const walletCache = new Map();
+
+    // ======================================
+    // SETTLE EACH BET
+    // ======================================
 
     for (const bet of bets) {
       let winAmount = 0;
-      const betType = bet.betType.toLowerCase();
-      const num = String(bet.number);
 
-      /* ========== SINGLE BET ========== */
+      const betType = String(
+        bet.betType || ""
+      ).toLowerCase();
+
+      const num = String(
+        bet.number ?? ""
+      );
+
+      // ======================================
+      // SINGLE
+      // ======================================
+
       if (betType === "single") {
-        if (num === l || num === r) {
-          winAmount = bet.amount * PAYOUT.gali.single;
+        if (
+          num === l ||
+          num === r
+        ) {
+          winAmount =
+            bet.amount *
+            PAYOUT.gali.single;
         }
       }
 
-      /* ========== JODI BET ========== */
+      // ======================================
+      // JODI
+      // ======================================
+
       if (betType === "jodi") {
-        if (num === jodi || num === reverseJodi) {
-          winAmount = bet.amount * PAYOUT.gali.jodi;
+        if (
+          num === jodi ||
+          num === reverseJodi
+        ) {
+          winAmount =
+            bet.amount *
+            PAYOUT.gali.jodi;
         }
       }
 
-      // ✅ settle bet
-      bet.resultStatus = winAmount > 0 ? "won" : "lost";
+      // ======================================
+      // SET BET RESULT
+      // ======================================
+
+      if (winAmount > 0) {
+        bet.resultStatus = "won";
+      } else {
+        bet.resultStatus = "lost";
+      }
+
       bet.isSettled = true;
+
       await bet.save();
+
+      // ======================================
+      // CREDIT WINNING AMOUNT
+      // ======================================
 
       if (winAmount > 0) {
         winners++;
+
         totalWinAmount += winAmount;
 
-        const userId = bet.user._id.toString();
-        let wallet = walletCache.get(userId);
+        const userId =
+          bet.user?._id?.toString();
+
+        if (!userId) {
+          console.warn(
+            "⚠️ Gali bet user not found:",
+            bet._id
+          );
+
+          continue;
+        }
+
+        let wallet =
+          walletCache.get(userId);
 
         if (!wallet) {
-          wallet = await Wallet.findOne({ userId });
-          walletCache.set(userId, wallet);
+          wallet =
+            await Wallet.findOne({
+              userId
+            });
+
+          walletCache.set(
+            userId,
+            wallet
+          );
         }
 
         if (wallet) {
           wallet.balance += winAmount;
+
           wallet.transactions.push({
             type: "win",
             amount: winAmount,
             status: "approved",
-            remark: `Gali ${betType.toUpperCase()} win (${num})`
+            remark:
+              `Gali / Desawar ${betType.toUpperCase()} WIN (${num})`
           });
+
           await wallet.save();
         }
       }
     }
 
-    res.json({
+    // ======================================
+    // 🔔 SEND PUSH NOTIFICATION
+    // ONLY AFTER RESULT + SETTLEMENT
+    // ======================================
+
+    await sendGameResultNotification({
+      type: "gali",
+      gameName:
+        match.gameName ||
+        match.name ||
+        "Gali / Desawar",
+      panel: jodi,
+      single: "",
+      jodi
+    });
+
+    // ======================================
+    // RESPONSE
+    // ======================================
+
+    return res.json({
       success: true,
-      msg: "Gali result declared successfully",
+
+      msg:
+        "Gali / Desawar result declared successfully",
+
       result: match.openResult,
+
       winners,
+
       totalWinAmount
     });
 
   } catch (err) {
-    console.error("declareGaliResult error:", err);
-    res.status(500).json({ msg: "Server error" });
+
+    console.error(
+      "❌ declareGaliResult error:",
+      err
+    );
+
+    return res.status(500).json({
+      msg: "Server error"
+    });
   }
 };
-
-
 const mongoose = require("mongoose");
 
 exports.resetGaliResult = async (req, res) => {

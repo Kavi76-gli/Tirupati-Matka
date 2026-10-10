@@ -1,476 +1,954 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Wallet Transactions</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#dff7e9">
+<title>Wallet Transactions | Tirupati Matka</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="global.css">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",sans-serif}
-body{
-  background:radial-gradient(circle at top,#0a1a2f,#020b18);
-  color:#e6f1ff;
-  padding-bottom:90px;
+:root {
+    --primary: #0a9b63;
+    --primary-dark: #087b4f;
+    --primary-light: #eaf8f0;
+    --header-light: #e4f8eb;
+    --text: #17231c;
+    --text-soft: #718078;
+    --border: #e3ece6;
+    --surface: #ffffff;
+    --page: #f6faf7;
+    --danger: #d94141;
+    --shadow: 0 8px 26px rgba(24, 64, 43, .07);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    padding-bottom: 94px;
+    color: var(--text);
+    background: var(--page);
+    -webkit-font-smoothing: antialiased;
+}
+
+button, a {
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* ================= HEADER ================= */
-/* HEADER */
 .header {
-  height: 76px;
-  background: linear-gradient(180deg, #000000, #050505);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 16px;
-  border-bottom: 1px solid rgba(212,175,55,0.45);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #e8faef 0%, #d8f4e3 100%);
+    border-bottom: 1px solid #ccebd8;
+    box-shadow: 0 4px 18px rgba(24, 84, 51, .06);
 }
 
-/* LOGO AREA */
 .logo {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
+    min-width: 0;
 }
 
-/* LOGO IMAGE – CLEAR & PREMIUM */
 .logo img {
-  height: 64px;          /* 🔥 bigger = clarity */
-  width: auto;
-  object-fit: contain;
-  filter: 
-    contrast(1.25)
-    brightness(1.15);
+    display: block;
+    width: auto;
+    height: 52px;
+    max-width: 145px;
+    object-fit: contain;
+    filter: none;
 }
 
-
-/* RIGHT ICONS */
 .header-icons {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
 }
 
-/* ICON STYLE */
-.header-icons i {
-  font-size: 20px;
-  color: #d4af37;             /* gold tone */
-  cursor: pointer;
+.header-icon-button {
+    position: relative;
+    width: 39px;
+    height: 39px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d4e9dc;
+    border-radius: 12px;
+    background: rgba(255,255,255,.82);
+    color: #4e6a5a;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease, transform .2s ease;
 }
 
-/* BALANCE */
+.header-icon-button:hover {
+    color: var(--primary-dark);
+    background: #fff;
+    transform: translateY(-1px);
+}
+
 .balance {
-  background: linear-gradient(135deg, #b8962e, #f3da8c);
-  color: #2b1a00;
-  padding: 6px 14px;
-  border-radius: 16px;
-  font-size: 14px;
-  font-weight: 700;
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    border: 1px solid rgba(10,155,99,.12);
+    border-radius: 12px;
+    color: #087447;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(10,155,99,.08);
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
 }
 
-/* ================= CARD ================= */
-.card{
-  background:#061a33;
-  margin:15px;
-  padding:15px;
-  border-radius:16px;
+/* ================= PAGE INTRO ================= */
+.page-intro {
+    width: min(100% - 28px, 1000px);
+    margin: 22px auto 14px;
 }
-.card h3{
-  color:#00e5ff;
-  margin-bottom:12px;
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 7px;
+    color: var(--primary-dark);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.15px;
+    text-transform: uppercase;
+}
+
+.eyebrow i {
+    font-size: 11px;
+}
+
+.page-intro h1 {
+    color: var(--text);
+    font-size: clamp(22px, 4vw, 28px);
+    line-height: 1.2;
+    font-weight: 850;
+    letter-spacing: -.5px;
+}
+
+.page-intro p {
+    margin-top: 7px;
+    color: var(--text-soft);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* ================= TRANSACTION CARD ================= */
+.card {
+    width: min(100% - 28px, 1000px);
+    margin: 0 auto 24px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.card-heading h2 {
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.3;
+    font-weight: 800;
+}
+
+.card-heading p {
+    margin-top: 4px;
+    color: var(--text-soft);
+    font-size: 11px;
+}
+
+.secure-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 9px;
+    border-radius: 9px;
+    color: #087b4f;
+    background: #eef9f2;
+    font-size: 10px;
+    font-weight: 750;
+    white-space: nowrap;
 }
 
 /* ================= TABLE ================= */
-table{
-  width:100%;
-  border-collapse:collapse;
-  font-size:13px;
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #edf1ee;
+    border-radius: 13px;
 }
-th,td{
-  padding:10px;
-  text-align:center;
-  border-bottom:1px solid #ffffff15;
-}
-th{color:#00e5ff}
 
-/* ================= BADGES ================= */
-.badge{
-  padding:4px 10px;
-  border-radius:20px;
-  font-size:11px;
-  font-weight:700;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
 }
-.credit{background:#00e676;color:#000}
-.debit{background:#ff5252;color:#000}
 
-/* EMPTY */
-.empty{
-  text-align:center;
-  padding:20px;
-  color:#90caf9;
+thead {
+    background: #f2faf5;
+}
+
+th {
+    padding: 13px 12px;
+    color: #63766a;
+    font-size: 10px;
+    font-weight: 800;
+    text-align: left;
+    letter-spacing: .55px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+td {
+    padding: 13px 12px;
+    color: #33443a;
+    border-top: 1px solid #edf2ee;
+    text-align: left;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+tbody tr {
+    transition: background .18s ease;
+}
+
+tbody tr:hover {
+    background: #fbfefc;
+}
+
+.badge,
+.status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 25px;
+    padding: 5px 9px;
+    border-radius: 8px;
+    font-size: 9px;
+    line-height: 1.2;
+    font-weight: 850;
+    letter-spacing: .2px;
+}
+
+.badge.credit {
+    color: #087b4f;
+    background: #e5f8ed;
+}
+
+.badge.debit {
+    color: #bf3535;
+    background: #fff0f0;
+}
+
+.status {
+    color: #68756d;
+    background: #f0f3f1;
+}
+
+.status.approved,
+.status.success,
+.status.completed,
+.status.paid {
+    color: #087b4f;
+    background: #e5f8ed;
+}
+
+.status.pending,
+.status.processing {
+    color: #946200;
+    background: #fff6dd;
+}
+
+.status.rejected,
+.status.failed,
+.status.cancelled {
+    color: #bf3535;
+    background: #fff0f0;
+}
+
+/* ================= EMPTY / LOADING / ERROR ================= */
+.state-message {
+    padding: 30px 16px;
+    color: var(--text-soft);
+    text-align: center;
+}
+
+.state-message i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 12px;
+    border-radius: 15px;
+    color: var(--primary);
+    background: var(--primary-light);
+    font-size: 20px;
+}
+
+.state-message h3 {
+    margin-bottom: 5px;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.state-message p {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.state-message.error i {
+    color: var(--danger);
+    background: #fff0f0;
+}
+
+.retry-button {
+    margin-top: 12px;
+    padding: 9px 13px;
+    border: 0;
+    border-radius: 9px;
+    color: #fff;
+    background: var(--primary);
+    font-size: 12px;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+/* ================= SIDE MENU ================= */
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1998;
+    background: rgba(15, 34, 24, .32);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s ease, visibility .25s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1999;
+    width: min(290px, 86vw);
+    height: 100%;
+    padding-bottom: 20px;
+    overflow-y: auto;
+    background: #fff;
+    box-shadow: -10px 0 35px rgba(19, 53, 34, .14);
+    transform: translateX(105%);
+    transition: transform .28s ease;
+}
+
+.side-menu.active {
+    transform: translateX(0);
+}
+
+.menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 17px;
+    color: #12452f;
+    background: linear-gradient(135deg, #e7faee, #d5f2e0);
+    border-bottom: 1px solid #d4ecdd;
+}
+
+.menu-header h3 {
+    font-size: 16px;
+    font-weight: 850;
+}
+
+.close-btn {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #cde8d7;
+    border-radius: 10px;
+    color: #315f46;
+    background: rgba(255,255,255,.8);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 10px;
+}
+
+.menu-list li {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin: 3px 0;
+    padding: 13px 12px;
+    border-radius: 11px;
+    color: #405247;
+    font-size: 13px;
+    font-weight: 650;
+    cursor: pointer;
+    transition: color .18s ease, background .18s ease;
+}
+
+.menu-list li:hover {
+    color: var(--primary-dark);
+    background: #eff9f3;
 }
 
 /* ================= BOTTOM NAV ================= */
 .bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 70px;
-  background: linear-gradient(180deg, #0d47ff, #0a3dd1);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
-  box-shadow: 0 -6px 16px rgba(0,0,0,0.25);
-  z-index: 999;
-  font-family: "Segoe UI", sans-serif;
-  position: fixed;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 7px 5px calc(7px + env(safe-area-inset-bottom));
+    border-top: 1px solid #e1ece5;
+    border-radius: 18px 18px 0 0;
+    background: rgba(255,255,255,.97);
+    box-shadow: 0 -7px 24px rgba(25, 61, 40, .07);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
-/* NAV ITEM */
 .bottom-nav .nav-item {
-  flex: 1;
-  text-align: center;
-  color: rgba(255,255,255,0.75);
-  font-size: 11px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: 0.25s ease;
-  position: relative;
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 4px 2px;
+    color: #829087;
+    font-size: 10px;
+    font-weight: 650;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color .2s ease;
 }
 
 .bottom-nav .nav-item i {
-  font-size: 20px;
-  margin-bottom: 4px;
+    font-size: 17px;
 }
 
 .bottom-nav .nav-item span {
-  font-weight: 500;
+    line-height: 1.1;
 }
 
-/* ACTIVE ITEM */
 .bottom-nav .nav-item.active {
-  color: #ffffff;
-  font-weight: 600;
+    color: var(--primary-dark);
 }
 
-/* CENTER (HOME) BUTTON */
+.bottom-nav .nav-item.active::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    width: 25px;
+    height: 3px;
+    border-radius: 10px;
+    background: var(--primary);
+}
+
 .bottom-nav .nav-item.center {
-  transform: translateY(-18px);
+    transform: none;
 }
 
 .bottom-nav .nav-item.center i {
-  background: #ffffff;
-  color: #0d47ff;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-  margin-bottom: 6px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -19px;
+    margin-bottom: -1px;
+    border: 4px solid var(--page);
+    border-radius: 14px;
+    color: #fff;
+    background: linear-gradient(135deg, #0a9b63, #087b4f);
+    box-shadow: 0 5px 12px rgba(10,155,99,.22);
+    font-size: 16px;
 }
 
 .bottom-nav .nav-item.center span {
-  color: #ffffff;
-  font-weight: 600;
+    color: #718078;
 }
 
-/* ACTIVE INDICATOR BAR */
-.active-indicator {
-  position: absolute;
-  bottom: 6px;
-  height: 3px;
-  width: 40px;
-  background: #ffffff;
-  border-radius: 2px;
-  transition: transform 0.3s ease;
-}
-
-
-/* ================= SIDE MENU ================= */
-.side-menu{
-  position:fixed;
-  top:0;
-  right:-280px;          /* hidden */
-  width:260px;
-  height:100vh;
-  background:#061a33;
-  color:#fff;
-  z-index:9999;
-  transition:0.3s ease;
-  box-shadow:-5px 0 15px rgba(0,0,0,.4);
-}
-
-.side-menu.active{
-  right:0;               /* visible */
-}
-
-.menu-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px;
-  background:#0d47ff;
-}
-
-.menu-header h3{
-  font-size:16px;
-}
-
-.close-btn{
-  background:none;
-  border:none;
-  font-size:24px;
-  color:#fff;
-  cursor:pointer;
-}
-
-.menu-list{
-  list-style:none;
-  padding:10px;
-}
-
-.menu-list li{
-  padding:14px;
-  border-bottom:1px solid #ffffff20;
-  cursor:pointer;
-}
-
-.menu-list li:hover{
-  background:#0a3dd1;
-}
-
-
-
-
-/* ================= MOBILE RESPONSIVE TABLE ================= */
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
+    .page-intro {
+        margin-top: 19px;
+    }
 
-  table {
-    font-size: 12px;
-  }
+    .card {
+        padding: 14px;
+        border-radius: 17px;
+    }
 
-  thead {
-    display: none;
-  }
+    .card-heading {
+        margin-bottom: 12px;
+    }
 
-  tbody tr {
-    display: block;
-    background: rgba(255,255,255,0.04);
-    margin-bottom: 12px;
-    padding: 12px;
-    border-radius: 14px;
-    box-shadow: 0 0 10px rgba(0,191,255,0.15);
-  }
+    .table-wrap {
+        overflow: visible;
+        border: 0;
+        border-radius: 0;
+    }
 
-  tbody td {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 0;
-    border: none;
-    text-align: left;
-  }
+    thead {
+        display: none;
+    }
 
-  tbody td::before {
-    content: attr(data-label);
-    font-weight: 700;
-    color: #7df9ff;
-    font-size: 12px;
-  }
+    table,
+    tbody {
+        display: block;
+        width: 100%;
+    }
 
-  .badge {
-    font-size: 11px;
-  }
+    tbody tr {
+        display: block;
+        margin-bottom: 11px;
+        padding: 10px 12px;
+        border: 1px solid #e7efe9;
+        border-radius: 13px;
+        background: #fff;
+        box-shadow: 0 3px 10px rgba(24,64,43,.035);
+    }
 
-  .credit {
-    background: rgba(0, 230, 118, 0.25);
-    color: #22c55e;
-  }
+    tbody tr:last-child {
+        margin-bottom: 0;
+    }
 
-  .debit {
-    background: rgba(255, 82, 82, 0.25);
-    color: #ef4444;
-  }
+    tbody td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 8px 0;
+        border-top: 0;
+        border-bottom: 1px solid #f0f3f1;
+        text-align: right;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    tbody td:last-child {
+        border-bottom: 0;
+    }
+
+    tbody td::before {
+        content: attr(data-label);
+        flex: 0 0 auto;
+        color: #829087;
+        font-size: 10px;
+        font-weight: 800;
+        text-align: left;
+        text-transform: uppercase;
+        letter-spacing: .35px;
+    }
+
+    .bottom-nav .nav-item {
+        font-size: 9px;
+    }
+
+    .bottom-nav .nav-item i {
+        font-size: 16px;
+    }
 }
 
+@media (max-width: 360px) {
+    .header {
+        min-height: 68px;
+        padding: 8px 10px;
+        gap: 8px;
+    }
+
+    .logo img {
+        height: 44px;
+        max-width: 105px;
+    }
+
+    .header-icons {
+        gap: 5px;
+    }
+
+    .header-icon-button {
+        width: 34px;
+        height: 34px;
+    }
+
+    .balance {
+        min-height: 34px;
+        padding: 0 8px;
+        font-size: 10px;
+    }
+
+    .secure-label {
+        display: none;
+    }
+
+    .bottom-nav .nav-item span {
+        font-size: 8px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
 </style>
 </head>
 
 <body>
 
 <!-- ================= HEADER ================= -->
-<div class="header">
-  <div class="logo">
-    <img src="ka.jpeg" alt="Kalyan Master Logo">
-  </div>
+<header class="header">
+    <a class="logo" href="gamezone.html" aria-label="Tirupati Matka home">
+        <img src="Tirupati.png" alt="Tirupati Matka Logo">
+    </a>
 
-  <div class="header-icons">
-    <i class="fa-solid fa-bell" onclick="goPage('notification.html')"></i>
+    <div class="header-icons">
+        <button class="header-icon-button" type="button"
+                aria-label="Open notifications"
+                onclick="goPage('notification.html')">
+            <i class="fa-regular fa-bell"></i>
+        </button>
 
-    <div class="balance" id="balance">₹0.00</div>
+        <div class="balance" id="balance" aria-label="Wallet balance">₹0.00</div>
 
-    <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
-  </div>
-</div>
+        <button class="header-icon-button" type="button"
+                aria-label="Open menu"
+                aria-controls="sideMenu"
+                onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+</header>
+
+<!-- ================= PAGE INTRO ================= -->
+<section class="page-intro">
+    <div class="eyebrow"><i class="fa-solid fa-shield-halved"></i> WALLET OVERVIEW</div>
+    <h1>Wallet Transactions</h1>
+    <p>Review your wallet activity, transaction amounts, and status in one place.</p>
+</section>
 
 <!-- ================= TRANSACTIONS ================= -->
-<div class="card">
-  <h3>Wallet Transactions</h3>
+<main class="card">
+    <div class="card-heading">
+        <div>
+            <h2>Recent activity</h2>
+            <p>Your latest wallet transactions</p>
+        </div>
+        <span class="secure-label"><i class="fa-solid fa-lock"></i> Secure history</span>
+    </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-      <th>Amount</th>
-      <th>Method</th>
-      <th>Status</th>
-      <th>Date</th>
-      </tr>
-    </thead>
-    <tbody id="txnBody"></tbody>
-  </table>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="txnBody"></tbody>
+        </table>
+    </div>
 
-  <div id="empty" class="empty" style="display:none;">
-    No transactions found
-  </div>
-</div>
+    <div id="empty" class="state-message" style="display:none;">
+        <i class="fa-solid fa-receipt"></i>
+        <h3>No transactions yet</h3>
+        <p>Your wallet activity will appear here when available.</p>
+    </div>
 
-<!-- SIDE MENU -->
-<div class="side-menu" id="sideMenu">
-  <div class="menu-header">
-    <h3>Menu</h3>
-    <button class="close-btn" onclick="toggleMenu()">×</button>
-  </div>
-  <ul class="menu-list">
-      <li onclick="go('profile.html')">Profile</li>
-    <li onclick="go('add-fund.html')">Deposit</li>
-    <li onclick="go('withdraw.html')">Withdraw</li>
-    <li onclick="go('transition.html')">Transactions</li>
-    <li onclick="go('gamezone.html')">Game Zone</li>
-     <li onclick="go('reer.html')">Refer & Earn</li>
-    <li onclick="go('history.html')">History</li>
-    <li onclick="go('ratio.html')">Ratios</li>
-    <li onclick="go('logout.html')">Logout</li>
-  </ul>
-</div>
+    <div id="loading" class="state-message">
+        <i class="fa-solid fa-circle-notch fa-spin"></i>
+        <h3>Loading transactions</h3>
+        <p>Please wait while we retrieve your wallet activity.</p>
+    </div>
+
+    <div id="errorState" class="state-message error" style="display:none;">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <h3>Couldn't load transactions</h3>
+        <p>Please check your connection and try again.</p>
+        <button class="retry-button" type="button" onclick="fetchTransactions()">Try again</button>
+    </div>
+</main>
+
+<!-- ================= SIDE MENU ================= -->
+<div class="menu-overlay" id="menuOverlay" onclick="toggleMenu(false)"></div>
+
+<aside class="side-menu" id="sideMenu" aria-label="Main menu">
+    <div class="menu-header">
+        <h3>Quick menu</h3>
+        <button class="close-btn" type="button" aria-label="Close menu" onclick="toggleMenu(false)">×</button>
+    </div>
+    <ul class="menu-list">
+        <li onclick="go('profile.html')"><i class="fa-regular fa-user"></i> Profile</li>
+        <li onclick="go('add-fund.html')"><i class="fa-solid fa-circle-plus"></i> Deposit</li>
+        <li onclick="go('withdraw.html')"><i class="fa-solid fa-arrow-up-from-bracket"></i> Withdraw</li>
+        <li onclick="go('transition.html')"><i class="fa-solid fa-receipt"></i> Transactions</li>
+        <li onclick="go('gamezone.html')"><i class="fa-solid fa-house"></i> Game Zone</li>
+        <li onclick="go('reer.html')"><i class="fa-solid fa-users"></i> Refer &amp; Earn</li>
+        <li onclick="go('history.html')"><i class="fa-solid fa-clock-rotate-left"></i> History</li>
+        <li onclick="go('ratio.html')"><i class="fa-solid fa-chart-simple"></i> Ratios</li>
+        <li onclick="go('logout.html')"><i class="fa-solid fa-right-from-bracket"></i> Logout</li>
+    </ul>
+</aside>
 
 <!-- ================= BOTTOM NAV ================= -->
-<div class="bottom-nav">
-  <div class="nav-item" data-page="reer.html"><i class="fa-solid fa-user"></i><span>Refer</span></div>
-  <div class="nav-item" data-page="history.html"><i class="fa-solid fa-clock"></i><span>History</span></div>
-  <div class="nav-item center" data-page="gamezone.html"><i class="fa-solid fa-house"></i></div>
-  <div class="nav-item active" data-page="transition.html"><i class="fa-solid fa-gavel"></i><span>Transaction</span></div>
-  <div class="nav-item" data-page="wallet.html"><i class="fa-solid fa-wallet"></i><span>Wallet</span></div>
-</div>
+<nav class="bottom-nav" aria-label="Bottom navigation">
+    <div class="nav-item" data-page="reer.html" role="button" tabindex="0">
+        <i class="fa-solid fa-user-group"></i><span>Refer</span>
+    </div>
+    <div class="nav-item" data-page="history.html" role="button" tabindex="0">
+        <i class="fa-solid fa-clock"></i><span>History</span>
+    </div>
+    <div class="nav-item center" data-page="gamezone.html" role="button" tabindex="0" aria-label="Home">
+        <i class="fa-solid fa-house"></i><span>Home</span>
+    </div>
+    <div class="nav-item active" data-page="transition.html" role="button" tabindex="0" aria-current="page">
+        <i class="fa-solid fa-receipt"></i><span>Transactions</span>
+    </div>
+    <div class="nav-item" data-page="wallet.html" role="button" tabindex="0">
+        <i class="fa-solid fa-wallet"></i><span>Wallet</span>
+    </div>
+</nav>
 
 <script>
-const API = "https://tirupati-matka.onrender.com//api";
-const token = localStorage.getItem("token");
-const balanceEl = document.getElementById("balance");
+"use strict";
 
-/* ================= BALANCE ================= */
-async function loadBalance(){
-  try{
-    const r = await fetch(API + "/auth/balance", {
-      headers: { Authorization: "Bearer " + token }
+// Keep the API base URL free of duplicate slashes.
+const API = "https://tirupati-matka.onrender.com/api";
+const token = localStorage.getItem("token") || localStorage.getItem("ki_token");
+const balanceEl = document.getElementById("balance");
+const tbody = document.getElementById("txnBody");
+const emptyEl = document.getElementById("empty");
+const loadingEl = document.getElementById("loading");
+const errorEl = document.getElementById("errorState");
+
+function formatMoney(value) {
+    const amount = Number(value);
+    return "₹ " + (Number.isFinite(amount) ? amount : 0).toLocaleString("en-IN", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
     });
-    const d = await r.json();
-    if(d.success){
-      balanceEl.innerText = "₹ " + d.balance.toFixed(2);
-    }
-  }catch(err){
-    console.error("Balance error", err);
-  }
 }
 
-/* ================= TRANSACTIONS ================= */
+function safeText(value, fallback = "-") {
+    if (value === null || value === undefined || value === "") return fallback;
+    return String(value);
+}
+
+function prettyDate(value) {
+    if (!value) return "-";
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return "-";
+    return date.toLocaleString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+}
+
+function setState({ loading = false, empty = false, error = false } = {}) {
+    loadingEl.style.display = loading ? "block" : "none";
+    emptyEl.style.display = empty ? "block" : "none";
+    errorEl.style.display = error ? "block" : "none";
+}
+
+async function loadBalance() {
+    if (!token) {
+        balanceEl.textContent = "Login required";
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API}/auth/balance`, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+
+        if (response.status === 401) {
+            balanceEl.textContent = "Session expired";
+            return;
+        }
+
+        const data = await response.json();
+
+        if (response.ok && data.success && data.balance !== undefined) {
+            balanceEl.textContent = formatMoney(data.balance);
+        }
+    } catch (error) {
+        console.error("Balance error:", error);
+    }
+}
 
 async function fetchTransactions() {
-  try {
-    const res = await fetch(API + "/auth/transactions", {
-      headers: { Authorization: "Bearer " + token }
-    });
-
-    const data = await res.json();
-    const tbody = document.getElementById("txnBody");
-    const empty = document.getElementById("empty");
-
-    tbody.innerHTML = "";
-
-    if (!data.transactions || data.transactions.length === 0) {
-      empty.style.display = "block";
-      return;
+    if (!token) {
+        tbody.replaceChildren();
+        setState({ error: true });
+        errorEl.querySelector("p").textContent = "Please sign in again to view your wallet transactions.";
+        return;
     }
 
-    empty.style.display = "none";
+    setState({ loading: true });
+    tbody.replaceChildren();
 
-    data.transactions.forEach(txn => {
-      const tr = document.createElement("tr");
+    try {
+        const response = await fetch(`${API}/auth/transactions`, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
 
-      const isCredit =
-        txn.type === "deposit" ||
-        txn.type === "admin_update" ||
-        txn.type === "win";
+        if (!response.ok) {
+            throw new Error(`Transactions request failed (${response.status})`);
+        }
 
-      const date = txn.createdAt
-        ? new Date(txn.createdAt).toLocaleString()
-        : "-";
+        const data = await response.json();
+        const transactions = Array.isArray(data.transactions) ? data.transactions : [];
 
-      tr.innerHTML = `
-        <td>
-          <span class="badge ${isCredit ? "credit" : "debit"}">
-            ${txn.type.toUpperCase()}
-          </span>
-        </td>
+        if (transactions.length === 0) {
+            setState({ empty: true });
+            return;
+        }
 
-        <td>₹ ${Number(txn.amount).toFixed(2)}</td>
+        const fragment = document.createDocumentFragment();
 
-        <td>${txn.method ? txn.method.toUpperCase() : "-"}</td>
+        transactions.forEach((txn) => {
+            const row = document.createElement("tr");
+            const type = safeText(txn.type, "transaction").toLowerCase();
+            const isCredit = ["deposit", "admin_update", "win", "credit", "referral"].includes(type);
 
-        <td>
-          <span class="status ${txn.status}">
-            ${txn.status ? txn.status.toUpperCase() : "-"}
-          </span>
-        </td>
+            const values = [
+                { label: "Type", value: type.toUpperCase(), className: `badge ${isCredit ? "credit" : "debit"}` },
+                { label: "Amount", value: formatMoney(txn.amount), className: "" },
+                { label: "Method", value: safeText(txn.method).toUpperCase(), className: "" },
+                { label: "Status", value: safeText(txn.status, "unknown").toUpperCase(), className: `status ${safeText(txn.status, "unknown").toLowerCase()}` },
+                { label: "Date", value: prettyDate(txn.createdAt), className: "" }
+            ];
 
-        <td>${date}</td>
-      `;
+            values.forEach((item) => {
+                const cell = document.createElement("td");
+                cell.dataset.label = item.label;
 
-      tbody.appendChild(tr);
-    });
+                if (item.className) {
+                    const span = document.createElement("span");
+                    span.className = item.className;
+                    span.textContent = item.value;
+                    cell.appendChild(span);
+                } else {
+                    cell.textContent = item.value;
+                }
 
-  } catch (err) {
-    console.error("fetchTransactions error:", err);
-  }
+                row.appendChild(cell);
+            });
+
+            fragment.appendChild(row);
+        });
+
+        tbody.appendChild(fragment);
+        setState();
+    } catch (error) {
+        console.error("fetchTransactions error:", error);
+        setState({ error: true });
+    }
 }
 
+function toggleMenu(forceState) {
+    const menu = document.getElementById("sideMenu");
+    const overlay = document.getElementById("menuOverlay");
+    const shouldOpen = typeof forceState === "boolean"
+        ? forceState
+        : !menu.classList.contains("active");
 
-/* ================= NAVIGATION ================= */
-document.querySelectorAll(".nav-item").forEach(item=>{
-  item.onclick = ()=>location.href = item.dataset.page;
-});
+    menu.classList.toggle("active", shouldOpen);
+    overlay.classList.toggle("active", shouldOpen);
+    document.body.style.overflow = shouldOpen ? "hidden" : "";
+}
 
-function toggleMenu(){ document.getElementById("sideMenu").classList.toggle("active"); }
-
-/* ================= INIT ================= */
-document.addEventListener("DOMContentLoaded", ()=>{
-  loadBalance();
-  fetchTransactions();
-});
 function go(page) {
-  window.location.href = page;
+    window.location.href = page;
 }
 
+function goPage(page) {
+    window.location.href = page;
+}
+
+document.querySelectorAll(".nav-item").forEach((item) => {
+    const navigate = () => {
+        const page = item.dataset.page;
+        if (page) window.location.href = page;
+    };
+
+    item.addEventListener("click", navigate);
+    item.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            navigate();
+        }
+    });
+});
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") toggleMenu(false);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadBalance();
+    fetchTransactions();
+});
 </script>
+
 <script src="nav.js"></script>
 </body>
 </html>

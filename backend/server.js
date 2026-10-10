@@ -22,7 +22,8 @@ const fs = require("fs");
 const cron = require("node-cron");
 
 const replayDailyGames = require("./cron/dailyGameReset");
-
+const notificationRoutes =
+    require("./routes/notification-routes");
 
 /* =========================
    APP
@@ -273,6 +274,10 @@ app.use(
   require("./routes/gali-bet")
 );
 
+app.use(
+    "/api/notifications",
+    notificationRoutes
+);
 
 /* =========================================================
    STATIC FRONTEND FILES
