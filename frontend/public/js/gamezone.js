@@ -1513,7 +1513,7 @@ function goPage(page) {
 function openWhatsApp() {
 
     const phoneNumber =
-        "917412850353";
+        "916397379822"; // Replace with your support number
 
 
     const message =
