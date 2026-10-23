@@ -3030,3 +3030,779 @@ button {
     }
 }
 
+
+/* =====================================================
+PREMIUM WHITE + LIGHT GREEN ACTIVITY THEME
+===================================================== */
+
+:root {
+--activity-green: #168447;
+--activity-green-dark: #126638;
+--activity-green-light: #e5f8eb;
+--activity-green-border: #ccebd5;
+--activity-background: #f6faf7;
+--activity-text: #19372a;
+--activity-muted: #77877e;
+--activity-white: #ffffff;
+--activity-border: #e7eee9;
+}
+
+.recent-activity-section {
+width: min(100% - 28px, 900px);
+margin: 22px auto 110px;
+padding: 22px;
+background: var(--activity-white);
+border: 1px solid var(--activity-border);
+border-radius: 22px;
+box-shadow: 0 8px 30px rgba(28, 90, 51, 0.055);
+box-sizing: border-box;
+}
+
+.activity-heading {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 12px;
+margin-bottom: 22px;
+}
+
+.activity-eyebrow {
+display: inline-block;
+margin-bottom: 7px;
+color: var(--activity-green);
+font-size: 10px;
+font-weight: 800;
+letter-spacing: 1.5px;
+}
+
+.activity-heading h2 {
+margin: 0;
+color: var(--activity-text);
+font-size: 23px;
+font-weight: 800;
+}
+
+.activity-heading p {
+margin: 7px 0 0;
+color: var(--activity-muted);
+font-size: 13px;
+line-height: 1.5;
+}
+
+.activity-view-all {
+display: inline-flex;
+align-items: center;
+gap: 7px;
+padding: 10px 12px;
+color: var(--activity-green);
+background: var(--activity-green-light);
+border-radius: 10px;
+text-decoration: none;
+white-space: nowrap;
+font-size: 12px;
+font-weight: 750;
+}
+
+.activity-filters {
+display: flex;
+gap: 9px;
+margin-bottom: 18px;
+padding-bottom: 4px;
+overflow-x: auto;
+scrollbar-width: thin;
+}
+
+.activity-filter {
+flex-shrink: 0;
+padding: 9px 15px;
+border: 1px solid var(--activity-border);
+border-radius: 30px;
+background: #fff;
+color: #64746a;
+font-size: 12px;
+font-weight: 700;
+cursor: pointer;
+transition: background .2s ease, color .2s ease;
+}
+
+.activity-filter:hover,
+.activity-filter.active {
+color: var(--activity-green-dark);
+background: var(--activity-green-light);
+border-color: var(--activity-green-border);
+}
+
+.activity-list {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.activity-row {
+display: flex;
+align-items: center;
+gap: 13px;
+padding: 15px;
+background: #fff;
+border: 1px solid var(--activity-border);
+border-radius: 15px;
+transition: border-color .2s ease, transform .2s ease;
+}
+
+.activity-row:hover {
+border-color: var(--activity-green-border);
+transform: translateY(-1px);
+}
+
+.activity-icon {
+width: 43px;
+height: 43px;
+flex: 0 0 43px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 13px;
+font-size: 16px;
+}
+
+.activity-icon.deposit,
+.activity-icon.win,
+.activity-icon.bonus,
+.activity-icon.refund {
+background: #e5f8eb;
+color: #168447;
+}
+
+.activity-icon.withdrawal {
+background: #fff4df;
+color: #b77910;
+}
+
+.activity-icon.bet {
+background: #eaf2ff;
+color: #376bd5;
+}
+
+.activity-details {
+min-width: 0;
+flex: 1;
+}
+
+.activity-title {
+margin: 0 0 5px;
+color: var(--activity-text);
+font-size: 13px;
+font-weight: 800;
+}
+
+.activity-description {
+color: var(--activity-muted);
+font-size: 11px;
+overflow-wrap: anywhere;
+}
+
+.activity-time {
+display: block;
+margin-top: 5px;
+color: #8b9990;
+font-size: 10px;
+}
+
+.activity-right {
+flex-shrink: 0;
+text-align: right;
+}
+
+.activity-amount {
+display: block;
+margin-bottom: 7px;
+color: var(--activity-text);
+font-size: 14px;
+font-weight: 800;
+}
+
+.activity-amount.positive {
+color: #168447;
+}
+
+.activity-amount.negative {
+color: #526158;
+}
+
+.activity-status {
+display: inline-block;
+padding: 5px 8px;
+border-radius: 20px;
+font-size: 9px;
+font-weight: 800;
+}
+
+.activity-status.completed {
+color: #16733d;
+background: #e5f8eb;
+}
+
+.activity-status.pending {
+color: #a66b0a;
+background: #fff4df;
+}
+
+.activity-status.failed,
+.activity-status.rejected {
+color: #b42318;
+background: #feeceb;
+}
+
+.activity-status.processing {
+color: #2858ad;
+background: #eaf2ff;
+}
+
+.activity-empty,
+.activity-loading {
+padding: 28px 15px;
+text-align: center;
+color: var(--activity-muted);
+font-size: 13px;
+line-height: 1.8;
+}
+
+.activity-empty i {
+display: block;
+margin-bottom: 12px;
+color: #65ad7e;
+font-size: 28px;
+}
+
+.activity-disclaimer {
+margin: 17px 0 0;
+color: var(--activity-muted);
+font-size: 10px;
+line-height: 1.6;
+text-align: center;
+}
+
+/* =====================================================
+WITHDRAWAL TOAST
+===================================================== */
+
+.withdrawal-toast {
+position: fixed;
+z-index: 9999;
+left: 16px;
+bottom: max(20px, env(safe-area-inset-bottom));
+width: min(390px, calc(100% - 32px));
+box-sizing: border-box;
+display: flex;
+align-items: flex-start;
+gap: 12px;
+padding: 17px;
+background: #fff;
+border: 1px solid #d8efdf;
+border-left: 4px solid #20a052;
+border-radius: 17px;
+box-shadow: 0 12px 40px rgba(24, 70, 40, 0.17);
+animation: withdrawalToastIn .35s ease both;
+}
+
+.withdrawal-toast[hidden] {
+display: none !important;
+}
+
+.withdrawal-toast-icon {
+width: 37px;
+height: 37px;
+flex: 0 0 37px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #168447;
+background: #e5f8eb;
+border-radius: 50%;
+}
+
+.withdrawal-toast-content {
+min-width: 0;
+flex: 1;
+display: flex;
+flex-direction: column;
+gap: 5px;
+}
+
+.withdrawal-toast-label {
+color: #168447;
+font-size: 9px;
+font-weight: 800;
+letter-spacing: 1.1px;
+}
+
+.withdrawal-toast-content strong {
+color: #19372a;
+font-size: 13px;
+}
+
+.withdrawal-toast-amount {
+color: #168447;
+font-size: 21px;
+font-weight: 850;
+}
+
+.withdrawal-toast-user,
+.withdrawal-toast-time {
+color: #77877e;
+font-size: 11px;
+overflow-wrap: anywhere;
+}
+
+.withdrawal-toast-close {
+padding: 3px;
+border: 0;
+background: transparent;
+color: #89968e;
+font-size: 16px;
+cursor: pointer;
+}
+
+@keyframes withdrawalToastIn {
+from {
+opacity: 0;
+transform: translateY(18px);
+}
+
+
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+}
+
+@media (max-width: 480px) {
+.recent-activity-section {
+width: calc(100% - 20px);
+margin-top: 16px;
+padding: 15px 12px;
+border-radius: 18px;
+}
+
+
+.activity-heading h2 {
+    font-size: 20px;
+}
+
+.activity-heading p {
+    max-width: 210px;
+    font-size: 11px;
+}
+
+.activity-row {
+    gap: 9px;
+    padding: 12px 9px;
+}
+
+.activity-icon {
+    width: 37px;
+    height: 37px;
+    flex-basis: 37px;
+    border-radius: 11px;
+}
+
+.activity-title {
+    font-size: 12px;
+}
+
+.activity-description {
+    font-size: 10px;
+}
+
+.activity-amount {
+    font-size: 12px;
+}
+
+.activity-status {
+    font-size: 8px;
+    padding: 4px 6px;
+}
+
+.withdrawal-toast {
+    left: 10px;
+    width: calc(100% - 20px);
+}
+
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+.withdrawal-toast {
+animation: none;
+}
+
+
+.activity-row {
+    transition: none;
+}
+
+
+}
+
+/* =====================================================
+TIRUPATI MATKA — PREMIUM DEMO ACTIVITY
+White + Light Green Theme
+===================================================== */
+
+.recent-activity-section {
+width: calc(100% - 28px);
+max-width: 1000px;
+margin: 24px auto;
+padding: 22px;
+box-sizing: border-box;
+background: #ffffff;
+border: 1px solid #e3f1e7;
+border-radius: 20px;
+box-shadow: 0 8px 28px rgba(24, 110, 62, 0.07);
+font-family: inherit;
+}
+
+.activity-heading {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 12px;
+margin-bottom: 22px;
+}
+
+.activity-eyebrow {
+display: inline-block;
+margin-bottom: 7px;
+color: #168447;
+font-size: 11px;
+font-weight: 800;
+letter-spacing: 1.5px;
+}
+
+.activity-heading h2 {
+margin: 0;
+color: #173b28;
+font-size: 23px;
+font-weight: 800;
+}
+
+.activity-heading p {
+margin: 7px 0 0;
+color: #7a8b80;
+font-size: 13px;
+line-height: 1.5;
+}
+
+.demo-badge {
+padding: 7px 12px;
+border: 1px solid #c8efd5;
+border-radius: 20px;
+background: #e9f9ee;
+color: #168447;
+font-size: 10px;
+font-weight: 800;
+letter-spacing: 1px;
+white-space: nowrap;
+}
+
+.activity-list {
+display: flex;
+flex-direction: column;
+gap: 11px;
+}
+
+.activity-row {
+display: flex;
+align-items: center;
+gap: 13px;
+min-width: 0;
+padding: 14px;
+border: 1px solid #edf3ef;
+border-radius: 15px;
+background: #fbfefc;
+transition: background 0.2s ease, transform 0.2s ease;
+animation: activityFadeIn 0.35s ease both;
+}
+
+.activity-row:hover {
+background: #f1fbf4;
+transform: translateY(-2px);
+}
+
+.activity-icon {
+display: flex;
+flex: 0 0 43px;
+align-items: center;
+justify-content: center;
+width: 43px;
+height: 43px;
+border-radius: 13px;
+background: #e5f8eb;
+color: #168447;
+font-size: 17px;
+}
+
+.activity-icon.deposit {
+background: #e5f8eb;
+color: #168447;
+}
+
+.activity-icon.withdrawal {
+background: #e8f2ff;
+color: #3476cb;
+}
+
+.activity-icon.bet {
+background: #fff4df;
+color: #b87a13;
+}
+
+.activity-icon.win {
+background: #f1eaff;
+color: #8054c7;
+}
+
+.activity-details {
+flex: 1;
+min-width: 0;
+}
+
+.activity-details strong {
+display: block;
+overflow-wrap: anywhere;
+color: #203c2b;
+font-size: 13px;
+font-weight: 750;
+}
+
+.activity-details p {
+margin: 5px 0 0;
+color: #829087;
+font-size: 11px;
+line-height: 1.5;
+}
+
+.activity-amount {
+flex: 0 0 auto;
+text-align: right;
+}
+
+.activity-amount strong {
+display: block;
+color: #168447;
+font-size: 14px;
+font-weight: 800;
+white-space: nowrap;
+}
+
+.activity-status {
+display: inline-block;
+margin-top: 5px;
+padding: 4px 7px;
+border-radius: 7px;
+background: #e8f8ed;
+color: #168447;
+font-size: 9px;
+font-weight: 800;
+letter-spacing: 0.3px;
+}
+
+.activity-status.pending {
+background: #fff4df;
+color: #a66a0b;
+}
+
+.activity-disclaimer {
+margin: 17px 0 0;
+color: #89978e;
+font-size: 10px;
+line-height: 1.6;
+text-align: center;
+}
+
+/* Demo withdrawal popup */
+
+.withdrawal-toast[hidden] {
+display: none !important;
+}
+
+.withdrawal-toast {
+position: fixed;
+z-index: 9999;
+right: 18px;
+bottom: 22px;
+display: flex;
+align-items: center;
+gap: 12px;
+width: min(355px, calc(100vw - 28px));
+padding: 16px 38px 16px 15px;
+box-sizing: border-box;
+border: 1px solid #dcefe2;
+border-radius: 17px;
+background: #ffffff;
+box-shadow: 0 14px 45px rgba(15, 67, 36, 0.18);
+animation: withdrawalToastIn 0.4s ease both;
+}
+
+.withdrawal-toast-icon {
+display: flex;
+flex: 0 0 40px;
+align-items: center;
+justify-content: center;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+background: #e3f8e9;
+color: #168447;
+font-size: 20px;
+font-weight: 900;
+}
+
+.withdrawal-toast-content {
+display: flex;
+flex: 1;
+flex-direction: column;
+gap: 4px;
+min-width: 0;
+}
+
+.withdrawal-toast-label {
+color: #168447;
+font-size: 9px;
+font-weight: 900;
+letter-spacing: 1px;
+}
+
+.withdrawal-toast-content strong {
+overflow-wrap: anywhere;
+color: #203c2b;
+font-size: 13px;
+}
+
+.withdrawal-toast-amount {
+color: #168447;
+font-size: 17px;
+font-weight: 900;
+}
+
+.withdrawal-toast-user,
+.withdrawal-toast-time {
+color: #829087;
+font-size: 10px;
+line-height: 1.4;
+}
+
+.withdrawal-toast-close {
+position: absolute;
+top: 8px;
+right: 9px;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 25px;
+height: 25px;
+padding: 0;
+border: 0;
+border-radius: 50%;
+background: #f0f6f2;
+color: #5b6e61;
+cursor: pointer;
+font-size: 18px;
+}
+
+.withdrawal-toast-close:hover {
+background: #e1f3e7;
+color: #168447;
+}
+
+@keyframes activityFadeIn {
+from {
+opacity: 0;
+transform: translateY(7px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@keyframes withdrawalToastIn {
+from {
+opacity: 0;
+transform: translateY(18px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+/* Mobile layout */
+
+@media (max-width: 520px) {
+.recent-activity-section {
+width: calc(100% - 20px);
+margin: 16px auto;
+padding: 16px 12px;
+border-radius: 16px;
+}
+
+
+.activity-heading h2 {
+    font-size: 20px;
+}
+
+.activity-row {
+    gap: 9px;
+    padding: 11px 9px;
+    border-radius: 12px;
+}
+
+.activity-icon {
+    flex-basis: 36px;
+    width: 36px;
+    height: 36px;
+    border-radius: 11px;
+    font-size: 15px;
+}
+
+.activity-details strong {
+    font-size: 12px;
+}
+
+.activity-details p {
+    font-size: 10px;
+}
+
+.activity-amount strong {
+    font-size: 12px;
+}
+
+.activity-status {
+    font-size: 8px;
+}
+
+.withdrawal-toast {
+    right: 10px;
+    bottom: 12px;
+    width: calc(100vw - 20px);
+}
+
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+.activity-row,
+.withdrawal-toast {
+animation: none;
+}
+
+
+.activity-row {
+    transition: none;
+}
+
+
+}

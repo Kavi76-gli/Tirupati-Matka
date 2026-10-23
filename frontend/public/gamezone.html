@@ -407,55 +407,61 @@
 </section>
 
 <!-- =====================================================
-     DOWNLOAD ANDROID APP
-===================================================== -->
-
-<section class="app-download-section">
-
-    <a
-        href="Tirupati-Matka.apk"
-        class="app-download-btn"
-        download="Tirupati-Matka.apk"
-        aria-label="Download Tirupati Matka Android App"
-    >
-
-        <div class="app-download-icon">
-            <i class="fa-brands fa-android"></i>
-        </div>
-
-        <div class="app-download-content">
-            <span class="app-download-label">
-                OFFICIAL ANDROID APP
-            </span>
-
-            <h3>Download Tirupati Matka</h3>
-
-            <p>Enjoy convenient access from your Android phone.</p>
-        </div>
-
-        <div class="app-download-arrow">
-            <i class="fa-solid fa-download"></i>
-        </div>
-
-    </a>
-
-</section>
-
-
-<!-- =====================================================
      GAME ZONE
 ===================================================== -->
 
 
+<main id="gameContainer" class="game-container"></main>
 
-<main
-    id="gameContainer"
-    class="game-container"
->
+<!-- DEMO RECENT ACTIVITY -->
 
-    <!-- JavaScript loads games here -->
+<section class="recent-activity-section" id="recentActivity">
+    <div class="activity-heading">
+        <div>
+            <span class="activity-eyebrow">LIVE </span>
+            <h2>Recent Activity</h2>
+            <p>Explore sample gaming activity.</p>
+        </div>
+        <span class="demo-badge">LIVE</span>
+    </div>
 
-</main>
+
+<div id="activityList" class="activity-list">
+    <p>Loading live activity...</p>
+</div>
+
+<p class="activity-disclaimer">
+    Live data for display purposes only. These are not real transactions.
+</p>
+
+
+</section>
+
+<!-- DEMO WITHDRAWAL POPUP -->
+
+<div id="withdrawalToast" class="withdrawal-toast"
+     role="status" aria-live="polite" hidden>
+    <div class="withdrawal-toast-icon">✓</div>
+
+
+<div class="withdrawal-toast-content">
+    <span class="withdrawal-toast-label">LIVE WITHDRAWAL</span>
+    <strong id="withdrawalToastTitle">Live User</strong>
+    <span id="withdrawalToastAmount"></span>
+    <span id="withdrawalToastTime">Sample activity · Not a real transaction</span>
+</div>
+
+<button type="button" class="withdrawal-toast-close"
+        onclick="dismissWithdrawalToast()" aria-label="Close popup">
+    ×
+</button>
+
+
+</div>
+
+<script src="js/demo-activity.js"></script>
+
+
 
 
 
